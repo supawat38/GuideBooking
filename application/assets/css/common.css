@@ -1,0 +1,59 @@
+@font-face {
+    font-family: THSarabunNew;
+    src: url(../fonts/THSarabunNew.ttf);
+}
+
+@font-face {
+    font-family: THSarabunNew-Bold;
+    src: url(../fonts/THSarabunNew-Bold.ttf);
+}
+
+@font-face {
+    font-family: cordia;
+    src: url(../fonts/cordia.ttf);
+}
+
+@font-face {
+    font-family: THSarabunNew-BoldItalic;
+    src: url(../fonts/THSarabunNew-BoldItalic.ttf);
+}
+
+@font-face {
+    font-family: THSarabunNew-Italic;
+    src: url(../fonts/THSarabunNew-Italic.ttf);
+}
+
+.FontMenu{
+	font-family: THSarabunNew;
+	font-size:  22px !important;
+}
+
+.TextFontTitleSlide{
+	font-family: THSarabunNew;
+	font-size:  80px !important;
+}
+
+.TextFontDetailSlide{
+	font-family: THSarabunNew;
+	font-size:  25px !important;
+}
+
+.FormSearch .label_formsearch{
+	font-family: THSarabunNew !important;
+	font-size:  25px !important;
+}
+
+@media (max-width: 991.98px) {
+	.overlay{
+		margin-top: 72px;
+	}
+
+	.TextFontTitleSlide{
+		margin-top: 20%;
+    	text-align: center;
+	}
+
+	.TextFontDetailSlide{
+    	text-align: center;
+	}
+}
