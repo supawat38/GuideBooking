@@ -95,6 +95,10 @@
 					$ImageHeder = 'application/assets/images/bg_2.jpg';
 					$TitleMenu  = "แก้ไขข้อมูลส่วนตัว";
 				break;
+				case "ManageAdmin":
+					$ImageHeder = 'application/assets/images/bg_2.jpg';
+					$TitleMenu  = "ข้อมูลผู้ดูแลระบบ";
+				break;
 				default:
 					$ImageHeder	= "";
 					$TitleMenu  = "";
