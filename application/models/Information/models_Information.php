@@ -15,7 +15,7 @@ class models_Information extends CI_Model {
 			}else if($tUserType == 2){ //ลูกค้า
 				$SQL 	= "SELECT customer.* , login.username , login.password FROM customer INNER JOIN login ON login.login_type = 2 AND login.reflogin_id = customer.cus_id WHERE cus_id ='$tUserID'";
 			}else if($tUserType == 3){ //มัคคุเทศก์
-				$SQL 	= "SELECT guide.* , login.username , login.password FROM guide INNER JOIN login ON login.login_type = 3 AND login.reflogin_id = guide.guide_id WHERE guide_id ='$tUserID' ";
+				$SQL 	= "SELECT guide.* , guide.province_id AS ProvinceGuide ,  area.province_id , login.username , login.password FROM guide INNER JOIN login ON login.login_type = 3 AND login.reflogin_id = guide.guide_id LEFT JOIN area ON area.guide_id = guide.guide_id WHERE guide.guide_id ='$tUserID' ";
 			}
 
 			$Query 	= $this->db->query($SQL);
@@ -67,21 +67,7 @@ class models_Information extends CI_Model {
 			echo $Error;
 		}
 	}
-
-	//แก้ไขข้อมูลตารางหลัก ผู้ดูแลระบบ
-	public function Update_Admin($Result,$TableName){
-		$this->db->set('firstname', $Result['firstname']);
-		$this->db->set('lastname', $Result['lastname']);
-		$this->db->set('admin_image', $Result['admin_image']);
-		$this->db->set('admin_email', $Result['admin_email']);
-		$this->db->set('admin_phone', $Result['admin_phone']);
-		$this->db->where('admin_id',$Result['ID']);
-		$this->db->update('admin');
-
-		//กำหนดค่าให้ sestion
-		$this->session->set_userdata("session_name",$Result['firstname']);
-	}
-
+	
 	//แก้ไขข้อมูลตารางเข้าสู่ระบบ
 	public function UpdateLogin($Result){
 		$PasswordOld 	= $Result['passwordOld'];
@@ -98,6 +84,20 @@ class models_Information extends CI_Model {
 			$this->db->where('reflogin_id',$Result['ID']);
 			$this->db->update('login');
 		}
+	}
+	
+	//แก้ไขข้อมูลตารางหลัก ผู้ดูแลระบบ
+	public function Update_Admin($Result,$TableName){
+		$this->db->set('firstname', $Result['firstname']);
+		$this->db->set('lastname', $Result['lastname']);
+		$this->db->set('admin_image', $Result['admin_image']);
+		$this->db->set('admin_email', $Result['admin_email']);
+		$this->db->set('admin_phone', $Result['admin_phone']);
+		$this->db->where('admin_id',$Result['ID']);
+		$this->db->update('admin');
+
+		//กำหนดค่าให้ sestion
+		$this->session->set_userdata("session_name",$Result['firstname']);
 	}
 
 	//แก้ไขข้อมูลตารางผู้ใช้งานทั่วไป
@@ -116,6 +116,48 @@ class models_Information extends CI_Model {
 
 		//กำหนดค่าให้ sestion
 		$this->session->set_userdata("session_name",$Result['firstname']);
+	}
+
+	//แก้ไขข้อมูลตารางมัคคุเทศก์
+	public function Update_Guide($Result,$TableName){
+		$this->db->set('firstname', $Result['firstname']);
+		$this->db->set('lastname', $Result['lastname']);
+		$this->db->set('guide_bd', $Result['guide_bd']);
+		$this->db->set('gender', $Result['gender']);
+		$this->db->set('guide_credit', $Result['guide_credit']);
+		$this->db->set('guide_license', $Result['guide_license']);
+		$this->db->set('address', $Result['address']);
+		$this->db->set('province_id', $Result['province_id']);
+		$this->db->set('postcode', $Result['postcode']);
+		$this->db->set('guide_phone', $Result['guide_phone']);
+		$this->db->set('guide_email', $Result['guide_email']);
+		$this->db->set('guide_image', $Result['guide_image']);
+		$this->db->set('intro_profile', $Result['intro_profile']);
+		$this->db->set('guide_status', $Result['guide_status']);
+		$this->db->where('guide_id',$Result['ID']);
+		$this->db->update('guide');
+
+		//กำหนดค่าให้ sestion
+		$this->session->set_userdata("session_name",$Result['firstname']);
+	}
+
+	//เพิ่มข้อมูลตาราง area
+	public function Insert_Area($Result){
+		try{
+			$this->db->insert('area', $Result);
+		}catch(Exception $Error){
+			echo $Error;
+		}
+	}
+
+	//ลบข้อมูลตาราง area
+	public function Delete_Area($Result){
+		try{
+			$this->db->where('guide_id', $Result['ID']);
+   			$this->db->delete('area'); 
+		}catch(Exception $Error){
+			echo $Error;
+		}
 	}
 
 }

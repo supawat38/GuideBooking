@@ -134,4 +134,63 @@ class Information extends CI_Controller {
 		$this->models_Information->Update_Customer($UpdateCustomer,'customer');
 		$this->models_Information->UpdateLogin($UpdateCustomer);
 	}
+
+	//แก้ไขข้อมูลส่วนตัว มัคคุเทศก์
+	public function UpdateInformationGuide(){
+		//เช็คข้อมูลก่อนว่า username ซ้ำกันในตาราง login ไหม
+		$CheckCustomerLogin = array(
+			'username' 		=> $this->input->post('regisGuideLoginID')
+		);
+		$CheckUserLogin = $this->models_Information->CheckUserLogin($CheckCustomerLogin);
+		if($CheckUserLogin['Code'] == 800){
+			echo $CheckUserLogin['Desc'];
+			exit;
+		}
+
+		//เตรียมข้อมูลลงตาราง guide	 
+		$UpdateGuide = array(
+			'login_type'	=> 3,
+			'username' 		=> $this->input->post('regisGuideLoginID'),
+			'passwordOld'	=> $this->input->post('hiddenGuidePassword'),
+			'password' 		=> $this->input->post('regisGuidePassword'),
+			'ID'			=> $this->input->post('hiddenGuideID'),
+			'firstname' 	=> $this->input->post('regisGuideFirstname'), 
+			'lastname' 		=> $this->input->post('regisGuideLastname'), 
+			'gender'		=> $this->input->post('regisGuideGenter'),
+			'guide_bd'		=> date("Y-m-d", strtotime(str_replace('/', '-', $this->input->post('regisGuideBirthday')))),
+			'guide_credit' 	=> $this->input->post('regisGuideCredit'), 
+			'guide_license' => $this->input->post('regisGuideLicense'), 
+			'address' 		=> $this->input->post('regisGuideAddress'), 
+			'province_id' 	=> $this->input->post('regisGuideProvince'), 
+			'postcode' 		=> $this->input->post('regisGuidePostCode'), 
+			'guide_phone' 	=> $this->input->post('regisGuideTelephone'), 
+			'guide_email' 	=> $this->input->post('regisGuideEmail'), 
+			'guide_image' 	=> $this->input->post('hiddenImgInsertGuide'), 
+			'intro_profile' => $this->input->post('regisGuideAbout'), 
+			'guide_status' 	=> 1, 
+			'status_delete' => 0
+		);
+
+		//อัพเดทข้อมูล guide
+		$this->models_Information->Update_Guide($UpdateGuide,'guide');
+		$this->models_Information->UpdateLogin($UpdateGuide);
+
+		//แก้ไขจังหวัดที่มัคคุเทศน์ให้บริการ
+		$area = $this->input->post('regisGuideArea');
+
+		//ลบข้อมูลตาราง area
+		$this->models_Information->Delete_Area($UpdateGuide);
+
+		//เพิ่มข้อมูลใหม่ตาราง area
+		if(count($area) > 0){
+			for($i=0; $i<count($area); $i++){
+				$InsertArea = array(
+					'guide_id' 		=> $this->input->post('hiddenGuideID'),
+					'province_id' 	=> $area[$i],
+					'status_delete' => 0
+				);
+				$this->models_Information->Insert_Area($InsertArea,'area');
+			}
+		}
+	}
 }

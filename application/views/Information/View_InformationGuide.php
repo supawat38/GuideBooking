@@ -6,12 +6,12 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 		$ID 		= $dataUser['Items'][0]['guide_id'];
 		$FirstName 	= $dataUser['Items'][0]['firstname'];
 		$LastName 	= $dataUser['Items'][0]['lastname'];
-		$Birthdate	= $dataUser['Items'][0]['guide_bd'];
+		$Birthdate	= date('d/m/Y',strtotime($dataUser['Items'][0]['guide_bd'])); 
 		$Gender		= $dataUser['Items'][0]['gender'];
 		$Address	= $dataUser['Items'][0]['address'];
 		$Credit 	= $dataUser['Items'][0]['guide_credit'];
 		$License 	= $dataUser['Items'][0]['guide_license'];
-		$Province 	= $dataUser['Items'][0]['province_id'];
+		$Province 	= $dataUser['Items'][0]['ProvinceGuide'];		
 		$Postcode 	= $dataUser['Items'][0]['postcode'];
 		$PathImage 	= $dataUser['Items'][0]['guide_image'];
 		$Email 		= $dataUser['Items'][0]['guide_email'];
@@ -21,6 +21,15 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 		$Status     = $dataUser['Items'][0]['guide_status'];
 		$Username   = $dataUser['Items'][0]['username'];
 		$Password   = $dataUser['Items'][0]['password'];
+		$TextArea	= '';
+		for($i=0; $i<count($dataUser['Items']); $i++){
+			$TextArea .= $dataUser['Items'][$i]['province_id'] . ',';
+
+			//ถ้าวนลูปจนถึงตัวสุดท้ายเเล้ว ให้ ลบ , ตัวสุดท้ายออก
+			if($i == count($dataUser['Items'])-1){
+				$TextArea = substr($TextArea,0,-1);
+			}
+		}
 	}
 }
 ?>
@@ -48,32 +57,45 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 						<div class="col-lg-12" id="divRegisGuide" style="margin-top:20px;">
 							<div class="row">
 								<div class="col-lg-4 col-md-4">
-									<?php $PathShowImage = './application/assets/images/guide/NoImage.png'; ?>
+									<?php 
+										if($PathImage == '' || $PathImage == null){
+											$PathShowImage 		= base_url('/application/assets/images/guide/') . '/NoImage.png';
+											$PathDatabaseImage 	= '';
+										}else{
+											$PathShowImage 		= base_url('/application/assets/images/guide/') . $PathImage;
+											$PathDatabaseImage 	= $PathImage;
+										} ?>
+
 									<img id="ImgInsertGuide" class="img-responsive xCNImgCenter" src="<?=$PathShowImage?>">
-									<input type="hidden" id="hiddenImgInsertGuide" name="hiddenImgInsertGuide" value="">
+									<input type="hidden" id="hiddenImgInsertGuide" name="hiddenImgInsertGuide" value="<?=$PathDatabaseImage?>">
 									<button type="button" class="btn btn-outline-secondary xCNChooseImage" onclick="UploadImageGuide()">เลือกรูปภาพ</button>
 									<input type="file" id="inputfileuploadImageGuide" style="display:none;"  name="inputfileuploadImageGuide" accept="image/*" onchange="ImageUplodeResize(this,'images/Guide','ImgInsertGuide')">
 								</div>
 								<div class="col-lg-8 col-md-8">
+									<input type="hidden" id="hiddenGuideID" name="hiddenGuideID" value="<?=$ID?>">
+									<input type="hidden" id="hiddenGuidePassword" name="hiddenGuidePassword" value="<?=$Password?>">
+
 									<div class="form-row">
 										<div class="form-group col-md-12">
 											<label><span style="color:red;">*</span> ชื่อ</label>
-											<input type="text" maxlength="50" class="form-control" id="regisGuideFirstname" name="regisGuideFirstname" placeholder="ชื่อ">
+											<input type="text" maxlength="50" class="form-control" id="regisGuideFirstname" name="regisGuideFirstname" placeholder="ชื่อ" value="<?=$FirstName?>">
 										</div>
 										<div class="form-group col-md-12">
 											<label>นามสกุล</label>
-											<input type="text" maxlength="50" class="form-control" id="regisGuideLastname" name="regisGuideLastname" placeholder="นามสกุล">
+											<input type="text" maxlength="50" class="form-control" id="regisGuideLastname" name="regisGuideLastname" placeholder="นามสกุล" value="<?=$LastName?>">
 										</div>
 										<div class="form-group col-md-12">
 											<label style="margin-right:10px;">เพศ</label>
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="regisGuideGenter" id="radioMaleGuide" value="1" checked>
+												<input class="form-check-input" type="radio" name="regisGuideGenter" id="radioMaleGuide" value="1" 
+												<?php if ($Gender == 1) {echo "checked='checked'";} ?> >
 												<label class="form-check-label" for="radioMaleGuide">
 													ชาย
 												</label>
 											</div>
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="regisGuideGenter" id="radioFemaleGuide" value="2">
+												<input class="form-check-input" type="radio" name="regisGuideGenter" id="radioFemaleGuide" value="2"
+												<?php if ($Gender == 2) {echo "checked='checked'";} ?> >
 												<label class="form-check-label" for="radioFemaleGuide">
 													หญิง
 												</label>
@@ -81,30 +103,30 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 										</div>
 										<div class="form-group col-md-12">
 											<label>วันเกิด</label>
-											<input type="text" class="form-control birthdaypicker" id="regisGuideBirthday" name="regisGuideBirthday" value="<?=date('d/m/Y');?>" placeholder="<?=date('d/m/Y');?>">
+											<input type="text" class="form-control birthdaypicker" id="regisGuideBirthday" name="regisGuideBirthday" value="<?=$Birthdate?>" placeholder="<?=date('d/m/Y');?>">
 										</div>
 										<div class="form-group col-md-12">
 											<label>อีเมลล์</label>
-											<input type="text" maxlength="50" class="form-control" id="regisGuideEmail" name="regisGuideEmail"  placeholder="อีเมลล์">
+											<input type="text" maxlength="50" class="form-control" id="regisGuideEmail" name="regisGuideEmail"  placeholder="อีเมลล์" value='<?=$Email?>'>
 										</div>
 										<div class="form-group col-md-12">
 											<label><span style="color:red;">*</span> รหัสประจำตัวบัตรประชาชน</label>
-											<input type="text" maxlength="20" class="form-control xCNInputNumericWithoutDecimal" id="regisGuideCredit" name="regisGuideCredit"  placeholder="รหัสประจำตัวบัตรประชาชน">
+											<input type="text" maxlength="20" class="form-control xCNInputNumericWithoutDecimal" id="regisGuideCredit" name="regisGuideCredit"  placeholder="รหัสประจำตัวบัตรประชาชน" value='<?=$Credit?>'>
 										</div>
 										<div class="form-group col-md-12">
 											<label><span style="color:red;">*</span> เลขที่ใบอนุญาต</label>
-											<input type="text" maxlength="50" class="form-control xCNInputNumericWithoutDecimal" id="regisGuideLicense" name="regisGuideLicense"  placeholder="เลขที่ใบอนุญาต">
+											<input type="text" maxlength="50" class="form-control xCNInputNumericWithoutDecimal" id="regisGuideLicense" name="regisGuideLicense"  placeholder="เลขที่ใบอนุญาต" value='<?=$License?>'>
 										</div>
 										<div class="form-group col-md-12">
 											<label><span style="color:red;">*</span> เบอร์โทร</label>
-											<input type="text" maxlength="20" class="form-control xCNInputNumericWithoutDecimal" id="regisGuideTelephone" name="regisGuideTelephone" placeholder="เบอร์โทร">
+											<input type="text" maxlength="20" class="form-control xCNInputNumericWithoutDecimal" id="regisGuideTelephone" name="regisGuideTelephone" placeholder="เบอร์โทร" value='<?=$Phone?>'>
 										</div>
 										<div class="form-group col-md-12">
 											<label><span style="color:red;">*</span> จังหวัด</label>	
 											<select class="jSelectedsingle form-control" name="regisGuideProvince">
 												<?php if($dataprovince['rtCode'] != 800){ ?>
 													<?php foreach($dataprovince['Items'] AS $Key => $Value){ ?>
-														<option value="<?= $Value['province_id'] ?>"><?= $Value['province_name'] ?></option>
+														<option <?php if($Province == $Value['province_id']) {echo "selected='selected'";} ?>  value="<?= $Value['province_id'] ?>"><?= $Value['province_name'] ?></option>
 													<?php } ?>
 												<?php }else{ ?>
 													<option value="0">ไม่พบข้อมูล</option>
@@ -125,23 +147,23 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 										</div>
 										<div class="form-group col-md-12">
 											<label>รหัสไปรษณีย์</label>
-											<input type="text" maxlength="6" class="form-control xCNInputNumericWithoutDecimal" id="regisGuidePostCode" name="regisGuidePostCode" placeholder="รหัสไปรษณีย์">
+											<input type="text" maxlength="6" class="form-control xCNInputNumericWithoutDecimal" id="regisGuidePostCode" name="regisGuidePostCode" placeholder="รหัสไปรษณีย์" value='<?=$Postcode?>'>
 										</div>
 										<div class="form-group col-md-12">
 											<label>ที่อยู่</label>	
-											<textarea maxlength="255" id="regisGuideAddress" name="regisGuideAddress" cols="30" rows="3" class="form-control" placeholder="ที่อยู่"></textarea>
+											<textarea maxlength="255" id="regisGuideAddress" name="regisGuideAddress" cols="30" rows="3" class="form-control" placeholder="ที่อยู่"><?=$Address?></textarea>
 										</div>
 										<div class="form-group col-md-12">
 											<label>คำอธิบายเพิ่มเติมเกี่ยวกับตัวเอง</label>	
-											<textarea maxlength="255" id="regisGuideAbout" name="regisGuideAbout" cols="30" rows="3" class="form-control" placeholder="คำอธิบายเพิ่มเติมเกี่ยวกับตัวเอง"></textarea>
+											<textarea maxlength="255" id="regisGuideAbout" name="regisGuideAbout" cols="30" rows="3" class="form-control" placeholder="คำอธิบายเพิ่มเติมเกี่ยวกับตัวเอง"><?=$Profile?></textarea>
 										</div>
 										<div class="form-group col-md-12">
 											<label><span style="color:red;">*</span> ชื่อเข้าใช้งาน</label>
-											<input type="text" maxlength="50" class="form-control" id="regisGuideLoginID" name="regisGuideLoginID" placeholder="ชื่อเข้าใช้งาน">
+											<input type="text" maxlength="50" class="form-control" id="regisGuideLoginID" name="regisGuideLoginID" placeholder="ชื่อเข้าใช้งาน" value='<?=$Username?>'>
 										</div>
 										<div class="form-group col-md-12">
 											<label><span style="color:red;">*</span> รหัสผ่าน</label>
-											<input type="password" maxlength="50" class="form-control" id="regisGuidePassword" name="regisGuidePassword" placeholder="รหัสผ่าน">
+											<input type="password" maxlength="50" class="form-control" id="regisGuidePassword" name="regisGuidePassword" placeholder="รหัสผ่าน" value='<?=$Password?>'>
 										</div>
 										<div class="form-group col-md-12">
 											<button type="button" class="align-self-stretch btn btn-primary BTNConfirmRegis" onclick="UpdateInformationGuide()">แก้ไขข้อมูล</button>
@@ -174,10 +196,10 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 		$(".jSelectedsingle").select2({ width: '100%' , dropdownCssClass: "FontSelect2"});  
 
 		//split คำถาม
-		var Qustions 		= '<?=$Qustions?>';
-		if(Qustions != '' || Qustions != null){
-			var arrayQustions 	= Qustions.split(",");
-			$(".jSelectedmultiple").val(arrayQustions).change();
+		var TextArea 		= '<?=$TextArea?>';
+		if(TextArea != '' || TextArea != null){
+			var arrayTextArea 	= TextArea.split(",");
+			$(".jSelectedmultiple").val(arrayTextArea).change();
 		}
 	});
 
