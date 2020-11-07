@@ -31,39 +31,7 @@ class register extends CI_Controller {
 	//ลงทะเบียน
 	public function RegisterSystems(){
 		$TypeRegis = $this->input->post('ohdTypeRegis');
-		if($TypeRegis == 1){ //ลงทะเบียน - แก้ไขข้อมูลผู้ดูแลระบบ
-
-			//เช็คข้อมูลก่อนว่า username ซ้ำกันในตาราง login ไหม
-			$CheckAdminLogin = array(
-				'username' 		=> $this->input->post('regisAdminLoginID')
-			);
-			$CheckUserLogin = $this->models_register->CheckUserLogin($CheckAdminLogin);
-			if($CheckUserLogin['Code'] == 800){
-				echo $CheckUserLogin['Desc'];
-				exit;
-			}
-
-			//เตรียมข้อมูลลงตาราง admin
-			$UpdateAdmin = array(
-				'login_type'	=> 1,
-				'username' 		=> $this->input->post('regisAdminLoginID'),
-				'passwordOld'	=> $this->input->post('hiddenAdminPassword'),
-				'password' 		=> $this->input->post('regisAdminPassword'),
-				'ID'			=> $this->input->post('hiddenAdminID'),
-				'firstname'		=> $this->input->post('regisAdminFirstname'),
-				'lastname'		=> $this->input->post('regisAdminLastname'),
-				'admin_image'	=> $this->input->post('hiddenImgInsertAdmin'),
-				'admin_email'	=> $this->input->post('regisAdminEmail'),
-				'admin_phone'	=> $this->input->post('regisAdminTelephone')
-			);
-			$tUserType 	= $this->session->userdata("session_reftype");	
-			if($tUserType != '' || $tUserType != null){ //แก้ไขข้อมูล
-				$this->models_register->UpdateCustomerOrGuideOrAdmin($UpdateAdmin,'admin');
-				$this->models_register->UpdateLogin($UpdateAdmin);
-			}else{ //เพิ่มข้อมูล
-
-			}
-		}else if($TypeRegis == 2){ //ลงทะเบียน - แก้ไขข้อมูลผู้ใช้ทั่วไป
+		if($TypeRegis == 2){ //ลงทะเบียนผู้ใช้ทั่วไป
 
 			//เช็คข้อมูลก่อนว่า username ซ้ำกันในตาราง login ไหม
 			$CheckCustomerLogin = array(
@@ -123,7 +91,7 @@ class register extends CI_Controller {
 			);
 			//เพิ่มข้อมูลลงตาราง login
 			$this->models_register->InsertLogin($InsertCustomerLogin);
-		}else if($TypeRegis == 3){ //ลงทะเบียน - แก้ไขข้อมูลมัคคุเทศน์
+		}else if($TypeRegis == 3){ //ลงทะเบียนมัคคุเทศก์
 
 			//เช็คข้อมูลก่อนว่า username ซ้ำกันในตาราง login ไหม
 			$CheckCustomerLogin = array(

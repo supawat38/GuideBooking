@@ -1,105 +1,9 @@
-<!-- เอาไว้เก็บข้อมูล -->
-<?php 
-if($this->session->userdata('session_username') != null){ //มีคนเข้าสู่ระบบ 
-	$UserType = $this->session->userdata("session_reftype");
-	if($UserType == 1){ //ข้อมูลของผู้ดูแลระบบ 
-		$ID 		= $dataUser['Items'][0]['admin_id'];
-		$FirstName 	= $dataUser['Items'][0]['firstname'];
-		$LastName 	= $dataUser['Items'][0]['lastname'];
-		$Birthdate 	= '';
-		$Gender		= '';
-		$Address	= '';
-		$Credit		= '';
-		$License	= '';
-		$Province	= '';
-		$Postcode 	= '';
-		$PathImage 	= $dataUser['Items'][0]['admin_image'];
-		$Email 		= $dataUser['Items'][0]['admin_email'];
-		$Phone 		= $dataUser['Items'][0]['admin_phone'];
-		$Profile	= '';
-		$Qustions	= '';
-		$Status 	= $dataUser['Items'][0]['admin_status'];
-		$Username   = $dataUser['Items'][0]['username'];
-		$Password   = $dataUser['Items'][0]['password'];
-	}else if($UserType == 2){ //ข้อมูลของลูกค้า 
-		$ID 		= $dataUser['Items'][0]['cus_id'];
-		$FirstName 	= $dataUser['Items'][0]['firstname'];
-		$LastName 	= $dataUser['Items'][0]['lastname'];
-		$Birthdate	= date('d/m/Y',strtotime($dataUser['Items'][0]['cus_bd']));
-		$Gender		= $dataUser['Items'][0]['gender'];
-		$Address	= $dataUser['Items'][0]['address'];
-		$Credit		= '';
-		$License	= '';
-		$Province	= '';
-		$Postcode 	= '';
-		$PathImage 	= $dataUser['Items'][0]['cus_image'];
-		$Email 		= $dataUser['Items'][0]['cus_email'];
-		$Phone 		= $dataUser['Items'][0]['cus_phone'];
-		$Profile	= '';
-		$Qustions 	= $dataUser['Items'][0]['cus_qustions'];
-		$Status     = $dataUser['Items'][0]['cus_status'];
-		$Username   = $dataUser['Items'][0]['username'];
-		$Password   = $dataUser['Items'][0]['password'];
-	}else if($UserType == 3){ //ข้อมูลของมัคคุเทศก์ 
-		$ID 		= $dataUser['Items'][0]['guide_id'];
-		$FirstName 	= $dataUser['Items'][0]['firstname'];
-		$LastName 	= $dataUser['Items'][0]['lastname'];
-		$Birthdate	= $dataUser['Items'][0]['guide_bd'];
-		$Gender		= $dataUser['Items'][0]['gender'];
-		$Address	= $dataUser['Items'][0]['address'];
-		$Credit 	= $dataUser['Items'][0]['guide_credit'];
-		$License 	= $dataUser['Items'][0]['guide_license'];
-		$Province 	= $dataUser['Items'][0]['province_id'];
-		$Postcode 	= $dataUser['Items'][0]['postcode'];
-		$PathImage 	= $dataUser['Items'][0]['guide_image'];
-		$Email 		= $dataUser['Items'][0]['guide_email'];
-		$Phone 		= $dataUser['Items'][0]['guide_phone'];
-		$Profile 	= $dataUser['Items'][0]['intro_profile'];
-		$Qustions	= '';
-		$Status     = $dataUser['Items'][0]['guide_status'];
-		$Username   = $dataUser['Items'][0]['username'];
-		$Password   = $dataUser['Items'][0]['password'];
-	}
-}else{
-	$UserType 	= '';
-	$ID 		= '';
-	$FirstName 	= '';
-	$LastName 	= '';
-	$Birthdate  = date('d/m/Y');
-	$Gender		= 1;
-	$Address	= '';	
-	$Credit		= '';
-	$License	= '';
-	$Province 	= '';
-	$Postcode	= '';
-	$Qustions	= '';
-	$PathImage 	= '';
-	$Email 		= '';
-	$Phone 		= '';
-	$Profile 	= '';
-	$Status 	= 1;
-	$Username   = '';
-	$Password   = '';
-}
-?>
-
 <section class="ftco-section ftco-no-pb ftco-no-pt" style="background: #FFF;">
 	<div class="container">
 		<form id="formRegis" class="form-signin" method="post" action="javascript:void(0)">
 
-			<!-- กดปุ่มมัคคุเทศน์ เก็บ type ไว้ 1:ผู้ดูแลระบบ , 2:ลงทะเบียนผู้ใช้ทั่วไป , 3:ลงทะเบียนมัคคุเทศน์ -->
-			<?php if($this->session->userdata('session_username') == null){
-				$TypeRegis = 2;
-			}else{
-				if($UserType == 1){ //ผู้ดูแลระบบ 
-					$TypeRegis = 1;
-				}else if($UserType == 2){ //ลูกค้า
-					$TypeRegis = 2;
-				}else if($UserType == 3){ //มัคคุเทศก์ 
-					$TypeRegis = 3;
-				}
-			} ?>
-			<input type="hidden" id="ohdTypeRegis" name="ohdTypeRegis" value="<?=$TypeRegis?>">
+			<!-- กดปุ่มมัคคุเทศก์ เก็บ type ไว้ 1:ผู้ดูแลระบบ , 2:ลงทะเบียนผู้ใช้ทั่วไป , 3:ลงทะเบียนมัคคุเทศก์ -->
+			<input type="hidden" id="ohdTypeRegis" name="ohdTypeRegis" value="2">
 
 			<div class="row">
 				<div class="col-lg-12" style="margin:70px;">
@@ -107,90 +11,43 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 						
 						<!--ปุ่มกด-->
 						<div class="col-lg-12 p-12">
-							<?php if($this->session->userdata('session_username') == null){ //ถ้ายังไม่เคยเข้าสู่ระบบ ?>
-								<button type="button" class="align-self-stretch btn btn-primary BTNRegis BTNRegisCustomer BTNRegisActive">นักท่องเที่ยว</button>
-								<button type="button" class="align-self-stretch btn btn-primary BTNRegis BTNRegisGuide BTNRegisDefaule">มัคคุเทศน์</button>
-							<?php }else if($this->session->userdata('session_username') != null){ //มีคนเข้าสู่ระบบ ?>
-								<?php if($UserType == 1){ //ผู้ดูแลระบบ ?>
-									<button type="button" class="align-self-stretch btn btn-primary BTNRegis BTNRegisActive">แก้ไขข้อมูลส่วนตัว ผู้ดูแลระบบ</button>
-								<?php }else if($UserType == 2){ //ลูกค้า ?>
-									<button type="button" class="align-self-stretch btn btn-primary BTNRegis BTNRegisActive">แก้ไขข้อมูลส่วนตัว นักท่องเที่ยว</button>
-								<?php }else if($UserType == 3){ //มัคคุเทศก์ ?>
-									<button type="button" class="align-self-stretch btn btn-primary BTNRegis BTNRegisActive">แก้ไขข้อมูลส่วนตัว มัคคุเทศน์</button>
-								<?php } ?>
-							<?php } ?>
+							<button type="button" class="align-self-stretch btn btn-primary BTNRegis BTNRegisCustomer BTNRegisActive">นักท่องเที่ยว</button>
+							<button type="button" class="align-self-stretch btn btn-primary BTNRegis BTNRegisGuide BTNRegisDefaule">มัคคุเทศก์</button>
 						</div>
 
 						<!--เส้นขีดเส้นใต้-->
 						<div class="col-lg-12"><hr></div>
-						
-						<?php 
-							if($this->session->userdata('session_username') != null){ //มีคนเข้าสู่ระบบ 
-								if($UserType == 1){ //ผู้ดูแลระบบ 
-									$DisplayAdmin 		= 'block';
-									$DisplayCustomer	= 'none';
-									$DisplayGuide		= 'none';
-								}else if($UserType == 2){ //ลูกค้า
-									$DisplayAdmin 		= 'none';
-									$DisplayCustomer	= 'block';
-									$DisplayGuide		= 'none';
-								}else if($UserType == 3){ //มัคคุเทศก์
-									$DisplayAdmin 		= 'none';
-									$DisplayCustomer	= 'none';
-									$DisplayGuide		= 'block';
-								}
-								$TextButton = 'แก้ไขข้อมูล';
-							}else{
-								$TextButton 		= 'ลงทะเบียน';
-								$DisplayAdmin 		= 'none';
-								$DisplayCustomer	= 'block';
-								$DisplayGuide		= 'none';
-							}
-						?>
 
 						<!--ฟอร์มลงทะเบียนผู้ใช้งาน-->
-						<div class="col-lg-12" id="divRegisCustomer" style="margin-top:20px; display:<?=$DisplayCustomer?>;">
+						<div class="col-lg-12" id="divRegisCustomer" style="margin-top:20px; display:block;">
 							<div class="row">
 								<div class="col-lg-4 col-md-4">
-									<?php 
-										if($PathImage == '' || $PathImage == null){
-											$PathShowImage 		= base_url('/application/assets/images/customer/') . '/NoImage.png';
-											$PathDatabaseImage 	= '';
-										}else{
-											$PathShowImage 		= base_url('/application/assets/images/customer/') . $PathImage;
-											$PathDatabaseImage 	= $PathImage;
-										} ?>
-
+									<?php $PathShowImage 		= base_url('/application/assets/images/customer/') . '/NoImage.png'; ?>
 									<img id="ImgInsertCustomer" class="img-responsive xCNImgCenter" src="<?=$PathShowImage?>">
-									<input type="hidden" id="hiddenImgInsertCustomer" name="hiddenImgInsertCustomer" value="<?=$PathDatabaseImage?>">
+									<input type="hidden" id="hiddenImgInsertCustomer" name="hiddenImgInsertCustomer" value="">
 									<button type="button" class="btn btn-outline-secondary xCNChooseImage" onclick="UploadImageCustomer()">เลือกรูปภาพ</button>
 									<input type="file" id="inputfileuploadImageCustomer" style="display:none;"  name="inputfileuploadImageCustomer" accept="image/*" onchange="ImageUplodeResize(this,'images/customer','ImgInsertCustomer')">
 								</div>
 								<div class="col-lg-8 col-md-8">
 									<div class="form-row">
-										<input type="hidden" id="hiddenCustomerID" name="hiddenCustomerID" value="<?=$ID?>">
-										<input type="hidden" id="hiddenCustomerPassword" name="hiddenCustomerPassword" value="<?=$Password?>">
-
 										<div class="form-group col-md-12">
 											<label><span style="color:red;">*</span> ชื่อ</label>
-											<input type="text" maxlength="50" class="form-control" id="regisCustomerFirstname" name="regisCustomerFirstname" placeholder="ชื่อ" value='<?=$FirstName?>'>
+											<input type="text" maxlength="50" class="form-control" id="regisCustomerFirstname" name="regisCustomerFirstname" placeholder="ชื่อ" value=''>
 										</div>
 										<div class="form-group col-md-12">
 											<label>นามสกุล</label>
-											<input type="text" maxlength="50" class="form-control" id="regisCustomerLastname" name="regisCustomerLastname" placeholder="นามสกุล" value='<?=$LastName?>'>
+											<input type="text" maxlength="50" class="form-control" id="regisCustomerLastname" name="regisCustomerLastname" placeholder="นามสกุล" value=''>
 										</div>
 										<div class="form-group col-md-12">
 											<label style="margin-right:10px;">เพศ</label>
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="regisCustomerGenter" id="radioMaleCustomer" value="1" 
-												<?php if ($Gender == 1) {echo "checked='checked'";} ?>>
+												<input class="form-check-input" type="radio" name="regisCustomerGenter" id="radioMaleCustomer" value="1"  checked >
 												<label class="form-check-label" for="radioMaleCustomer">
 													ชาย
 												</label>
 											</div>
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="regisCustomerGenter" id="radioFemaleCustomer" value="2"
-												<?php if ($Gender == 2) {echo "checked='checked'";} ?>>
+												<input class="form-check-input" type="radio" name="regisCustomerGenter" id="radioFemaleCustomer" value="2" >
 												<label class="form-check-label" for="radioFemaleCustomer">
 													หญิง
 												</label>
@@ -198,19 +55,19 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 										</div>
 										<div class="form-group col-md-12">
 											<label>วันเกิด</label>
-											<input type="text" class="form-control birthdaypicker" id="regisCustomerBirthday" name="regisCustomerBirthday" value="<?=$Birthdate?>" placeholder="<?=date('d/m/Y');?>">
+											<input type="text" class="form-control birthdaypicker" id="regisCustomerBirthday" name="regisCustomerBirthday" value="<?=date('d/m/Y');?>" placeholder="<?=date('d/m/Y');?>">
 										</div>
 										<div class="form-group col-md-12">
 											<label>อีเมลล์</label>
-											<input type="text" maxlength="100" class="form-control" id="regisCustomerEmail" name="regisCustomerEmail"  placeholder="อีเมลล์" value='<?=$Email?>'>
+											<input type="text" maxlength="100" class="form-control" id="regisCustomerEmail" name="regisCustomerEmail"  placeholder="อีเมลล์" value=''>
 										</div>
 										<div class="form-group col-md-12">
 											<label><span style="color:red;">*</span> เบอร์โทร</label>
-											<input type="text" maxlength="20" class="form-control xCNInputNumericWithoutDecimal" id="regisCustomerTelephone" name="regisCustomerTelephone" placeholder="เบอร์โทร" value='<?=$Phone?>'>
+											<input type="text" maxlength="20" class="form-control xCNInputNumericWithoutDecimal" id="regisCustomerTelephone" name="regisCustomerTelephone" placeholder="เบอร์โทร" value=''>
 										</div>
 										<div class="form-group col-md-12">
 											<label>ที่อยู่</label>	
-											<textarea id="regisCustomerAddress" maxlength="255" name="regisCustomerAddress" cols="30" rows="3" class="form-control" placeholder="ที่อยู่"><?=$Address?></textarea>
+											<textarea id="regisCustomerAddress" maxlength="255" name="regisCustomerAddress" cols="30" rows="3" class="form-control" placeholder="ที่อยู่"></textarea>
 										</div>
 										<div class="form-group col-md-12">
 											<label>สิ่งที่คุณสนใจ (สามารถเลือกได้มากกว่า 1 ข้อ)</label>	
@@ -240,22 +97,22 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 										</div>
 										<div class="form-group col-md-12">
 											<label><span style="color:red;">*</span> ชื่อเข้าใช้งาน</label>
-											<input type="text" maxlength="50" class="form-control" id="regisCustomerLoginID" name="regisCustomerLoginID" placeholder="ชื่อเข้าใช้งาน" value='<?=$Username?>'>
+											<input type="text" maxlength="50" class="form-control" id="regisCustomerLoginID" name="regisCustomerLoginID" placeholder="ชื่อเข้าใช้งาน" value=''>
 										</div>
 										<div class="form-group col-md-12">
 											<label><span style="color:red;">*</span> รหัสผ่าน</label>
-											<input type="password" maxlength="50" class="form-control" id="regisCustomerPassword" name="regisCustomerPassword" placeholder="รหัสผ่าน" value='<?=$Password?>'>
+											<input type="password" maxlength="50" class="form-control" id="regisCustomerPassword" name="regisCustomerPassword" placeholder="รหัสผ่าน" value=''>
 										</div>
 										<div class="form-group col-md-12">
-											<button type="button" class="align-self-stretch btn btn-primary BTNConfirmRegis" onclick="RegisCustomerOrGuideOrAdmin()">ลงทะเบียน</button>
+											<button type="button" class="align-self-stretch btn btn-primary BTNConfirmRegis" onclick="RegisCustomerOrGuide()">ลงทะเบียน</button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<!--ฟอร์มลงทะเบียนมัคคุเทศน์-->
-						<div class="col-lg-12" id="divRegisGuide" style="margin-top:20px; display:<?=$DisplayGuide?>;">
+						<!--ฟอร์มลงทะเบียนมัคคุเทศก์-->
+						<div class="col-lg-12" id="divRegisGuide" style="margin-top:20px; display:none;">
 							<div class="row">
 								<div class="col-lg-4 col-md-4">
 									<?php $PathShowImage = './application/assets/images/guide/NoImage.png'; ?>
@@ -354,67 +211,12 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 											<input type="password" maxlength="50" class="form-control" id="regisGuidePassword" name="regisGuidePassword" placeholder="รหัสผ่าน">
 										</div>
 										<div class="form-group col-md-12">
-											<button type="button" class="align-self-stretch btn btn-primary BTNConfirmRegis" onclick="RegisCustomerOrGuideOrAdmin()">ลงทะเบียน</button>
+											<button type="button" class="align-self-stretch btn btn-primary BTNConfirmRegis" onclick="RegisCustomerOrGuide()">ลงทะเบียน</button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-
-						<!--ฟอร์มลงทะเบียนผู้ดูแลระบบ จะเห็นก็ต่อเมื่อมีการเข้าสู่ระบบเท่านั้น-->
-						<div class="col-lg-12" id="divRegisAdmin" style="margin-top:20px; display:<?=$DisplayAdmin?>;">
-							<div class="row">
-								<div class="col-lg-4 col-md-4">
-									<?php 
-										if($PathImage == '' || $PathImage == null){
-											$PathShowImage 		= base_url('/application/assets/images/admin/') . '/NoImage.png';
-											$PathDatabaseImage 	= '';
-										}else{
-											$PathShowImage 		= base_url('/application/assets/images/admin/') . $PathImage;
-											$PathDatabaseImage 	= $PathImage;
-										} ?>
-									<img id="ImgInsertAdmin" class="img-responsive xCNImgCenter" src="<?=$PathShowImage?>">
-									<input type="hidden" id="hiddenImgInsertAdmin" name="hiddenImgInsertAdmin" value="<?=$PathDatabaseImage?>">
-									<button type="button" class="btn btn-outline-secondary xCNChooseImage" onclick="UploadImageAdmin()">เลือกรูปภาพ</button>
-									<input type="file" id="inputfileuploadImageAdmin" style="display:none;"  name="inputfileuploadImageAdmin" accept="image/*" onchange="ImageUplodeResize(this,'images/admin','ImgInsertAdmin')">
-								</div>
-								<div class="col-lg-8 col-md-8">
-									<div class="form-row">
-										<input type="hidden" id="hiddenAdminID" name="hiddenAdminID" value="<?=$ID?>">
-										<input type="hidden" id="hiddenAdminPassword" name="hiddenAdminPassword" value="<?=$Password?>">
-
-										<div class="form-group col-md-12">
-											<label><span style="color:red;">*</span> ชื่อ</label>
-											<input type="text" maxlength="50" class="form-control" id="regisAdminFirstname" name="regisAdminFirstname" placeholder="ชื่อ" value='<?=$FirstName?>' >
-										</div>
-										<div class="form-group col-md-12">
-											<label>นามสกุล</label>
-											<input type="text" maxlength="50" class="form-control" id="regisAdminLastname" name="regisAdminLastname" placeholder="นามสกุล" value='<?=$LastName?>'>
-										</div>
-										<div class="form-group col-md-12">
-											<label>อีเมลล์</label>
-											<input type="text" maxlength="50" class="form-control" id="regisAdminEmail" name="regisAdminEmail"  placeholder="อีเมลล์" value='<?=$Email?>'>
-										</div>
-										<div class="form-group col-md-12">
-											<label><span style="color:red;">*</span> เบอร์โทร</label>
-											<input type="text" maxlength="20" class="form-control xCNInputNumericWithoutDecimal" id="regisAdminTelephone" name="regisAdminTelephone" placeholder="เบอร์โทร" value='<?=$Phone?>'>
-										</div>
-										<div class="form-group col-md-12">
-											<label><span style="color:red;">*</span> ชื่อเข้าใช้งาน</label>
-											<input type="text" maxlength="50" class="form-control" id="regisAdminLoginID" name="regisAdminLoginID" placeholder="ชื่อเข้าใช้งาน" value="<?=$Username?>">
-										</div>
-										<div class="form-group col-md-12">
-											<label><span style="color:red;">*</span> รหัสผ่าน</label>
-											<input type="password" maxlength="50" class="form-control" id="regisAdminPassword" name="regisAdminPassword" placeholder="รหัสผ่าน" value="<?=$Password?>">
-										</div>
-										<div class="form-group col-md-12">
-											<button type="button" class="align-self-stretch btn btn-primary BTNConfirmRegis" onclick="RegisCustomerOrGuideOrAdmin()"><?=$TextButton?></button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
 					</div>
 				</div>
 			</div>
@@ -449,10 +251,10 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 		$('#divRegisCustomer').show();
 
 		//กดปุ่มนักท่องเที่ยว เก็บ type ไว้
-		$('#ohdTypeRegis').val(1);
+		$('#ohdTypeRegis').val(2);
 	});
 
-	//กดปุ่มมัคคุเทศน์
+	//กดปุ่มมัคคุเทศก์
 	$('.BTNRegisGuide').click(function(){
 		$(this).removeClass('BTNRegisDefaule');
 		$(this).addClass('BTNRegisActive');
@@ -461,8 +263,8 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 		$('#divRegisGuide').show();
 		$('#divRegisCustomer').hide();
 
-		//กดปุ่มมัคคุเทศน์ เก็บ type ไว้
-		$('#ohdTypeRegis').val(2);
+		//กดปุ่มมัคคุเทศก์ เก็บ type ไว้
+		$('#ohdTypeRegis').val(3);
 	});
 
 	//วันเกิด ให้ใช้ library
@@ -480,14 +282,9 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 		$('#inputfileuploadImageCustomer').click(); 
 	}
 
-	//อัพโหลดรูปภาพ - มัคคุเทศน์
+	//อัพโหลดรูปภาพ - มัคคุเทศก์
 	function UploadImageGuide(){
 		$('#inputfileuploadImageGuide').click(); 
-	}
-
-	//อัพโหลดรูปภาพ - ผู้ดูแลระบบ
-	function UploadImageAdmin(){
-		$('#inputfileuploadImageAdmin').click(); 
 	}
 
 	//อัพโหลดรูปภาพ
@@ -521,58 +318,12 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 	}
 
 	//ลงทะเบียนผู้ใช้ทั่วไป
-	function RegisCustomerOrGuideOrAdmin(){
+	function RegisCustomerOrGuide(){
 
 		//เช็คว่ากรอกข้อมูลครบหรือยัง
 		var TypeRegis = $('#ohdTypeRegis').val();
-		if(TypeRegis == 1){ //ลงทะเบียน - แก้ไขข้อมูลผู้ดูแลระบบ
-
-			//ไม่ได้กรอกชื่อผู้ใช้
-			if($('#regisAdminFirstname').val() == ''){
-				$('#regisAdminFirstname').focus();
-				return;
-			}
-
-			//ไม่ได้กรอกเบอร์โทรศัพท์
-			if($('#regisAdminTelephone').val() == ''){
-				$('#regisAdminTelephone').focus();
-				return;
-			}
-
-			//ไม่ได้กรอกเบอร์โทรศัพท์
-			if($('#regisAdminTelephone').val() == ''){
-				$('#regisAdminTelephone').focus();
-				return;
-			}
-
-			//ไม่ได้กรอกชื่อผู้ใช้เข้าสู่ระบบ
-			if($('#regisAdminLoginID').val() == ''){
-				$('#regisAdminLoginID').focus();
-				return;
-			}
-
-			//ไม่ได้กรอกรหัสผ่าน
-			if($('#regisAdminPassword').val() == ''){
-				$('#regisAdminPassword').focus();
-				return;
-			}else{
-				//ค่าที่กรอก password น้อยกว่า 6 ตัว
-				if($('#regisAdminPassword').val().length  < 6){
-					Swal.fire({
-						title: "รหัสผ่านไม่ถูกต้อง",
-						text: "รหัสผ่านต้องมีความยาวมากกว่าหรือเท่ากับ 6 หลัก",
-						icon: "error",
-						showCancelButton: false,
-						confirmButtonColor: '#ff6868',
-						confirmButtonText: 'ตกลง',
-					}).then(function (result) {
-						$('#regisAdminPassword').val('');
-						$('#regisAdminPassword').focus();
-					});
-					return;
-				}
-			}
-		}else if(TypeRegis == 2){ //ลงทะเบียน - แก้ไขข้อมูลผู้ใช้ทั่วไป
+		alert(TypeRegis);
+		if(TypeRegis == 2){ //ลงทะเบียนมูลผู้ใช้ทั่วไป
 
 			//ไม่ได้กรอกชื่อผู้ใช้
 			if($('#regisCustomerFirstname').val() == ''){
@@ -613,7 +364,7 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 					return;
 				}
 			}
-		}else if(TypeRegis == 3){ //ลงทะเบียน - แก้ไขข้อมูลมัคคุเทศน์
+		}else if(TypeRegis == 3){ //ลงทะเบียนข้อมูลมัคคุเทศก์
 			//ไม่ได้กรอกชื่อ
 			if($('#regisGuideFirstname').val() == ''){
 				$('#regisGuideFirstname').focus();
@@ -671,7 +422,7 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 					return;
 				}
 			}
-		}
+		}	
 
 		$.ajax({
 			type 			: "POST",
@@ -692,16 +443,9 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 						
 					});
 				}else{
-					var UserType = '<?=$UserType?>';
-					if(UserType == ''){ //ไม่เข้าสู่ระบบ
-						var TitleSwal = 'ลงทะเบียนสำเร็จ';
-					}else if(UserType != ''){ //เข้าสู่ระบบ
-						var TitleSwal = 'แก้ไขข้อมูลสำเร็จ';
-					}
-
 					//ผ่าน
 					Swal.fire({
-						title: TitleSwal,
+						title: 'ลงทะเบียนสำเร็จ',
 						text: "",
 						icon: "success",
 						showCancelButton: false,
