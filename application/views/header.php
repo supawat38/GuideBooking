@@ -36,18 +36,18 @@
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลมัคคุเทศก์</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลผู้ใช้งาน</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลการจอง</a></li>
-							<li class="nav-item" ><a href="#" class="nav-link FontMenu">แพ็กเกจ</a></li>
+							<li class="nav-item" <?=($pageName == 'package') ? 'active' : '' ?>><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">การชำระเงิน</a></li>
 						<?php }else if($this->session->userdata('session_reftype') == 2){ //ผู้ใช้งานทั่วไป ?>
 							<li class="nav-item <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลมัคคุเทศก์</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลการจอง</a></li>
-							<li class="nav-item" ><a href="#" class="nav-link FontMenu">แพ็กเกจ</a></li>
+							<li class="nav-item" <?=($pageName == 'package') ? 'active' : '' ?>><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
 						<?php }else if($this->session->userdata('session_reftype') == 3){ //มัคคุเทศก์ ?>
 							<li class="nav-item <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลมัคคุเทศก์</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลการจอง</a></li>
-							<li class="nav-item" ><a href="#" class="nav-link FontMenu">แพ็กเกจ</a></li>
+							<li class="nav-item" <?=($pageName == 'package') ? 'active' : '' ?>><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ตารางงาน</a></li>
 						<?php }else{ //เจ้าของระบบ ?>
 							<li class="nav-item <?=($pageName == 'ManageAdmin') ? 'active' : '' ?>" ><a href="ManageAdmin" class="nav-link FontMenu">ข้อมูลผู้ดูแลระบบ</a></li>
@@ -98,6 +98,10 @@
 				case "ManageAdmin":
 					$ImageHeder = 'application/assets/images/bg_2.jpg';
 					$TitleMenu  = "ข้อมูลผู้ดูแลระบบ";
+				break;
+				case "package":
+					$ImageHeder = 'application/assets/images/bg_2.jpg';
+					$TitleMenu  = "แพ็กเกจท่องเที่ยว";
 				break;
 				default:
 					$ImageHeder	= "";

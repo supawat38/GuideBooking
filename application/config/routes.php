@@ -35,4 +35,11 @@ $route['PageInsOrEdit_Admin'] 					= 'ManageAdmin/ManageAdmin/PageInsoredit';
 $route['EventInsOrEdit_Admin'] 					= 'ManageAdmin/ManageAdmin/EventInsoredit';
 $route['EventDelete_Admin'] 					= 'ManageAdmin/ManageAdmin/EventDeleteAdmin';
 
+//หน้าจอ - แพ็กเกจ
+$route['package'] 							    = 'Package/Package/index';
+$route['Loadtable_package'] 					= 'Package/Package/Loadtable';
+$route['PageInsOrEdit_package'] 				= 'Package/Package/PageInsoredit';
+$route['EventInsOrEdit_package'] 				= 'Package/Package/EventInsoredit';
+$route['FileUpload']							= 'Package/Package/UploadFilePackage';
+$route['EventDelete_package'] 					= 'Package/Package/EventDeletePackage';
 

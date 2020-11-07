@@ -12,7 +12,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php if(empty($result)){ ?>
+			<?php if(empty($result['Items'])){ ?>
 				<tr><td colspan="99" style="text-align: center;"> - ไม่พบข้อมูล - </td></tr>
 			<?php }else{ ?>
 				<?php foreach($result['Items'] AS $Key => $Value){ ?>

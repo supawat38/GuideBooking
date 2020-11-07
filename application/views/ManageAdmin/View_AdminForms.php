@@ -75,7 +75,7 @@
 						<label><span style="color:red;">*</span> รหัสผ่าน</label>
 						<input type="password" maxlength="50" class="form-control" id="regisAdminPassword" name="regisAdminPassword" placeholder="รหัสผ่าน" value="<?=$Password?>">
 					</div>
-					<div class="form-check">
+					<div class="form-check" style="margin-left: 5px;">
 						<input type="checkbox" class="form-check-input" name="regisAdminStatusUse" id="regisAdminStatusUse" style="width: 15px; height: 15px; top: 2px;" 	<?php if ($Status == 1) {echo "checked='checked'";} ?> >
 						<label class="form-check-label" style="margin-left: 10px; margin-bottom: 10px; font-size: 22px !important;">สถานะใช้งาน</label>
 					</div>

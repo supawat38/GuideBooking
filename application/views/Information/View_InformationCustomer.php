@@ -33,7 +33,7 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 			<input type="hidden" id="ohdTypeRegis" name="ohdTypeRegis" value="2">
 
 			<div class="row">
-				<div class="col-lg-12" style="margin:70px;">
+				<div class="col-lg-12" style="margin:70px 0px;">
 					<div class="row" style="box-shadow: 0px 10px 23px -8px rgba(0, 0, 0, 0.11); padding: 20px;">
 						
 						<!--ปุ่มกด-->

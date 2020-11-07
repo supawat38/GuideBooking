@@ -191,6 +191,15 @@
 	border: 1px solid #e0e0e0;
 }
 
+.xCNImgCenterBox{
+	width: 320px;
+	height: 480px;
+	text-align: center;
+	display: block;
+	margin: 0px auto;
+	border: 1px solid silver;
+}
+
 .xCNChooseImage{
 	margin: 45px auto;
 	display: block;
@@ -258,6 +267,23 @@
 	font-size:  20px !important;
 }
 
+/*CSS ส่วนของ From แพ็กเกจ */
+#divRegispackage label{
+	font-family: THSarabunNew;
+	font-size:  25px !important;
+	color : black;
+}
+
+#divRegispackage input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
+#divRegispackage input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
 /*CSS สำหรับ selected*/ 
 .FontSelect2{
 	font-family: THSarabunNew;
@@ -304,4 +330,33 @@
 	color: #f19342;
     font-weight: 700;
     cursor: pointer;
+}
+
+.textDowloadFile{
+	margin-left:15px;
+	color: #f19342;
+	font-family: THSarabunNew;
+    font-size: 20px !important;
+    text-align: right;
+	font-weight: bold;
+	text-decoration: underline;
+	letter-spacing: 1px !important;
+	cursor: pointer;
+	display:inline-block;
+}
+
+@media (max-width: 1200px) {
+	.CNBlockPackage{
+    	height: 200px !important;
+	}
+}
+
+@media (max-width: 767px) {
+	.CNBlockPackage{
+    	height: 65px !important;
+	}
+}
+
+.CNBlockPackage{
+	height: 65px;
 }

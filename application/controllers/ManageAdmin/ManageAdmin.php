@@ -33,7 +33,7 @@ class ManageAdmin extends CI_Controller {
 		$this->load->view('ManageAdmin/View_AdminDataTable',$PackData);
 	}
 
-	//โหลดหน้าจอผู้ดูแลระบบ
+	//โหลดหน้าจอเพิ่มข้อมูล + แก้ไข ผู้ดูแลระบบ
 	public function PageInsoredit(){
 		$typepage = $this->input->post('typepage');
 		if($typepage == 'pageinsert'){
