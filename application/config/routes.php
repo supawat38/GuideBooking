@@ -33,5 +33,6 @@ $route['ManageAdmin'] 							= 'ManageAdmin/ManageAdmin/index';
 $route['Loadtable_Admin'] 						= 'ManageAdmin/ManageAdmin/Loadtable';
 $route['PageInsOrEdit_Admin'] 					= 'ManageAdmin/ManageAdmin/PageInsoredit';
 $route['EventInsOrEdit_Admin'] 					= 'ManageAdmin/ManageAdmin/EventInsoredit';
+$route['EventDelete_Admin'] 					= 'ManageAdmin/ManageAdmin/EventDeleteAdmin';
 
 

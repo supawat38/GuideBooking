@@ -89,4 +89,10 @@ class ManageAdmin extends CI_Controller {
 			$this->models_admin->Insert_Login($UpdateAdmin);
 		}
 	}
+
+	//ลบข้อมูล
+	public function EventDeleteAdmin(){
+		$ID = $this->input->post('ID');
+		$this->models_admin->Delete_Admin($ID);
+	}
 }

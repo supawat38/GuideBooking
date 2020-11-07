@@ -86,6 +86,7 @@
 
 <script>
 
+	//กด next page 
 	function ClickPageAdmin(Page){
 		var PageCurrent = '';
 		switch (Page) {
@@ -110,6 +111,31 @@
 		}
 
 		LoadTable_Admin(PageCurrent);
+	}
+
+	//ลบข้อมูล
+	function Delete_Admin(ID){
+		Swal.fire({
+			title: "ลบข้อมูล ? ",
+			text: "กดยืนยันเพื่อลบข้อมูล",
+			showCancelButton: false,
+			confirmButtonColor: '#ff6868',
+			confirmButtonText: 'ยืนยัน',
+		}).then(function (result) {
+			if (result.isConfirmed) {
+				$.ajax({
+					type 			: "POST",
+					url 			: "EventDelete_Admin",
+					data 			: { 'ID' : ID },
+					success			: function (Result){
+						LoadTable_Admin(1);
+					},
+					error: function (data){
+						console.log(data);
+					}
+				});
+			} 
+		});
 	}
 
 </script>

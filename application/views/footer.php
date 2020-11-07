@@ -1,4 +1,11 @@
 		<style>
+
+			.swal2-confirm{
+				font-family: THSarabunNew;
+				font-size:  25px !important;
+				padding : 8px 50px;
+			}
+
 			/*CSS สำหรับ footer */ 
 			.FontHeadFooter{
 				font-family: THSarabunNew;
@@ -93,7 +100,7 @@
 		<script src="<?=base_url('application/assets/js/scrollax.min.js')?>"></script>
 		<script src="<?=base_url('application/assets/js/main.js')?>"></script>
 		<script src="<?=base_url('application/assets/js/select2.js')?>"></script>
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+		<script src="<?=base_url('application/assets/js/sweetalert.js')?>"></script>
 			
 		<!-- popup เข้าสู่ระบบ -->
 		<div class="modal fade" id="ModalLogin" tabindex="-1" role="dialog" aria-hidden="true">

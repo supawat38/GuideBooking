@@ -10,7 +10,7 @@ class models_admin extends CI_Model {
 			$row_count 	= $parameter['row'];
 			$offset 	= ($page - 1) * $row_count ;
 
-			$SQL 			= "SELECT COUNT(*) AS NumAll FROM admin";
+			$SQL 			= "SELECT COUNT(*) AS NumAll FROM admin WHERE status_delete = 0";
 			$QueryCount 	= $this->db->query($SQL);
 
 			$SQL 			= "SELECT * FROM admin WHERE status_delete = 0 LIMIT $row_count OFFSET $offset";
@@ -146,7 +146,7 @@ class models_admin extends CI_Model {
 		}
 	}
 
-	//โหลดข้อมูล ตามรหัส
+	//โหลดข้อมูลตามรหัส
 	public function GetData_Admin($id){
 		try{
 			$SQL 			= "SELECT * FROM admin INNER JOIN login ON login.login_type = 1 AND login.reflogin_id = admin.admin_id WHERE admin_id ='$id' ";
@@ -167,5 +167,12 @@ class models_admin extends CI_Model {
 		}catch(Exception $Error){
 			echo $Error;
 		}
+	}
+
+	//ลบข้อมูล
+	public function Delete_Admin($id){
+		$this->db->set('status_delete', 1);
+		$this->db->where('admin_id',$id);
+		$this->db->update('admin');
 	}
 }
