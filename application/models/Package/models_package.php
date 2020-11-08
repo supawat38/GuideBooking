@@ -119,7 +119,7 @@ class models_package extends CI_Model {
 		$this->db->set('package_con', $Result['package_con']);
 		$this->db->set('package_image', $Result['package_image']);
 		$this->db->set('package_status', $Result['package_status']);
-		$this->db->where('guide_id',$Result['guide_id']);
+		$this->db->set('guide_id',$Result['guide_id']);
 		$this->db->where('package_id',$Result['package_id']);
 		$this->db->update('package');
 	}

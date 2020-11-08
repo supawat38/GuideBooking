@@ -57,7 +57,7 @@
 							<select class="jSelectedsingle form-control" name="GuidePackage" id="GuidePackage">
 								<?php if($guideall['rtCode'] != 800){ ?>
 									<?php foreach($guideall['Items'] AS $Key => $Value){ ?>
-										<option value="<?= $Value['guide_id'] ?>"><?=$Value['firstname']?>  <?=$Value['lastname']?></option>
+										<option <?php if($guide_id == $Value['guide_id']) {echo "selected='selected'";} ?> value="<?= $Value['guide_id'] ?>"><?=$Value['firstname']?>  <?=$Value['lastname']?></option>
 									<?php } ?>
 								<?php }else{ ?>
 									<option value="0">ไม่พบข้อมูล</option>

@@ -322,7 +322,6 @@
 
 		//เช็คว่ากรอกข้อมูลครบหรือยัง
 		var TypeRegis = $('#ohdTypeRegis').val();
-		alert(TypeRegis);
 		if(TypeRegis == 2){ //ลงทะเบียนมูลผู้ใช้ทั่วไป
 
 			//ไม่ได้กรอกชื่อผู้ใช้
