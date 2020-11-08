@@ -12,6 +12,7 @@ $route['InsertAndEditRegister'] 				= 'register/register/RegisterSystems';
 
 //หน้าจอ - ข้อมูลหลัก
 $route['main'] 									= 'main';
+$route['Loadtable_package_mainpage']			= 'main/LoadtablePackage';
 
 //หน้าจอ - สมัครสมาชิก
 $route['register'] 								= 'register/register/index';

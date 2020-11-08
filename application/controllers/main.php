@@ -5,16 +5,18 @@ class main extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->load->model('main/models_main');
 	}
 
 	public function index(){
+
+		//เตรียมข้อมูลส่งไปที่หน้า view
 		$aPackData = array(
-			'pageName' => 'main'
+			'pageName' 		=> 'main'
 		);
 
 		$this->load->view('header',$aPackData);
 		$this->load->view('main/body',$aPackData);
-		$this->load->view('footer',$aPackData);
 	}
 
 	//อัพโหลดรูปภาพ
@@ -67,10 +69,10 @@ class main extends CI_Controller {
 	}
 
 	//ย่อขนาดรูปภาพ
-	public function ImgResize($paImgUL=null){
+	public function ImgResize($ImgUL=null){
         $this->load->library('image_lib');
         $config['image_library'] 	= 'gd2';
-        $config['source_image'] 	= $paImgUL['full_path'];
+        $config['source_image'] 	= $ImgUL['full_path'];
         $config['create_thumb'] 	= FALSE;
         $config['maintain_ratio'] 	= TRUE;
         $config['width'] 			= 600;
@@ -83,5 +85,19 @@ class main extends CI_Controller {
         }
 	}
 
- 
+	//โหลดข้อมูล package
+	public function LoadtablePackage(){
+		$numberpage = $this->input->post('numberpage');
+		$Condition = array(
+			'page'  => $numberpage,
+			'row'	=> 3
+		);
+
+		$result = $this->models_main->LoadDatapackage($Condition);
+		$PackData = array(
+			'result'			=> $result,
+			'Page'				=> $numberpage
+		);
+		$this->load->view('main/View_table_package',$PackData);
+	}
 }

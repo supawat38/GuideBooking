@@ -252,4 +252,43 @@
 	</div>
 </section>
 
+<!--แพ็กเกจ-->
+<section class="ftco-section">
+	<div class="container">
+		<div class="row justify-content-center pb-4">
+			<div class="col-md-12 heading-section text-center ftco-animate">
+				<h2 class="mb-4 textMain_Show">แพ็กเกจแนะนำ</h2>
+			</div>
+		</div>
+		<div class="ContentPackage"></div>
+	</div>
+</section>
+
+<!--โหลดไฟล์ footer พวก script-->
+<?php include __DIR__ . '/../footer.php';?>
+
+<script>
+
+	//โหลดหน้าตารางส่วนของ package
+	LoadTable_package(1);
+	function LoadTable_package(numberpage){
+		$.ajax({
+			type	: "POST",
+			url		: "Loadtable_package_mainpage",
+			data 	: {
+						'numberpage' 		: numberpage
+					  },
+			cache	: false,
+			timeout	: 0,
+			success	: function (Result) {
+				console.log(Result);
+				$('.ContentPackage').html(Result);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				alert(jqXHR, textStatus, errorThrown);
+			}
+		});
+	}
+
+</script>
 

@@ -373,3 +373,17 @@
 .CNBlockPackage{
 	height: 65px;
 }
+
+.textMain_Show{
+	color: black;
+	font-family: THSarabunNew;
+    font-size: 45px !important;
+	font-weight: bold;
+	letter-spacing: 0.5px !important;
+	display:inline-block;
+}
+
+.CenterDisabledBTN{
+	cursor: no-drop;
+    pointer-events: none;
+}
