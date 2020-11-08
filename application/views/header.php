@@ -31,30 +31,33 @@
 						<li class="nav-item <?=($pageName == 'register') ? 'active' : '' ?>"><a href="register" class="nav-link FontMenu">สมัครสมาชิก</a></li>
 					<?php }else{ //มีการเข้าสู่ระบบ ?>
 						<li class="nav-item <?=($pageName == 'main') ? 'active' : '' ?>" ><a href="main" class="nav-link FontMenu">หน้าหลัก</a></li>
+						
+						<!--การมองเห็นเมนูของแต่ละ user -->
 						<?php if($this->session->userdata('session_reftype') == 1){ //ผู้ดูแลระบบ ?>
-							<li class="nav-item <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
+							<li class="nav-item  <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลมัคคุเทศก์</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลผู้ใช้งาน</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลการจอง</a></li>
-							<li class="nav-item" <?=($pageName == 'package') ? 'active' : '' ?>><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
+							<li class="nav-item  <?=($pageName == 'package') ? 'active' : '' ?> "><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">การชำระเงิน</a></li>
 						<?php }else if($this->session->userdata('session_reftype') == 2){ //ผู้ใช้งานทั่วไป ?>
-							<li class="nav-item <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
+							<li class="nav-item  <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลมัคคุเทศก์</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลการจอง</a></li>
-							<li class="nav-item" <?=($pageName == 'package') ? 'active' : '' ?>><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
+							<li class="nav-item  <?=($pageName == 'package') ? 'active' : '' ?> "><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
 						<?php }else if($this->session->userdata('session_reftype') == 3){ //มัคคุเทศก์ ?>
-							<li class="nav-item <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
+							<li class="nav-item  <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลมัคคุเทศก์</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลการจอง</a></li>
-							<li class="nav-item" <?=($pageName == 'package') ? 'active' : '' ?>><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
+							<li class="nav-item  <?=($pageName == 'package') ? 'active' : '' ?>" ><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ตารางงาน</a></li>
 						<?php }else{ //เจ้าของระบบ ?>
-							<li class="nav-item <?=($pageName == 'ManageAdmin') ? 'active' : '' ?>" ><a href="ManageAdmin" class="nav-link FontMenu">ข้อมูลผู้ดูแลระบบ</a></li>
+							<li class="nav-item  <?=($pageName == 'ManageAdmin') ? 'active' : '' ?>" ><a href="ManageAdmin" class="nav-link FontMenu">ข้อมูลผู้ดูแลระบบ</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">รายงานมัคคุเทศก์ยอดนิยม</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">รายงานรายได้</a></li>
 						<?php } ?>
-						<li class="nav-item <?=($pageName == 'logout') ? 'active' : '' ?>">		<a href="logout" class="nav-link FontMenu">ออกจากระบบ</a></li>
+
+						<li class="nav-item <?=($pageName == 'logout') ? 'active' : '' ?>"><a href="logout" class="nav-link FontMenu">ออกจากระบบ</a></li>
 					<?php } ?>
 				</ul>
 			</div>

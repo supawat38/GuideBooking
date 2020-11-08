@@ -11,7 +11,7 @@
 	}else if($typepage == 'pageedit'){
 		$package_id 		= $Result['Items'][0]['package_id'];
 		$guide_id 			= $Result['Items'][0]['guide_id'];
-		$package_file	 	= $Result['Items'][0]['package_file'];
+		$package_file	 	= ($Result['Items'][0]['package_file'] == '') ? '' : $Result['Items'][0]['package_file'];
 		$package_name 		= $Result['Items'][0]['package_name'];
 		$package_con 		= $Result['Items'][0]['package_con'];
 		$package_image 		= $Result['Items'][0]['package_image'];
@@ -49,14 +49,32 @@
 						<label><span style="color:red;">*</span> ชื่อแพ็กเกจ</label>
 						<input type="text" maxlength="100" class="form-control" id="regisPackageName" name="regisPackageName" placeholder="ชื่อแพ็กเกจ" value='<?=$package_name?>' >
 					</div>
-					<div class="form-group col-md-12" style="margin-bottom:30px;">
+
+					<!--จะมีแต่ผู้ดูแลระบบเท่านั้นที่ต้องเลือกไกด์-->
+					<?php if($this->session->userdata("session_reftype") == 1){ //ผู้ดูแลระบบจะต้องเลือกไกด์ ?>
+						<div class="form-group col-md-12">
+							<label><span style="color:red;">*</span> มัคคุเทศก์</label>	
+							<select class="jSelectedsingle form-control" name="GuidePackage" id="GuidePackage">
+								<?php if($guideall['rtCode'] != 800){ ?>
+									<?php foreach($guideall['Items'] AS $Key => $Value){ ?>
+										<option value="<?= $Value['guide_id'] ?>"><?=$Value['firstname']?>  <?=$Value['lastname']?></option>
+									<?php } ?>
+								<?php }else{ ?>
+									<option value="0">ไม่พบข้อมูล</option>
+								<?php } ?>
+							</select>
+						</div>
+					<?php } ?>
+
+					<div class="form-group col-md-12">
 						<label>ไฟล์เอกสาร</label>
 						<div class="custom-file">
 							<input type="file" onchange="UplodeFilePackage(this)" id="regisPackageFile" accept="application/pdf,application/msword,
   							application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-							<label class="custom-file-label" for="regisPackageFile">เลือกไฟล์ (รองรับนามสกุล PDT และ Microsoft Word)</label>
-							<input type="hidden" name="regisPackageFileName" id="regisPackageFileName">
+							<label class="custom-file-label" for="regisPackageFile" value='<?=$package_file?>'><?=$package_file?></label>
+							<input type="hidden" name="regisPackageFileName" id="regisPackageFileName" value='<?=$package_file?>'>
 						</div>
+						<label style="margin-top: 15px; margin-bottom: 0px; text-align: right; display: block; font-size: 22px !important;">รองรับนามสกุล PDT และ Microsoft Word</label>
 					</div>
 					<div class="form-group col-md-12">
 						<label>เงื่อนไข</label>	
@@ -79,6 +97,12 @@
 <script src="<?= base_url('application/assets/js/FormValidate.js')?>"></script>
 
 <script>
+	$(document).ready(function() {
+		//ช่องไกด์
+		$(".jSelectedsingle").select2();
+		$(".jSelectedsingle").select2({ width: '100%' , dropdownCssClass: "FontSelect2"});  
+	});
+
 	//อัพโหลดรูปภาพ - ผู้ดูแลระบบ
 	function UploadImagePackage(){
 		$('#inputfileuploadImagePackage').click(); 
@@ -132,7 +156,7 @@
 				data 		: objectFile,
 				datatype	: "JSON",
 				success: function (Result){
-					var fileName = $('#regisPackageFile').val().split("\\").pop();
+					var fileName = Result.split("\\").pop();
 					$('#regisPackageFile').siblings(".custom-file-label").addClass("selected").html(fileName);
 					$('#regisPackageFileName').val(fileName);
 				},
@@ -169,6 +193,8 @@
 			url 			: "EventInsOrEdit_package",
 			data 			: $('#formpackage').serialize(),
 			success			: function (Result){
+				console.log(Result);
+
 				if('<?=$typepage?>' == 'pageinsert'){ 
 					var TitleSwal = 'สร้างแพ็กเกจสำเร็จ';
 				}else if('<?=$typepage?>' == 'pageedit'){ 
@@ -184,7 +210,7 @@
 					confirmButtonColor: '#bfe6a9',
 					confirmButtonText: 'ตกลง',
 				}).then(function (result) {
-					LoadTable_package();
+					LoadTable_package(1);
 				});
 			},
 			error: function (data){

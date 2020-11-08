@@ -19,7 +19,7 @@ class models_package extends CI_Model {
 				$QueryCount 	= $this->db->query($SQL);
 
 				//ข้อมูล
-				$SQL 			= "SELECT package.* , guide.* FROM package INNER JOIN guide ON package.guide_id = guide.guide_id";
+				$SQL 			= "SELECT package.* , guide.* FROM package INNER JOIN guide ON package.guide_id = guide.guide_id  LIMIT $row_count OFFSET $offset";
 				$QueryItem 		= $this->db->query($SQL);
 			}else if($tUserType == 2){ //ถ้าเป็นลูกค้าดูได้หมด แต่ต้องเป็นสถานะใช้งานเท่านั้น
 				//จำนวนข้อมูล
@@ -27,7 +27,7 @@ class models_package extends CI_Model {
 				$QueryCount 	= $this->db->query($SQL);
 
 				//ข้อมูล
-				$SQL 			= "SELECT package.* , guide.* FROM package INNER JOIN guide ON package.guide_id = guide.guide_id WHERE package.package_status = 1";
+				$SQL 			= "SELECT package.* , guide.* FROM package INNER JOIN guide ON package.guide_id = guide.guide_id WHERE package.package_status = 1  LIMIT $row_count OFFSET $offset";
 				$QueryItem 		= $this->db->query($SQL);
 			}else if($tUserType == 3){ //ถ้าเป็นมัคคุเทศก์ดูได้แต่ของตัวเอง
 				//จำนวนข้อมูล
@@ -35,7 +35,7 @@ class models_package extends CI_Model {
 				$QueryCount 	= $this->db->query($SQL);
 
 				//ข้อมูล
-				$SQL 			= "SELECT package.* , guide.* FROM package INNER JOIN guide ON package.guide_id = guide.guide_id WHERE package.guide_id ='$tUserID' ";
+				$SQL 			= "SELECT package.* , guide.* FROM package INNER JOIN guide ON package.guide_id = guide.guide_id WHERE package.guide_id ='$tUserID'  LIMIT $row_count OFFSET $offset ";
 				$QueryItem 		= $this->db->query($SQL);
 			}
 
@@ -88,5 +88,62 @@ class models_package extends CI_Model {
 		$this->db->where('package_id',$id);
 		$this->db->delete('package');
 	}
+
+	//โหลดข้อมูลตาม ID
+	public function GetData_package($id){
+		try{
+			$SQL 			= "SELECT * FROM package WHERE package_id ='$id' ";
+			$QueryItem 		= $this->db->query($SQL);
+			if($QueryItem->num_rows() > 0){
+				$Result = array(
+					'Items'  		=> $QueryItem->result_array(),
+					'Code'   		=> '1',
+					'Desc'   		=> 'success'
+				);
+			}else{
+				$Result = array(
+					'Code' 			=> '800',
+					'Desc' 			=> 'data not found'
+				);
+			}
+			return $Result;
+		}catch(Exception $Error){
+			echo $Error;
+		}
+	}
+
+	//แก้ไขข้อมูล
+	public function Update_package($Result){
+		$this->db->set('package_file', $Result['package_file']);
+		$this->db->set('package_name', $Result['package_name']);
+		$this->db->set('package_con', $Result['package_con']);
+		$this->db->set('package_image', $Result['package_image']);
+		$this->db->set('package_status', $Result['package_status']);
+		$this->db->where('guide_id',$Result['guide_id']);
+		$this->db->where('package_id',$Result['package_id']);
+		$this->db->update('package');
+	}
 	
+	//โหลดข้อมูล ไกด์มา
+	public function LoadDataguide(){
+		try{
+			$SQL 			= "SELECT * FROM guide WHERE guide_status = 1 AND status_delete = 0 ";
+			$QueryItem 		= $this->db->query($SQL);
+			if($QueryItem->num_rows() > 0){
+				$Result = array(
+					'Items'  		=> $QueryItem->result_array(),
+					'Code'   		=> '1',
+					'Desc'   		=> 'success'
+				);
+			}else{
+				$Result = array(
+					'Code' 			=> '800',
+					'Desc' 			=> 'data not found'
+				);
+			}
+			return $Result;
+		}catch(Exception $Error){
+			echo $Error;
+		}
+	}
 }

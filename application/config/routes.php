@@ -42,4 +42,3 @@ $route['PageInsOrEdit_package'] 				= 'Package/Package/PageInsoredit';
 $route['EventInsOrEdit_package'] 				= 'Package/Package/EventInsoredit';
 $route['FileUpload']							= 'Package/Package/UploadFilePackage';
 $route['EventDelete_package'] 					= 'Package/Package/EventDeletePackage';
-

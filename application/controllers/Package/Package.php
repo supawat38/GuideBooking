@@ -20,7 +20,13 @@ class Package extends CI_Controller {
 			'pageName' 		=> 'package'
 		);
 
-		if($tUserType == 3){ //มัคคุเทศก์
+		if($tUserType == 1){ //ผู้ดูแลระบบ
+			$this->load->view('header',$aPackData);
+			$this->load->view('Package/View_package',$aPackData);
+		}else if($tUserType == 2){ //ลูกค้า
+			$this->load->view('header',$aPackData);
+			$this->load->view('Package/View_package',$aPackData);
+		}else if($tUserType == 3){ //มัคคุเทศก์
 			$this->load->view('header',$aPackData);
 			$this->load->view('Package/View_package',$aPackData);
 		}else{
@@ -61,6 +67,10 @@ class Package extends CI_Controller {
 	//โหลดหน้าจอเพิ่มข้อมูล + แก้ไข แพ๊คเกจ
 	public function PageInsoredit(){
 		$typepage = $this->input->post('typepage');
+
+		//ข้อมูลไกด์ทั้งหมด กรณีให้ผู้ดูแลระบบเป็นคนเพิ่มให้
+		$guideall = $this->models_package->LoadDataguide();
+
 		if($typepage == 'pageinsert'){
 			$result		= '';
 		}else if($typepage == 'pageedit'){
@@ -70,7 +80,8 @@ class Package extends CI_Controller {
 
 		$PackData = array(
 			'typepage' 			=> $typepage,
-			'Result'			=> $result
+			'Result'			=> $result,
+			'guideall'			=> $guideall
 		);
 		$this->load->view('Package/View_packageForms',$PackData);
 	}
@@ -80,10 +91,18 @@ class Package extends CI_Controller {
 		//Event Insert หรือ Edit
 		$Typepage = $this->input->post('hiddenTypePage');
 
+		//ประเภทของผู้ใช้
+		$UserType 	= $this->session->userdata("session_reftype");	
+		if($UserType == 1){ //ผู้ดูแลระบบ
+			$guide_id = $this->input->post('GuidePackage');
+		}else{
+			$guide_id = $this->session->userdata("session_refid");
+		}
+
 		//เตรียมข้อมูลลงตาราง package
 		$UpdatePackage = array(
 			'package_id' 		=> $this->input->post('hiddenPackageID'),
-			'guide_id' 			=> $this->session->userdata("session_refid"),
+			'guide_id' 			=> $guide_id,
 			'package_file'	 	=> $this->input->post('regisPackageFileName'),
 			'package_name' 		=> $this->input->post('regisPackageName'),
 			'package_con' 		=> $this->input->post('regisPackageCon'),
@@ -92,7 +111,7 @@ class Package extends CI_Controller {
 		);
 
 		if($Typepage == 'pageedit' || $Typepage == 'pageedit'){ //แก้ไขข้อมูล
-			//$this->models_package->Update_package($UpdatePackage,'package');
+			$this->models_package->Update_package($UpdatePackage,'package');
 		}else{ //เพิ่มข้อมูล
 			$this->models_package->Insert_package($UpdatePackage,'package');
 		}

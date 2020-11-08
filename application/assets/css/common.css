@@ -345,6 +345,19 @@
 	display:inline-block;
 }
 
+.textDowloadFileDisabled{
+	margin-left:15px;
+	color: #ffcfae;
+	font-family: THSarabunNew;
+    font-size: 20px !important;
+    text-align: right;
+	font-weight: bold;
+	text-decoration: underline;
+	letter-spacing: 1px !important;
+	cursor: no-drop;
+	display:inline-block;
+}
+
 @media (max-width: 1200px) {
 	.CNBlockPackage{
     	height: 200px !important;

@@ -33,7 +33,6 @@
 <?php include __DIR__ . '/../footer.php';?>
 
 <script>
-
 	//โหลดหน้าตาราง
 	LoadTable_package(1);
 	function LoadTable_package(numberpage){

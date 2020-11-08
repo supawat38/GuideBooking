@@ -42,9 +42,15 @@
 							<h3 class="labelHead" style="font-weight: bold;"><?=$Value['package_name']?></h3>
 							<p class="labelHead CNBlockPackage"><?=$TextShow?></p>
 							<div style="text-align: right;">
-								<label class="textDowloadFile">แก้ไข</label>
-								<label class="textDowloadFile" onClick="Delete_package('<?=$Value['package_id']?>');">ลบ</label>
-								<label class="textDowloadFile">ดาวน์โหลด</label>
+								<label class="textDowloadFile edit_package" onClick="Page_package('pageedit','<?=$Value['package_id']?>');">แก้ไข</label>
+								<label class="textDowloadFile delete_package" onClick="Delete_package('<?=$Value['package_id']?>');">ลบ</label>
+								
+								<!--ถ้าไม่มีไฟล์จะดาวน์โหลดไม่ได้-->
+								<?php if($Value['package_file'] == '' || $Value['package_file'] == null){ ?>
+									<label class="textDowloadFileDisabled">ดาวน์โหลด</label>
+								<?php }else{ ?>
+									<a href="<?=base_url('application/assets/File/package/'.$Value['package_file'])?>"><label class="textDowloadFile">ดาวน์โหลด</label></a>
+								<?php } ?>
 							</div>
 						</div>
 					</div>
@@ -64,10 +70,10 @@
 				<!--ปุ่มย้อนกลับ-->
 				<?php if($result['CurrentPage'] == 1){ $DisabledLeft = 'disabled'; }else{ $DisabledLeft = '-';} ?>
 				<li class="page-item <?=$DisabledLeft;?>">
-					<a class="page-link" aria-label="Previous" onclick="ClickPageAdmin('Fisrt')"><span aria-hidden="true">&laquo;</span></a>
+					<a class="page-link" aria-label="Previous" onclick="ClickPage_package('Fisrt')"><span aria-hidden="true">&laquo;</span></a>
 				</li>
 				<li class="page-item <?=$DisabledLeft;?>">
-					<a class="page-link" aria-label="Previous" onclick="ClickPageAdmin('previous')"><span aria-hidden="true">&lsaquo;</span></a>
+					<a class="page-link" aria-label="Previous" onclick="ClickPage_package('previous')"><span aria-hidden="true">&lsaquo;</span></a>
 				</li>
 
 				<!--ปุ่มจำนวนหน้า-->
@@ -81,16 +87,16 @@
 							$DisPageNumber  = '';
 						}
 					?>
-					<li class="page-item <?=$Active;?> " onclick="ClickPageAdmin('<?=$i?>')"><a class="page-link"><?=$i?></a></li>
+					<li class="page-item <?=$Active;?> " onclick="ClickPage_package('<?=$i?>')"><a class="page-link"><?=$i?></a></li>
 				<?php } ?>
 
 				<!--ปุ่มไปต่อ-->
 				<?php if($result['CurrentPage'] >= $result['EndPage']){ $DisabledRight = 'disabled'; }else{ $DisabledRight = '-'; } ?>
 				<li class="page-item <?=$DisabledRight?>">
-					<a class="page-link" aria-label="Next" onclick="ClickPageAdmin('next')"><span aria-hidden="true">&rsaquo;</span></a>
+					<a class="page-link" aria-label="Next" onclick="ClickPage_package('next')"><span aria-hidden="true">&rsaquo;</span></a>
 				</li>
 				<li class="page-item <?=$DisabledRight?>">
-					<a class="page-link" aria-label="Next" onclick="ClickPageAdmin('Last')"><span aria-hidden="true">&raquo;</span></a>
+					<a class="page-link" aria-label="Next" onclick="ClickPage_package('Last')"><span aria-hidden="true">&raquo;</span></a>
 				</li>
 			</ul>
 		</nav>
@@ -99,8 +105,18 @@
 
 <script>
 
+	//เช็คสิทธิการมองเห็น
+	var UserType 	= '<?=$this->session->userdata("session_reftype")?>';
+	if(UserType == 2){ //ลูกค้า
+		$('.xButtonInsert').hide();  //ซ่อนปุ่มเพิ่มข้อมูล
+		$('.edit_package').hide();	 //ซ่อนปุ่มแก้ไขข้อมูล
+		$('.delete_package').hide(); //ซ่อนปุ่มลบข้อมูล
+	}else{ //ผู้ดูแลระบบ + มัคคุเทศก์ + เจ้าของ สามารถทำได้ทุกอย่าง
+
+	}
+
 	//กด next page 
-	function ClickPageAdmin(Page){
+	function ClickPage_package(Page){
 		var PageCurrent = '';
 		switch (Page) {
 			case 'Fisrt': //กดหน้าแรก
@@ -123,7 +139,7 @@
 				PageCurrent = Page
 		}
 
-		LoadTable_Admin(PageCurrent);
+		LoadTable_package(PageCurrent);
 	}
 
 	//ลบข้อมูล
