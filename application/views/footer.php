@@ -63,9 +63,11 @@
 				<div class="row mb-5">
 					<div class="col-md pt-5">
 						<div class="ftco-footer-widget pt-md-5 mb-4">
-							<h2 class="ftco-heading-2 FontHeadFooter">วัตถุประสงค์</h2>
-							<p class="FontDetailFooter">เพื่อพัฒนาเว็บไซต์ที่เป็นสื่อกลางระหว่างนักท่องเที่ยวกับมัคคุเทศก์ท้องถิ่นในประเทศไทย และ เรียนรู้รูปแบบการท่องเที่ยวของนักท่องเที่ยวกับมัคคุเทศก์</p>
+							<h2 class="ftco-heading-2 FontHeadFooter">ติดตามเราได้ทาง</h2>
 							<ul class="ftco-footer-social list-unstyled float-md-left float-lft">
+								<li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+								<li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+								<li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
 							</ul>
 						</div>
 					</div>

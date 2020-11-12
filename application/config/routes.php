@@ -43,3 +43,12 @@ $route['PageInsOrEdit_package'] 				= 'Package/Package/PageInsoredit';
 $route['EventInsOrEdit_package'] 				= 'Package/Package/EventInsoredit';
 $route['FileUpload']							= 'Package/Package/UploadFilePackage';
 $route['EventDelete_package'] 					= 'Package/Package/EventDeletePackage';
+
+//หน้าจอ - กำหนดราคา
+$route['Guiderate']								= 'Guiderate/Guiderate/index';
+$route['Loadtable_rate'] 						= 'Guiderate/Guiderate/Loadtable';
+$route['PageInsOrEdit_rate'] 					= 'Guiderate/Guiderate/PageInsoredit';
+$route['EventInsOrEdit_rate'] 					= 'Guiderate/Guiderate/EventInsoredit';
+$route['EventDelete_rate'] 						= 'Guiderate/Guiderate/EventDeleterate';
+
+

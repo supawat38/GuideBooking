@@ -110,7 +110,7 @@ class Package extends CI_Controller {
 			'package_status' 	=> ($this->input->post('regisPackageStatusUse') == 'on') ? 1 : 0
 		);
 
-		if($Typepage == 'pageedit' || $Typepage == 'pageedit'){ //แก้ไขข้อมูล
+		if($Typepage == 'pageedit'){ //แก้ไขข้อมูล
 			$this->models_package->Update_package($UpdatePackage,'package');
 		}else{ //เพิ่มข้อมูล
 			$this->models_package->Insert_package($UpdatePackage,'package');

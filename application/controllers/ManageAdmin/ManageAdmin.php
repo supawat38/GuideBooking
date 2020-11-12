@@ -81,7 +81,7 @@ class ManageAdmin extends CI_Controller {
 			'admin_phone'	=> $this->input->post('regisAdminTelephone'),
 			'admin_status'	=> ($this->input->post('regisAdminStatusUse') == 'on') ? 1 : 0
 		);
-		if($Typepage == 'pageedit' || $Typepage == 'pageedit'){ //แก้ไขข้อมูล
+		if($Typepage == 'pageedit'){ //แก้ไขข้อมูล
 			$this->models_admin->Update_Admin($UpdateAdmin,'admin');
 			$this->models_admin->Update_Login($UpdateAdmin);
 		}else{ //เพิ่มข้อมูล

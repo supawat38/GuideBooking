@@ -267,6 +267,23 @@
 	font-size:  20px !important;
 }
 
+/*CSS ส่วนของ From เรท */
+#divRegisRate label{
+	font-family: THSarabunNew;
+	font-size:  25px !important;
+	color : black;
+}
+
+#divRegisRate input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
+#divRegisRate input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
 /*CSS ส่วนของ From แพ็กเกจ */
 #divRegispackage label{
 	font-family: THSarabunNew;

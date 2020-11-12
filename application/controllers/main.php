@@ -6,13 +6,23 @@ class main extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('main/models_main');
+		$this->load->model('register/models_register');
 	}
 
 	public function index(){
 
+		//โหลดข้อมูลจังหวัด
+		$resultProvince = $this->models_register->LoadDataProvince();
+		if($resultProvince['Code'] == '800' ){
+			$arrayProvince = array();
+		}else{
+			$arrayProvince = $resultProvince;
+		}
+
 		//เตรียมข้อมูลส่งไปที่หน้า view
 		$aPackData = array(
-			'pageName' 		=> 'main'
+			'pageName' 		=> 'main',
+			'dataprovince' 	=> $arrayProvince
 		);
 
 		$this->load->view('header',$aPackData);

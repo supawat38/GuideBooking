@@ -3,9 +3,9 @@
 		<thead>
 			<tr>
 				<th scope="col">ลำดับ</th>
-				<th scope="col">ชื่อ</th>
-				<th scope="col">นามสกุล</th>
-				<th scope="col">เบอร์ติดต่อ</th>
+				<th scope="col">ชื่อมัคคุเทศก์</th>
+				<th scope="col">เรทราคา</th>
+				<th scope="col">เงื่อนไข</th>
 				<th scope="col">สถานะใช้งาน</th>
 				<th class="text-center">แก้ไข</th>
 				<th class="text-center">ลบ</th>
@@ -19,30 +19,23 @@
 					<tr>
 						<th><?=$Key + 1?></th>
 						<td><?=($Value['firstname'] == '') ? '-' : $Value['firstname']?></td>
-						<td><?=($Value['lastname'] == '') ? '-' : $Value['lastname']?></td>
-						<td><?=($Value['admin_phone'] == '') ? '-' : $Value['admin_phone']?></td>
+						<td><?=($Value['amount'] == '') ? '0' : number_format($Value['amount'],2)?></td>
+						<td><?=($Value['note'] == '') ? '-' : $Value['note']?></td>
 						<?php 
-							if($Value['admin_status'] == 1){
+							if($Value['status_delete'] == 0){
 								$IconClassStatus 	= 'IconStatus_open';
 								$TextClassStatus 	= 'TextStatus_open';
 								$TextStatus 		= 'ใช้งาน';
 							}else{
 								$IconClassStatus 	= 'IconStatus_close';
 								$TextClassStatus 	= 'TextStatus_close';
-
-								//ถ้าถูกลบเเล้ว ให้ปรับเป็นไม่ใช้งานด้วย + ลบแล้ว
-								if($Value['status_delete'] == 1){
-									$TextStatus 		= 'ไม่ใช้งาน (ลบแล้ว)';
-								}else{
-									$TextStatus 		= 'ไม่ใช้งาน';
-								}
 							}
 						?>
 						<td><div class="<?=$IconClassStatus?>"></div><span class="<?=$TextClassStatus?>"><?=$TextStatus?></span></td>
 						<td><img class="img-responsive ImageEdit" src="<?=base_url().'application/assets/images/icon/edit.png';?>" 
-									onClick="Page_Admin('pageedit','<?=$Value['admin_id']?>');"></td>
+									onClick="Page_rate('pageedit','<?=$Value['rate_id']?>');"></td>
 						<td><img class="img-responsive ImageDelete" src="<?=base_url().'application/assets/images/icon/delete.png';?>" 
-									onClick="Delete_Admin('<?=$Value['admin_id']?>');"></td>
+									onClick="Delete_rate('<?=$Value['rate_id']?>');"></td>
 					</tr>
 				<?php } ?>
 			<?php } ?>
@@ -58,10 +51,10 @@
 			<!--ปุ่มย้อนกลับ-->
 			<?php if($result['CurrentPage'] == 1){ $DisabledLeft = 'disabled'; }else{ $DisabledLeft = '-';} ?>
 			<li class="page-item <?=$DisabledLeft;?>">
-				<a class="page-link" aria-label="Previous" onclick="ClickPageAdmin('Fisrt')"><span aria-hidden="true">&laquo;</span></a>
+				<a class="page-link" aria-label="Previous" onclick="ClickPagerate('Fisrt')"><span aria-hidden="true">&laquo;</span></a>
 			</li>
 			<li class="page-item <?=$DisabledLeft;?>">
-				<a class="page-link" aria-label="Previous" onclick="ClickPageAdmin('previous')"><span aria-hidden="true">&lsaquo;</span></a>
+				<a class="page-link" aria-label="Previous" onclick="ClickPagerate('previous')"><span aria-hidden="true">&lsaquo;</span></a>
 			</li>
 
 			<!--ปุ่มจำนวนหน้า-->
@@ -75,16 +68,16 @@
 						$DisPageNumber  = '';
 					}
 				?>
-				<li class="page-item <?=$Active;?> " onclick="ClickPageAdmin('<?=$i?>')"><a class="page-link"><?=$i?></a></li>
+				<li class="page-item <?=$Active;?> " onclick="ClickPagerate('<?=$i?>')"><a class="page-link"><?=$i?></a></li>
 			<?php } ?>
 
 			<!--ปุ่มไปต่อ-->
 			<?php if($result['CurrentPage'] >= $result['EndPage']){ $DisabledRight = 'disabled'; }else{ $DisabledRight = '-'; } ?>
 			<li class="page-item <?=$DisabledRight?>">
-				<a class="page-link" aria-label="Next" onclick="ClickPageAdmin('next')"><span aria-hidden="true">&rsaquo;</span></a>
+				<a class="page-link" aria-label="Next" onclick="ClickPagerate('next')"><span aria-hidden="true">&rsaquo;</span></a>
 			</li>
 			<li class="page-item <?=$DisabledRight?>">
-				<a class="page-link" aria-label="Next" onclick="ClickPageAdmin('Last')"><span aria-hidden="true">&raquo;</span></a>
+				<a class="page-link" aria-label="Next" onclick="ClickPagerate('Last')"><span aria-hidden="true">&raquo;</span></a>
 			</li>
 		</ul>
 	</nav>
@@ -93,7 +86,7 @@
 <script>
 
 	//กด next page 
-	function ClickPageAdmin(Page){
+	function ClickPagerate(Page){
 		var PageCurrent = '';
 		switch (Page) {
 			case 'Fisrt': //กดหน้าแรก
@@ -116,11 +109,11 @@
 				PageCurrent = Page
 		}
 
-		LoadTable_Admin(PageCurrent);
+		LoadTable_rate(PageCurrent);
 	}
 
 	//ลบข้อมูล
-	function Delete_Admin(ID){
+	function Delete_rate(ID){
 		Swal.fire({
 			title: "ลบข้อมูล ? ",
 			text: "กดยืนยันเพื่อลบข้อมูล",
@@ -131,10 +124,10 @@
 			if (result.isConfirmed) {
 				$.ajax({
 					type 			: "POST",
-					url 			: "EventDelete_Admin",
+					url 			: "EventDelete_rate",
 					data 			: { 'ID' : ID },
 					success			: function (Result){
-						LoadTable_Admin(1);
+						LoadTable_rate(1);
 					},
 					error: function (data){
 						console.log(data);

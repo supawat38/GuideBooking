@@ -1,3 +1,10 @@
+<style>
+	.select2-container--default .select2-selection--single{
+		border: 0px solid #aaa;
+	}
+</style>
+
+<!--การจอง-->
 <section class="ftco-section ftco-no-pb ftco-no-pt" style="background: #FFF;">
 	<div class="container">
 		<div class="row">
@@ -15,21 +22,42 @@
 													<div class="form-field">
 														<div class="select-wrap">
 															<div class="icon"><span class="fa fa-chevron-down"></span></div>
-															<select name="" id="" class="form-control">
-																<option value="">$100</option>
-																<option value="">$10,000</option>
-																<option value="">$50,000</option>
-																<option value="">$100,000</option>
-																<option value="">$200,000</option>
-																<option value="">$300,000</option>
-																<option value="">$400,000</option>
-																<option value="">$500,000</option>
-																<option value="">$600,000</option>
-																<option value="">$700,000</option>
-																<option value="">$800,000</option>
-																<option value="">$900,000</option>
-																<option value="">$1,000,000</option>
-																<option value="">$2,000,000</option>
+															<select class="jSelectedsingle form-control" name="provincebooking">
+																<?php if($dataprovince['rtCode'] != 800){ ?>
+																	<?php foreach($dataprovince['Items'] AS $Key => $Value){ ?>
+																		<option value="<?= $Value['province_id'] ?>"><?= $Value['province_name'] ?></option>
+																	<?php } ?>
+																<?php }else{ ?>
+																	<option value="0">ไม่พบข้อมูล</option>
+																<?php } ?>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md d-flex">
+												<div class="form-group p-4">
+													<label for="#" class="label_formsearch">จำนวนคน</label>
+													<div class="form-field">
+														<div class="select-wrap">
+															<div class="icon"><span class="fa fa-chevron-down"></span></div>
+															<select class="jSelectedsingle form-control" name="personbookig">
+																<option value="1"> 1 </option>
+																<option value="2"> 2 </option>
+																<option value="3"> 3 </option>
+																<option value="4"> 4 </option>
+																<option value="5"> 5 </option>
+																<option value="6"> 6 </option>
+																<option value="7"> 7 </option>		
+																<option value="8"> 8 </option>
+																<option value="9"> 9 </option>
+																<option value="10"> 10 </option>
+																<option value="11"> 11 </option>
+																<option value="12"> 12 </option>
+																<option value="13"> 13 </option>
+																<option value="14"> 14 </option>
+																<option value="15"> 15 </option>
+																<option value="99"> มากกว่า 15 </option>
 															</select>
 														</div>
 													</div>
@@ -38,8 +66,7 @@
 											<div class="col-md d-flex">
 												<div class="form-group p-4">
 													<label for="#" class="label_formsearch">วันที่การจอง</label>
-													<div class="form-field">
-														<div class="icon"><span class="fa fa-calendar"></span></div>
+													<div class="form-field" style="margin-top: 7px;">
 														<input type="text" class="form-control checkin_date" placeholder="<?=date('d/m/Y');?>">
 													</div>
 												</div>
@@ -47,8 +74,7 @@
 											<div class="col-md d-flex">
 												<div class="form-group p-4">
 													<label for="#" class="label_formsearch">ถึงวันที่</label>
-													<div class="form-field">
-														<div class="icon"><span class="fa fa-calendar"></span></div>
+													<div class="form-field" style="margin-top: 7px;">
 														<input type="text" class="form-control checkout_date" placeholder="<?=date('d/m/Y');?>">
 													</div>
 												</div>
@@ -72,17 +98,13 @@
 	</div>
 </section>
 
+<!--ส่วนของตารางการจอง-->
 <section class="ftco-section services-section">
 	<div class="container">
 		<div class="row d-flex">
 			<div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate d-flex align-items-center">
 				<div class="w-100">
-					<span class="subheading">Welcome to Pacific</span>
-					<h2 class="mb-4">It's time to start your adventure</h2>
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-					A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-					<p><a href="#" class="btn btn-primary py-3 px-4">Search Destination</a></p>
+					<h2 class="mb-4 textMain_Show">ส่วนของตารางการจอง</h2>
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -91,8 +113,8 @@
 						<div class="services services-1 color-1 d-block img" style="background-image: url(images/services-1.jpg);">
 							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-paragliding"></span></div>
 							<div class="media-body">
-								<h3 class="heading mb-3">Activities</h3>
-								<p>A small river named Duden flows by their place and supplies it with the necessary</p>
+								<h3 class="heading mb-3">Wait</h3>
+								<p></p>
 							</div>
 						</div>      
 					</div>
@@ -100,8 +122,8 @@
 						<div class="services services-1 color-2 d-block img" style="background-image: url(images/services-2.jpg);">
 							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
 							<div class="media-body">
-								<h3 class="heading mb-3">Travel Arrangements</h3>
-								<p>A small river named Duden flows by their place and supplies it with the necessary</p>
+								<h3 class="heading mb-3">Wait</h3>
+								<p></p>
 							</div>
 						</div>    
 					</div>
@@ -109,8 +131,8 @@
 						<div class="services services-1 color-3 d-block img" style="background-image: url(images/services-3.jpg);">
 							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-tour-guide"></span></div>
 							<div class="media-body">
-								<h3 class="heading mb-3">Private Guide</h3>
-								<p>A small river named Duden flows by their place and supplies it with the necessary</p>
+								<h3 class="heading mb-3">Wait</h3>
+								<p></p>
 							</div>
 						</div>      
 					</div>
@@ -118,8 +140,8 @@
 						<div class="services services-1 color-4 d-block img" style="background-image: url(images/services-4.jpg);">
 							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-map"></span></div>
 							<div class="media-body">
-								<h3 class="heading mb-3">Location Manager</h3>
-								<p>A small river named Duden flows by their place and supplies it with the necessary</p>
+								<h3 class="heading mb-3">Wait</h3>
+								<p></p>
 							</div>
 						</div>      
 					</div>
@@ -129,13 +151,13 @@
 	</div>
 </section>
 
+<!--คะแนนมัคคุเทศก์-->
 <section class="ftco-section testimony-section bg-bottom" style="background-image: url(images/bg_1.jpg);">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row justify-content-center pb-4">
 			<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-				<span class="subheading">Testimonial</span>
-				<h2 class="mb-4">Tourist Feedback</h2>
+				<h2 class="mb-4 textMain_Show">คะแนนมัคคุเทศก์</h2>
 			</div>
 		</div>
 		<div class="row ftco-animate">
@@ -253,7 +275,7 @@
 </section>
 
 <!--แพ็กเกจ-->
-<section class="ftco-section">
+<section class="ftco-section" style="margin-top: 50px;">
 	<div class="container">
 		<div class="row justify-content-center pb-4">
 			<div class="col-md-12 heading-section text-center ftco-animate">
@@ -268,6 +290,13 @@
 <?php include __DIR__ . '/../footer.php';?>
 
 <script>
+	$(document).ready(function() {
+		//ช่องจังหวัด + ช่องจำนวนคน
+		$(".jSelectedsingle").select2();
+		$(".jSelectedsingle").select2({ width: 'resolve' , dropdownCssClass: "FontSelect2"});  
+
+	});
+
 
 	//โหลดหน้าตารางส่วนของ package
 	LoadTable_package(1);

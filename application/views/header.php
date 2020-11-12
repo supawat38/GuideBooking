@@ -48,6 +48,7 @@
 						<?php }else if($this->session->userdata('session_reftype') == 3){ //มัคคุเทศก์ ?>
 							<li class="nav-item  <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลมัคคุเทศก์</a></li>
+							<li class="nav-item  <?=($pageName == 'Guiderate') ? 'active' : '' ?>" ><a href="Guiderate" class="nav-link FontMenu">กำหนดราคา</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลการจอง</a></li>
 							<li class="nav-item  <?=($pageName == 'package') ? 'active' : '' ?>" ><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ตารางงาน</a></li>
@@ -105,6 +106,10 @@
 				case "package":
 					$ImageHeder = 'application/assets/images/bg_2.jpg';
 					$TitleMenu  = "แพ็กเกจท่องเที่ยว";
+				break;
+				case "Guiderate":
+					$ImageHeder = 'application/assets/images/services-3.jpg';
+					$TitleMenu  = "กำหนดราคา";
 				break;
 				default:
 					$ImageHeder	= "";

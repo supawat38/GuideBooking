@@ -10,10 +10,10 @@ class models_admin extends CI_Model {
 			$row_count 	= $parameter['row'];
 			$offset 	= ($page - 1) * $row_count ;
 
-			$SQL 			= "SELECT COUNT(*) AS NumAll FROM admin WHERE status_delete = 0";
+			$SQL 			= "SELECT COUNT(*) AS NumAll FROM admin ";
 			$QueryCount 	= $this->db->query($SQL);
 
-			$SQL 			= "SELECT * FROM admin WHERE status_delete = 0 LIMIT $row_count OFFSET $offset";
+			$SQL 			= "SELECT * FROM admin LIMIT $row_count OFFSET $offset";
 			$QueryItem 		= $this->db->query($SQL);
 			if($QueryItem->num_rows() > 0){
 
@@ -83,6 +83,7 @@ class models_admin extends CI_Model {
 		$this->db->set('admin_email', $Result['admin_email']);
 		$this->db->set('admin_phone', $Result['admin_phone']);
 		$this->db->set('admin_status', $Result['admin_status']);
+		$this->db->set('status_delete',0);
 		$this->db->where('admin_id',$Result['ID']);
 		$this->db->update('admin');
 
@@ -172,6 +173,7 @@ class models_admin extends CI_Model {
 	//ลบข้อมูล
 	public function Delete_Admin($id){
 		$this->db->set('status_delete', 1);
+		$this->db->set('admin_status', 0);
 		$this->db->where('admin_id',$id);
 		$this->db->update('admin');
 	}

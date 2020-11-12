@@ -14,7 +14,7 @@ class models_login extends CI_Model {
 								guide.firstname AS Guidefirstname , 
 								customer.firstname AS Customerfirstname 
 							FROM Login 
-							LEFT JOIN admin ON Login.login_type = 1 AND Login.reflogin_id = admin.admin_id AND admin.admin_status = 1
+							LEFT JOIN admin ON Login.login_type = 1 AND Login.reflogin_id = admin.admin_id AND admin.admin_status = 1 AND admin.status_delete = 0
 							LEFT JOIN guide ON Login.login_type = 3 AND Login.reflogin_id = guide.guide_id AND guide.guide_status = 1
 							LEFT JOIN customer ON Login.login_type = 2 AND Login.reflogin_id = customer.cus_id AND customer.cus_status = 1";
 			$SQL 		.= " WHERE Login.username = '$UserName' ";
