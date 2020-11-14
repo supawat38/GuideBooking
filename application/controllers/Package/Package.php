@@ -20,15 +20,9 @@ class Package extends CI_Controller {
 			'pageName' 		=> 'package'
 		);
 
-		if($tUserType == 1){ //ผู้ดูแลระบบ
+		if($tUserType == 2){ //ลูกค้า
 			$this->load->view('header',$aPackData);
-			$this->load->view('Package/View_package',$aPackData);
-		}else if($tUserType == 2){ //ลูกค้า
-			$this->load->view('header',$aPackData);
-			$this->load->view('Package/View_package',$aPackData);
-		}else if($tUserType == 3){ //มัคคุเทศก์
-			$this->load->view('header',$aPackData);
-			$this->load->view('Package/View_package',$aPackData);
+			$this->load->view('Package/View_package_Customer',$aPackData);
 		}else{
 			echo 'คุณไม่มีสิทธิ์ใช้งานหน้านี้ กรุณาล็อคอินเข้าระบบใหม่อีกครั้ง';
 		}
@@ -47,7 +41,18 @@ class Package extends CI_Controller {
 			'result'			=> $result,
 			'nPage'				=> $numberpage
 		);
-		$this->load->view('Package/View_packageDataTable',$PackData);
+
+		//เช็คว่าเข้ามาแบบไหน
+		$tUserType 	= $this->session->userdata("session_reftype");	
+
+		if($tUserType == 2){ //ลูกค้า
+			//ถ้าเป็นลูกค้าจะเห็นหน้าจอเเสดงผลเป็นรูป
+			$this->load->view('Package/View_packageDataTable_Customer',$PackData);
+		}else{
+			//ถ้าเป็นสิทธิอื่นๆ จะเห็นหน้าจอเเสดงผลตาราง
+			$this->load->view('Package/View_packageDataTable',$PackData);
+		}
+
 	}
 
     //อัพโหลดไฟล์

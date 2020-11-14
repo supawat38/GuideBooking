@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="<?=base_url('application/assets/css/common.css')?>">
 	<link rel="stylesheet" href="<?=base_url('application/assets/css/select2.css')?>">
 </head>
-
+	
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
@@ -33,31 +33,16 @@
 						<li class="nav-item <?=($pageName == 'main') ? 'active' : '' ?>" ><a href="main" class="nav-link FontMenu">หน้าหลัก</a></li>
 						
 						<!--การมองเห็นเมนูของแต่ละ user -->
-						<?php if($this->session->userdata('session_reftype') == 1){ //ผู้ดูแลระบบ ?>
-							<li class="nav-item  <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
-							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลมัคคุเทศก์</a></li>
-							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลผู้ใช้งาน</a></li>
-							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลการจอง</a></li>
-							<li class="nav-item  <?=($pageName == 'package') ? 'active' : '' ?> "><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
-							<li class="nav-item" ><a href="#" class="nav-link FontMenu">การชำระเงิน</a></li>
-						<?php }else if($this->session->userdata('session_reftype') == 2){ //ผู้ใช้งานทั่วไป ?>
+						<!--FontEnd-->
+						<?php if($this->session->userdata('session_reftype') == 2){ //ผู้ใช้งานทั่วไป ?>
 							<li class="nav-item  <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลมัคคุเทศก์</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลการจอง</a></li>
 							<li class="nav-item  <?=($pageName == 'package') ? 'active' : '' ?> "><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
-						<?php }else if($this->session->userdata('session_reftype') == 3){ //มัคคุเทศก์ ?>
-							<li class="nav-item  <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
-							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลมัคคุเทศก์</a></li>
-							<li class="nav-item  <?=($pageName == 'Guiderate') ? 'active' : '' ?>" ><a href="Guiderate" class="nav-link FontMenu">กำหนดราคา</a></li>
-							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลการจอง</a></li>
-							<li class="nav-item  <?=($pageName == 'package') ? 'active' : '' ?>" ><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
-							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ตารางงาน</a></li>
-						<?php }else{ //เจ้าของระบบ ?>
-							<li class="nav-item  <?=($pageName == 'ManageAdmin') ? 'active' : '' ?>" ><a href="ManageAdmin" class="nav-link FontMenu">ข้อมูลผู้ดูแลระบบ</a></li>
-							<li class="nav-item" ><a href="#" class="nav-link FontMenu">รายงานมัคคุเทศก์ยอดนิยม</a></li>
-							<li class="nav-item" ><a href="#" class="nav-link FontMenu">รายงานรายได้</a></li>
+						<!--BackEnd-->
+						<?php }else{ //ผู้ดูแลระบบ + มัคคุเทศก์ + เจ้าของ ?>
+							<li class="nav-item  <?=($pageName == 'Backend') ? 'active' : '' ?>" ><a href="Backend" class="nav-link FontMenu">จัดการข้อมูล</a></li>
 						<?php } ?>
-
 						<li class="nav-item <?=($pageName == 'logout') ? 'active' : '' ?>"><a href="logout" class="nav-link FontMenu">ออกจากระบบ</a></li>
 					<?php } ?>
 				</ul>
@@ -92,32 +77,28 @@
 			//จัดการภาพหน้าปก และข้อความเมนู
 			switch ($pageName) {
 				case "register":
-					$ImageHeder = 'application/assets/images/bg_4.jpg';
+					$ImageHeder = "background-image: url('application/assets/images/bg_4.jpg'); height: 500px;";
 					$TitleMenu  = "ลงทะเบียนสมาชิก";
 				break;
 				case "UpdateInformation":
-					$ImageHeder = 'application/assets/images/bg_2.jpg';
+					$ImageHeder = "background-image: url('application/assets/images/bg_2.jpg'); height: 500px;";
 					$TitleMenu  = "แก้ไขข้อมูลส่วนตัว";
 				break;
-				case "ManageAdmin":
-					$ImageHeder = 'application/assets/images/bg_2.jpg';
-					$TitleMenu  = "ข้อมูลผู้ดูแลระบบ";
-				break;
 				case "package":
-					$ImageHeder = 'application/assets/images/bg_2.jpg';
+					$ImageHeder = "background-image: url('application/assets/images/bg_2.jpg'); height: 500px;";
 					$TitleMenu  = "แพ็กเกจท่องเที่ยว";
 				break;
-				case "Guiderate":
-					$ImageHeder = 'application/assets/images/services-3.jpg';
-					$TitleMenu  = "กำหนดราคา";
+				case "Backend":
+					$ImageHeder = "background-color: #7c9295ad; height: 80px;";
+					$TitleMenu  = "";
 				break;
 				default:
 					$ImageHeder	= "";
 					$TitleMenu  = "";
 			} 
 		?>
-		<div class="hero-wrap SubMenu" style="background-image: url('<?=$ImageHeder?>'); height: 500px;">
-			<div class="overlay" style="height: 500px;"></div>
+		<div class="hero-wrap SubMenu" style="<?=$ImageHeder?>box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);">
+			
 			<div class="container">
 				<div class="row no-gutters slider-text" data-scrollax-parent="true">
 					<div class="col-md-7" style="margin-top: 20%;">

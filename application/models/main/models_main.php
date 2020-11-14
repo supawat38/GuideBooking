@@ -15,7 +15,8 @@ class models_main extends CI_Model {
 			$QueryCount 	= $this->db->query($SQL);
 
 			//ข้อมูลเรียงลำดับจากล่าสุดไปน้อยสุด
-			$SQL 			= "SELECT package.* , guide.* FROM package INNER JOIN guide ON package.guide_id = guide.guide_id ORDER BY package.package_id DESC LIMIT $row_count OFFSET $offset ";
+			$SQL 			= "SELECT package.* , guide.* FROM package INNER JOIN guide ON package.guide_id = guide.guide_id  WHERE package.package_status = '1' ORDER BY package.package_id DESC 
+							   LIMIT $row_count OFFSET $offset ";
 			$QueryItem 		= $this->db->query($SQL);
 			
 

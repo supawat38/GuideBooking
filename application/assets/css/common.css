@@ -183,8 +183,8 @@
 /*CSS สำหรับ การเลือกรูปภาพ */ 
 .xCNImgCenter{
 	border-radius: 50%;
-	width: 300px;
-	height: 300px;
+	width: 250px;
+	height: 250px;
 	text-align: center;
 	display: block;
 	margin: 0px auto;
@@ -192,8 +192,8 @@
 }
 
 .xCNImgCenterBox{
-	width: 320px;
-	height: 480px;
+	width: 250px;
+	height: 350px;
 	text-align: center;
 	display: block;
 	margin: 0px auto;

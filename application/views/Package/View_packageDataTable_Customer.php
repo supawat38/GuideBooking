@@ -1,60 +1,63 @@
-<div class="col-lg-12" style="overflow-x:auto; max-width: 950px;">
-	<table class="table table-hover" style="margin-top: 20px;">
-		<thead>
-			<tr>
-				<th scope="col">ลำดับ</th>
-				<th scope="col">ชื่อมัคคุเทศก์</th>
-				<th scope="col">ชื่อแพ็กเกจ</th>
-				<th scope="col">เงื่อนไข</th>
-				<th scope="col">สถานะใช้งาน</th>
-				<th class="text-center">ดาวน์โหลด</th>
-				<th class="text-center">แก้ไข</th>
-				<th class="text-center">ลบ</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php if(empty($result['Items'])){ ?>
-				<tr><td colspan="99" style="text-align: center;"> - ไม่พบข้อมูล - </td></tr>
-			<?php }else{ ?>
-				<?php foreach($result['Items'] AS $Key => $Value){ ?>
-					<tr>
-						<th><?=$Key + 1?></th>
-						<td><?=($Value['firstname'] == '') ? '-' : $Value['firstname']?></td>
-						<td><?=($Value['package_name'] == '') ? '-' : $Value['package_name']?></td>
-						<td><?=($Value['package_con'] == '') ? '-' : $Value['package_con']?></td>
-						<?php 
-							if($Value['package_status'] == 1){
-								$IconClassStatus 	= 'IconStatus_open';
-								$TextClassStatus 	= 'TextStatus_open';
-								$TextStatus 		= 'ใช้งาน';
-							}else{
-								$IconClassStatus 	= 'IconStatus_close';
-								$TextClassStatus 	= 'TextStatus_close';
-								$TextStatus 		= 'ไม่ใช้งาน';
-							}
-						?>
-						<td><div class="<?=$IconClassStatus?>"></div><span class="<?=$TextClassStatus?>"><?=$TextStatus?></span></td>
-
-						<td>
-							<!--ถ้าไม่มีไฟล์จะดาวน์โหลดไม่ได้-->
-							<?php if($Value['package_file'] == '' || $Value['package_file'] == null){ ?>
-								<label class="textDowloadFileDisabled" style="text-align: center; display: block;">ดาวน์โหลด</label>
-							<?php }else{ ?>
-								<a href="<?=base_url('application/assets/File/package/'.$Value['package_file'])?>">
-									<label class="textDowloadFile" style="text-align: center; display: block;">ดาวน์โหลด</label>
-								</a>
-							<?php } ?>
-						</td>
-						<td><img class="img-responsive ImageEdit" src="<?=base_url().'application/assets/images/icon/edit.png';?>" 
-									onClick="Page_package('pageedit','<?=$Value['package_id']?>');"></td>
-						<td><img class="img-responsive ImageDelete" src="<?=base_url().'application/assets/images/icon/delete.png';?>" 
-									onClick="Delete_package('<?=$Value['package_id']?>');"></td>
-						
-					</tr>
-				<?php } ?>
+<div class="col-md-12 col-12" style="margin-top: 20px;">
+	<?php if(empty($result['Items'])){ ?>
+		<div><p class="labelContent" style="text-align: center; margin: 50px 0px;"> - ไม่พบข้อมูล - </p></div>
+	<?php }else{ ?>
+		<div class="row">
+			<?php foreach($result['Items'] AS $Key => $Value){ ?>
+				<?php 
+					if($Value['package_image'] == '' || $Value['package_image'] == null){
+						$PathShowImage 		= 'application/assets/images/package/'.'/NoImage.jpg';
+					}else{
+						$PathShowImage 		= 'application/assets/images/package/'.$Value['package_image'];
+					} 
+				?>
+				<div class="col-md-4">
+					<div class="project-wrap">
+						<div class="img" style="background-image: url(<?=$PathShowImage?>);">
+							<?php 
+								$StatusUse = $Value['package_status']; 
+								if($StatusUse == 0){
+									$TextStatusUse = '- ไม่ใช้งาน';
+								}else{
+									$TextStatusUse = '- ใช้งาน';
+								}
+							?>
+							<span class="price labelHead">คุณ<?=$Value['firstname']?> <?= ($Value['guide_phone'] == '') ? '' : '('.$Value['guide_phone'].')'?> <?=$TextStatusUse?></span>
+						</div>
+						<div class="text p-4">
+							<?php 
+								header('content-type text/html charset=utf-8');
+								$namepackage 		= $Value['package_con'];
+								$namepackage_length = strlen($namepackage);
+								if($namepackage_length >= '100'){
+									$TextShow = iconv_substr($Value['package_con'],0,70,'utf-8').'...';
+								}else{
+									if($namepackage == '' || $namepackage == null){
+										$TextShow = 'ไม่มีเงื่อนไข';
+									}else{
+										$TextShow = $Value['package_con'];
+									}
+								}
+							?>
+							<h3 class="labelHead" style="font-weight: bold;"><?=$Value['package_name']?></h3>
+							<p class="labelHead CNBlockPackage"><?=$TextShow?></p>
+							<div style="text-align: right;">
+								<label class="textDowloadFile edit_package" onClick="Page_package('pageedit','<?=$Value['package_id']?>');">แก้ไข</label>
+								<label class="textDowloadFile delete_package" onClick="Delete_package('<?=$Value['package_id']?>');">ลบ</label>
+								
+								<!--ถ้าไม่มีไฟล์จะดาวน์โหลดไม่ได้-->
+								<?php if($Value['package_file'] == '' || $Value['package_file'] == null){ ?>
+									<label class="textDowloadFileDisabled">ดาวน์โหลด</label>
+								<?php }else{ ?>
+									<a href="<?=base_url('application/assets/File/package/'.$Value['package_file'])?>"><label class="textDowloadFile">ดาวน์โหลด</label></a>
+								<?php } ?>
+							</div>
+						</div>
+					</div>
+				</div>
 			<?php } ?>
-		</tbody>
-	</table>
+		</div>
+	<?php } ?>
 </div>
 
 <?php if(!empty($result['Items'])){ ?>

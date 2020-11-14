@@ -5,10 +5,14 @@ $route['default_controller'] 					= 'main';
 $route['404_override'] 							= '';
 $route['translate_uri_dashes'] 					= FALSE;
 
-
 //อัพโหลดรูปภาพ
 $route['ImageUpload'] 							= 'main/Uploadimage';
+
+//สมัครสมาชิก
 $route['InsertAndEditRegister'] 				= 'register/register/RegisterSystems';
+
+//หน้าจอ - จัดการข้อมูล
+$route['Backend'] 								= 'Backend/Backend/index';
 
 //หน้าจอ - ข้อมูลหลัก
 $route['main'] 									= 'main';

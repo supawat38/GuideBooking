@@ -40,13 +40,11 @@ class Information extends CI_Controller {
 		);
 
 		if($tUserType == 1){ //ผู้ดูแลระบบ
-			$this->load->view('header',$aPackData);
 			$this->load->view('Information/View_InformationAdmin',$aPackData);
 		}else if($tUserType == 2){ //ลูกค้า
 			$this->load->view('header',$aPackData);
 			$this->load->view('Information/View_InformationCustomer',$aPackData);
 		}else if($tUserType == 3){ //มัคคุเทศก์
-			$this->load->view('header',$aPackData);
 			$this->load->view('Information/View_InformationGuide',$aPackData);
 		}else{
 			echo 'คุณไม่มีสิทธิ์ใช้งานหน้านี้ กรุณาล็อคอินเข้าระบบใหม่อีกครั้ง';

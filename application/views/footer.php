@@ -87,23 +87,7 @@
 
 		<!-- loader -->
 		<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-		<script src="<?=base_url('application/assets/js/jquery.min.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/jquery-migrate-3.0.1.min.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/popper.min.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/bootstrap.min.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/jquery.easing.1.3.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/jquery.waypoints.min.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/jquery.stellar.min.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/owl.carousel.min.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/jquery.magnific-popup.min.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/jquery.animateNumber.min.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/bootstrap-datepicker.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/scrollax.min.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/main.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/select2.js')?>"></script>
-		<script src="<?=base_url('application/assets/js/sweetalert.js')?>"></script>
-			
+		
 		<!-- popup เข้าสู่ระบบ -->
 		<div class="modal fade" id="ModalLogin" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog">
@@ -132,6 +116,22 @@
 				</div>
 			</div>
 		</div>
+
+		<script src="<?=base_url('application/assets/js/jquery.min.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/jquery-migrate-3.0.1.min.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/popper.min.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/bootstrap.min.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/jquery.easing.1.3.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/jquery.waypoints.min.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/jquery.stellar.min.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/owl.carousel.min.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/jquery.magnific-popup.min.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/jquery.animateNumber.min.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/bootstrap-datepicker.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/scrollax.min.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/main.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/select2.js')?>"></script>
+		<script src="<?=base_url('application/assets/js/sweetalert.js')?>"></script>
 				
 		<script>
 			//ทุกครั้งที่กดที่ input ใน login กล่อง validate ข้อมูลผิดพลาดจะหายไป

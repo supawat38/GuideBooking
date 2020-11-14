@@ -297,7 +297,6 @@
 
 	});
 
-
 	//โหลดหน้าตารางส่วนของ package
 	LoadTable_package(1);
 	function LoadTable_package(numberpage){
@@ -310,7 +309,6 @@
 			cache	: false,
 			timeout	: 0,
 			success	: function (Result) {
-				console.log(Result);
 				$('.ContentPackage').html(Result);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {

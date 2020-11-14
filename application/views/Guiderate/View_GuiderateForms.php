@@ -15,7 +15,7 @@
 <!--ฟอร์มสร้างเรทราคา + แก้ไข-->
 <div class="col-lg-12"><hr></div>
 <form id="formRate" class="form-signin" method="post" action="javascript:void(0)">
-	<div class="col-lg-12" id="divRegisRate" style="margin-top:20px;">
+	<div class="col-lg-12" id="divRegisRate" >
 		<div class="row">
 			<div class="col-lg-8 col-md-8">
 				<div class="form-row">

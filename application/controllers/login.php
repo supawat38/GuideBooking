@@ -30,12 +30,19 @@ class login extends CI_Controller {
 				$name 		= $Result['Items'][0]['Customerfirstname'];
 			}else if($login_type == 3){ //มัคคุเทศก์
 				$name 		= $Result['Items'][0]['Guidefirstname'];
+			}else if($login_type == 0){ //เจ้าของ
+				$name 		= 'เจ้าของระบบ';
 			}
 
-			$this->session->set_userdata("session_username",$Username);	
-			$this->session->set_userdata("session_reftype",$login_type);	
-			$this->session->set_userdata("session_refid",$reflogin_id);
-			$this->session->set_userdata("session_name",$name);	
+			//กรณีที่ login ได้แต่ acount นั้นไม่ใช้งานจะขึ้นว่าไม่พบข้อมูล
+			if($name == '' || $name == null){
+				echo 'notfound';
+			}else{
+				$this->session->set_userdata("session_username",$Username);	
+				$this->session->set_userdata("session_reftype",$login_type);	
+				$this->session->set_userdata("session_refid",$reflogin_id);
+				$this->session->set_userdata("session_name",$name);	
+			}
 		}
 	}
 

@@ -29,6 +29,7 @@
 							}else{
 								$IconClassStatus 	= 'IconStatus_close';
 								$TextClassStatus 	= 'TextStatus_close';
+								$TextStatus 		= 'ไม่ใช้งาน';
 							}
 						?>
 						<td><div class="<?=$IconClassStatus?>"></div><span class="<?=$TextClassStatus?>"><?=$TextStatus?></span></td>

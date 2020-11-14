@@ -28,7 +28,7 @@
 <!--ฟอร์มลงทะเบียนผู้ดูแลระบบ + แก้ไข-->
 <div class="col-lg-12"><hr></div>
 <form id="formAdmin" class="form-signin" method="post" action="javascript:void(0)">
-	<div class="col-lg-12" id="divRegisAdmin" style="margin-top:20px;">
+	<div class="col-lg-12" id="divRegisAdmin">
 		<div class="row">
 			<div class="col-lg-4 col-md-4">
 				<?php 

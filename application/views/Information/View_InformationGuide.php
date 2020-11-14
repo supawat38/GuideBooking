@@ -34,153 +34,149 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 }
 ?>
 
-<section class="ftco-section ftco-no-pb ftco-no-pt" style="background: #FFF;">
-	<div class="container">
-		<form id="formRegis" class="form-signin" method="post" action="javascript:void(0)">
+<form id="formRegis" class="form-signin" method="post" action="javascript:void(0)">
 
-			<!-- กดปุ่มมัคคุเทศก์ เก็บ type ไว้ 1:ผู้ดูแลระบบ , 2:ลงทะเบียนผู้ใช้ทั่วไป , 3:ลงทะเบียนมัคคุเทศก์ -->
-			<input type="hidden" id="ohdTypeRegis" name="ohdTypeRegis" value="3">
+	<!-- กดปุ่มมัคคุเทศก์ เก็บ type ไว้ 1:ผู้ดูแลระบบ , 2:ลงทะเบียนผู้ใช้ทั่วไป , 3:ลงทะเบียนมัคคุเทศก์ -->
+	<input type="hidden" id="ohdTypeRegis" name="ohdTypeRegis" value="3">
 
+	<div class="row">
+		<div class="col-lg-12" style="margin:10px 0px;">
 			<div class="row">
-				<div class="col-lg-12" style="margin:70px 0px;">
-					<div class="row" style="box-shadow: 0px 10px 23px -8px rgba(0, 0, 0, 0.11); padding: 20px;">
-						
-						<!--ปุ่มกด-->
-						<div class="col-lg-12 p-12">
-							<button type="button" class="align-self-stretch btn btn-primary BTNRegis BTNRegisActive">แก้ไขข้อมูลส่วนตัว มัคคุเทศก์</button>
+				
+				<!--ปุ่มกด-->
+				<div class="col-lg-12 p-12">
+					<label class="labelHead" >แก้ไขข้อมูลส่วนตัว มัคคุเทศก์</label>
+				</div>
+
+				<!--เส้นขีดเส้นใต้-->
+				<div class="col-lg-12"><hr></div>
+
+				<!--ฟอร์มลงทะเบียนมัคคุเทศก์-->
+				<div class="col-lg-12" id="divRegisGuide" style="margin-top:0px;">
+					<div class="row">
+						<div class="col-lg-4 col-md-4">
+							<?php 
+								if($PathImage == '' || $PathImage == null){
+									$PathShowImage 		= base_url('/application/assets/images/guide/') . '/NoImage.png';
+									$PathDatabaseImage 	= '';
+								}else{
+									$PathShowImage 		= base_url('/application/assets/images/guide/') . $PathImage;
+									$PathDatabaseImage 	= $PathImage;
+								} ?>
+
+							<img id="ImgInsertGuide" class="img-responsive xCNImgCenter" src="<?=$PathShowImage?>">
+							<input type="hidden" id="hiddenImgInsertGuide" name="hiddenImgInsertGuide" value="<?=$PathDatabaseImage?>">
+							<button type="button" class="btn btn-outline-secondary xCNChooseImage" onclick="UploadImageGuide()">เลือกรูปภาพ</button>
+							<input type="file" id="inputfileuploadImageGuide" style="display:none;"  name="inputfileuploadImageGuide" accept="image/*" onchange="ImageUplodeResize(this,'images/Guide','ImgInsertGuide')">
 						</div>
+						<div class="col-lg-8 col-md-8">
+							<input type="hidden" id="hiddenGuideID" name="hiddenGuideID" value="<?=$ID?>">
+							<input type="hidden" id="hiddenGuidePassword" name="hiddenGuidePassword" value="<?=$Password?>">
 
-						<!--เส้นขีดเส้นใต้-->
-						<div class="col-lg-12"><hr></div>
-
-						<!--ฟอร์มลงทะเบียนมัคคุเทศก์-->
-						<div class="col-lg-12" id="divRegisGuide" style="margin-top:20px;">
-							<div class="row">
-								<div class="col-lg-4 col-md-4">
-									<?php 
-										if($PathImage == '' || $PathImage == null){
-											$PathShowImage 		= base_url('/application/assets/images/guide/') . '/NoImage.png';
-											$PathDatabaseImage 	= '';
-										}else{
-											$PathShowImage 		= base_url('/application/assets/images/guide/') . $PathImage;
-											$PathDatabaseImage 	= $PathImage;
-										} ?>
-
-									<img id="ImgInsertGuide" class="img-responsive xCNImgCenter" src="<?=$PathShowImage?>">
-									<input type="hidden" id="hiddenImgInsertGuide" name="hiddenImgInsertGuide" value="<?=$PathDatabaseImage?>">
-									<button type="button" class="btn btn-outline-secondary xCNChooseImage" onclick="UploadImageGuide()">เลือกรูปภาพ</button>
-									<input type="file" id="inputfileuploadImageGuide" style="display:none;"  name="inputfileuploadImageGuide" accept="image/*" onchange="ImageUplodeResize(this,'images/Guide','ImgInsertGuide')">
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<label><span style="color:red;">*</span> ชื่อ</label>
+									<input type="text" maxlength="50" class="form-control" id="regisGuideFirstname" name="regisGuideFirstname" placeholder="ชื่อ" value="<?=$FirstName?>">
 								</div>
-								<div class="col-lg-8 col-md-8">
-									<input type="hidden" id="hiddenGuideID" name="hiddenGuideID" value="<?=$ID?>">
-									<input type="hidden" id="hiddenGuidePassword" name="hiddenGuidePassword" value="<?=$Password?>">
-
-									<div class="form-row">
-										<div class="form-group col-md-12">
-											<label><span style="color:red;">*</span> ชื่อ</label>
-											<input type="text" maxlength="50" class="form-control" id="regisGuideFirstname" name="regisGuideFirstname" placeholder="ชื่อ" value="<?=$FirstName?>">
-										</div>
-										<div class="form-group col-md-12">
-											<label>นามสกุล</label>
-											<input type="text" maxlength="50" class="form-control" id="regisGuideLastname" name="regisGuideLastname" placeholder="นามสกุล" value="<?=$LastName?>">
-										</div>
-										<div class="form-group col-md-12">
-											<label style="margin-right:10px;">เพศ</label>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="regisGuideGenter" id="radioMaleGuide" value="1" 
-												<?php if ($Gender == 1) {echo "checked='checked'";} ?> >
-												<label class="form-check-label" for="radioMaleGuide">
-													ชาย
-												</label>
-											</div>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="regisGuideGenter" id="radioFemaleGuide" value="2"
-												<?php if ($Gender == 2) {echo "checked='checked'";} ?> >
-												<label class="form-check-label" for="radioFemaleGuide">
-													หญิง
-												</label>
-											</div>
-										</div>
-										<div class="form-group col-md-12">
-											<label>วันเกิด</label>
-											<input type="text" class="form-control birthdaypicker" id="regisGuideBirthday" name="regisGuideBirthday" value="<?=$Birthdate?>" placeholder="<?=date('d/m/Y');?>">
-										</div>
-										<div class="form-group col-md-12">
-											<label>อีเมลล์</label>
-											<input type="text" maxlength="50" class="form-control" id="regisGuideEmail" name="regisGuideEmail"  placeholder="อีเมลล์" value='<?=$Email?>'>
-										</div>
-										<div class="form-group col-md-12">
-											<label><span style="color:red;">*</span> รหัสประจำตัวบัตรประชาชน</label>
-											<input type="text" maxlength="20" class="form-control xCNInputNumericWithoutDecimal" id="regisGuideCredit" name="regisGuideCredit"  placeholder="รหัสประจำตัวบัตรประชาชน" value='<?=$Credit?>'>
-										</div>
-										<div class="form-group col-md-12">
-											<label><span style="color:red;">*</span> เลขที่ใบอนุญาต</label>
-											<input type="text" maxlength="50" class="form-control xCNInputNumericWithoutDecimal" id="regisGuideLicense" name="regisGuideLicense"  placeholder="เลขที่ใบอนุญาต" value='<?=$License?>'>
-										</div>
-										<div class="form-group col-md-12">
-											<label><span style="color:red;">*</span> เบอร์โทร</label>
-											<input type="text" maxlength="20" class="form-control xCNInputNumericWithoutDecimal" id="regisGuideTelephone" name="regisGuideTelephone" placeholder="เบอร์โทร" value='<?=$Phone?>'>
-										</div>
-										<div class="form-group col-md-12">
-											<label><span style="color:red;">*</span> จังหวัด</label>	
-											<select class="jSelectedsingle form-control" name="regisGuideProvince">
-												<?php if($dataprovince['rtCode'] != 800){ ?>
-													<?php foreach($dataprovince['Items'] AS $Key => $Value){ ?>
-														<option <?php if($Province == $Value['province_id']) {echo "selected='selected'";} ?>  value="<?= $Value['province_id'] ?>"><?= $Value['province_name'] ?></option>
-													<?php } ?>
-												<?php }else{ ?>
-													<option value="0">ไม่พบข้อมูล</option>
-												<?php } ?>
-											</select>
-										</div>
-										<div class="form-group col-md-12">
-											<label><span style="color:red;">*</span> จังหวัดให้บริการ (สามารถเลือกได้มากกว่า 1 ข้อ)</label>	
-											<select class="jSelectedmultiple form-control" name="regisGuideArea[]" id="regisGuideArea" multiple="multiple">
-												<?php if($dataprovince['rtCode'] != 800){ ?>
-													<?php foreach($dataprovince['Items'] AS $Key => $Value){ ?>
-														<option value="<?= $Value['province_id'] ?>"><?= $Value['province_name'] ?></option>
-													<?php } ?>
-												<?php }else{ ?>
-													<option value="0">ไม่พบข้อมูล</option>
-												<?php } ?>
-											</select>
-										</div>
-										<div class="form-group col-md-12">
-											<label>รหัสไปรษณีย์</label>
-											<input type="text" maxlength="6" class="form-control xCNInputNumericWithoutDecimal" id="regisGuidePostCode" name="regisGuidePostCode" placeholder="รหัสไปรษณีย์" value='<?=$Postcode?>'>
-										</div>
-										<div class="form-group col-md-12">
-											<label>ที่อยู่</label>	
-											<textarea maxlength="255" id="regisGuideAddress" name="regisGuideAddress" cols="30" rows="3" class="form-control" placeholder="ที่อยู่"><?=$Address?></textarea>
-										</div>
-										<div class="form-group col-md-12">
-											<label>คำอธิบายเพิ่มเติมเกี่ยวกับตัวเอง</label>	
-											<textarea maxlength="255" id="regisGuideAbout" name="regisGuideAbout" cols="30" rows="3" class="form-control" placeholder="คำอธิบายเพิ่มเติมเกี่ยวกับตัวเอง"><?=$Profile?></textarea>
-										</div>
-										<div class="form-group col-md-12">
-											<label><span style="color:red;">*</span> ชื่อเข้าใช้งาน</label>
-											<input type="text" maxlength="50" class="form-control" id="regisGuideLoginID" name="regisGuideLoginID" placeholder="ชื่อเข้าใช้งาน" value='<?=$Username?>'>
-										</div>
-										<div class="form-group col-md-12">
-											<label><span style="color:red;">*</span> รหัสผ่าน</label>
-											<input type="password" maxlength="50" class="form-control" id="regisGuidePassword" name="regisGuidePassword" placeholder="รหัสผ่าน" value='<?=$Password?>'>
-										</div>
-										<div class="form-group col-md-12">
-											<button type="button" class="align-self-stretch btn btn-primary BTNConfirmRegis" onclick="UpdateInformationGuide()">แก้ไขข้อมูล</button>
-										</div>
+								<div class="form-group col-md-12">
+									<label>นามสกุล</label>
+									<input type="text" maxlength="50" class="form-control" id="regisGuideLastname" name="regisGuideLastname" placeholder="นามสกุล" value="<?=$LastName?>">
+								</div>
+								<div class="form-group col-md-12">
+									<label style="margin-right:10px;">เพศ</label>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="regisGuideGenter" id="radioMaleGuide" value="1" 
+										<?php if ($Gender == 1) {echo "checked='checked'";} ?> >
+										<label class="form-check-label" for="radioMaleGuide">
+											ชาย
+										</label>
 									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="regisGuideGenter" id="radioFemaleGuide" value="2"
+										<?php if ($Gender == 2) {echo "checked='checked'";} ?> >
+										<label class="form-check-label" for="radioFemaleGuide">
+											หญิง
+										</label>
+									</div>
+								</div>
+								<div class="form-group col-md-12">
+									<label>วันเกิด</label>
+									<input type="text" class="form-control birthdaypicker" id="regisGuideBirthday" name="regisGuideBirthday" value="<?=$Birthdate?>" placeholder="<?=date('d/m/Y');?>">
+								</div>
+								<div class="form-group col-md-12">
+									<label>อีเมลล์</label>
+									<input type="text" maxlength="50" class="form-control" id="regisGuideEmail" name="regisGuideEmail"  placeholder="อีเมลล์" value='<?=$Email?>'>
+								</div>
+								<div class="form-group col-md-12">
+									<label><span style="color:red;">*</span> รหัสประจำตัวบัตรประชาชน</label>
+									<input type="text" maxlength="20" class="form-control xCNInputNumericWithoutDecimal" id="regisGuideCredit" name="regisGuideCredit"  placeholder="รหัสประจำตัวบัตรประชาชน" value='<?=$Credit?>'>
+								</div>
+								<div class="form-group col-md-12">
+									<label><span style="color:red;">*</span> เลขที่ใบอนุญาต</label>
+									<input type="text" maxlength="50" class="form-control xCNInputNumericWithoutDecimal" id="regisGuideLicense" name="regisGuideLicense"  placeholder="เลขที่ใบอนุญาต" value='<?=$License?>'>
+								</div>
+								<div class="form-group col-md-12">
+									<label><span style="color:red;">*</span> เบอร์โทร</label>
+									<input type="text" maxlength="20" class="form-control xCNInputNumericWithoutDecimal" id="regisGuideTelephone" name="regisGuideTelephone" placeholder="เบอร์โทร" value='<?=$Phone?>'>
+								</div>
+								<div class="form-group col-md-12">
+									<label><span style="color:red;">*</span> จังหวัด</label>	
+									<select class="jSelectedsingle form-control" name="regisGuideProvince">
+										<?php if($dataprovince['rtCode'] != 800){ ?>
+											<?php foreach($dataprovince['Items'] AS $Key => $Value){ ?>
+												<option <?php if($Province == $Value['province_id']) {echo "selected='selected'";} ?>  value="<?= $Value['province_id'] ?>"><?= $Value['province_name'] ?></option>
+											<?php } ?>
+										<?php }else{ ?>
+											<option value="0">ไม่พบข้อมูล</option>
+										<?php } ?>
+									</select>
+								</div>
+								<div class="form-group col-md-12">
+									<label><span style="color:red;">*</span> จังหวัดให้บริการ (สามารถเลือกได้มากกว่า 1 ข้อ)</label>	
+									<select class="jSelectedmultiple form-control" name="regisGuideArea[]" id="regisGuideArea" multiple="multiple">
+										<?php if($dataprovince['rtCode'] != 800){ ?>
+											<?php foreach($dataprovince['Items'] AS $Key => $Value){ ?>
+												<option value="<?= $Value['province_id'] ?>"><?= $Value['province_name'] ?></option>
+											<?php } ?>
+										<?php }else{ ?>
+											<option value="0">ไม่พบข้อมูล</option>
+										<?php } ?>
+									</select>
+								</div>
+								<div class="form-group col-md-12">
+									<label>รหัสไปรษณีย์</label>
+									<input type="text" maxlength="6" class="form-control xCNInputNumericWithoutDecimal" id="regisGuidePostCode" name="regisGuidePostCode" placeholder="รหัสไปรษณีย์" value='<?=$Postcode?>'>
+								</div>
+								<div class="form-group col-md-12">
+									<label>ที่อยู่</label>	
+									<textarea maxlength="255" id="regisGuideAddress" name="regisGuideAddress" cols="30" rows="3" class="form-control" placeholder="ที่อยู่"><?=$Address?></textarea>
+								</div>
+								<div class="form-group col-md-12">
+									<label>คำอธิบายเพิ่มเติมเกี่ยวกับตัวเอง</label>	
+									<textarea maxlength="255" id="regisGuideAbout" name="regisGuideAbout" cols="30" rows="3" class="form-control" placeholder="คำอธิบายเพิ่มเติมเกี่ยวกับตัวเอง"><?=$Profile?></textarea>
+								</div>
+								<div class="form-group col-md-12">
+									<label><span style="color:red;">*</span> ชื่อเข้าใช้งาน</label>
+									<input type="text" maxlength="50" class="form-control" id="regisGuideLoginID" name="regisGuideLoginID" placeholder="ชื่อเข้าใช้งาน" value='<?=$Username?>'>
+								</div>
+								<div class="form-group col-md-12">
+									<label><span style="color:red;">*</span> รหัสผ่าน</label>
+									<input type="password" maxlength="50" class="form-control" id="regisGuidePassword" name="regisGuidePassword" placeholder="รหัสผ่าน" value='<?=$Password?>'>
+								</div>
+								<div class="form-group col-md-12">
+									<button type="button" class="align-self-stretch btn btn-primary BTNConfirmRegis" onclick="UpdateInformationGuide()">แก้ไขข้อมูล</button>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</form>
+		</div>
 	</div>
-</section>
+</form>
 
 <!--โหลดไฟล์ footer พวก script-->
-<?php include __DIR__ . '/../footer.php';?>
+<?php include __DIR__ . '/../script.php';?>
 
 <!--Validate ทำให้ input กรอกได้เเต่ตัวเลข , ตัวอักษร-->
 <script src="<?= base_url('application/assets/js/FormValidate.js')?>"></script>
