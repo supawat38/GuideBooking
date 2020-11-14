@@ -22,7 +22,7 @@
 									$TextStatusUse = '- ใช้งาน';
 								}
 							?>
-							<span class="price labelHead">คุณ<?=$Value['firstname']?> <?= ($Value['guide_phone'] == '') ? '' : '('.$Value['guide_phone'].')'?> <?=$TextStatusUse?></span>
+							<span class="price labelHead">คุณ<?=$Value['firstname']?> <?= ($Value['guide_phone'] == '') ? '' : '('.$Value['guide_phone'].')'?></span>
 						</div>
 						<div class="text p-4">
 							<?php 
