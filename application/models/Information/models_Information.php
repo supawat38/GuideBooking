@@ -134,6 +134,7 @@ class models_Information extends CI_Model {
 		$this->db->set('guide_image', $Result['guide_image']);
 		$this->db->set('intro_profile', $Result['intro_profile']);
 		$this->db->set('guide_status', $Result['guide_status']);
+		$this->db->set('guide_qustions', $Result['guide_qustions']);
 		$this->db->where('guide_id',$Result['ID']);
 		$this->db->update('guide');
 

@@ -17,10 +17,11 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 		$Email 		= $dataUser['Items'][0]['guide_email'];
 		$Phone 		= $dataUser['Items'][0]['guide_phone'];
 		$Profile 	= $dataUser['Items'][0]['intro_profile'];
-		$Qustions	= '';
-		$Status     = $dataUser['Items'][0]['guide_status'];
-		$Username   = $dataUser['Items'][0]['username'];
-		$Password   = $dataUser['Items'][0]['password'];
+		$TextQuestion	= $dataUser['Items'][0]['guide_qustions'];
+		$Status     	= $dataUser['Items'][0]['guide_status'];
+		$Username   	= $dataUser['Items'][0]['username'];
+		$Password   	= $dataUser['Items'][0]['password'];
+
 		$TextArea	= '';
 		for($i=0; $i<count($dataUser['Items']); $i++){
 			$TextArea .= $dataUser['Items'][$i]['province_id'] . ',';
@@ -132,8 +133,12 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 									</select>
 								</div>
 								<div class="form-group col-md-12">
+									<label>รหัสไปรษณีย์</label>
+									<input type="text" maxlength="6" class="form-control xCNInputNumericWithoutDecimal" id="regisGuidePostCode" name="regisGuidePostCode" placeholder="รหัสไปรษณีย์" value='<?=$Postcode?>'>
+								</div>
+								<div class="form-group col-md-12">
 									<label><span style="color:red;">*</span> จังหวัดให้บริการ (สามารถเลือกได้มากกว่า 1 ข้อ)</label>	
-									<select class="jSelectedmultiple form-control" name="regisGuideArea[]" id="regisGuideArea" multiple="multiple">
+									<select class="jSelectedmultiple jProvince form-control" name="regisGuideArea[]" id="regisGuideArea" multiple="multiple">
 										<?php if($dataprovince['rtCode'] != 800){ ?>
 											<?php foreach($dataprovince['Items'] AS $Key => $Value){ ?>
 												<option value="<?= $Value['province_id'] ?>"><?= $Value['province_name'] ?></option>
@@ -144,8 +149,30 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 									</select>
 								</div>
 								<div class="form-group col-md-12">
-									<label>รหัสไปรษณีย์</label>
-									<input type="text" maxlength="6" class="form-control xCNInputNumericWithoutDecimal" id="regisGuidePostCode" name="regisGuidePostCode" placeholder="รหัสไปรษณีย์" value='<?=$Postcode?>'>
+									<label>สิ่งที่คุณสนใจ (สามารถเลือกได้มากกว่า 1 ข้อ)</label>	
+									<select class="jSelectedmultiple jQuestion form-control" name="regisGuideQuestion[]" multiple="multiple">
+										<option value="ภูเขา">ภูเขา</option>
+										<option value="ทะเล">ทะเล</option>
+										<option value="แม่น้ำ">แม่น้ำ</option>
+										<option value="วัด">วัด</option>
+										<option value="ช็อปปิ้ง">ช็อปปิ้ง</option>
+										<option value="ห้างสรรพสินค้า">ห้างสรรพสินค้า</option>
+										<option value="ทะเลหมอก">ทะเลหมอก</option>
+										<option value="อันดามัน">อันดามัน</option>
+										<option value="ปืนเขา">ปืนเขา</option>
+										<option value="น้ำตก">น้ำตก</option>
+										<option value="ธรรมชาติ">ธรรมชาติ</option>
+										<option value="ประวัติศาสตร์">ประวัติศาสตร์</option>
+										<option value="ศิลปะวิทยาการ">ศิลปะวิทยาการ</option>
+										<option value="เชิงนิเวศ">เชิงนิเวศ</option>
+										<option value="ธรรมชาติ">ธรรมชาติ</option>
+										<option value="วัฒนธรรม">วัฒนธรรม</option>
+										<option value="น้ำพุร้อน">น้ำพุร้อน</option>
+										<option value="ถ้ำ">ถ้ำ</option>
+										<option value="เกาะ">เกาะ</option>
+										<option value="แก่ง">แก่ง</option>
+										<option value="สวนสัตว์">สวนสัตว์</option>
+									</select>
 								</div>
 								<div class="form-group col-md-12">
 									<label>ที่อยู่</label>	
@@ -191,11 +218,18 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 		$(".jSelectedsingle").select2();
 		$(".jSelectedsingle").select2({ width: '100%' , dropdownCssClass: "FontSelect2"});  
 
-		//split คำถาม
+		//split จังหวัดที่ให้บริการ
 		var TextArea 		= '<?=$TextArea?>';
 		if(TextArea != '' || TextArea != null){
 			var arrayTextArea 	= TextArea.split(",");
-			$(".jSelectedmultiple").val(arrayTextArea).change();
+			$(".jProvince").val(arrayTextArea).change();
+		}
+
+		//split คำถาม
+		var TextQuestion 		= '<?=$TextQuestion?>';
+		if(TextQuestion != '' || TextQuestion != null){
+			var arrayTextQuestion 	= TextQuestion.split(",");
+			$(".jQuestion").val(arrayTextQuestion).change();
 		}
 	});
 
@@ -310,7 +344,6 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 			url 			: "UpdateInformationGuide",
 			data 			: $('#formRegis').serialize(),
 			success			: function (Result){
-				console.log(Result);
 				if(Result == 'duplicate'){
 					//ชื่อเข้าใช้งานซ้ำ
 					Swal.fire({

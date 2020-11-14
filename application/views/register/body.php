@@ -179,6 +179,10 @@
 											</select>
 										</div>
 										<div class="form-group col-md-12">
+											<label>รหัสไปรษณีย์</label>
+											<input type="text" maxlength="6" class="form-control xCNInputNumericWithoutDecimal" id="regisGuidePostCode" name="regisGuidePostCode" placeholder="รหัสไปรษณีย์">
+										</div>
+										<div class="form-group col-md-12">
 											<label><span style="color:red;">*</span> จังหวัดให้บริการ (สามารถเลือกได้มากกว่า 1 ข้อ)</label>	
 											<select class="jSelectedmultiple form-control" name="regisGuideArea[]" id="regisGuideArea" multiple="multiple">
 												<?php if($dataprovince['rtCode'] != 800){ ?>
@@ -191,8 +195,30 @@
 											</select>
 										</div>
 										<div class="form-group col-md-12">
-											<label>รหัสไปรษณีย์</label>
-											<input type="text" maxlength="6" class="form-control xCNInputNumericWithoutDecimal" id="regisGuidePostCode" name="regisGuidePostCode" placeholder="รหัสไปรษณีย์">
+											<label>สิ่งที่คุณสนใจ (สามารถเลือกได้มากกว่า 1 ข้อ)</label>	
+											<select class="jSelectedmultiple form-control" name="regisGuideQuestion[]" multiple="multiple">
+												<option value="ภูเขา">ภูเขา</option>
+												<option value="ทะเล">ทะเล</option>
+												<option value="แม่น้ำ">แม่น้ำ</option>
+												<option value="วัด">วัด</option>
+												<option value="ช็อปปิ้ง">ช็อปปิ้ง</option>
+												<option value="ห้างสรรพสินค้า">ห้างสรรพสินค้า</option>
+												<option value="ทะเลหมอก">ทะเลหมอก</option>
+												<option value="อันดามัน">อันดามัน</option>
+												<option value="ปืนเขา">ปืนเขา</option>
+												<option value="น้ำตก">น้ำตก</option>
+												<option value="ธรรมชาติ">ธรรมชาติ</option>
+												<option value="ประวัติศาสตร์">ประวัติศาสตร์</option>
+												<option value="ศิลปะวิทยาการ">ศิลปะวิทยาการ</option>
+												<option value="เชิงนิเวศ">เชิงนิเวศ</option>
+												<option value="ธรรมชาติ">ธรรมชาติ</option>
+												<option value="วัฒนธรรม">วัฒนธรรม</option>
+												<option value="น้ำพุร้อน">น้ำพุร้อน</option>
+												<option value="ถ้ำ">ถ้ำ</option>
+												<option value="เกาะ">เกาะ</option>
+												<option value="แก่ง">แก่ง</option>
+												<option value="สวนสัตว์">สวนสัตว์</option>
+											</select>
 										</div>
 										<div class="form-group col-md-12">
 											<label>ที่อยู่</label>	

@@ -43,46 +43,49 @@
 		</tbody>
 	</table>
 </div>
-<div class="col-md-6">
-	<label class="labelContent">พบข้อมูลทั้งหมด <?=$result['CountItemAll']?> รายการ แสดงหน้า <?=$result['CurrentPage']?> / <?=$result['EndPage']?></label>
-</div>
-<div class="col-md-6">
-	<nav>
-		<ul class="xCNPagenation pagination justify-content-end">
-			<!--ปุ่มย้อนกลับ-->
-			<?php if($result['CurrentPage'] == 1){ $DisabledLeft = 'disabled'; }else{ $DisabledLeft = '-';} ?>
-			<li class="page-item <?=$DisabledLeft;?>">
-				<a class="page-link" aria-label="Previous" onclick="ClickPagerate('Fisrt')"><span aria-hidden="true">&laquo;</span></a>
-			</li>
-			<li class="page-item <?=$DisabledLeft;?>">
-				<a class="page-link" aria-label="Previous" onclick="ClickPagerate('previous')"><span aria-hidden="true">&lsaquo;</span></a>
-			</li>
 
-			<!--ปุ่มจำนวนหน้า-->
-			<?php for($i=max($result['CurrentPage']-2, 1); $i<=max(0, min($result['EndPage'],$result['CurrentPage']+2)); $i++){?>
-				<?php 
-					if($result['CurrentPage'] == $i){ 
-						$Active 		= 'active'; 
-						$DisPageNumber  = 'disabled';
-					}else{ 
-						$Active 		= '';
-						$DisPageNumber  = '';
-					}
-				?>
-				<li class="page-item <?=$Active;?> " onclick="ClickPagerate('<?=$i?>')"><a class="page-link"><?=$i?></a></li>
-			<?php } ?>
+<?php if(!empty($result['Items'])){ ?>
+	<div class="col-md-6">
+		<label class="labelContent">พบข้อมูลทั้งหมด <?=$result['CountItemAll']?> รายการ แสดงหน้า <?=$result['CurrentPage']?> / <?=$result['EndPage']?></label>
+	</div>
+	<div class="col-md-6">
+		<nav>
+			<ul class="xCNPagenation pagination justify-content-end">
+				<!--ปุ่มย้อนกลับ-->
+				<?php if($result['CurrentPage'] == 1){ $DisabledLeft = 'disabled'; }else{ $DisabledLeft = '-';} ?>
+				<li class="page-item <?=$DisabledLeft;?>">
+					<a class="page-link" aria-label="Previous" onclick="ClickPagerate('Fisrt')"><span aria-hidden="true">&laquo;</span></a>
+				</li>
+				<li class="page-item <?=$DisabledLeft;?>">
+					<a class="page-link" aria-label="Previous" onclick="ClickPagerate('previous')"><span aria-hidden="true">&lsaquo;</span></a>
+				</li>
 
-			<!--ปุ่มไปต่อ-->
-			<?php if($result['CurrentPage'] >= $result['EndPage']){ $DisabledRight = 'disabled'; }else{ $DisabledRight = '-'; } ?>
-			<li class="page-item <?=$DisabledRight?>">
-				<a class="page-link" aria-label="Next" onclick="ClickPagerate('next')"><span aria-hidden="true">&rsaquo;</span></a>
-			</li>
-			<li class="page-item <?=$DisabledRight?>">
-				<a class="page-link" aria-label="Next" onclick="ClickPagerate('Last')"><span aria-hidden="true">&raquo;</span></a>
-			</li>
-		</ul>
-	</nav>
-</div>
+				<!--ปุ่มจำนวนหน้า-->
+				<?php for($i=max($result['CurrentPage']-2, 1); $i<=max(0, min($result['EndPage'],$result['CurrentPage']+2)); $i++){?>
+					<?php 
+						if($result['CurrentPage'] == $i){ 
+							$Active 		= 'active'; 
+							$DisPageNumber  = 'disabled';
+						}else{ 
+							$Active 		= '';
+							$DisPageNumber  = '';
+						}
+					?>
+					<li class="page-item <?=$Active;?> " onclick="ClickPagerate('<?=$i?>')"><a class="page-link"><?=$i?></a></li>
+				<?php } ?>
+
+				<!--ปุ่มไปต่อ-->
+				<?php if($result['CurrentPage'] >= $result['EndPage']){ $DisabledRight = 'disabled'; }else{ $DisabledRight = '-'; } ?>
+				<li class="page-item <?=$DisabledRight?>">
+					<a class="page-link" aria-label="Next" onclick="ClickPagerate('next')"><span aria-hidden="true">&rsaquo;</span></a>
+				</li>
+				<li class="page-item <?=$DisabledRight?>">
+					<a class="page-link" aria-label="Next" onclick="ClickPagerate('Last')"><span aria-hidden="true">&raquo;</span></a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+<?php } ?>
 
 <script>
 

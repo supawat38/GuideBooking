@@ -103,6 +103,20 @@ class register extends CI_Controller {
 				exit;
 			}
 
+			//คำถามส่งมารูปแบบ array ต้องแปลงเป็น Text
+			$Question 		= $this->input->post('regisGuideQuestion');
+			$TextQuestion 	= '';
+			if(count($Question) > 0){
+				for($i=0; $i<count($Question); $i++){
+					$TextQuestion .= $Question[$i].',';
+
+					//ถ้าวนลูปจนถึงตัวสุดท้ายเเล้ว ให้ ลบ , ตัวสุดท้ายออก
+					if($i == count($Question)-1){
+						$TextQuestion = substr($TextQuestion,0,-1);
+					}
+				}
+			}
+
 			//เตรียมข้อมูลลงตาราง guide	 
 			$InsertGuide = array(
 				'firstname' 	=> $this->input->post('regisGuideFirstname'), 
@@ -118,6 +132,7 @@ class register extends CI_Controller {
 				'guide_email' 	=> $this->input->post('regisGuideEmail'), 
 				'guide_image' 	=> $this->input->post('hiddenImgInsertGuide'), 
 				'intro_profile' => $this->input->post('regisGuideAbout'), 
+				'guide_qustions'=> $TextQuestion, 
 				'guide_gp' 		=> 0, 
 				'guide_ranking' => 0, 
 				'guide_status' 	=> 1, 
@@ -126,7 +141,7 @@ class register extends CI_Controller {
 			//เพิ่มข้อมูลลงตาราง guide
 			$this->models_register->InsertCustomerOrGuideOrAdmin($InsertGuide,'guide');
 
-			//ดึงรหัสมัคคุเทศน์ล่าสุดที่พึ่งเพิ่มเข้าไป 
+			//ดึงรหัสมัคคุเทศก์ล่าสุดที่พึ่งเพิ่มเข้าไป 
 			$resultGuideID = $this->models_register->selectGuideIDLast();
 			if($resultGuideID['Code'] == '800' ){
 				$GuideID = 0;
@@ -134,7 +149,7 @@ class register extends CI_Controller {
 				$GuideID = $resultGuideID['Items'][0]['guide_id'];
 			}
 
-			//เพิ่มจังหวัดที่มัคคุเทศน์ให้บริการ
+			//เพิ่มจังหวัดที่มัคคุเทศก์ให้บริการ
 			$area = $this->input->post('regisGuideArea');
 			if(count($area) > 0){
 				for($i=0; $i<count($area); $i++){

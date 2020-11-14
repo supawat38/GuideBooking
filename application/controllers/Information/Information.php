@@ -145,6 +145,20 @@ class Information extends CI_Controller {
 			exit;
 		}
 
+		//คำถามส่งมารูปแบบ array ต้องแปลงเป็น Text
+		$Question 		= $this->input->post('regisGuideQuestion');
+		$TextQuestion 	= '';
+		if(count($Question) > 0){
+			for($i=0; $i<count($Question); $i++){
+				$TextQuestion .= $Question[$i].',';
+
+				//ถ้าวนลูปจนถึงตัวสุดท้ายเเล้ว ให้ ลบ , ตัวสุดท้ายออก
+				if($i == count($Question)-1){
+					$TextQuestion = substr($TextQuestion,0,-1);
+				}
+			}
+		}
+
 		//เตรียมข้อมูลลงตาราง guide	 
 		$UpdateGuide = array(
 			'login_type'	=> 3,
@@ -165,6 +179,7 @@ class Information extends CI_Controller {
 			'guide_email' 	=> $this->input->post('regisGuideEmail'), 
 			'guide_image' 	=> $this->input->post('hiddenImgInsertGuide'), 
 			'intro_profile' => $this->input->post('regisGuideAbout'), 
+			'guide_qustions'=> $TextQuestion, 
 			'guide_status' 	=> 1, 
 			'status_delete' => 0
 		);
