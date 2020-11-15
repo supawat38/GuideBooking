@@ -29,7 +29,7 @@
 	</div>
 </section>
 
-<!--โหลดไฟล์ footer พวก script-->
+<!--โหลดไฟล์ script หน้า package-->
 <?php include __DIR__ . '/../footer.php';?>
 
 <script>

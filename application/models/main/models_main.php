@@ -11,14 +11,13 @@ class models_main extends CI_Model {
 			$offset 	= ($page - 1) * $row_count ;
 
 			//จำนวนข้อมูล
-			$SQL 			= "SELECT COUNT(*) AS NumAll FROM package";
+			$SQL 			= "SELECT COUNT(*) AS NumAll FROM package WHERE package.package_status = '1'";
 			$QueryCount 	= $this->db->query($SQL);
 
 			//ข้อมูลเรียงลำดับจากล่าสุดไปน้อยสุด
 			$SQL 			= "SELECT package.* , guide.* FROM package INNER JOIN guide ON package.guide_id = guide.guide_id  WHERE package.package_status = '1' ORDER BY package.package_id DESC 
 							   LIMIT $row_count OFFSET $offset ";
 			$QueryItem 		= $this->db->query($SQL);
-			
 
 			if($QueryItem->num_rows() > 0){
 				$CountItemAll 	= $QueryCount->result_array()[0]['NumAll'];

@@ -6,9 +6,9 @@ $('document').ready(function(){
 		eventStartEditable	: false,
 			dayClick						: function (date,jsEvent,view) { },
 			header							: {
-					left						: 'prev,next today',
+					left					: 'prev,next today',
 					center					: 'title',
-					right						: 'month,basicWeek'
+					right					: 'month'
 			},
 			defaultDate		: '<?= date('Y-m-d')?>',
 			navLinks		: false, 

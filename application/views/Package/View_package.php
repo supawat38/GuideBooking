@@ -25,8 +25,8 @@
 	</div>
 </div>
 
-<!--โหลดไฟล์ footer พวก script-->
-<?php include __DIR__ . '/../script.php';?>
+<!--โหลดไฟล์ script หน้า information-->
+<?php include_once __DIR__ . '/../script.php';?>
 
 <script>
 	//โหลดหน้าตาราง

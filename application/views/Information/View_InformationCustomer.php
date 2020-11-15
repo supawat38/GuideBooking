@@ -156,7 +156,7 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 	</div>
 </section>
 
-<!--โหลดไฟล์ footer พวก script-->
+<!--โหลดไฟล์ script หน้า customer-->
 <?php include __DIR__ . '/../footer.php';?>
 
 <!--Validate ทำให้ input กรอกได้เเต่ตัวเลข , ตัวอักษร-->

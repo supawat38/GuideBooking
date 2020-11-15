@@ -27,7 +27,7 @@
 </div>
 
 <!--โหลดไฟล์ script-->
-<?php include __DIR__ . '/../script.php';?>
+<?php include_once __DIR__ . '/../script.php';?>
 
 <script>
 

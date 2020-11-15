@@ -202,9 +202,6 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 	</div>
 </form>
 
-<!--โหลดไฟล์ footer พวก script-->
-<?php include __DIR__ . '/../script.php';?>
-
 <!--Validate ทำให้ input กรอกได้เเต่ตัวเลข , ตัวอักษร-->
 <script src="<?= base_url('application/assets/js/FormValidate.js')?>"></script>
 

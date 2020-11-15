@@ -274,7 +274,7 @@
 	</div>
 </section>
 
-<!--โหลดไฟล์ footer พวก script-->
+<!--โหลดไฟล์ script หน้า body-->
 <?php include __DIR__ . '/../footer.php';?>
 
 <script>

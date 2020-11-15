@@ -250,8 +250,8 @@
 	</div>
 </section>
 
-<!--โหลดไฟล์ footer พวก script-->
-<?php include __DIR__ . '/../footer.php';?>
+<!--โหลดไฟล์ script หน้า register-->
+<?php include_once __DIR__ . '/../footer.php';?>
 
 <!--Validate ทำให้ input กรอกได้เเต่ตัวเลข , ตัวอักษร-->
 <script src="<?= base_url('application/assets/js/FormValidate.js')?>"></script>
