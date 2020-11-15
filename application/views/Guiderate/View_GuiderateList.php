@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-lg-12" style="margin:10px 0px;">
 		<div class="row">
-			<div class="col-lg-12 col-12 ButtonControlPageList" style="display:block;">
+			<div class="col-lg-12 col-12 ButtonControlPageListrate" style="display:block;">
 				<div class="row">
 					<div class="col-lg-6 col-6">
 						<label class="labelHead" >กำหนดราคา</label>
@@ -11,7 +11,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-12 col-12 ButtonControlPageAdd" style="display:none;">
+			<div class="col-lg-12 col-12 ButtonControlPageAddrate" style="display:none;">
 				<div class="row">
 					<div class="col-lg-6 col-6">
 						<label class="labelHead textActiveMenuBar" onClick="Back_rate()">กำหนดราคา</label> <label class="labelHead label_rateHead"></label>
@@ -33,8 +33,8 @@
 	//โหลดหน้าตาราง
 	LoadTable_rate(1);
 	function LoadTable_rate(numberpage){
-		$('.ButtonControlPageList').show();
-		$('.ButtonControlPageAdd').hide();
+		$('.ButtonControlPageListrate').show();
+		$('.ButtonControlPageAddrate').hide();
 		$.ajax({
 			type	: "POST",
 			url		: "Loadtable_rate",
@@ -54,8 +54,8 @@
 
 	//เพิ่มข้อมูลผู้ดูแลระบบ
 	function Page_rate(typepage,id){
-		$('.ButtonControlPageList').hide();
-		$('.ButtonControlPageAdd').show();
+		$('.ButtonControlPageListrate').hide();
+		$('.ButtonControlPageAddrate').show();
 
 		if(typepage == 'pageinsert'){
 			$('.label_rateHead').text(' / เพิ่มข้อมูล');
