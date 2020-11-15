@@ -72,7 +72,7 @@
 									<a class="nav-link FontMenu" id="GuidePackage-tab" data-toggle="tab" href="#GuidePackage" role="tab" aria-controls="GuidePackage" aria-selected="false">แพ็กเกจ</a>
 								</li>
 								<li class="nav-item" >
-									<a class="nav-link FontMenu" id="GuideCalenda-tabr " data-toggle="tab" href="#GuideCalendar" role="tab" aria-controls="GuideCalendar" aria-selected="false" onclick="LoadGuideCalendar()">ตารางงาน</a>
+									<a class="nav-link FontMenu" id="GuideCalenda-tabr " data-toggle="tab" href="#GuideCalendar" role="tab" aria-controls="GuideCalendar" aria-selected="false">ตารางงาน</a>
 								</li>
 							<?php }else{ //เจ้าของระบบ ?>
 								<li class="nav-item" >
@@ -103,7 +103,7 @@
 								<div class="tab-pane fade" id="GuideRate" role="tabpanel" aria-labelledby="GuideRate-tab"><?php $this->load->view("/Guiderate/View_GuiderateList.php"); ?></div>
 								<div class="tab-pane fade" id="GuideBooking" role="tabpanel" aria-labelledby="GuideBooking-tab">-</div>
 								<div class="tab-pane fade" id="GuidePackage" role="tabpanel" aria-labelledby="GuidePackage-tab"><?php $this->load->view("/Package/View_package.php"); ?></div>
-								<div class="tab-pane fade" id="GuideCalendar" role="tabpanel" aria-labelledby="GuideCalendar-tab">-</div>
+								<div class="tab-pane fade" id="GuideCalendar" role="tabpanel" aria-labelledby="GuideCalendar-tab"><?php $this->load->view("/Calendar/View_Calendar.php"); ?></div>
 							<?php }else{ //เจ้าของระบบ ?>
 								<div class="tab-pane fade show active" id="OwnerManageAdmin" role="tabpanel" aria-labelledby="OwnerManageAdmin-tab"><?php $this->load->view("/ManageAdmin/View_AdminList.php"); ?></div>
 								<div class="tab-pane fade" id="OwnerReport1" role="tabpanel" aria-labelledby="OwnerReport1-tab">รายงานมัคคุเทศก์ยอดนิยม</div>
@@ -117,24 +117,5 @@
 	</div>
 </section>
 
-<script>
-	//โหลดหน้าจอตารางงานมัคคุเทศก์
-	function LoadGuideCalendar(){
-		$.ajax({
-			type	: "POST",
-			url		: "LoadCalendar",
-			cache	: false,
-			timeout	: 0,
-			success	: function (Result) {
-				$('#GuideCalendar').html(Result);
-			},
-			error: function (jqXHR, textStatus, errorThrown) {
-				alert(jqXHR, textStatus, errorThrown);
-			}
-		});
-	}
-</script>
-
-<!--โหลดไฟล์ footer พวก script-->
 <?php include __DIR__ . '/../footer.php';?>
 

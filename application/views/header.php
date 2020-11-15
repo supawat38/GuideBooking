@@ -17,8 +17,9 @@
 	<link rel="stylesheet" href="<?=base_url('application/assets/css/style.css')?>">
 	<link rel="stylesheet" href="<?=base_url('application/assets/css/common.css')?>">
 	<link rel="stylesheet" href="<?=base_url('application/assets/css/select2.css')?>">
+	<link rel="stylesheet" href="<?=base_url('application/assets/css/fullcalendar.min.css')?>">
 </head>
-	
+
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">

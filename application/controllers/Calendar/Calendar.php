@@ -9,7 +9,7 @@ class Calendar extends CI_Controller {
 
 	//โหลดหน้าจอตารางงาน
 	public function index(){
-		$this->load->view('Calendar/View_Calendar');
+		$this->load->view('Calendar/View_CalendarTable');
 	}
 	
 	//Get Event

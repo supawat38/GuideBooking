@@ -2,6 +2,8 @@
 <script src="<?=base_url('application/assets/js/jquery-migrate-3.0.1.min.js')?>"></script>
 <script src="<?=base_url('application/assets/js/popper.min.js')?>"></script>
 <script src="<?=base_url('application/assets/js/bootstrap.min.js')?>"></script>
+<script src="<?=base_url('application/assets/js/moment.js')?>"></script>
+<script src="<?=base_url('application/assets/js/fullcalendar.min.js')?>"></script>
 <script src="<?=base_url('application/assets/js/jquery.easing.1.3.js')?>"></script>
 <script src="<?=base_url('application/assets/js/jquery.waypoints.min.js')?>"></script>
 <script src="<?=base_url('application/assets/js/jquery.stellar.min.js')?>"></script>
