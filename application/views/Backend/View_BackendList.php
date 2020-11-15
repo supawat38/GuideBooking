@@ -44,6 +44,9 @@
 									<a class="nav-link FontMenu active" id="AdminInformation-tab" data-toggle="tab" href="#AdminInformation" role="tab" aria-controls="AdminInformation" aria-selected="true">ข้อมูลส่วนตัว</a>
 								</li>
 								<li class="nav-item" >
+									<a class="nav-link FontMenu" id="AdminCustomer-tab" data-toggle="tab" href="#AdminCustomer" role="tab" aria-controls="AdminCustomer" aria-selected="false">ข้อมูลลูกค้า</a>
+								</li>
+								<li class="nav-item" >
 									<a class="nav-link FontMenu" id="AdminGuide-tab" data-toggle="tab" href="#AdminGuide" role="tab" aria-controls="AdminGuide" aria-selected="false">ข้อมูลมัคคุเทศก์</a>
 								</li>
 								<li class="nav-item" >
@@ -69,7 +72,7 @@
 									<a class="nav-link FontMenu" id="GuidePackage-tab" data-toggle="tab" href="#GuidePackage" role="tab" aria-controls="GuidePackage" aria-selected="false">แพ็กเกจ</a>
 								</li>
 								<li class="nav-item" >
-									<a class="nav-link FontMenu" id="GuideCalenda-tabr " data-toggle="tab" href="#GuideCalendar" role="tab" aria-controls="GuideCalendar" aria-selected="false">ตารางงาน</a>
+									<a class="nav-link FontMenu" id="GuideCalenda-tabr " data-toggle="tab" href="#GuideCalendar" role="tab" aria-controls="GuideCalendar" aria-selected="false" onclick="LoadGuideCalendar()">ตารางงาน</a>
 								</li>
 							<?php }else{ //เจ้าของระบบ ?>
 								<li class="nav-item" >
@@ -90,6 +93,7 @@
 								
 							<?php if($this->session->userdata('session_reftype') == 1){ //ผู้ดูแลระบบ ?>
 								<div class="tab-pane fade show active" id="AdminInformation" role="tabpanel" aria-labelledby="AdminInformation-tab"><?php $this->load->view("/Information/View_Information.php"); ?></div>
+								<div class="tab-pane fade" id="AdminCustomer" role="tabpanel" aria-labelledby="AdminCustomer-tab">-</div>
 								<div class="tab-pane fade" id="AdminGuide" role="tabpanel" aria-labelledby="AdminGuide-tab">-</div>
 								<div class="tab-pane fade" id="AdminBooking" role="tabpanel" aria-labelledby="AdminBooking-tab">-</div>
 								<div class="tab-pane fade" id="AdminPackage" role="tabpanel" aria-labelledby="AdminPackage-tab"><?php $this->load->view("/Package/View_package.php"); ?></div>
@@ -112,6 +116,24 @@
 		</div>
 	</div>
 </section>
+
+<script>
+	//โหลดหน้าจอตารางงานมัคคุเทศก์
+	function LoadGuideCalendar(){
+		$.ajax({
+			type	: "POST",
+			url		: "LoadCalendar",
+			cache	: false,
+			timeout	: 0,
+			success	: function (Result) {
+				$('#GuideCalendar').html(Result);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				alert(jqXHR, textStatus, errorThrown);
+			}
+		});
+	}
+</script>
 
 <!--โหลดไฟล์ footer พวก script-->
 <?php include __DIR__ . '/../footer.php';?>

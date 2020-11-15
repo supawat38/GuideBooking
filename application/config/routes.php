@@ -59,5 +59,10 @@ $route['EventDelete_rate'] 						= 'Guiderate/Guiderate/EventDeleterate';
 $route['ResearchGuide'] 						= 'ResearchGuide/ResearchGuide/index';
 $route['LoadtableGuide'] 						= 'ResearchGuide/ResearchGuide/LoadtableGuide';
 
+//หน้าจอ - ตารางงาน
+$route['LoadCalendar'] 							= 'Calendar/Calendar/index';
+$route['get_events'] 							= 'Calendar/Calendar/get_events';
+
+
 
 

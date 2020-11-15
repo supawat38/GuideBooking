@@ -5,6 +5,7 @@
 		background: #ec6941;
 		margin-right: 10px;
 		padding: 0px 10px;
+		margin-bottom: 10px;
 	}
 
 	.GuideTaglabel{
