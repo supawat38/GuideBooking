@@ -92,6 +92,10 @@
 					$ImageHeder = "background-color: #7c9295ad; height: 80px;";
 					$TitleMenu  = "";
 				break;
+				case "ResearchGuide":
+					$ImageHeder = "background-image: url('application/assets/images/bg_2.jpg'); height: 500px;";
+					$TitleMenu  = "ค้นหามัคคุเทศก์";
+				break;
 				default:
 					$ImageHeder	= "";
 					$TitleMenu  = "";

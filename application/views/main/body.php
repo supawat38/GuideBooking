@@ -14,11 +14,11 @@
 						<div class="col-md-12 tab-wrap">
 							<div class="tab-content" id="v-pills-tabContent">
 								<div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
-									<form action="#" class="search-property-1 FormSearch">
+									<form action="ResearchGuide" class="search-property-1 FormSearch" method="post">
 										<div class="row no-gutters">
 											<div class="col-md d-flex">
 												<div class="form-group p-4">
-													<label for="#" class="label_formsearch">จังหวัด</label>
+													<label class="label_formsearch">จังหวัด</label>
 													<div class="form-field">
 														<div class="select-wrap">
 															<div class="icon"><span class="fa fa-chevron-down"></span></div>
@@ -37,27 +37,15 @@
 											</div>
 											<div class="col-md d-flex">
 												<div class="form-group p-4">
-													<label for="#" class="label_formsearch">จำนวนคน</label>
+													<label class="label_formsearch">จำนวนคน</label>
 													<div class="form-field">
 														<div class="select-wrap">
 															<div class="icon"><span class="fa fa-chevron-down"></span></div>
 															<select class="jSelectedsingle form-control" name="personbookig">
-																<option value="1"> 1 </option>
-																<option value="2"> 2 </option>
-																<option value="3"> 3 </option>
-																<option value="4"> 4 </option>
-																<option value="5"> 5 </option>
-																<option value="6"> 6 </option>
-																<option value="7"> 7 </option>		
-																<option value="8"> 8 </option>
-																<option value="9"> 9 </option>
-																<option value="10"> 10 </option>
-																<option value="11"> 11 </option>
-																<option value="12"> 12 </option>
-																<option value="13"> 13 </option>
-																<option value="14"> 14 </option>
-																<option value="15"> 15 </option>
-																<option value="99"> มากกว่า 15 </option>
+																<option value="1-5"> 1 - 5 คน </option>
+																<option value="5-10"> 5 - 10 คน </option>
+																<option value="10-15"> 10 - 15 คน </option>
+																<option value="15++"> มากกว่า 15 คน </option>
 															</select>
 														</div>
 													</div>
@@ -67,7 +55,7 @@
 												<div class="form-group p-4">
 													<label for="#" class="label_formsearch">วันที่การจอง</label>
 													<div class="form-field" style="margin-top: 7px;">
-														<input type="text" class="form-control checkin_date" placeholder="<?=date('d/m/Y');?>">
+														<input type="text" class="form-control checkin_date" name="datestartbooking" value="<?=date('d/m/Y');?>">
 													</div>
 												</div>
 											</div>
@@ -75,7 +63,7 @@
 												<div class="form-group p-4">
 													<label for="#" class="label_formsearch">ถึงวันที่</label>
 													<div class="form-field" style="margin-top: 7px;">
-														<input type="text" class="form-control checkout_date" placeholder="<?=date('d/m/Y');?>">
+														<input type="text" class="form-control checkout_date" name="datestopbooking" value="<?=date('d/m/Y');?>">
 													</div>
 												</div>
 											</div>
@@ -151,13 +139,13 @@
 	</div>
 </section>
 
-<!--คะแนนมัคคุเทศก์-->
+<!--มัคคุเทศก์ยอดนิยม-->
 <section class="ftco-section testimony-section bg-bottom" style="background-image: url(images/bg_1.jpg);">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row justify-content-center pb-4">
 			<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-				<h2 class="mb-4 textMain_Show">คะแนนมัคคุเทศก์</h2>
+				<h2 class="mb-4 textMain_Show">มัคคุเทศก์ยอดนิยม</h2>
 			</div>
 		</div>
 		<div class="row ftco-animate">

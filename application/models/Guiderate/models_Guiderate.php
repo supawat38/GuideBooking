@@ -52,7 +52,9 @@ class models_Guiderate extends CI_Model {
 		$guide_id		= $Result['guide_id'];
 		$amount			= $Result['amount'];
 		$note			= $Result['note'];
+		$person			= $Result['person'];
 
+		$this->db->set('person', $person);
 		$this->db->set('amount', $amount);
 		$this->db->set('note', $note);
 		$this->db->set('status_delete', 0);
@@ -67,9 +69,10 @@ class models_Guiderate extends CI_Model {
 			$amount			= $Result['amount'];
 			$note			= $Result['note'];
 			$status_delete	= $Result['status_delete'];
+			$person			= $Result['person'];
 
-			$SQL = "INSERT INTO rate (guide_id,amount,note,status_delete) 
-					VALUES ('$guide_id','$amount','$note','$status_delete')";
+			$SQL = "INSERT INTO rate (guide_id,amount,person,note,status_delete) 
+					VALUES ('$guide_id','$amount','$person','$note','$status_delete')";
 			$this->db->query($SQL);
 		}catch(Exception $Error){
 			echo $Error;

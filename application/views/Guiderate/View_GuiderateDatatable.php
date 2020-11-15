@@ -5,7 +5,7 @@
 				<th scope="col">ลำดับ</th>
 				<th scope="col">ชื่อมัคคุเทศก์</th>
 				<th scope="col">เรทราคา</th>
-				<th scope="col">เงื่อนไข</th>
+				<th scope="col">จำนวนคน</th>
 				<th scope="col">สถานะใช้งาน</th>
 				<th class="text-center">แก้ไข</th>
 				<th class="text-center">ลบ</th>
@@ -20,7 +20,7 @@
 						<th><?=$Key + 1?></th>
 						<td><?=($Value['firstname'] == '') ? '-' : $Value['firstname']?></td>
 						<td><?=($Value['amount'] == '') ? '0' : number_format($Value['amount'],2)?></td>
-						<td><?=($Value['note'] == '') ? '-' : $Value['note']?></td>
+						<td><?=($Value['person'] == '') ? '-' : $Value['person']?> คน</td>
 						<?php 
 							if($Value['status_delete'] == 0){
 								$IconClassStatus 	= 'IconStatus_open';

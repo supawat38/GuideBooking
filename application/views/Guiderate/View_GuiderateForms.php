@@ -28,6 +28,15 @@
 						<input type="text" maxlength="6" class="form-control xCNInputNumericWithoutDecimal" id="rateprice" name="rateprice" placeholder="เรทราคา" value='<?=$amount?>'>
 					</div>
 					<div class="form-group col-md-12">
+						<label>จำนวนคน</label>	
+						<select class="jSelectedsingle form-control" name="personrate">
+							<option value="1-5"> 1 - 5 คน </option>
+							<option value="5-10"> 5 - 10 คน </option>
+							<option value="10-15"> 10 - 15 คน </option>
+							<option value="15++"> มากกว่า 15 คน </option>
+						</select>
+					</div>
+					<div class="form-group col-md-12">
 						<label>เงื่อนไข</label>	
 						<textarea id="ratedetail" maxlength="255" name="ratedetail" cols="30" rows="3" class="form-control" placeholder="เงื่อนไข"><?=$detail?></textarea>
 					</div>
@@ -44,6 +53,13 @@
 <script src="<?= base_url('application/assets/js/FormValidate.js')?>"></script>
 
 <script>
+
+	$(document).ready(function() {
+		//ช่องจำนวนคน
+		$(".jSelectedsingle").select2();
+		$(".jSelectedsingle").select2({ width: '100%' , dropdownCssClass: "FontSelect2"});  
+	});
+
 	//เพิ่มข้อมูล
 	function EventSaveOrEdit_rate(){
 		//เช็คว่ากรอกข้อมูลครบหรือยัง

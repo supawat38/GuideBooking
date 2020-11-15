@@ -72,6 +72,7 @@ class Guiderate extends CI_Controller {
 			'guide_id' 		=> $this->session->userdata("session_refid"),
 			'amount'		=> $this->input->post('rateprice'),
 			'note' 			=> $this->input->post('ratedetail'),
+			'person' 		=> $this->input->post('personrate'),
 			'status_delete'	=> 0,
 		);
 		if($Typepage == 'pageedit'){ //แก้ไขข้อมูล

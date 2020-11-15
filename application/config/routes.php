@@ -55,4 +55,9 @@ $route['PageInsOrEdit_rate'] 					= 'Guiderate/Guiderate/PageInsoredit';
 $route['EventInsOrEdit_rate'] 					= 'Guiderate/Guiderate/EventInsoredit';
 $route['EventDelete_rate'] 						= 'Guiderate/Guiderate/EventDeleterate';
 
+//หน้าจอ - ค้นหามัคคุเทศก์
+$route['ResearchGuide'] 						= 'ResearchGuide/ResearchGuide/index';
+$route['LoadtableGuide'] 						= 'ResearchGuide/ResearchGuide/LoadtableGuide';
+
+
 
