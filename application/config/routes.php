@@ -61,7 +61,12 @@ $route['LoadtableGuide'] 						= 'ResearchGuide/ResearchGuide/LoadtableGuide';
 
 //หน้าจอ - ตารางงาน
 $route['LoadCalendar'] 							= 'Calendar/Calendar/index';
-$route['get_events'] 							= 'Calendar/Calendar/get_events';
+
+//หน้าจอ - ข้อมูลลูกค้า
+$route['Loadtable_ManageCustomer'] 				= 'GuideManageCustomer/GuideManageCustomer/Loadtable';
+$route['PageInsOrEdit_ManageCustomer'] 			= 'GuideManageCustomer/GuideManageCustomer/PageInsoredit';
+$route['EventInsOrEdit_ManageCustomer'] 		= 'GuideManageCustomer/GuideManageCustomer/EventInsoredit';
+$route['EventDelete_ManageCustomer'] 			= 'GuideManageCustomer/GuideManageCustomer/EventDeleteManageCustomer';
 
 
 

@@ -301,6 +301,23 @@
 	font-size:  20px !important;
 }
 
+/*CSS ส่วนของ From แอดมินเเก้ไขลูกค้า */
+#divManageCustomer label{
+	font-family: THSarabunNew;
+	font-size:  25px !important;
+	color : black;
+}
+
+#divManageCustomer input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
+#divManageCustomer input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
 /*CSS สำหรับ selected*/ 
 .FontSelect2{
 	font-family: THSarabunNew;

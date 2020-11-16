@@ -9,25 +9,6 @@ class Guiderate extends CI_Controller {
 		$this->load->model('Guiderate/models_Guiderate');
 	}
 
-	//โหลดหน้าจอแรก
-	public function index(){
-
-		//เช็คว่าเข้ามาแบบไหน
-		$tUserType 	= $this->session->userdata("session_reftype");	
-		$tUserID 	= $this->session->userdata("session_refid");
-
-		$aPackData = array(
-			'pageName' 		=> 'Guiderate'
-		);
-
-		if($tUserType == 3){ //มัคคุเทศก์
-			$this->load->view('header',$aPackData);
-			$this->load->view('Guiderate/View_GuiderateList',$aPackData);
-		}else{
-			echo 'คุณไม่มีสิทธิ์ใช้งานหน้านี้ กรุณาล็อคอินเข้าระบบใหม่อีกครั้ง';
-		}
-	}	
-
 	//โหลดหน้าจอตาราง
 	public function Loadtable(){
 		$numberpage = $this->input->post('numberpage');

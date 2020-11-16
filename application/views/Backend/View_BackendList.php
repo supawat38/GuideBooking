@@ -50,6 +50,9 @@
 									<a class="nav-link FontMenu" id="AdminGuide-tab" data-toggle="tab" href="#AdminGuide" role="tab" aria-controls="AdminGuide" aria-selected="false">ข้อมูลมัคคุเทศก์</a>
 								</li>
 								<li class="nav-item" >
+									<a class="nav-link FontMenu" id="AdminRankGuide-tab" data-toggle="tab" href="#AdminRankGuide" role="tab" aria-controls="AdminRankGuide" aria-selected="false">จัดอันดับมัคคุเทศก์</a>
+								</li>
+								<li class="nav-item" >
 									<a class="nav-link FontMenu" id="AdminBooking-tab" data-toggle="tab" href="#AdminBooking" role="tab" aria-controls="AdminBooking" aria-selected="false">ข้อมูลการจอง</a>
 								</li>
 								<li class="nav-item">
@@ -93,19 +96,20 @@
 								
 							<?php if($this->session->userdata('session_reftype') == 1){ //ผู้ดูแลระบบ ?>
 								<div class="tab-pane fade show active" id="AdminInformation" role="tabpanel" aria-labelledby="AdminInformation-tab"><?php $this->load->view("/Information/View_Information.php"); ?></div>
-								<div class="tab-pane fade" id="AdminCustomer" role="tabpanel" aria-labelledby="AdminCustomer-tab">-</div>
+								<div class="tab-pane fade" id="AdminCustomer" role="tabpanel" aria-labelledby="AdminCustomer-tab"><?php $this->load->view("/GuideManageCustomer/View_ManageCustomer.php"); ?></div>
 								<div class="tab-pane fade" id="AdminGuide" role="tabpanel" aria-labelledby="AdminGuide-tab">-</div>
+								<div class="tab-pane fade" id="AdminRankGuide" role="tabpanel" aria-labelledby="AdminRankGuide-tab">-</div>
 								<div class="tab-pane fade" id="AdminBooking" role="tabpanel" aria-labelledby="AdminBooking-tab">-</div>
 								<div class="tab-pane fade" id="AdminPackage" role="tabpanel" aria-labelledby="AdminPackage-tab"><?php $this->load->view("/Package/View_package.php"); ?></div>
 							<?php }else if($this->session->userdata('session_reftype') == 3){ //มัคคุเทศก์ ?>
 								<div class="tab-pane fade show active" id="GuideInformation" role="tabpanel" aria-labelledby="GuideInformation-tab"><?php $this->load->view("/Information/View_Information.php"); ?></div>
 								<div class="tab-pane fade" id="GuideOther" role="tabpanel" aria-labelledby="GuideOther-tab">-</div>
-								<div class="tab-pane fade" id="GuideRate" role="tabpanel" aria-labelledby="GuideRate-tab"><?php $this->load->view("/Guiderate/View_GuiderateList.php"); ?></div>
+								<div class="tab-pane fade" id="GuideRate" role="tabpanel" aria-labelledby="GuideRate-tab"><?php $this->load->view("/Guiderate/View_Guiderate.php"); ?></div>
 								<div class="tab-pane fade" id="GuideBooking" role="tabpanel" aria-labelledby="GuideBooking-tab">-</div>
 								<div class="tab-pane fade" id="GuidePackage" role="tabpanel" aria-labelledby="GuidePackage-tab"><?php $this->load->view("/Package/View_package.php"); ?></div>
 								<div class="tab-pane fade" id="GuideCalendar" role="tabpanel" aria-labelledby="GuideCalendar-tab"><?php $this->load->view("/Calendar/View_Calendar.php"); ?></div>
 							<?php }else{ //เจ้าของระบบ ?>
-								<div class="tab-pane fade show active" id="OwnerManageAdmin" role="tabpanel" aria-labelledby="OwnerManageAdmin-tab"><?php $this->load->view("/ManageAdmin/View_AdminList.php"); ?></div>
+								<div class="tab-pane fade show active" id="OwnerManageAdmin" role="tabpanel" aria-labelledby="OwnerManageAdmin-tab"><?php $this->load->view("/ManageAdmin/View_Admin.php"); ?></div>
 								<div class="tab-pane fade" id="OwnerReport1" role="tabpanel" aria-labelledby="OwnerReport1-tab">รายงานมัคคุเทศก์ยอดนิยม</div>
 								<div class="tab-pane fade" id="OwnerReport2" role="tabpanel" aria-labelledby="OwnerReport2-tab">รายงานรายได้</div>
 							<?php } ?>

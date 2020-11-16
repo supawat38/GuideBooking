@@ -8,15 +8,6 @@ class ManageAdmin extends CI_Controller {
 		$this->load->model('ManageAdmin/models_admin');
 	}
 
-	//โหลดหน้าจอแรก
-	public function index(){
-		$Data = array(
-			'pageName' 		=> 'ManageAdmin'
-		);
-		$this->load->view('header',$Data);
-		$this->load->view('ManageAdmin/View_AdminList',$Data);
-	}	 
-
 	//โหลดข้อมูล Table
 	public function Loadtable(){
 		$numberpage = $this->input->post('numberpage');

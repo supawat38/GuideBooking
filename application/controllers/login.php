@@ -42,6 +42,7 @@ class login extends CI_Controller {
 				$this->session->set_userdata("session_reftype",$login_type);	
 				$this->session->set_userdata("session_refid",$reflogin_id);
 				$this->session->set_userdata("session_name",$name);	
+				echo $login_type;
 			}
 		}
 	}

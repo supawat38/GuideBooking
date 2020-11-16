@@ -275,7 +275,6 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 			url 			: "UpdateInformationCustomer",
 			data 			: $('#formRegis').serialize(),
 			success			: function (Result){
-				console.log(Result);
 				if(Result == 'duplicate'){
 					//ชื่อเข้าใช้งานซ้ำ
 					Swal.fire({

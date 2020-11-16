@@ -148,7 +148,11 @@
 							$('#LoginPassword').val('');
 							$('.showerror').show();
 						}else{
-							window.location.href = "main";
+							if(Result == 2){ //ถ้าเป็นลูกค้าจะวิ่งเข้าหน้า main นอกนั้นวิ่งไปที่ backend
+								window.location.href = "main";
+							}else{
+								window.location.href = "Backend";
+							}
 						}
 					},
 					error: function (data){

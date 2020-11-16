@@ -31,15 +31,14 @@
 						<li class="nav-item"><a href="#" class="nav-link FontMenu" data-toggle="modal" data-target="#ModalLogin">เข้าสู่ระบบ</a></li>
 						<li class="nav-item <?=($pageName == 'register') ? 'active' : '' ?>"><a href="register" class="nav-link FontMenu">สมัครสมาชิก</a></li>
 					<?php }else{ //มีการเข้าสู่ระบบ ?>
-						<li class="nav-item <?=($pageName == 'main') ? 'active' : '' ?>" ><a href="main" class="nav-link FontMenu">หน้าหลัก</a></li>
-						
+		
 						<!--การมองเห็นเมนูของแต่ละ user -->
 						<!--FontEnd-->
 						<?php if($this->session->userdata('session_reftype') == 2){ //ผู้ใช้งานทั่วไป ?>
+							<li class="nav-item <?=($pageName == 'main') ? 'active' : '' ?>" ><a href="main" class="nav-link FontMenu">หน้าหลัก</a></li>
 							<li class="nav-item  <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลมัคคุเทศก์</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลการจอง</a></li>
-							<li class="nav-item  <?=($pageName == 'package') ? 'active' : '' ?> "><a href="package" class="nav-link FontMenu">แพ็กเกจ</a></li>
 						<!--BackEnd-->
 						<?php }else{ //ผู้ดูแลระบบ + มัคคุเทศก์ + เจ้าของ ?>
 							<li class="nav-item  <?=($pageName == 'Backend') ? 'active' : '' ?>" ><a href="Backend" class="nav-link FontMenu">จัดการข้อมูล</a></li>
