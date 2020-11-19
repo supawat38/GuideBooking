@@ -9,25 +9,6 @@ class Package extends CI_Controller {
 		$this->load->model('Package/models_package');
 	}
 
-	//โหลดหน้าจอแรก
-	public function index(){
-
-		//เช็คว่าเข้ามาแบบไหน
-		$tUserType 	= $this->session->userdata("session_reftype");	
-		$tUserID 	= $this->session->userdata("session_refid");
-
-		$aPackData = array(
-			'pageName' 		=> 'package'
-		);
-
-		if($tUserType == 2){ //ลูกค้า
-			$this->load->view('header',$aPackData);
-			$this->load->view('Package/View_package_Customer',$aPackData);
-		}else{
-			echo 'คุณไม่มีสิทธิ์ใช้งานหน้านี้ กรุณาล็อคอินเข้าระบบใหม่อีกครั้ง';
-		}
-	}
-
 	//โหลดข้อมูลตาราง
 	public function Loadtable(){
 		$numberpage = $this->input->post('numberpage');

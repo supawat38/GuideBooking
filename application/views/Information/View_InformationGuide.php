@@ -363,7 +363,7 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 						confirmButtonColor: '#bfe6a9',
 						confirmButtonText: 'ตกลง',
 					}).then(function (result) {
-						window.location.href = "main";
+						//window.location.href = "main";
 					});
 				}
 			},
