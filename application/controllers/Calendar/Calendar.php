@@ -11,4 +11,10 @@ class Calendar extends CI_Controller {
 	public function index(){
 		$this->load->view('Calendar/View_CalendarDatatable');
 	}
+
+	//โหลดหน้าจอสร้างตารางงาน
+	public function AddCalendar($ActionMode){
+		
+		$this->load->view('Calendar/View_AddEditCalendar',array("ActionMode"=>$ActionMode));
+	}
 }

@@ -65,6 +65,8 @@ $route['EventDelete_ManageCustomer'] 			= 'GuideManageCustomer/GuideManageCustom
 
 //หน้าจอ - ตารางงาน
 $route['LoadCalendar'] 							= 'Calendar/Calendar/index';
+$route['AddCalendar'] 							= 'Calendar/Calendar/AddCalendar/$1';
+
 
 
 
