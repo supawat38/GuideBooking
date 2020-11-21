@@ -58,7 +58,7 @@
 						</div>
 						<div class="col-lg-2" style="border-left: 1px solid #dee2e6;">
 							<p class="labelHead" style="font-weight: bold; color: #ec6941; font-size: 25px !important; text-align: left;">THB : <?=number_format($Value['amount'],2)?></p>
-							<button type="button" class="align-self-stretch btn btn-primary BTNRegis BTNRegisCustomer" style="width: 100%;">เลือก</button>
+							<button type="button" class="align-self-stretch btn btn-primary BTNSelectBooking" style="width: 100%;">เลือก</button>
 						</div>
 					</div>
 				</div>
@@ -103,9 +103,6 @@
 	function ClickPage_researchguide(Page){
 		var PageCurrent = '';
 		switch (Page) {
-			case 'Fisrt': //กดหน้าแรก
-				PageCurrent 	= 1;
-			break;
 			case 'next': //กดปุ่ม Next
 				PageOld 		= $('.xCNPagenation .active').text(); 
 				PageNew 		= parseInt(PageOld, 10) + 1; 
@@ -115,9 +112,6 @@
 				PageOld 		= $('.xCNPagenation .active').text(); 
 				PageNew 		= parseInt(PageOld, 10) - 1; 
 				PageCurrent 	= PageNew
-			break;
-			case 'Last': //กดหน้าสุดท้าย
-				PageCurrent 	= '<?=$result['EndPage']?>';
 			break;
 			default:
 				PageCurrent = Page

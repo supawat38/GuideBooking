@@ -165,6 +165,14 @@
 }
 
 /*CSS สำหรับ ปุ่มนักท่องเที่ยว + มัคคุเทศน์ */ 
+.BTNSelectBooking{
+	width	:250px; 
+	font-family: THSarabunNew;
+	font-size:  25px !important;
+	border-radius: 0px;
+}
+
+/*CSS สำหรับ ปุ่มนักท่องเที่ยว + มัคคุเทศน์ */ 
 .BTNRegis{
 	width	:250px; 
 	font-family: THSarabunNew;
