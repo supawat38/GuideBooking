@@ -1,26 +1,21 @@
-<style>
-	.GuideTag{
-		display: inline-block;
-		width: auto;
-		background: #ec6941;
-		margin-right: 10px;
-		padding: 0px 10px;
-		margin-bottom: 10px;
-	}
-
-	.GuideTaglabel{
-		color : #FFF !important;
-		margin: 0px;
-	}
-</style>
-
 <div class="col-md-12 col-12" style="margin-top: 20px;">
 	<?php if(empty($result['Items'])){ ?>
 		<div><p class="labelContent" style="text-align: center; margin: 50px 0px;"> - ไม่พบข้อมูล - </p></div>
 	<?php }else{ ?>
 		<div class="row">
 			<?php foreach($result['Items'] AS $Key => $Value){ ?>
-				<?php 
+				<?php 	
+
+					//รหัสไกด์ , จังหวัด , เรทราคา , วันที่เริ่ม , วันที่สิ้นสุด
+					$Data = array(
+						'GuideID' 		=> $Value['guide_id'],
+						'ProvinceID' 	=> $provice,
+						'RateID'		=> $personbookig,
+						'DateStart' 	=> $datestartbooking,
+						'DateStop' 		=> $datestopbooking
+					);
+					$PackData = json_encode($Data);
+
 					//รูปภาพ
 					if($Value['guide_image'] == '' || $Value['guide_image'] == null){
 						$PathShowImage 		= 'application/assets/images/guide/'.'/NoImage.jpg';
@@ -58,7 +53,7 @@
 						</div>
 						<div class="col-lg-2" style="border-left: 1px solid #dee2e6;">
 							<p class="labelHead" style="font-weight: bold; color: #ec6941; font-size: 25px !important; text-align: left;">THB : <?=number_format($Value['amount'],2)?></p>
-							<button type="button" class="align-self-stretch btn btn-primary BTNSelectBooking" style="width: 100%;">เลือก</button>
+							<button type="button" class="align-self-stretch btn btn-primary BTNSelectBooking" style="width: 100%;" onclick='BookingGuide(<?=$PackData?>)';>เลือก</button>
 						</div>
 					</div>
 				</div>
@@ -97,7 +92,36 @@
 	</div>
 <?php } ?>
 
-<script>
+<!-- popup เข้าสู่ระบบตอนกด Booking -->
+<div class="modal fade" id="ModalLoginBeforeBooking" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" style="background: #ec6941; padding: 10px 20px;">
+				<label class="FontLogin"> เข้าสู่ระบบ</label>
+			</div>
+			<div class="modal-body">
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<label> ชื่อเข้าใช้งาน</label>
+						<input type="text" maxlength="50" class="form-control formlogininput" autocomplete="off" id="LoginID" name="LoginID" placeholder="ชื่อเข้าใช้งาน">
+					</div>
+					<div class="form-group col-md-12">
+						<label> รหัสผ่าน</label>
+						<input type="password" maxlength="50" class="form-control formlogininput" autocomplete="off"  id="LoginPassword" name="LoginPassword" placeholder="รหัสผ่าน">
+					</div>
+					<div class="form-group col-md-12 showerror" style="display:none; margin-bottom: 0px;">
+						<label class="FontError"> ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง</label>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary FontLoginBeforeBookingClick">เข้าใช้งาน</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>	
 
 	//กด next page 
 	function ClickPage_researchguide(Page){
@@ -119,6 +143,74 @@
 
 		var TypeClick = $('#hiddenClickTab').val();
 		LoadtableGuide(PageCurrent,TypeClick);
+	}
+
+	//กดเลือก Booking
+	function BookingGuide(parameter){
+
+		//เช็คก่อนว่า login แล้วหรือยัง
+		var checklogin = '<?=$this->session->userdata('session_username')?>';
+		if(checklogin == null || checklogin == ''){
+			$('#ModalLoginBeforeBooking').modal('show');
+
+			//เข้าสู่ระบบ
+			$('.FontLoginBeforeBookingClick').click(function(){
+				if($('#LoginID').val() == ''){
+					$('#LoginID').focus();
+					return;
+				}
+
+				if($('#LoginPassword').val() == ''){
+					$('#LoginPassword').focus();
+					return;
+				}
+
+				$.ajax({
+					type 			: "POST",
+					url 			: "login",
+					data 			: { 'username' : $('#LoginID').val() , 'password' : $('#LoginPassword').val() },
+					success			: function(Result){
+						if(Result == 'notfound'){
+							$('#LoginID').val('');
+							$('#LoginPassword').val('');
+							$('.showerror').show();
+						}else{
+							if(Result == 2){ //ถ้าเป็นลูกค้า
+								LoadViewBooking(parameter);
+							}else{
+								window.location.href = "Backend";
+							}
+						}
+					},
+					error: function (data){
+						console.log(data);
+					}
+				});
+			});
+		}else{
+			LoadViewBooking(parameter);
+		}
+	}
+
+	//โหลดหน้าจอบุ๊คกิ๊ง
+	function LoadViewBooking(parameter){
+		$.ajax({
+			type 			: "POST",
+			url 			: "Booking_Guide",
+			data 			: { 
+				'GuideID' 		: parameter.GuideID ,
+				'ProvinceID' 	: parameter.ProvinceID , 
+				'RateID' 		: parameter.RateID , 
+				'DateStart' 	: parameter.DateStart , 
+				'DateStop' 		: parameter.DateStop
+			},
+			success			: function(Result){
+				$('#ContentReseachGuideBooking').html(Result);
+			},
+			error: function (data){
+				console.log(data);
+			}
+		});
 	}
 
 </script>

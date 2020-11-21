@@ -429,3 +429,28 @@
 	cursor: no-drop;
     pointer-events: none;
 }
+
+.GuideTag{
+	display: inline-block;
+	width: auto;
+	background: #ec6941;
+	margin-right: 10px;
+	padding: 0px 10px;
+	margin-bottom: 10px;
+}
+
+.GuideTaglabel{
+	color : #FFF !important;
+	margin: 0px;
+}
+
+#divPayment label{
+	font-family: THSarabunNew;
+	font-size:  25px !important;
+	color : black;
+}
+
+#divPayment input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}

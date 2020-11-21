@@ -16,9 +16,15 @@ $route['InsertAndEditRegister'] 				= 'register/register/RegisterSystems';
 $route['main'] 									= 'main';
 $route['Loadtable_package_mainpage']			= 'main/LoadtablePackage';
 
-//หน้าจอ - ค้นหามัคคุเทศก์
+//หน้าจอ - ค้นหามัคคุเทศก์ + จอง
 $route['ResearchGuide'] 						= 'ResearchGuide/ResearchGuide/index';
 $route['LoadtableGuide'] 						= 'ResearchGuide/ResearchGuide/LoadtableGuide';
+$route['Booking_Guide'] 						= 'ResearchGuide/ResearchGuide/Booking';
+$route['Booking_DeteilGuide/(:any)'] 			= 'ResearchGuide/ResearchGuide/BookingDetailGuide/$1';
+$route['Booking_Confirm'] 						= 'ResearchGuide/ResearchGuide/BookingConfirm';
+$route['Booking_UploadSlip']					= 'ResearchGuide/ResearchGuide/UploadSlip';
+$route['Booking_ConfirmPayment']				= 'ResearchGuide/ResearchGuide/ConfirmPayment';
+
 
 //หน้าจอ - สมัครสมาชิก
 $route['register'] 								= 'register/register/index';

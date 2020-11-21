@@ -49,7 +49,6 @@
 									onClick="Page_package('pageedit','<?=$Value['package_id']?>');"></td>
 						<td><img class="img-responsive ImageDelete" src="<?=base_url().'application/assets/images/icon/delete.png';?>" 
 									onClick="Delete_package('<?=$Value['package_id']?>');"></td>
-						
 					</tr>
 				<?php } ?>
 			<?php } ?>

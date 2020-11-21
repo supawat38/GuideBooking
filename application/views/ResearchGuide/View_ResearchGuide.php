@@ -1,5 +1,5 @@
 
-<section class="ftco-section ftco-no-pb ftco-no-pt" style="background: #FFF;">
+<section class="ftco-section ftco-no-pb ftco-no-pt" style="background: #FFF;" id="ContentReseachGuideBooking">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12" style="margin:70px 0px 10px 0px;">
