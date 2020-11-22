@@ -25,7 +25,6 @@ $route['Booking_Confirm'] 						= 'ResearchGuide/ResearchGuide/BookingConfirm';
 $route['Booking_UploadSlip']					= 'ResearchGuide/ResearchGuide/UploadSlip';
 $route['Booking_ConfirmPayment']				= 'ResearchGuide/ResearchGuide/ConfirmPayment';
 
-
 //หน้าจอ - สมัครสมาชิก
 $route['register'] 								= 'register/register/index';
 
@@ -68,6 +67,9 @@ $route['Loadtable_ManageCustomer'] 				= 'GuideManageCustomer/GuideManageCustome
 $route['PageInsOrEdit_ManageCustomer'] 			= 'GuideManageCustomer/GuideManageCustomer/PageInsoredit';
 $route['EventInsOrEdit_ManageCustomer'] 		= 'GuideManageCustomer/GuideManageCustomer/EventInsoredit';
 $route['EventDelete_ManageCustomer'] 			= 'GuideManageCustomer/GuideManageCustomer/EventDeleteManageCustomer';
+
+//หน้าจอ - ข้อมูลมัคคุเทศก์ท่านอื่น
+$route['Loadtable_guideother'] 					= 'GuideOther/GuideOther/Loadtable';
 
 //หน้าจอ - ตารางงาน
 $route['LoadCalendar'] 							= 'Calendar/Calendar/index';

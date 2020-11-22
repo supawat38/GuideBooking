@@ -454,3 +454,45 @@
 	font-family: THSarabunNew;
 	font-size:  20px !important;
 }
+
+#ModalLogin label{
+	font-family: THSarabunNew;
+	font-size:  25px;
+	color : black;
+}
+
+#ModalLogin input{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
+.FontLogin{
+	font-family: THSarabunNew;
+	font-size:  28px !important;
+	margin: 0px;
+	color: #FFF !important;
+}
+
+.FontLoginClick{
+	font-family: THSarabunNew;
+	font-size:  22px !important;
+	padding: 5px 30px;
+}
+
+#ModalLoginBeforeBooking label{
+	font-family: THSarabunNew;
+	font-size:  25px;
+	color : black;
+}
+
+#ModalLoginBeforeBooking input{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
+
+.FontLoginBeforeBookingClick{
+	font-family: THSarabunNew;
+	font-size:  22px !important;
+	padding: 5px 30px;
+}
