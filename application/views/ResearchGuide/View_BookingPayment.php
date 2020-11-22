@@ -121,7 +121,7 @@
 			success			: function(Result){
 				Swal.fire({
 					title: "การจองสำเร็จ",
-					text: "รอการตรวจสอบข้อมูลอีกครั้ง ขอบคุณที่ใช้บริการ",
+					text: "รอการตรวจสอบความถูกต้อง ขอบคุณที่ใช้บริการ",
 					icon: "success",
 					showCancelButton: false,
 					confirmButtonColor: '#bfe6a9',

@@ -81,6 +81,15 @@
     border-radius: 50px;
 }
 
+.IconStatus_wait{
+	background: #f2fa7d;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 50px;
+}
+
 .TextClassStatus_close{
 	color : #d96969;
 	display: inline-block;
@@ -495,4 +504,21 @@
 	font-family: THSarabunNew;
 	font-size:  22px !important;
 	padding: 5px 30px;
+}
+
+/*CSS ส่วนของ From หน้าจอตรวจสอบและชำระเงิน */
+#divEditBookingAndPayment label{
+	font-family: THSarabunNew;
+	font-size:  25px !important;
+	color : black;
+}
+
+#divEditBookingAndPayment input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
+#divEditBookingAndPayment input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
 }

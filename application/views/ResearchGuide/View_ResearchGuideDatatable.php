@@ -176,7 +176,11 @@
 							$('.showerror').show();
 						}else{
 							if(Result == 2){ //ถ้าเป็นลูกค้า
-								LoadViewBooking(parameter);
+								$('#ModalLoginBeforeBooking').modal('hide');
+
+								setTimeout(function(){ 
+									LoadViewBooking(parameter);
+								}, 1000);
 							}else{
 								window.location.href = "Backend";
 							}

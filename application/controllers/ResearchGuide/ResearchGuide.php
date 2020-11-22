@@ -101,7 +101,7 @@ class ResearchGuide extends CI_Controller {
 		if($LastCode['Code'] == 800){
 			$BookingCode = 'BOOKING00001';
 		}else{
-			$LastCode 		= $LastCode['raItems'][0]['booking_id'];
+			$LastCode 		= $LastCode['Items'][0]['booking_id'];
 			$Explode		= explode("BOOKING",$LastCode);
 			$Number		= $Explode[1] + 1;
 			$CountNumber	= count($Number);
@@ -151,8 +151,8 @@ class ResearchGuide extends CI_Controller {
 			'amount' 			=> '0', 
 			'pro_amount' 		=> '0', 
 			'grandtotal' 		=> $Price, 
-			'status_booking' 	=> '1', 
-			'status_payment' 	=> '0', 
+			'status_booking' 	=> '1', //0:เอกสารไม่สมบูรณ์ 1:สมบูรณ์
+			'status_payment' 	=> '0', //0:ยังไม่ได้ชำระ 1:ชำระแล้ว
 			'refpayment_id' 	=> '',  
 			'status_paytoguide' => '', 
 			'note' 				=> '-', 
@@ -189,11 +189,11 @@ class ResearchGuide extends CI_Controller {
 		$grandtotal		= $this->input->post('grandtotal');
 
 		//หาเลขที่เอกสารล่าสุด
-		$LastCode 	= $this->models_ResearchGuide->GetLastDocumentBooking();
+		$LastCode 	= $this->models_ResearchGuide->GetLastDocumentPayment();
 		if($LastCode['Code'] == 800){
 			$PayMentCode = 'PAY00001';
 		}else{
-			$LastCode 		= $LastCode['raItems'][0]['booking_id'];
+			$LastCode 		= $LastCode['Items'][0]['payment_id'];
 			$Explode		= explode("PAY",$LastCode);
 			$Number			= $Explode[1] + 1;
 			$CountNumber	= count($Number);

@@ -152,6 +152,25 @@ class models_ResearchGuide extends CI_Model {
 		return $Result;
 	}
 
+	//ค้นหาเลขที่เอกสารการจ่ายเงินล่าสุด
+	public function GetLastDocumentPayment(){
+		$SQL 	= "SELECT payment_id FROM payment ORDER BY payment_id DESC LIMIT 1";
+		$Query 	= $this->db->query($SQL);
+		if($Query->num_rows() > 0){
+			$Result = array(
+				'Items'  => $Query->result_array(),
+				'Code'   => '1',
+				'Desc'   => 'success'
+			);
+		}else{
+			$Result = array(
+				'Code' => '800',
+				'Desc' => 'data not found'
+			);
+		}
+		return $Result;
+	}
+
 	//เพิ่มข้อมูลตารางบุ๊คกิ๊ง
 	public function InsertBooking($Result){
 		try{

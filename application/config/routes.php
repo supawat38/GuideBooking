@@ -75,6 +75,11 @@ $route['Loadtable_guideother'] 					= 'GuideOther/GuideOther/Loadtable';
 $route['LoadCalendar'] 							= 'Calendar/Calendar/index';
 $route['AddCalendar'] 							= 'Calendar/Calendar/AddCalendar/$1';
 
+//หน้าจอ - การจองและการชำระเงิน
+$route['Loadtable_BookingAndPayment'] 			= 'CheckBookingPayment/CheckBookingPayment/Loadtable';
+$route['PageInsOrEdit_BookingAndPayment'] 		= 'CheckBookingPayment/CheckBookingPayment/PageInsoredit';
+$route['EventInsOrEdit_BookingAndPayment'] 		= 'CheckBookingPayment/CheckBookingPayment/EventInsoredit';
+
 
 
 
