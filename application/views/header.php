@@ -35,9 +35,9 @@
 						<!--การมองเห็นเมนูของแต่ละ user -->
 						<!--FontEnd-->
 						<?php if($this->session->userdata('session_reftype') == 2){ //ผู้ใช้งานทั่วไป ?>
-							<li class="nav-item <?=($pageName == 'main') ? 'active' : '' ?>" ><a href="main" class="nav-link FontMenu">หน้าหลัก</a></li>
+							<li class="nav-item  <?=($pageName == 'main') ? 'active' : '' ?>" ><a href="main" class="nav-link FontMenu">หน้าหลัก</a></li>
 							<li class="nav-item  <?=($pageName == 'UpdateInformation') ? 'active' : '' ?>" ><a href="UpdateInformation" class="nav-link FontMenu">ข้อมูลส่วนตัว</a></li>
-							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลมัคคุเทศก์</a></li>
+							<li class="nav-item  <?=($pageName == 'GuideAll') ? 'active' : '' ?>" ><a href="GuideAll" class="nav-link FontMenu">ข้อมูลมัคคุเทศก์</a></li>
 							<li class="nav-item" ><a href="#" class="nav-link FontMenu">ข้อมูลการจอง</a></li>
 						<!--BackEnd-->
 						<?php }else{ //ผู้ดูแลระบบ + มัคคุเทศก์ + เจ้าของ ?>
@@ -95,6 +95,10 @@
 				case "ResearchGuide":
 					$ImageHeder = "background-image: url('application/assets/images/bg_2.jpg'); height: 500px;";
 					$TitleMenu  = "ค้นหามัคคุเทศก์";
+				break;
+				case "GuideAll":
+					$ImageHeder = "background-image: url('application/assets/images/bg_2.jpg'); height: 500px;";
+					$TitleMenu  = "ข้อมูลมัคคุเทศก์";
 				break;
 				default:
 					$ImageHeder	= "";

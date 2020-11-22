@@ -11,7 +11,6 @@ $route['ImageUpload'] 							= 'main/Uploadimage';
 //สมัครสมาชิก
 $route['InsertAndEditRegister'] 				= 'register/register/RegisterSystems';
 
-
 //หน้าจอ - ข้อมูลหลัก
 $route['main'] 									= 'main';
 $route['Loadtable_package_mainpage']			= 'main/LoadtablePackage';
@@ -24,6 +23,10 @@ $route['Booking_DeteilGuide/(:any)'] 			= 'ResearchGuide/ResearchGuide/BookingDe
 $route['Booking_Confirm'] 						= 'ResearchGuide/ResearchGuide/BookingConfirm';
 $route['Booking_UploadSlip']					= 'ResearchGuide/ResearchGuide/UploadSlip';
 $route['Booking_ConfirmPayment']				= 'ResearchGuide/ResearchGuide/ConfirmPayment';
+
+//หน้าจอ - ช้อมูลมัคคุเทศก์
+$route['GuideAll']								= 'GuideAll/GuideAll/index';
+$route['LoadtableGuideAll'] 					= 'GuideAll/GuideAll/LoadtableGuide';
 
 //หน้าจอ - สมัครสมาชิก
 $route['register'] 								= 'register/register/index';

@@ -84,7 +84,7 @@ class ResearchGuide extends CI_Controller {
 			'DetailArea'	=> $this->models_ResearchGuide->LoadInformationGuideArea($GuideID),
 			'DetailReview'	=> $this->models_ResearchGuide->LoadInformationGuideReview($GuideID)
 		);
-		$this->load->view('ResearchGuide/View_BookingDetailGuide',$Condition);
+		$this->load->view('GuideAll/View_DetailGuide',$Condition);
 	}
 
 	//โหลดหน้าจอจ่ายเงิน
