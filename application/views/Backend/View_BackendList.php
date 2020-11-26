@@ -47,13 +47,13 @@
 									<a class="nav-link FontMenu" id="AdminCustomer-tab" data-toggle="tab" href="#AdminCustomer" role="tab" aria-controls="AdminCustomer" aria-selected="false">ข้อมูลลูกค้า</a>
 								</li>
 								<li class="nav-item" >
-									<a class="nav-link FontMenu" id="AdminGuide-tab" data-toggle="tab" href="#AdminGuide" role="tab" aria-controls="AdminGuide" aria-selected="false">ข้อมูลมัคคุเทศก์</a>
+									<a class="nav-link FontMenu" id="AdminGuide-tab" data-toggle="tab" href="#AdminGuide" role="tab" aria-controls="AdminGuide" aria-selected="false">ข้อมูลมัคคุเทศก์ (แบ่ง %)</a>
 								</li>
 								<li class="nav-item" >
 									<a class="nav-link FontMenu" id="AdminRankGuide-tab" data-toggle="tab" href="#AdminRankGuide" role="tab" aria-controls="AdminRankGuide" aria-selected="false">จัดอันดับมัคคุเทศก์</a>
 								</li>
 								<li class="nav-item" >
-									<a class="nav-link FontMenu" id="AdminBooking-tab" data-toggle="tab" href="#AdminBooking" role="tab" aria-controls="AdminBooking" aria-selected="false">ข้อมูลการจอง</a>
+									<a class="nav-link FontMenu" id="AdminPayment-tab" data-toggle="tab" href="#AdminPayment" role="tab" aria-controls="AdminPayment" aria-selected="false">การจองและชำระเงิน</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link FontMenu" id="AdminPackage-tab" data-toggle="tab" href="#AdminPackage" role="tab" aria-controls="AdminPackage" aria-selected="false">แพ็กเกจ</a>
@@ -99,11 +99,11 @@
 								<div class="tab-pane fade" id="AdminCustomer" role="tabpanel" aria-labelledby="AdminCustomer-tab"><?php $this->load->view("/GuideManageCustomer/View_ManageCustomer.php"); ?></div>
 								<div class="tab-pane fade" id="AdminGuide" role="tabpanel" aria-labelledby="AdminGuide-tab">-</div>
 								<div class="tab-pane fade" id="AdminRankGuide" role="tabpanel" aria-labelledby="AdminRankGuide-tab">-</div>
-								<div class="tab-pane fade" id="AdminBooking" role="tabpanel" aria-labelledby="AdminBooking-tab">-</div>
+								<div class="tab-pane fade" id="AdminPayment" role="tabpanel" aria-labelledby="AdminPayment-tab"><?php $this->load->view("/CheckBookingPayment/View_CheckBookingPayment.php"); ?></div>
 								<div class="tab-pane fade" id="AdminPackage" role="tabpanel" aria-labelledby="AdminPackage-tab"><?php $this->load->view("/Package/View_package.php"); ?></div>
 							<?php }else if($this->session->userdata('session_reftype') == 3){ //มัคคุเทศก์ ?>
 								<div class="tab-pane fade show active" id="GuideInformation" role="tabpanel" aria-labelledby="GuideInformation-tab"><?php $this->load->view("/Information/View_Information.php"); ?></div>
-								<div class="tab-pane fade" id="GuideOther" role="tabpanel" aria-labelledby="GuideOther-tab">-</div>
+								<div class="tab-pane fade" id="GuideOther" role="tabpanel" aria-labelledby="GuideOther-tab"><?php $this->load->view("/GuideOther/View_GuideOther.php"); ?></div>
 								<div class="tab-pane fade" id="GuideRate" role="tabpanel" aria-labelledby="GuideRate-tab"><?php $this->load->view("/Guiderate/View_Guiderate.php"); ?></div>
 								<div class="tab-pane fade" id="GuideBooking" role="tabpanel" aria-labelledby="GuideBooking-tab">-</div>
 								<div class="tab-pane fade" id="GuidePackage" role="tabpanel" aria-labelledby="GuidePackage-tab"><?php $this->load->view("/Package/View_package.php"); ?></div>

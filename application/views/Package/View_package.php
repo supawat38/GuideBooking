@@ -25,7 +25,7 @@
 	</div>
 </div>
 
-<!--โหลดไฟล์ script หน้า information-->
+<!--โหลดไฟล์ script หน้า package-->
 <?php include_once __DIR__ . '/../script.php';?>
 
 <script>
@@ -51,7 +51,7 @@
 		});
 	}
 
-	//เพิ่มข้อมูลผู้ดูแลระบบ
+	//เพิ่มข้อมูลแพ๊คเกจ
 	function Page_package(typepage,id){
 		$('.ButtonControlPageListpackage').hide();
 		$('.ButtonControlPageAddpackage').show();

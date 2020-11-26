@@ -81,6 +81,15 @@
     border-radius: 50px;
 }
 
+.IconStatus_wait{
+	background: #f2fa7d;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 50px;
+}
+
 .TextClassStatus_close{
 	color : #d96969;
 	display: inline-block;
@@ -162,6 +171,14 @@
 	cursor: pointer;
 	float: right;
 	margin-left : 20px;
+}
+
+/*CSS สำหรับ ปุ่มนักท่องเที่ยว + มัคคุเทศน์ */ 
+.BTNSelectBooking{
+	width	:250px; 
+	font-family: THSarabunNew;
+	font-size:  25px !important;
+	border-radius: 0px;
 }
 
 /*CSS สำหรับ ปุ่มนักท่องเที่ยว + มัคคุเทศน์ */ 
@@ -420,4 +437,88 @@
 .CenterDisabledBTN{
 	cursor: no-drop;
     pointer-events: none;
+}
+
+.GuideTag{
+	display: inline-block;
+	width: auto;
+	background: #ec6941;
+	margin-right: 10px;
+	padding: 0px 10px;
+	margin-bottom: 10px;
+}
+
+.GuideTaglabel{
+	color : #FFF !important;
+	margin: 0px;
+}
+
+#divPayment label{
+	font-family: THSarabunNew;
+	font-size:  25px !important;
+	color : black;
+}
+
+#divPayment input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
+#ModalLogin label{
+	font-family: THSarabunNew;
+	font-size:  25px;
+	color : black;
+}
+
+#ModalLogin input{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
+.FontLogin{
+	font-family: THSarabunNew;
+	font-size:  28px !important;
+	margin: 0px;
+	color: #FFF !important;
+}
+
+.FontLoginClick{
+	font-family: THSarabunNew;
+	font-size:  22px !important;
+	padding: 5px 30px;
+}
+
+#ModalLoginBeforeBooking label{
+	font-family: THSarabunNew;
+	font-size:  25px;
+	color : black;
+}
+
+#ModalLoginBeforeBooking input{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
+
+.FontLoginBeforeBookingClick{
+	font-family: THSarabunNew;
+	font-size:  22px !important;
+	padding: 5px 30px;
+}
+
+/*CSS ส่วนของ From หน้าจอตรวจสอบและชำระเงิน */
+#divEditBookingAndPayment label{
+	font-family: THSarabunNew;
+	font-size:  25px !important;
+	color : black;
+}
+
+#divEditBookingAndPayment input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
+#divEditBookingAndPayment input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
 }

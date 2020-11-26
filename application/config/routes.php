@@ -11,14 +11,22 @@ $route['ImageUpload'] 							= 'main/Uploadimage';
 //สมัครสมาชิก
 $route['InsertAndEditRegister'] 				= 'register/register/RegisterSystems';
 
-
 //หน้าจอ - ข้อมูลหลัก
 $route['main'] 									= 'main';
 $route['Loadtable_package_mainpage']			= 'main/LoadtablePackage';
 
-//หน้าจอ - ค้นหามัคคุเทศก์
+//หน้าจอ - ค้นหามัคคุเทศก์ + จอง
 $route['ResearchGuide'] 						= 'ResearchGuide/ResearchGuide/index';
 $route['LoadtableGuide'] 						= 'ResearchGuide/ResearchGuide/LoadtableGuide';
+$route['Booking_Guide'] 						= 'ResearchGuide/ResearchGuide/Booking';
+$route['Booking_DeteilGuide/(:any)'] 			= 'ResearchGuide/ResearchGuide/BookingDetailGuide/$1';
+$route['Booking_Confirm'] 						= 'ResearchGuide/ResearchGuide/BookingConfirm';
+$route['Booking_UploadSlip']					= 'ResearchGuide/ResearchGuide/UploadSlip';
+$route['Booking_ConfirmPayment']				= 'ResearchGuide/ResearchGuide/ConfirmPayment';
+
+//หน้าจอ - ช้อมูลมัคคุเทศก์
+$route['GuideAll']								= 'GuideAll/GuideAll/index';
+$route['LoadtableGuideAll'] 					= 'GuideAll/GuideAll/LoadtableGuide';
 
 //หน้าจอ - สมัครสมาชิก
 $route['register'] 								= 'register/register/index';
@@ -63,10 +71,18 @@ $route['PageInsOrEdit_ManageCustomer'] 			= 'GuideManageCustomer/GuideManageCust
 $route['EventInsOrEdit_ManageCustomer'] 		= 'GuideManageCustomer/GuideManageCustomer/EventInsoredit';
 $route['EventDelete_ManageCustomer'] 			= 'GuideManageCustomer/GuideManageCustomer/EventDeleteManageCustomer';
 
+//หน้าจอ - ข้อมูลมัคคุเทศก์ท่านอื่น
+$route['Loadtable_guideother'] 					= 'GuideOther/GuideOther/Loadtable';
+
 //หน้าจอ - ตารางงาน
 $route['LoadCalendar'] 							= 'Calendar/Calendar/index';
 $route['AddCalendar'] 							= 'Calendar/Calendar/AddCalendar';
 $route['SaveCalendar'] 							= 'Calendar/Calendar/SaveCalendar';
+
+//หน้าจอ - การจองและการชำระเงิน
+$route['Loadtable_BookingAndPayment'] 			= 'CheckBookingPayment/CheckBookingPayment/Loadtable';
+$route['PageInsOrEdit_BookingAndPayment'] 		= 'CheckBookingPayment/CheckBookingPayment/PageInsoredit';
+$route['EventInsOrEdit_BookingAndPayment'] 		= 'CheckBookingPayment/CheckBookingPayment/EventInsoredit';
 
 
 

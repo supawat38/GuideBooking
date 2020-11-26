@@ -32,30 +32,6 @@
 				font-size:22px !important;
 				margin-bottom: 0px;
 			}
-
-			#ModalLogin label{
-				font-family: THSarabunNew;
-				font-size:  25px;
-				color : black;
-			}
-
-			#ModalLogin input{
-				font-family: THSarabunNew;
-				font-size:  20px !important;
-			}
-
-			.FontLogin{
-				font-family: THSarabunNew;
-				font-size:  28px !important;
-				margin: 0px;
-				color: #FFF !important;
-			}
-
-			.FontLoginClick{
-				font-family: THSarabunNew;
-				font-size:  22px !important;
-				padding: 5px 30px;
-			}
 		</style>
 		
 		<footer class="ftco-footer bg-bottom ftco-no-pt" style="margin-top: 60px; background-image: url(application/assets/images/bg_3.jpg);">
