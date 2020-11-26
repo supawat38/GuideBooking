@@ -102,7 +102,7 @@
         ?>
 				<tr>
                     <th><?=$i?></th>
-                    <td><?php echo date('l', strtotime($date)); ?></td>
+                    <td><?php echo ConvertThaiDay(date('l', strtotime($date))); ?></td>
                     <td><?=$i?>/<?=$Month?>/<?=$Year?>
                         <input type="hidden" name="CalendarDate[]" value="<?=$date?>">
                     </td>

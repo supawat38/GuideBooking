@@ -91,5 +91,10 @@ class Calendar extends CI_Controller {
 		   
 	}
 
+	//แก้ไขหน้าจอสร้างตารางงาน
+	public function EditCalendar(){
+		    echo 'edit Calendar.';
+	}
+
 	
 }

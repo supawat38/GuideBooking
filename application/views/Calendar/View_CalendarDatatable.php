@@ -67,6 +67,7 @@
 		</thead>
 		<tbody>
         <?php 
+              //helper('DateConvert');
               //ตรวจสอบว่าพบข้อมูลหรือไม่
               if($Result["Code"] == 1){
                 
@@ -74,14 +75,17 @@
                 
                 //วนลูปแสดงข้อมูลตารางงาน
                 foreach($Result['Items'] AS $Key => $Value){ 
+                
+                $calenYear  =  $Value['CalenYear']; //Calendar Year
+                $calenMonth =  $Value['CalenMonth']; //Calendar Month
 
                 $line_no++; //เพิ่มค่าเลขแถวที่ละ 1
         ?>
 				<tr>
                     <th><?=$line_no?></th>
-                    <td><?=$Value['CalenYear']?></td>
-                    <td><?=$Value['CalenMonth']?></td>
-                    <td><img class="img-responsive ImageEdit" src="<?=base_url()?>/application/assets/images/icon/edit.png" onclick="#"></td>
+                    <td><?=$calenYear?></td>
+                    <td><?php echo ConvertThaiMonth($calenMonth);?></td>
+                    <td><img class="img-responsive ImageEdit" src="<?=base_url()?>/application/assets/images/icon/edit.png" onclick="EditGuideCalendar('<?=$calenYear?>','<?=$calenMonth?>')"></td>
                     <td><img class="img-responsive ImageDelete" src="<?=base_url()?>/application/assets/images/icon/delete.png" onclick="#"></td>
                 </tr>
         <?php  

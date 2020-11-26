@@ -7,6 +7,7 @@
 		 
 	});
 
+    //ดึงตารางงานของมัคคุเทศก์
 	function LoadGuideCalendar(){
 		
 		$.ajax({
@@ -120,6 +121,31 @@
 			success	: function (Result) {
 				alert('บันทึกการสร้างตารางงานสำเร็จ');
 				LoadGuideCalendar();
+
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				alert(jqXHR, textStatus, errorThrown);
+			}
+		});
+	}
+
+	// แก้ไขตารางเวลาของ Guide แต่ละคน
+	function EditGuideCalendar(calenYear,calenMonth){
+
+        alert(calenYear+':'+calenMonth);
+		$.ajax({
+			type	: "POST",
+			url		: "EditCalendar",
+			data    :{
+						"ActionMode" : 2,
+						"calenYear" : calenYear , 
+						"calenMonth" : calenMonth
+					  },
+			cache	: false,
+			timeout	: 0,
+			success	: function (Result) {
+				
+				alert(Result);
 
 			},
 			error: function (jqXHR, textStatus, errorThrown) {

@@ -13,7 +13,7 @@ class models_GuideCalendar extends CI_Model {
 
 			$SQL = "  SELECT COUNT(guide_date) AS guide_date ";
 			$SQL.= "  FROM calender ";
-			$SQL.= "  WHERE  guide_id = '$guide_id' ";
+			$SQL.= "  WHERE  guide_id = '".$guide_id."' ";
 			$SQL.= "  AND  DATE_FORMAT(guide_date, '%Y')= '".$AddYear."' ";
 			$SQL.= "  AND  DATE_FORMAT(guide_date, '%m')= '".$AddMonth."' ";
 
@@ -35,7 +35,7 @@ class models_GuideCalendar extends CI_Model {
 			$guide_id = $Filter["guide_id"]; //รหัสไกด์
 
 			$SQL = " SELECT DISTINCT DATE_FORMAT(guide_date, '%Y') AS CalenYear ";
-			$SQL.= ", DATE_FORMAT(guide_date, '%M') AS CalenMonth " ;
+			$SQL.= ", DATE_FORMAT(guide_date, '%m') AS CalenMonth " ;
 			$SQL.= " FROM calender ";
 			$SQL.= " WHERE  guide_id = '$guide_id' ";
 
