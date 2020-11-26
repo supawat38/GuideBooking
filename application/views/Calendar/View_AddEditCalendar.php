@@ -86,7 +86,7 @@
 				<th scope="col" width="10%">ลำดับ</th>
 				<th scope="col" width="10%">วัน</th>
 				<th scope="col">วันที่</th>
-                <th scope="col" width="10%">สถานะ</th>
+                <th scope="col" width="15%">สถานะ</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -107,7 +107,7 @@
                         <input type="hidden" name="CalendarDate[]" value="<?=$date?>">
                     </td>
                     <td>
-                    <select class="form-control" name="CalendarSet[]">
+                    <select class="jSelectedsingle form-control" name="CalendarSet[]">
                     <option value="0">ว่าง</option>
                     <option value="2">ไม่ว่าง</option>
                     <option value="1">จองแล้ว</option>
@@ -129,7 +129,7 @@
                     <td>??</td>
                     <td>???</td>
                     <td>
-                    <select class="form-control" name="CalendarSet[]">
+                    <select class="jSelectedsingle form-control" name="CalendarSet[]">
                     <option value="0">ว่าง</option>
                     <option value="2">ไม่ว่าง</option>
                     <option value="1">จองแล้ว</option>
