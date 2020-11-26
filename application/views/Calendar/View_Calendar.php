@@ -107,18 +107,20 @@
 			CalendarDate.push($(this).val());
 		});
         
+        var ActionMode = $("#ActionMode").val();
 
 		$.ajax({
 			type	: "POST",
 			url		: "SaveCalendar",
 			data    :{
-						"ActionMode" : 1,
-						"CalendarSet" : CalendarSet , 
+						"ActionMode"   : ActionMode,
+						"CalendarSet"  : CalendarSet , 
 						"CalendarDate" : CalendarDate
 					  },
 			cache	: false,
 			timeout	: 0,
 			success	: function (Result) {
+				console.log(Result);
 				alert('บันทึกการสร้างตารางงานสำเร็จ');
 				LoadGuideCalendar();
 
@@ -132,20 +134,19 @@
 	// แก้ไขตารางเวลาของ Guide แต่ละคน
 	function EditGuideCalendar(calenYear,calenMonth){
 
-        alert(calenYear+':'+calenMonth);
 		$.ajax({
 			type	: "POST",
 			url		: "EditCalendar",
 			data    :{
 						"ActionMode" : 2,
-						"calenYear" : calenYear , 
-						"calenMonth" : calenMonth
+						"EditcalenYear" : calenYear , 
+						"EditcalenMonth" : calenMonth
 					  },
 			cache	: false,
 			timeout	: 0,
 			success	: function (Result) {
 				
-				alert(Result);
+				$('#GuideCalendarContent').html(Result);
 
 			},
 			error: function (jqXHR, textStatus, errorThrown) {

@@ -73,11 +73,16 @@
          <button class="btn btn-secondary" onclick="CheckAddGuideCalendar()">+ เพิ่มตารางงาน</button>
     </div>
 </div>
+
+<!-- ถ้าเป็น Mode แก้ไขข้อมูลจะแสดงข้อมูล เดือน / ปี ที่กำลังแก้ไข -->
 <?php } else { ?>
     <div class="row">
-    <div class="col-lg-12 col-12">เดือน มกราคม 2020 </div>
+    <div class="col-lg-12 col-12">เดือน <?php echo ConvertThaiMonth($AddMonth);?> <?=$AddYear?> </div>
     </div>
 <?php } ?>
+<!-- จบ -->
+
+
 <div class="row">
     <div class="col-lg-12 col-12">
     <table class="table table-hover" style="margin-top: 20px;">
@@ -109,8 +114,7 @@
                     <td>
                     <select class="jSelectedsingle form-control" name="CalendarSet[]">
                     <option value="0">ว่าง</option>
-                    <option value="2">ไม่ว่าง</option>
-                    <option value="1">จองแล้ว</option>
+                    <option value="2">ไม่รับงาน</option>
                     </select>
                     </td>
                 </tr>
@@ -122,21 +126,54 @@
             echo "<tr><td colspan='5' style='text-align:center'>--กรุณาเลือกปี/เดือน ที่ต้องการสร้างตารางงาน--</td></tr>";
         }
 
-        }else{
+        }else{ //OPEN ELSE
+             
+            //  โหมดแก้ไขข้อมูลตารางเวลา ระบบจะดึงข้อมูลตารางเวลาที่เคยสร้างไว้ขึ้นมาให้แก้ไข
+            $lineNo = 0; //หมายเลขแถว
+            foreach($Result['Items'] AS $Key => $Value){ //OPEN FOR
+
+                $lineNo++; //เพิ่มค่าให้หมายเลขแถว
+                $calenDay  = ConvertThaiDay(date('l', strtotime($Value["guide_date"]))); //วันในตารางงาน
+                $calenDate = $Value["guide_date"]; //วันที่ในตารางงาน
+                $showDate = date("d/m/Y", strtotime($Value["guide_date"])); //วันที่สำหรับแสดงในตาราง
+                $calenDayStatus = $Value["guide_status"]; //สถานะของตารางเวลาของแต่ละวัน
+
         ?>
+
                 <tr>
-                    <th>1</th>
-                    <td>??</td>
-                    <td>???</td>
+                    <th><?=$lineNo?></th>
+                    <td><?=$calenDay?></td>
                     <td>
-                    <select class="jSelectedsingle form-control" name="CalendarSet[]">
-                    <option value="0">ว่าง</option>
-                    <option value="2">ไม่ว่าง</option>
-                    <option value="1">จองแล้ว</option>
-                    </select>
+                        <?=$showDate?>
+                        <input type="hidden" name="CalendarDate[]" value="<?=$calenDate?>">
+                    </td>
+                    <td>
+                         <?php  if($calenDayStatus == 1){ ?>
+                                    <select class="jSelectedsingle form-control" name="CalendarSet[]" style="display:none">
+                                            <option value="1">จองแล้ว</option>
+                                    </select>
+                                    <img src="<?=base_url()?>/application/assets/images/icon/user.png" style="width:18px"> <label style="color:green"> จองแล้ว<label>
+                         <?php } else { //OPEN ELSE?>
+                                    <select class="jSelectedsingle form-control" name="CalendarSet[]">
+                                            <?php if($calenDayStatus == 0){ ?>
+                                                    <option value="0" selected="true">ว่าง</option>
+                                            <? } else { ?>
+                                                     <option value="2">ไม่รับงาน</option>
+                                            <?php } ?>
+
+                                            <?php if($calenDayStatus == 2){ ?>
+                                                     <option value="2" selected="true">ไม่รับงาน</option>
+                                            <? } else { ?>
+                                                     <option value="0">ว่าง</option>
+                                            <?php } ?>
+                                            
+                                    </select>
+                         <?php } //END ELSE?>
                     </td>
                 </tr>
-        <?php  }  ?>
+            <?php } //END FOR ?>
+
+        <?php  }  //END ELSE ?>
 			</tbody>
 	</table>
     </div>
@@ -145,6 +182,8 @@
 <div class="row">
     <div class="col-lg-8 col-8">&nbsp;</div>
     <div class="col-lg-4 col-4 text-right" style="padding-bottom:10px;">
+         <!-- Mode AddNew / Edit -->
+         <input type="hidden" id="ActionMode" value="<?=$ActionMode?>">
          <button type="button" class="btn btn-primary waves-effect waves-light mybnt" 
                 onclick="SaveGuideCalendar()">บันทึก</button>
     </div>

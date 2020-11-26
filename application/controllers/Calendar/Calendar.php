@@ -53,9 +53,19 @@ class Calendar extends CI_Controller {
 		   $CalendarDate = $this->input->post('CalendarDate');
 		   $ActionMode = $this->input->post('ActionMode');
 		   $GuideId = $this->session->userdata("session_refid"); //รหัสมัคคุเทศก์
+
+		   $CalenMonth  = date("m", strtotime($CalendarDate[0]));
+		   $CalenYear   = date("Y", strtotime($CalendarDate[0]));
 			
 		   //Mode Add
-		   if($ActionMode == 1){
+		   if($ActionMode == 2){ 
+			   
+				$Condition = array("guide_id"   => $GuideId ,
+								   "CalenMonth" => $CalenMonth,
+								   "CalenYear"  => $CalenYear);
+			    $this->models_GuideCalendar->Delete_Calendar($Condition);
+		     
+		   }
 		
                 for($i = 0; $i<count($CalendarDate); $i++){
 					$note = '';
@@ -83,17 +93,34 @@ class Calendar extends CI_Controller {
 									"guide_status" => $CalendarSet[$i],
 									"note" => $note);
 
-					echo "Res: " . $Result = $this->models_GuideCalendar->Insert_Calendar($Data,"calender");
+					echo  $Result = $this->models_GuideCalendar->Insert_Calendar($Data,"calender");
 
 				}
-		   }
+		   
 
 		   
 	}
 
 	//แก้ไขหน้าจอสร้างตารางงาน
 	public function EditCalendar(){
-		    echo 'edit Calendar.';
+
+		    //รับพารามิตเตอร์ที่ส่งมาจาก Ajax
+			$ActionMode = $this->input->post('ActionMode');
+			$GuideId = $this->session->userdata("session_refid"); //รหัสมัคคุเทศก์
+			$EditcalenYear = $this->input->post('EditcalenYear'); //ปีที่ต้องการแก้ไข
+			$EditcalenMonth = $this->input->post('EditcalenMonth'); //เดือนที่ต้องการแก้ไข
+			
+			//สร้างเงื่อนไขในการค้นหาข้อมูลตารางเวลาที่ต้องการแก้ไข
+			$Filter = array("guide_id"   => $GuideId,
+				            "calenYear"  => $EditcalenYear ,
+		                    "calenMonth" => $EditcalenMonth);
+ 
+			$Result = $this->models_GuideCalendar->_GetCalendarByMonth($Filter); //ดึงตารางเวลาที่ต้องการแก้ไข
+
+			$this->load->view('Calendar/View_AddEditCalendar',array("ActionMode"=> $ActionMode,
+																	"AddYear"   => $EditcalenYear,
+																	"AddMonth"  => $EditcalenMonth,
+																    "Result"    => $Result));
 	}
 
 	
