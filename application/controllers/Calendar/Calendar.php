@@ -12,17 +12,38 @@ class Calendar extends CI_Controller {
 	//โหลดหน้าจอตารางงาน
 	public function index(){
 
-		$guide_id = $this->session->userdata("session_refid");
-		echo $guide_id;
-		$Filter = array();
+		$guide_id = $this->session->userdata("session_refid"); //รหัสมัคคุเทศก์
+
+		$Filter = array("guide_id" => $guide_id);
+
 		$Result = $this->models_GuideCalendar->ShowList_Calendar($Filter);
+
 		$this->load->view('Calendar/View_CalendarDatatable',array("Result"=>$Result));
+	}
+
+	//ตรวจสอบการสร้างตารางงาน
+	public function CheckAddCalendar(){
+
+		   $AddYear  =  $this->input->post('AddYear'); //ปีที่เลือก
+		   $AddMonth = $this->input->post('AddMonth'); //เดือนที่เลือก
+		   $GuideId  =  $this->session->userdata("session_refid"); //รหัสมัคคุเทศก์
+		   $Conditions = array("AddYear"  => $AddYear,
+							   "AddMonth" => $AddMonth,
+							   "GuideId"  => $GuideId);
+		   echo $this->models_GuideCalendar->CheckAddCalendar($Conditions);
+
 	}
 
 	//โหลดหน้าจอสร้างตารางงาน
 	public function AddCalendar(){
+
 		$ActionMode = $this->input->post('ActionMode');
-		$this->load->view('Calendar/View_AddEditCalendar',array("ActionMode"=>$ActionMode));
+		$AddYear = $this->input->post('AddYear');
+		$AddMonth = $this->input->post('AddMonth');
+
+		$this->load->view('Calendar/View_AddEditCalendar',array("ActionMode"=>$ActionMode,
+																"AddYear"   => $AddYear,
+															    "AddMonth"  => $AddMonth));
 	}
 
 	//บันทึกหน้าจอสร้างตารางงาน
@@ -31,7 +52,7 @@ class Calendar extends CI_Controller {
 		   $CalendarSet = $this->input->post('CalendarSet');
 		   $CalendarDate = $this->input->post('CalendarDate');
 		   $ActionMode = $this->input->post('ActionMode');
-		   $GuideId = $this->input->post('GuideId');
+		   $GuideId = $this->session->userdata("session_refid"); //รหัสมัคคุเทศก์
 			
 		   //Mode Add
 		   if($ActionMode == 1){

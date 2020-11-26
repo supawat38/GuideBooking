@@ -1,3 +1,13 @@
+<style>
+.form-control{
+    color:#333333!important;
+    font-size:15px!important;
+}
+.mybtn{
+    color:#333333!important;
+    font-size:15px!important;
+}
+</style>
 <div class="row">
     <div class="col-lg-6 col-6">
         <label class="labelHead">ตารางงาน</label>
@@ -8,8 +18,8 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-6 col-9">
-          <select name="" id="">
+    <div class="col-sm-2 col-md-2 col-lg-2 col-2">
+          <select class=" form-control" name="" id="">
           <option value="2020">2020</option>
           <option value="2021">2021</option>
           <option value="2022">2022</option>
@@ -22,7 +32,10 @@
           <option value="2029">2029</option>
           <option value="2030">2030</option>
          </select>
-         <select name="" id="">
+         
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2 col-2">
+          <select class="form-control" name="" id="" style="color:#cccccc">
           <option value="01">มกราคม</option>
           <option value="02">กุมภาพันธ์</option>
           <option value="03">มีนาคม</option>
@@ -36,8 +49,9 @@
           <option value="11">พฤษจิกายน</option>
           <option value="12">ธันวาคม</option>
          </select>
-         
-         <button>ค้นหา</button>
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2 col-2">
+         <button class="btn btn-primary waves-effect waves-light mybtn" style="width:100px;hight:50px">ค้นหา</button>
     </div>
 </div>
 

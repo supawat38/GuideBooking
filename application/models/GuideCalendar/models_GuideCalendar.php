@@ -3,16 +3,45 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 class models_GuideCalendar extends CI_Model {
 
+    //ตรวจสอบการสร้างตารางเวลา
+	public function CheckAddCalendar($Conditions){
+		try{	
+			
+			$AddYear   = $Conditions['AddYear']; //ปีที่เลือก
+		    $AddMonth =  $Conditions['AddMonth']; //เดือนที่เลือก
+			$guide_id  = $Conditions["GuideId"]; //รหัสไกด์
+
+			$SQL = "  SELECT COUNT(guide_date) AS guide_date ";
+			$SQL.= "  FROM calender ";
+			$SQL.= "  WHERE  guide_id = '$guide_id' ";
+			$SQL.= "  AND  DATE_FORMAT(guide_date, '%Y')= '".$AddYear."' ";
+			$SQL.= "  AND  DATE_FORMAT(guide_date, '%m')= '".$AddMonth."' ";
+
+
+			$QueryItem 		= $this->db->query($SQL);
+			$Result = $QueryItem->result_array();
+			return $Result[0]["guide_date"];
+            
+
+		}catch(Exception $Error){
+			echo $Error;
+		}
+	}
+
 	//ดึงข้อมูล Calendar ของ Guide แต่ละคน
 	public function ShowList_Calendar($Filter){
 		try{	
 
+			$guide_id = $Filter["guide_id"]; //รหัสไกด์
+
 			$SQL = " SELECT DISTINCT DATE_FORMAT(guide_date, '%Y') AS CalenYear ";
 			$SQL.= ", DATE_FORMAT(guide_date, '%M') AS CalenMonth " ;
 			$SQL.= " FROM calender ";
+			$SQL.= " WHERE  guide_id = '$guide_id' ";
+
 
 			$QueryItem 		= $this->db->query($SQL);
-			
+
 			if($QueryItem->num_rows() > 0){
 				$Result = array(
 					'Items'  		=> $QueryItem->result_array(),
