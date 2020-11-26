@@ -41,7 +41,6 @@
     </div>
 </div>
 
-
 <table class="table table-hover" style="margin-top: 20px;">
 		<thead>
 			<tr>
@@ -53,33 +52,34 @@
 			</tr>
 		</thead>
 		<tbody>
+        <?php 
+              //ตรวจสอบว่าพบข้อมูลหรือไม่
+              if($Result["Code"] == 1){
+                
+                $line_no = 0; //เก็บหมายเลขแถว
+                
+                //วนลูปแสดงข้อมูลตารางงาน
+                foreach($Result['Items'] AS $Key => $Value){ 
+
+                $line_no++; //เพิ่มค่าเลขแถวที่ละ 1
+        ?>
 				<tr>
-                    <th>1</th>
-                    <td>2020</td>
-                    <td>มกราคม</td>
+                    <th><?=$line_no?></th>
+                    <td><?=$Value['CalenYear']?></td>
+                    <td><?=$Value['CalenMonth']?></td>
                     <td><img class="img-responsive ImageEdit" src="<?=base_url()?>/application/assets/images/icon/edit.png" onclick="#"></td>
                     <td><img class="img-responsive ImageDelete" src="<?=base_url()?>/application/assets/images/icon/delete.png" onclick="#"></td>
                 </tr>
-                <tr>
-                    <th>2</th>
-                    <td>2020</td>
-                    <td>กุมภาพันธ์</td>
-                    <td><img class="img-responsive ImageEdit" src="<?=base_url()?>/application/assets/images/icon/edit.png" onclick="#"></td>
-                    <td><img class="img-responsive ImageDelete" src="<?=base_url()?>/application/assets/images/icon/delete.png" onclick="#"></td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>2020</td>
-                    <td>มีนาคม</td>
-                    <td><img class="img-responsive ImageEdit" src="<?=base_url()?>/application/assets/images/icon/edit.png" onclick="#"></td>
-                    <td><img class="img-responsive ImageDelete" src="<?=base_url()?>/application/assets/images/icon/delete.png" onclick="#"></td>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <td>2020</td>
-                    <td>เมษายน</td>
-                    <td><img class="img-responsive ImageEdit" src="<?=base_url()?>/application/assets/images/icon/edit.png" onclick="#"></td>
-                    <td><img class="img-responsive ImageDelete" src="<?=base_url()?>/application/assets/images/icon/delete.png" onclick="#"></td>
-                </tr>
+        <?php  
+
+                } //END FOR
+
+              }//END IF
+
+              //ถ้าไม่พบข้อมูลให้แสดงไม่พบข้อมูล
+              else{
+                  echo "<tr><td colspan='5' style='text-align:center'>--ไม่พบข้อมูล--</td></tr>";
+              }
+        ?>
 			</tbody>
 	</table>
