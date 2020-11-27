@@ -155,4 +155,28 @@
 		});
 	}
 
+// ลบตารางเวลาของ Guide 
+function DeleteGuideCalendar(calenYear,calenMonth){
+
+$.ajax({
+	type	: "POST",
+	url		: "DeleteCalendar",
+	data    :{
+				"ActionMode" : 2,
+				"EditcalenYear" : calenYear , 
+				"EditcalenMonth" : calenMonth
+			  },
+	cache	: false,
+	timeout	: 0,
+	success	: function (Result) {
+		
+		$('#GuideCalendarContent').html(Result);
+
+	},
+	error: function (jqXHR, textStatus, errorThrown) {
+		alert(jqXHR, textStatus, errorThrown);
+	}
+});
+}
+
 </script>
