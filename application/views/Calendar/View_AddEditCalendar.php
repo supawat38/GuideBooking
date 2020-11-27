@@ -77,7 +77,7 @@
 <!-- ถ้าเป็น Mode แก้ไขข้อมูลจะแสดงข้อมูล เดือน / ปี ที่กำลังแก้ไข -->
 <?php } else { ?>
     <div class="row">
-    <div class="col-lg-12 col-12">เดือน <?php echo ConvertThaiMonth($AddMonth);?> <?=$AddYear?> </div>
+    <div class="col-lg-12 col-12"><img src="<?=base_url()?>/application/assets/images/icon/edit-calendar.png" style="width:18px">  เดือน <?php echo ConvertThaiMonth($AddMonth);?> <?=$AddYear?> </div>
     </div>
 <?php } ?>
 <!-- จบ -->

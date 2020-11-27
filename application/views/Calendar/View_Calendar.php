@@ -3,20 +3,28 @@
 <script>
 	//โหลดหน้าจอตารางงานมัคคุเทศก์
 	$('document').ready(function(){
-		LoadGuideCalendar();
-		 
+		LoadGuideCalendar();	 
 	});
 
     //ดึงตารางงานของมัคคุเทศก์
 	function LoadGuideCalendar(){
 		
+		var calendarYearSearch = $("#calendarYearSearch").children("option:selected").val();
+		var calendarMonthSearch = $("#calendarMonthSearch").children("option:selected").val();
+
 		$.ajax({
 			type	: "POST",
 			url		: "LoadCalendar",
+			data    : {
+				        "calendarYearSearch" :  calendarYearSearch,
+			            "calendarMonthSearch" : calendarMonthSearch
+					  },
 			cache	: false,
 			timeout	: 0,
 			success	: function (Result) {
 				$('#GuideCalendarContent').html(Result);
+				$('#calendarYearSearch option[value='+calendarYearSearch+']').attr('selected','selected');
+				$('#calendarMonthSearch option[value='+calendarMonthSearch+']').attr('selected','selected');
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				alert(jqXHR, textStatus, errorThrown);
@@ -157,26 +165,26 @@
 
 // ลบตารางเวลาของ Guide 
 function DeleteGuideCalendar(calenYear,calenMonth){
+if(confirm('คุณต้องการลบตารางงานที่เลือกใช่หรือไม่ ?')){
+		$.ajax({
+			type	: "POST",
+			url		: "DeleteCalendar",
+			data    :{
+						"calenYear" : calenYear , 
+						"calenMonth" : calenMonth
+					 },
+			cache	: false,
+			timeout	: 0,
+			success	: function (Result) {
+				alert('ลบข้อมูลตารางงานสำเร็จ');
+				LoadGuideCalendar();
 
-$.ajax({
-	type	: "POST",
-	url		: "DeleteCalendar",
-	data    :{
-				"ActionMode" : 2,
-				"EditcalenYear" : calenYear , 
-				"EditcalenMonth" : calenMonth
-			  },
-	cache	: false,
-	timeout	: 0,
-	success	: function (Result) {
-		
-		$('#GuideCalendarContent').html(Result);
-
-	},
-	error: function (jqXHR, textStatus, errorThrown) {
-		alert(jqXHR, textStatus, errorThrown);
-	}
-});
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				alert(jqXHR, textStatus, errorThrown);
+			}
+		});
+}
 }
 
 </script>

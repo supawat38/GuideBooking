@@ -19,7 +19,8 @@
 
 <div class="row">
     <div class="col-sm-2 col-md-2 col-lg-2 col-2">
-          <select class=" form-control" name="" id="">
+          <select class=" form-control" id="calendarYearSearch">
+          <option value="">--ทุกปี--</option>
           <option value="2020">2020</option>
           <option value="2021">2021</option>
           <option value="2022">2022</option>
@@ -35,7 +36,8 @@
          
     </div>
     <div class="col-sm-2 col-md-2 col-lg-2 col-2">
-          <select class="form-control" name="" id="" style="color:#cccccc">
+          <select class="form-control"  id="calendarMonthSearch" style="color:#cccccc">
+          <option value="">--ทุกเดือน--</option>
           <option value="01">มกราคม</option>
           <option value="02">กุมภาพันธ์</option>
           <option value="03">มีนาคม</option>
@@ -51,7 +53,7 @@
          </select>
     </div>
     <div class="col-sm-2 col-md-2 col-lg-2 col-2">
-         <button class="btn btn-primary waves-effect waves-light mybtn" style="width:100px;hight:50px">ค้นหา</button>
+         <button class="btn btn-primary waves-effect waves-light mybtn" style="width:100px;hight:50px" onclick="LoadGuideCalendar()">ค้นหา</button>
     </div>
 </div>
 
@@ -86,7 +88,7 @@
                     <td><?=$calenYear?></td>
                     <td><?php echo ConvertThaiMonth($calenMonth);?></td>
                     <td><img class="img-responsive ImageEdit" src="<?=base_url()?>/application/assets/images/icon/edit.png" onclick="EditGuideCalendar('<?=$calenYear?>','<?=$calenMonth?>')"></td>
-                    <td><img class="img-responsive ImageDelete" src="<?=base_url()?>/application/assets/images/icon/delete.png" onclick="#"></td>
+                    <td><img class="img-responsive ImageDelete" src="<?=base_url()?>/application/assets/images/icon/delete.png" onclick="DeleteGuideCalendar('<?=$calenYear?>','<?=$calenMonth?>')"></td>
                 </tr>
         <?php  
 

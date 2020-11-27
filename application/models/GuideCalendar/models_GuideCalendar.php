@@ -32,14 +32,22 @@ class models_GuideCalendar extends CI_Model {
 	public function ShowList_Calendar($Filter){
 		try{	
 
-			$guide_id = $Filter["guide_id"]; //รหัสไกด์
+			$guide_id    =   $Filter["guide_id"]; //รหัสไกด์
+			$yearSearch  = $Filter["yearSearch"]; //ปีที่ค้นหา
+			$monthSearch = $Filter["monthSearch"]; //เดือนที่ค้นหา
 
 			$SQL = " SELECT DISTINCT DATE_FORMAT(guide_date, '%Y') AS CalenYear ";
 			$SQL.= ", DATE_FORMAT(guide_date, '%m') AS CalenMonth " ;
 			$SQL.= " FROM calender ";
 			$SQL.= " WHERE  guide_id = '$guide_id' ";
 
-
+            if($yearSearch  != ''){
+				$SQL.= " AND    DATE_FORMAT(guide_date, '%Y') = '".$yearSearch."' ";
+			}
+			if($monthSearch !=''){
+				$SQL.= " AND    DATE_FORMAT(guide_date, '%m') = '".$monthSearch."' ";
+			}
+			
 			$QueryItem 		= $this->db->query($SQL);
 
 			if($QueryItem->num_rows() > 0){

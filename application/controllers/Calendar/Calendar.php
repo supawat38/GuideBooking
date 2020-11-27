@@ -13,12 +13,18 @@ class Calendar extends CI_Controller {
 	public function index(){
 
 		$guide_id = $this->session->userdata("session_refid"); //รหัสมัคคุเทศก์
+		$yearSearch  =  $this->input->post('calendarYearSearch'); //ปีที่ค้นหา
+		$monthSearch = $this->input->post('calendarMonthSearch'); //เดือนที่ค้นหา
 
-		$Filter = array("guide_id" => $guide_id);
+		$Filter = array("guide_id" => $guide_id,
+						"yearSearch"  => $yearSearch,
+					    "monthSearch" => $monthSearch);
 
 		$Result = $this->models_GuideCalendar->ShowList_Calendar($Filter);
 
-		$this->load->view('Calendar/View_CalendarDatatable',array("Result"=>$Result));
+		$this->load->view('Calendar/View_CalendarDatatable',array("Result"     =>$Result,
+																  "yearSearch" =>$yearSearch,
+																  "monthSearch"=>$monthSearch));
 	}
 
 	//ตรวจสอบการสร้างตารางงาน
@@ -121,6 +127,21 @@ class Calendar extends CI_Controller {
 																	"AddYear"   => $EditcalenYear,
 																	"AddMonth"  => $EditcalenMonth,
 																    "Result"    => $Result));
+	}
+
+
+    public function DeleteCalendar(){
+		
+		 //รับพารามิตเตอร์ที่ส่งมาจาก Ajax
+		 $GuideId = $this->session->userdata("session_refid"); //รหัสมัคคุเทศก์
+		 $DeletecalenYear = $this->input->post('calenYear'); //ปีที่ต้องการลบ
+		 $DeletecalenMonth = $this->input->post('calenMonth'); //เดือนที่ต้องการลบ
+
+		 $Condition = array("guide_id"   => $GuideId ,
+							"CalenMonth" => $DeletecalenMonth,
+							"CalenYear"  => $DeletecalenYear);
+		  $this->models_GuideCalendar->Delete_Calendar($Condition);
+
 	}
 
 	
