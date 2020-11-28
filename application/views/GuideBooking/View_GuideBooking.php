@@ -1,25 +1,22 @@
 <div class="row">
 	<div class="col-lg-12" style="margin:10px 0px;">
 		<div class="row">
-			<div class="col-lg-12 col-12 ButtonControlPageListrate" style="display:block;">
+			<div class="col-lg-12 col-12 ButtonControlPageListguidebooking" style="display:block;">
 				<div class="row">
 					<div class="col-lg-6 col-6">
-						<label class="labelHead" >กำหนดราคา</label>
-					</div>
-					<div class="col-lg-6 col-6">
-						<button class="xButtonInsert pull-right" onClick="Page_rate('pageinsert','')">+</button>
+						<label class="labelHead" >ข้อมูลการจอง</label>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-12 col-12 ButtonControlPageAddrate" style="display:none;">
+			<div class="col-lg-12 col-12 ButtonControlPageAddguidebooking" style="display:none;">
 				<div class="row">
 					<div class="col-lg-6 col-6">
-						<label class="labelHead textActiveMenuBar" onClick="Back_rate()">กำหนดราคา</label> <label class="labelHead label_rateHead"></label>
+						<label class="labelHead textActiveMenuBar" onClick="Back_guidebooking()">ข้อมูลการจอง</label> <label class="labelHead label_guidebookingHead"></label>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-12">
-				<div id="odvContent_rate" class="row"></div>
+				<div id="odvContent_guidebooking" class="row"></div>
 			</div>
 		</div>
 	</div>
@@ -31,13 +28,13 @@
 <script>
 
 	//โหลดหน้าตาราง
-	LoadTable_rate(1);
-	function LoadTable_rate(numberpage){
-		$('.ButtonControlPageListrate').show();
-		$('.ButtonControlPageAddrate').hide();
+	LoadTable_guidebooking(1);
+	function LoadTable_guidebooking(numberpage){
+		$('.ButtonControlPageListguidebooking').show();
+		$('.ButtonControlPageAddguidebooking').hide();
 		$.ajax({
 			type	: "POST",
-			url		: "Loadtable_rate",
+			url		: "Loadtable_guidebooking",
 			data 	: {
 						'numberpage' 		: numberpage
 					  },
@@ -45,7 +42,7 @@
 			timeout	: 0,
 			success	: function (Result) {
 				$('#ftco-loader').removeClass('show');
-				$('#odvContent_rate').html(Result);
+				$('#odvContent_guidebooking').html(Result);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				alert(jqXHR, textStatus, errorThrown);
@@ -54,19 +51,19 @@
 	}
 
 	//เพิ่มข้อมูลผู้ดูแลระบบ
-	function Page_rate(typepage,id){
-		$('.ButtonControlPageListrate').hide();
-		$('.ButtonControlPageAddrate').show();
+	function Page_guidebooking(typepage,id){
+		$('.ButtonControlPageListguidebooking').hide();
+		$('.ButtonControlPageAddguidebooking').show();
 
 		if(typepage == 'pageinsert'){
-			$('.label_rateHead').text(' / เพิ่มข้อมูล');
+			$('.label_guidebookingHead').text(' / เพิ่มข้อมูล');
 		}else{
-			$('.label_rateHead').text(' / แก้ไขข้อมูล');
+			$('.label_guidebookingHead').text(' / แก้ไขข้อมูล');
 		}
 
 		$.ajax({
 			type	: "POST",
-			url		: "PageInsOrEdit_rate",
+			url		: "PageInsOrEdit_guidebooking",
 			data 	: {
 						'typepage' 		: typepage,
 						'id'			: id
@@ -74,7 +71,7 @@
 			cache	: false,
 			timeout	: 0,
 			success	: function (Result) {
-				$('#odvContent_rate').html(Result);
+				$('#odvContent_guidebooking').html(Result);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				alert(jqXHR, textStatus, errorThrown);
@@ -83,8 +80,8 @@
 	}
 
 	//ย้อนกลับ
-	function Back_rate(){
-		LoadTable_rate(1);
+	function Back_guidebooking(){
+		LoadTable_guidebooking(1);
 	}
 
 </script>

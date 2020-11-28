@@ -41,6 +41,7 @@
 			cache	: false,
 			timeout	: 0,
 			success	: function (Result) {
+				$('#ftco-loader').removeClass('show');
 				$('#odvContent_percentguide').html(Result);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {

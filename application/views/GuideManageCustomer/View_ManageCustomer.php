@@ -40,6 +40,7 @@
 			cache	: false,
 			timeout	: 0,
 			success	: function (Result) {
+				$('#ftco-loader').removeClass('show');
 				$('#odvContent_ManageCustomer').html(Result);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {

@@ -22,6 +22,7 @@
 			cache	: false,
 			timeout	: 0,
 			success	: function (Result) {
+				$('#ftco-loader').removeClass('show');
 				$('#GuideCalendarContent').html(Result);
 				$('#calendarYearSearch option[value='+calendarYearSearch+']').attr('selected','selected');
 				$('#calendarMonthSearch option[value='+calendarMonthSearch+']').attr('selected','selected');

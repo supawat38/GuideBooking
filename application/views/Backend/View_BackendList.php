@@ -105,7 +105,7 @@
 								<div class="tab-pane fade show active" id="GuideInformation" role="tabpanel" aria-labelledby="GuideInformation-tab"><?php $this->load->view("/Information/View_Information.php"); ?></div>
 								<div class="tab-pane fade" id="GuideOther" role="tabpanel" aria-labelledby="GuideOther-tab"><?php $this->load->view("/GuideOther/View_GuideOther.php"); ?></div>
 								<div class="tab-pane fade" id="GuideRate" role="tabpanel" aria-labelledby="GuideRate-tab"><?php $this->load->view("/Guiderate/View_Guiderate.php"); ?></div>
-								<div class="tab-pane fade" id="GuideBooking" role="tabpanel" aria-labelledby="GuideBooking-tab">-</div>
+								<div class="tab-pane fade" id="GuideBooking" role="tabpanel" aria-labelledby="GuideBooking-tab"><?php $this->load->view("/GuideBooking/View_GuideBooking.php"); ?></div>
 								<div class="tab-pane fade" id="GuidePackage" role="tabpanel" aria-labelledby="GuidePackage-tab"><?php $this->load->view("/Package/View_package.php"); ?></div>
 								<div class="tab-pane fade" id="GuideCalendar" role="tabpanel" aria-labelledby="GuideCalendar-tab"><?php $this->load->view("/Calendar/View_Calendar.php"); ?></div>
 							<?php }else{ //เจ้าของระบบ ?>
