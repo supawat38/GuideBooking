@@ -11,18 +11,31 @@ class GuideBooking extends CI_Controller {
 
 	//โหลดหน้าจอตาราง
 	public function Loadtable(){
-		echo 'test';
-		// $numberpage = $this->input->post('numberpage');
-		// $Condition = array(
-		// 	'page'  => $numberpage,
-		// 	'row'	=> 20
-		// );
+		$numberpage = $this->input->post('numberpage');
+		$Condition = array(
+			'page'  => $numberpage,
+			'row'	=> 20
+		);
 
-		// $result = $this->models_GuideBooking->LoadDataGuideBooking($Condition);
-		// $PackData = array(
-		// 	'result'			=> $result,
-		// 	'nPage'				=> $numberpage
-		// );
-		// $this->load->view('GuideBooking/View_GuideBookingDatatable',$PackData);
+		$result = $this->models_GuideBooking->LoadDataGuideBooking($Condition);
+		$PackData = array(
+			'result'			=> $result,
+			'nPage'				=> $numberpage
+		);
+		$this->load->view('GuideBooking/View_GuideBookingDatatable',$PackData);
 	}
+
+	//โหลดหน้าจอดูรายละเอียดการจอง
+	public function PageInsoredit(){
+		$typepage = $this->input->post('typepage');
+		$id 		= $this->input->post('id');
+		$result 	= $this->models_GuideBooking->GetData_Booking($id);
+
+		$PackData = array(
+			'typepage' 			=> $typepage,
+			'Result'			=> $result
+		);
+		$this->load->view('GuideBooking/View_GuideBookingForms',$PackData);
+	}
+
 }

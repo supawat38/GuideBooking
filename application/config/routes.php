@@ -68,8 +68,6 @@ $route['EventDelete_percentguide'] 				= 'PercentGuide/PercentGuide/EventDeletep
 //หน้าจอ - ข้อมูลการจอง(มุมมองไกด์)
 $route['Loadtable_guidebooking'] 				= 'GuideBooking/GuideBooking/Loadtable';
 $route['PageInsOrEdit_guidebooking'] 			= 'GuideBooking/GuideBooking/PageInsoredit';
-$route['EventInsOrEdit_guidebooking'] 			= 'GuideBooking/GuideBooking/EventInsoredit';
-$route['EventDelete_guidebooking'] 				= 'GuideBooking/GuideBooking/EventDeleteguidebooking';
 
 //หน้าจอ - กำหนดราคา
 $route['Loadtable_rate'] 						= 'Guiderate/Guiderate/Loadtable';

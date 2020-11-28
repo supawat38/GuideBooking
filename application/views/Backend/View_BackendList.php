@@ -66,10 +66,10 @@
 									<a class="nav-link FontMenu" id="GuideOther-tab" data-toggle="tab" href="#GuideOther" role="tab" aria-controls="GuideOther" aria-selected="false">ข้อมูลมัคคุเทศก์ท่านอื่น</a>
 								</li>
 								<li class="nav-item" >
-									<a class="nav-link FontMenu" id="GuideRate-tab" data-toggle="tab" href="#GuideRate" role="tab" aria-controls="GuideRate" aria-selected="false">กำหนดราคา</a>
+									<a class="nav-link FontMenu" id="GuideBooking-tab" data-toggle="tab" href="#GuideBooking" role="tab" aria-controls="GuideBooking" aria-selected="false">ข้อมูลการจอง</a>
 								</li>
 								<li class="nav-item" >
-									<a class="nav-link FontMenu" id="GuideBooking-tab" data-toggle="tab" href="#GuideBooking" role="tab" aria-controls="GuideBooking" aria-selected="false">ข้อมูลการจอง</a>
+									<a class="nav-link FontMenu" id="GuideRate-tab" data-toggle="tab" href="#GuideRate" role="tab" aria-controls="GuideRate" aria-selected="false">กำหนดราคา</a>
 								</li>
 								<li class="nav-item" >
 									<a class="nav-link FontMenu" id="GuidePackage-tab" data-toggle="tab" href="#GuidePackage" role="tab" aria-controls="GuidePackage" aria-selected="false">แพ็กเกจ</a>
@@ -89,7 +89,6 @@
 								</li>
 							<?php } ?>
 						</ul>
-
 
 						<!--เนื้อหา-->
 						<div class="tab-content" style="width: 100%;">

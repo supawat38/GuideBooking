@@ -3,12 +3,12 @@
 		<thead>
 			<tr>
 				<th scope="col">ลำดับ</th>
-				<th scope="col">ชื่อมัคคุเทศก์</th>
+				<th scope="col">ชื่อลูกค้า</th>
 				<th scope="col">เบอร์ติดต่อ</th>
-				<th scope="col">ส่วนแบ่ง (%)</th>
-				<th scope="col">สถานะใช้งาน</th>
-				<th class="text-center">แก้ไข</th>
-				<th class="text-center">ลบ</th>
+				<th scope="col">จังหวัด</th>
+				<th scope="col">วันที่จอง - ถึงวันที่</th>
+				<th scope="col">สถานะชำระเงิน</th>
+				<th class="text-center">รายละเอียด</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -19,30 +19,25 @@
 					<tr>
 						<th><?=$Key + 1?></th>
 						<td><?=($Value['firstname'] == '') ? '-' : $Value['firstname']?></td>
-						<td><?=($Value['guide_phone'] == '') ? '-' : $Value['guide_phone']?></td>
-						<td><?=($Value['guide_gp'] == '') ? '0' : $Value['guide_gp']?>%</td>
+						<td><?=($Value['cus_phone'] == '') ? '-' : $Value['cus_phone']?></td>
+						<td><?=($Value['province_name'] == '') ? '-' : $Value['province_name']?></td>
+						<?php $StartDate = $Value['travel_date']; ?>
+						<?php $QtyDate = $Value['qty_date'] - 1; ?>
+						<td><?= date('d/m/Y',strtotime($StartDate))?> - <?=date("d/m/Y", strtotime($StartDate . "+$QtyDate days" ));?></td>
 						<?php 
-							if($Value['guide_status'] == 1){
+							if($Value['status_payment'] == 1){
 								$IconClassStatus 	= 'IconStatus_open';
 								$TextClassStatus 	= 'TextStatus_open';
-								$TextStatus 		= 'ใช้งาน';
+								$TextStatus 		= 'ชำระเงินแล้ว';
 							}else{
 								$IconClassStatus 	= 'IconStatus_close';
 								$TextClassStatus 	= 'TextStatus_close';
-
-								//ถ้าถูกลบเเล้ว ให้ปรับเป็นไม่ใช้งานด้วย + ลบแล้ว
-								if($Value['status_delete'] == 1){
-									$TextStatus 		= 'ไม่ใช้งาน (ลบแล้ว)';
-								}else{
-									$TextStatus 		= 'ไม่ใช้งาน';
-								}
+								$TextStatus 		= 'ยังไม่ชำระเงิน';
 							}
 						?>
 						<td><div class="<?=$IconClassStatus?>"></div><span class="<?=$TextClassStatus?>"><?=$TextStatus?></span></td>
-						<td><img class="img-responsive ImageEdit" src="<?=base_url().'application/assets/images/icon/edit.png';?>" 
-									onClick="Page_percentguide('pageedit','<?=$Value['guide_id']?>');"></td>
-						<td><img class="img-responsive ImageDelete" src="<?=base_url().'application/assets/images/icon/delete.png';?>" 
-									onClick="Delete_percentguide('<?=$Value['guide_id']?>');"></td>
+						<td><img class="img-responsive ImageEdit" src="<?=base_url().'application/assets/images/icon/find.png';?>" 
+									onClick="Page_guidebooking('pageedit','<?=$Value['booking_id']?>');"></td>
 					</tr>
 				<?php } ?>
 			<?php } ?>
@@ -56,14 +51,14 @@
 	</div>
 	<div class="col-md-6">
 		<nav>
-			<ul class="xCNPagenationPercentGuide pagination justify-content-end">
+			<ul class="xCNPagenationguidebooking pagination justify-content-end">
 				<!--ปุ่มย้อนกลับ-->
 				<?php if($result['CurrentPage'] == 1){ $DisabledLeft = 'disabled'; }else{ $DisabledLeft = '-';} ?>
 				<li class="page-item <?=$DisabledLeft;?>">
-					<a class="page-link" aria-label="Previous" onclick="ClickPagePercentGuide('Fisrt')"><span aria-hidden="true">&laquo;</span></a>
+					<a class="page-link" aria-label="Previous" onclick="ClickPageguidebooking('Fisrt')"><span aria-hidden="true">&laquo;</span></a>
 				</li>
 				<li class="page-item <?=$DisabledLeft;?>">
-					<a class="page-link" aria-label="Previous" onclick="ClickPagePercentGuide('previous')"><span aria-hidden="true">&lsaquo;</span></a>
+					<a class="page-link" aria-label="Previous" onclick="ClickPageguidebooking('previous')"><span aria-hidden="true">&lsaquo;</span></a>
 				</li>
 
 				<!--ปุ่มจำนวนหน้า-->
@@ -77,16 +72,16 @@
 							$DisPageNumber  = '';
 						}
 					?>
-					<li class="page-item <?=$Active;?> " onclick="ClickPagePercentGuide('<?=$i?>')"><a class="page-link"><?=$i?></a></li>
+					<li class="page-item <?=$Active;?> " onclick="ClickPageguidebooking('<?=$i?>')"><a class="page-link"><?=$i?></a></li>
 				<?php } ?>
 
 				<!--ปุ่มไปต่อ-->
 				<?php if($result['CurrentPage'] >= $result['EndPage']){ $DisabledRight = 'disabled'; }else{ $DisabledRight = '-'; } ?>
 				<li class="page-item <?=$DisabledRight?>">
-					<a class="page-link" aria-label="Next" onclick="ClickPagePercentGuide('next')"><span aria-hidden="true">&rsaquo;</span></a>
+					<a class="page-link" aria-label="Next" onclick="ClickPageguidebooking('next')"><span aria-hidden="true">&rsaquo;</span></a>
 				</li>
 				<li class="page-item <?=$DisabledRight?>">
-					<a class="page-link" aria-label="Next" onclick="ClickPagePercentGuide('Last')"><span aria-hidden="true">&raquo;</span></a>
+					<a class="page-link" aria-label="Next" onclick="ClickPageguidebooking('Last')"><span aria-hidden="true">&raquo;</span></a>
 				</li>
 			</ul>
 		</nav>
@@ -96,19 +91,19 @@
 <script>
 
 	//กด next page 
-	function ClickPagePercentGuide(Page){
+	function ClickPageguidebooking(Page){
 		var PageCurrent = '';
 		switch (Page) {
 			case 'Fisrt': //กดหน้าแรก
 				PageCurrent 	= 1;
 			break;
 			case 'next': //กดปุ่ม Next
-				PageOld 		= $('.xCNPagenationPercentGuide .active').text(); 
+				PageOld 		= $('.xCNPagenationguidebooking .active').text(); 
 				PageNew 		= parseInt(PageOld, 10) + 1; 
 				PageCurrent 	= PageNew
 			break;
 			case 'previous': //กดปุ่ม Previous
-				PageOld 		= $('.xCNPagenationPercentGuide .active').text(); 
+				PageOld 		= $('.xCNPagenationguidebooking .active').text(); 
 				PageNew 		= parseInt(PageOld, 10) - 1; 
 				PageCurrent 	= PageNew
 			break;
@@ -119,32 +114,7 @@
 				PageCurrent = Page
 		}
 
-		LoadTable_percentguide(PageCurrent);
-	}
-
-	//ลบข้อมูล
-	function Delete_percentguide(ID){
-		Swal.fire({
-			title: "ลบข้อมูล ? ",
-			text: "กดยืนยันเพื่อลบข้อมูล",
-			showCancelButton: false,
-			confirmButtonColor: '#ff6868',
-			confirmButtonText: 'ยืนยัน',
-		}).then(function (result) {
-			if (result.isConfirmed) {
-				$.ajax({
-					type 			: "POST",
-					url 			: "EventDelete_percentguide",
-					data 			: { 'ID' : ID },
-					success			: function (Result){
-						LoadTable_percentguide(1);
-					},
-					error: function (data){
-						console.log(data);
-					}
-				});
-			} 
-		});
+		LoadTable_guidebooking(PageCurrent);
 	}
 
 </script>

@@ -11,16 +11,15 @@ class models_GuideBooking extends CI_Model {
 			$row_count 	= $parameter['row'];
 			$offset 	= ($page - 1) * $row_count ;
 
-			$SQL 			= "SELECT COUNT(*) AS NumAll FROM booking ";
+			$SQL 			= "SELECT COUNT(*) AS NumAll FROM booking WHERE booking.guide_id = '$tUserID' ";
 			$QueryCount 	= $this->db->query($SQL);
 
-			$SQL 			= "SELECT booking.* , payment.* FROM booking
+			$SQL 			= "SELECT booking.* , payment.* , customer.firstname , customer.cus_phone , province.province_name FROM booking
 								LEFT JOIN payment ON payment.refbooking_id = booking.booking_id  
-								WHERE booking.guide_id = '$tUserID' LIMIT $row_count OFFSET $offset";
+								LEFT JOIN customer ON customer.cus_id = booking.cus_id  
+								LEFT JOIN province ON province.province_id = booking.province_id  
+								WHERE booking.guide_id = '$tUserID' ORDER BY booking.travel_date DESC LIMIT $row_count OFFSET $offset";
 			$QueryItem 		= $this->db->query($SQL);
-
-			echo $SQL;
-			exit;
 
 			if($QueryItem->num_rows() > 0){
 
@@ -49,5 +48,44 @@ class models_GuideBooking extends CI_Model {
 			echo $Error;
 		}
 	} 
+
+	//ข้อมูลการจอง
+	public function GetData_Booking($ID){
+		try{
+			$SQL 	= "SELECT 
+						booking.* ,
+						payment.* ,
+						province.province_name ,
+						customer.firstname AS cus_firstname,
+						customer.cus_phone AS cus_phone ,
+						guide.firstname AS guide_firstname ,
+						guide.guide_phone AS guide_phone ,
+						admin.firstname AS admin_firstname
+					FROM booking
+					LEFT JOIN payment 	ON booking.booking_id 	= payment.refbooking_id
+					LEFT JOIN province 	ON booking.province_id 	= province.province_id
+					LEFT JOIN guide 	ON booking.guide_id 	= guide.guide_id 
+					LEFT JOIN customer 	ON booking.cus_id 		= customer.cus_id 
+					LEFT JOIN admin 	ON payment.approved_by 	= admin.admin_id 
+					WHERE booking.booking_id ='$ID' ";
+
+			$QueryItem 		= $this->db->query($SQL);
+			if($QueryItem->num_rows() > 0){
+				$Result = array(
+					'Items'  		=> $QueryItem->result_array(),
+					'Code'   		=> '1',
+					'Desc'   		=> 'success'
+				);
+			}else{
+				$Result = array(
+					'Code' 			=> '800',
+					'Desc' 			=> 'data not found'
+				);
+			}
+			return $Result;
+		}catch(Exception $Error){
+			echo $Error;
+		}
+	}
 
 }

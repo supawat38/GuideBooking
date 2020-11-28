@@ -58,7 +58,7 @@
 		if(typepage == 'pageinsert'){
 			$('.label_guidebookingHead').text(' / เพิ่มข้อมูล');
 		}else{
-			$('.label_guidebookingHead').text(' / แก้ไขข้อมูล');
+			$('.label_guidebookingHead').text(' / รายละเอียดการจอง');
 		}
 
 		$.ajax({
