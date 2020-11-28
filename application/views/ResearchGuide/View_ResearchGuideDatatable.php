@@ -103,11 +103,11 @@
 				<div class="form-row">
 					<div class="form-group col-md-12">
 						<label> ชื่อเข้าใช้งาน</label>
-						<input type="text" maxlength="50" class="form-control formlogininput" autocomplete="off" id="LoginID" name="LoginID" placeholder="ชื่อเข้าใช้งาน">
+						<input type="text" maxlength="50" class="form-control formlogininput" autocomplete="off" id="LoginIDBeforeBooking" name="LoginIDBeforeBooking" placeholder="ชื่อเข้าใช้งาน">
 					</div>
 					<div class="form-group col-md-12">
 						<label> รหัสผ่าน</label>
-						<input type="password" maxlength="50" class="form-control formlogininput" autocomplete="off"  id="LoginPassword" name="LoginPassword" placeholder="รหัสผ่าน">
+						<input type="password" maxlength="50" class="form-control formlogininput" autocomplete="off"  id="LoginPasswordBeforeBooking" name="LoginPasswordBeforeBooking" placeholder="รหัสผ่าน">
 					</div>
 					<div class="form-group col-md-12 showerror" style="display:none; margin-bottom: 0px;">
 						<label class="FontError"> ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง</label>
@@ -155,24 +155,24 @@
 
 			//เข้าสู่ระบบ
 			$('.FontLoginBeforeBookingClick').click(function(){
-				if($('#LoginID').val() == ''){
-					$('#LoginID').focus();
+				if($('#LoginIDBeforeBooking').val() == ''){
+					$('#LoginIDBeforeBooking').focus();
 					return;
 				}
 
-				if($('#LoginPassword').val() == ''){
-					$('#LoginPassword').focus();
+				if($('#LoginPasswordBeforeBooking').val() == ''){
+					$('#LoginPasswordBeforeBooking').focus();
 					return;
 				}
 
 				$.ajax({
 					type 			: "POST",
 					url 			: "login",
-					data 			: { 'username' : $('#LoginID').val() , 'password' : $('#LoginPassword').val() },
+					data 			: { 'username' : $('#LoginIDBeforeBooking').val() , 'password' : $('#LoginPasswordBeforeBooking').val() },
 					success			: function(Result){
 						if(Result == 'notfound'){
-							$('#LoginID').val('');
-							$('#LoginPassword').val('');
+							$('#LoginIDBeforeBooking').val('');
+							$('#LoginPasswordBeforeBooking').val('');
 							$('.showerror').show();
 						}else{
 							if(Result == 2){ //ถ้าเป็นลูกค้า

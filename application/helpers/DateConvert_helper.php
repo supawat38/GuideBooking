@@ -33,7 +33,7 @@ function ConvertThaiMonth($Mohth){
                 $ThaiMonth = "ตุลาคม";
                 break;
             case '11':
-                $ThaiMonth = "พฤษจิกายน";
+                $ThaiMonth = "พฤศจิกายน";
                 break;
             case '12':
                 $ThaiMonth = "ธันวาคม";
@@ -67,7 +67,7 @@ function ConvertThaiDay($day){
             $ThaiDay = "ศุกร์";
             break;
         case 'Saturday':
-            $ThaiDay = "เสาว์";
+            $ThaiDay = "เสาร์";
             break;
         default:
             $ThaiDay = "ไม่ทราบ";

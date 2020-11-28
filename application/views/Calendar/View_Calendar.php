@@ -6,7 +6,7 @@
 		LoadGuideCalendar();	 
 	});
 
-    //ดึงตารางงานของมัคคุเทศก์
+    // ดึงตารางงานของมัคคุเทศก์
 	function LoadGuideCalendar(){
 		
 		var calendarYearSearch = $("#calendarYearSearch").children("option:selected").val();
@@ -129,9 +129,23 @@
 			timeout	: 0,
 			success	: function (Result) {
 				console.log(Result);
-				alert('บันทึกการสร้างตารางงานสำเร็จ');
-				LoadGuideCalendar();
 
+				if(ActionMode == '1'){ 
+					var TitleSwal = 'สร้างตารางงานสำเร็จ';
+				}else if(ActionMode == '2'){ 
+					var TitleSwal = 'แก้ไขข้อมูลสำเร็จ';
+				}
+
+				Swal.fire({
+					title: TitleSwal,
+					text: "",
+					icon: "success",
+					showCancelButton: false,
+					confirmButtonColor: '#bfe6a9',
+					confirmButtonText: 'ตกลง',
+				}).then(function (result) {
+					LoadGuideCalendar();
+				});
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				alert(jqXHR, textStatus, errorThrown);
@@ -163,28 +177,28 @@
 		});
 	}
 
-// ลบตารางเวลาของ Guide 
-function DeleteGuideCalendar(calenYear,calenMonth){
-if(confirm('คุณต้องการลบตารางงานที่เลือกใช่หรือไม่ ?')){
-		$.ajax({
-			type	: "POST",
-			url		: "DeleteCalendar",
-			data    :{
-						"calenYear" : calenYear , 
-						"calenMonth" : calenMonth
-					 },
-			cache	: false,
-			timeout	: 0,
-			success	: function (Result) {
-				alert('ลบข้อมูลตารางงานสำเร็จ');
-				LoadGuideCalendar();
+	// ลบตารางเวลาของ Guide 
+	function DeleteGuideCalendar(calenYear,calenMonth){
+		if(confirm('คุณต้องการลบตารางงานที่เลือกใช่หรือไม่ ?')){
+				$.ajax({
+					type	: "POST",
+					url		: "DeleteCalendar",
+					data    :{
+								"calenYear" : calenYear , 
+								"calenMonth" : calenMonth
+							},
+					cache	: false,
+					timeout	: 0,
+					success	: function (Result) {
+						alert('ลบข้อมูลตารางงานสำเร็จ');
+						LoadGuideCalendar();
 
-			},
-			error: function (jqXHR, textStatus, errorThrown) {
-				alert(jqXHR, textStatus, errorThrown);
-			}
-		});
-}
-}
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						alert(jqXHR, textStatus, errorThrown);
+					}
+				});
+		}
+	}
 
 </script>

@@ -193,7 +193,6 @@
 			url 			: "EventInsOrEdit_package",
 			data 			: $('#formpackage').serialize(),
 			success			: function (Result){
-				console.log(Result);
 
 				if('<?=$typepage?>' == 'pageinsert'){ 
 					var TitleSwal = 'สร้างแพ็กเกจสำเร็จ';

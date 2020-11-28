@@ -19,8 +19,8 @@ class models_ResearchGuide extends CI_Model {
 		$type 				= $parameter["type"];
 		$provice			= $parameter["provice"];
 		$personbookig		= $parameter["personbookig"];
-		$datestartbooking   = $parameter["datestartbooking"];
-		$datestopbooking    = $parameter["datestopbooking"];
+		$datestartbooking   = date("Y-m-d", strtotime(str_replace('/', '-', $parameter["datestartbooking"])));
+		$datestopbooking    = date("Y-m-d", strtotime(str_replace('/', '-', $parameter["datestopbooking"])));
 		$page 				= $parameter['page'];
 		$row_count 			= $parameter['row'];
 		$offset 			= ($page - 1) * $row_count ;
@@ -29,8 +29,12 @@ class models_ResearchGuide extends CI_Model {
 		$SQL 			= "SELECT COUNT(*) AS NumAll FROM area ";
 		$SQL 			.= "LEFT JOIN guide ON area.guide_id = guide.guide_id ";
 		$SQL 			.= "LEFT JOIN rate ON area.guide_id = rate.guide_id ";
+		$SQL 			.= "INNER JOIN 
+							( SELECT guide_id , SUM(guide_status) AS guide_status FROM calender WHERE guide_date BETWEEN '$datestartbooking' AND '$datestopbooking' GROUP BY guide_id  ) CALENDARS
+							ON guide.guide_id = CALENDARS.guide_id ";
 		$SQL 			.= "WHERE area.province_id = '$provice'  ";
 		$SQL 			.= "AND rate.person = '$personbookig' ";
+		$SQL 			.= "AND CALENDARS.guide_status = 0";
 		$QueryCount 	= $this->db->query($SQL);
 
 		//เงื่อนไขการค้นหา
@@ -47,8 +51,12 @@ class models_ResearchGuide extends CI_Model {
 		$SQL 			= "SELECT area.* , guide.* , rate.* FROM area ";
 		$SQL 			.= "LEFT JOIN guide ON area.guide_id = guide.guide_id ";
 		$SQL 			.= "LEFT JOIN rate ON area.guide_id = rate.guide_id ";
+		$SQL 			.= "INNER JOIN 
+							( SELECT guide_id , SUM(guide_status) AS guide_status FROM calender WHERE guide_date BETWEEN '$datestartbooking' AND '$datestopbooking' GROUP BY guide_id  ) CALENDARS
+							ON guide.guide_id = CALENDARS.guide_id ";
 		$SQL 			.= "WHERE area.province_id = '$provice'  ";
 		$SQL 			.= "AND rate.person = '$personbookig' ";
+		$SQL 			.= "AND CALENDARS.guide_status = 0";
 		$SQL 			.= $SQLConcat;
 		$SQL 			.= "LIMIT $row_count OFFSET $offset ";
 		$QueryItem 		= $this->db->query($SQL);
