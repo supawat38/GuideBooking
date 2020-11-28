@@ -59,6 +59,12 @@ $route['EventInsOrEdit_package'] 				= 'Package/Package/EventInsoredit';
 $route['EventDelete_package'] 					= 'Package/Package/EventDeletePackage';
 $route['FileUpload']							= 'Package/Package/UploadFilePackage';
 
+//หน้าจอ - ข้อมูลมัคคุเทศก์ (แบ่ง %)
+$route['Loadtable_percentguide'] 				= 'PercentGuide/PercentGuide/Loadtable';
+$route['PageInsOrEdit_percentguide'] 			= 'PercentGuide/PercentGuide/PageInsoredit';
+$route['EventInsOrEdit_percentguide'] 			= 'PercentGuide/PercentGuide/EventInsoredit';
+$route['EventDelete_percentguide'] 				= 'PercentGuide/PercentGuide/EventDeletepercentguide';
+
 //หน้าจอ - กำหนดราคา
 $route['Loadtable_rate'] 						= 'Guiderate/Guiderate/Loadtable';
 $route['PageInsOrEdit_rate'] 					= 'Guiderate/Guiderate/PageInsoredit';

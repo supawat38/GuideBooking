@@ -524,3 +524,20 @@
 	font-family: THSarabunNew;
 	font-size:  20px !important;
 }
+
+/*CSS ส่วนของ From percentguide */
+#divPercentGuide label{
+	font-family: THSarabunNew;
+	font-size:  25px !important;
+	color : black;
+}
+
+#divPercentGuide input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
+
+#divPercentGuide input , textarea{
+	font-family: THSarabunNew;
+	font-size:  20px !important;
+}
