@@ -137,6 +137,16 @@ class ResearchGuide extends CI_Controller {
 		$Price 			  = $this->models_ResearchGuide->LoadInformationRate($GuideID,$personbookig);
 		$Price			  = $Price[0]['amount'];
 
+		//เอาไปอัพเดทในตาราง calendar ว่า guide คนนี้มีการจอง
+		$PackDataInscalendar = array(
+			'guide_date'	=> date("Y-m-d", strtotime(str_replace('/', '-', $datestartbooking))),  
+			'qty_date'		=> $DateDiff,
+			'guide_id'		=> $GuideID,
+			'guide_status'	=> '1',
+			'note'			=> 'จองแล้ว'
+		);
+		$this->models_ResearchGuide->UpdateCalendar($PackDataInscalendar);
+		
 		//เตรียมข้อมูล insert
 		$PackDataIns = array(
 			'booking_id' 		=> $BookingCode, 

@@ -231,6 +231,8 @@
 	font-family: THSarabunNew;
 	font-size:  25px !important;
 	border-radius: 0px;
+	height: 45px;
+    padding: 0px;
 }
 
 /*CSS ส่วนของ From ลูกค้าทั่วไป */

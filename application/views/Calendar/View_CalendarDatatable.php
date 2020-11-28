@@ -19,41 +19,40 @@
 
 <div class="row">
     <div class="col-sm-2 col-md-2 col-lg-2 col-2">
-          <select class=" form-control" id="calendarYearSearch">
-          <option value="">--ทุกปี--</option>
-          <option value="2020">2020</option>
-          <option value="2021">2021</option>
-          <option value="2022">2022</option>
-          <option value="2023">2023</option>
-          <option value="2024">2024</option>
-          <option value="2025">2025</option>
-          <option value="2026">2026</option>
-          <option value="2027">2027</option>
-          <option value="2028">2028</option>
-          <option value="2029">2029</option>
-          <option value="2030">2030</option>
-         </select>
-         
+		<select class="form-control jSelectedsingle" id="calendarYearSearch">
+			<option value="">--ทุกปี--</option>
+			<option value="2020">2020</option>
+			<option value="2021">2021</option>
+			<option value="2022">2022</option>
+			<option value="2023">2023</option>
+			<option value="2024">2024</option>
+			<option value="2025">2025</option>
+			<option value="2026">2026</option>
+			<option value="2027">2027</option>
+			<option value="2028">2028</option>
+			<option value="2029">2029</option>
+			<option value="2030">2030</option>
+		</select>
     </div>
     <div class="col-sm-2 col-md-2 col-lg-2 col-2">
-          <select class="form-control"  id="calendarMonthSearch" style="color:#cccccc">
-          <option value="">--ทุกเดือน--</option>
-          <option value="01">มกราคม</option>
-          <option value="02">กุมภาพันธ์</option>
-          <option value="03">มีนาคม</option>
-          <option value="04">เมษายน</option>
-          <option value="05">พฤษภาคม</option>
-          <option value="06">มิถุนายน</option>
-          <option value="07">กรกฎาคม</option>
-          <option value="08">สิงหาคม</option>
-          <option value="09">กันยายน</option>
-          <option value="10">ตุลาคม</option>
-          <option value="11">พฤษจิกายน</option>
-          <option value="12">ธันวาคม</option>
-         </select>
+		<select class="form-control jSelectedsingle"  id="calendarMonthSearch" style="color:#cccccc">
+			<option value="">--ทุกเดือน--</option>
+			<option value="01">มกราคม</option>
+			<option value="02">กุมภาพันธ์</option>
+			<option value="03">มีนาคม</option>
+			<option value="04">เมษายน</option>
+			<option value="05">พฤษภาคม</option>
+			<option value="06">มิถุนายน</option>
+			<option value="07">กรกฎาคม</option>
+			<option value="08">สิงหาคม</option>
+			<option value="09">กันยายน</option>
+			<option value="10">ตุลาคม</option>
+			<option value="11">พฤศจิกายน</option>
+			<option value="12">ธันวาคม</option>
+		</select>
     </div>
     <div class="col-sm-2 col-md-2 col-lg-2 col-2">
-         <button class="btn btn-primary waves-effect waves-light mybtn" style="width:100px;hight:50px" onclick="LoadGuideCalendar()">ค้นหา</button>
+		<button class="btn btn-primary waves-effect waves-light mybtn BTNConfirmRegis" style="width:100px;height:40px;font-size: 20px !important; font-family: 'THSarabunNew';" onclick="LoadGuideCalendar()">ค้นหา</button>
     </div>
 </div>
 
@@ -103,3 +102,8 @@
         ?>
 			</tbody>
 	</table>
+
+<script>
+	$(".jSelectedsingle").select2();
+	$(".jSelectedsingle").select2({ width: '100%' , dropdownCssClass: "FontSelect2"});  
+</script>
