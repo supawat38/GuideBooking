@@ -110,4 +110,20 @@ class main extends CI_Controller {
 		);
 		$this->load->view('main/View_table_package',$PackData);
 	}
+
+	//โหลดข้อมูล รีวิวมัคคุเทศก์
+	public function LoadtableReviewGuide(){
+		$numberpage = $this->input->post('numberpage');
+		$Condition = array(
+			'page'  => $numberpage,
+			'row'	=> 3
+		);
+
+		$result = $this->models_main->LoadDatareviewguide($Condition);
+		$PackData = array(
+			'result'			=> $result,
+			'Page'				=> $numberpage
+		);
+		$this->load->view('main/View_table_reviewguide',$PackData);
+	}
 }

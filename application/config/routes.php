@@ -14,6 +14,8 @@ $route['InsertAndEditRegister'] 				= 'register/register/RegisterSystems';
 //หน้าจอ - ข้อมูลหลัก
 $route['main'] 									= 'main';
 $route['Loadtable_package_mainpage']			= 'main/LoadtablePackage';
+$route['Loadtable_reviewguide']					= 'main/LoadtableReviewGuide';
+
 
 //หน้าจอ - ค้นหามัคคุเทศก์ + จอง
 $route['ResearchGuide'] 						= 'ResearchGuide/ResearchGuide/index';
