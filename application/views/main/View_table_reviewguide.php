@@ -75,7 +75,7 @@
 								$Active 		= '';
 							}
 						?>
-						<li class="<?=$Active;?>" onclick="ClickPage_package('<?=$i?>')"><span><?=$i?></span></li>
+						<li class="<?=$Active;?>" onclick="ClickPage_package('<?=$i?>')"><span style="color: #FFF;"><?=$i?></span></li>
 					<?php } ?>
 
 					<!--ปุ่มไปต่อ-->

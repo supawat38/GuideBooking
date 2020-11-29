@@ -48,7 +48,7 @@ class models_ResearchGuide extends CI_Model {
 			$SQLConcat = ' ';
 		}
 
-		$SQL 			= "SELECT area.* , guide.* , rate.* , review.* FROM area ";
+		$SQL 			= "SELECT area.* , guide.* , rate.* , review.POINT FROM area ";
 		$SQL 			.= "LEFT JOIN guide ON area.guide_id = guide.guide_id ";
 		$SQL 			.= "LEFT JOIN rate ON area.guide_id = rate.guide_id ";
 		$SQL 			.= " LEFT JOIN  

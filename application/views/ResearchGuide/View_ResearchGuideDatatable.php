@@ -156,7 +156,7 @@
 
 	//กดเลือก Booking
 	function BookingGuide(parameter){
-
+		
 		//เช็คก่อนว่า login แล้วหรือยัง
 		var checklogin = '<?=$this->session->userdata('session_username')?>';
 		if(checklogin == null || checklogin == ''){

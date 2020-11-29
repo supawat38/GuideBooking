@@ -62,6 +62,7 @@ class models_main extends CI_Model {
 							   LEFT JOIN ( 
 								   SELECT guide_id , SUM(review_point) /  COUNT(review_id) AS POINT FROM review 
 								) reviewpoint ON reviewpoint.guide_id = guide.guide_id 
+								ORDER BY review.review_date ASC
 							   LIMIT $row_count OFFSET $offset ";
 			$QueryItem 		= $this->db->query($SQL);
 

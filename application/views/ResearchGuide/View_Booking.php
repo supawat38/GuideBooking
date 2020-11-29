@@ -1,6 +1,6 @@
 
 <div class="container">
-	<div class="row">
+	<div class="row">	
 
 		<!--สรุปการจอง-->
 		<div class="col-lg-12" style="margin:70px 0px 10px 0px;">
