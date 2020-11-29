@@ -30,11 +30,20 @@
 						</div>
 						<div class="col-lg-7">
 							<p class="star">
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star-o"></span>
+								<?php   
+									//สร้าง array เก็บดาวเป็นค่าว่างทั้งหมด 5 ตัว
+									$ArrayStar = ['fa-star-o','fa-star-o','fa-star-o','fa-star-o','fa-star-o'];
+
+									//วนลูป array ถ้าได้ 3 คะแนน array ตัวที่ 1 - 3 ก็ให้เปลี่ยนชื่อใหม่
+									for($i=0; $i<(int)$Value['POINT']; $i++){
+										$ArrayStar[$i] = 'fa-star';
+									} 
+								?>
+								<span class="fa <?=$ArrayStar[0]?>"></span>
+								<span class="fa <?=$ArrayStar[1]?>"></span>
+								<span class="fa <?=$ArrayStar[2]?>"></span>
+								<span class="fa <?=$ArrayStar[3]?>"></span>
+								<span class="fa <?=$ArrayStar[4]?>"></span>
 							</p>
 							<label class="labelHead">คุณ<?=$Value['firstname']?> <?=($Value['lastname'] == '') ? '' : $Value['lastname']; ?> <?=($Value['gender'] == '1') ? '(ผู้ชาย)' : '(ผู้หญิง)'; ?> เบอร์ติดต่อ : <?=$Value['guide_phone']?> </label>
 							<p class="labelHead" style="margin: 0px 0px 5px 0px;">เกี่ยวกับ : <?=($Value['intro_profile'] == '') ? '-' : $Value['intro_profile']; ?> </p>
