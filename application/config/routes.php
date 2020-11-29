@@ -97,8 +97,9 @@ $route['Loadtable_BookingAndPayment'] 			= 'CheckBookingPayment/CheckBookingPaym
 $route['PageInsOrEdit_BookingAndPayment'] 		= 'CheckBookingPayment/CheckBookingPayment/PageInsoredit';
 $route['EventInsOrEdit_BookingAndPayment'] 		= 'CheckBookingPayment/CheckBookingPayment/EventInsoredit';
 
-
-
+//หน้าจอ - ข้อมูลการจองของคุณ
+$route['CustomerDetailBooking']					= 'CustomerDetailBooking/CustomerDetailBooking/index';
+$route['LoadtableCustomerBooking']				= 'CustomerDetailBooking/CustomerDetailBooking/LoadtableCustomerBooking';
 
 
 

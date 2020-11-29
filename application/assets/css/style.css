@@ -9063,8 +9063,8 @@ h1, h2, h3, h4, h5,
       opacity: .5;
       z-index: -1; }
     .services.services-1 .icon {
-      width: 115px;
-      height: 80px;
+      width: 75px;
+      height: 50px;
       margin-left: -35px;
       margin-bottom: 10px;
       background: #f15d30;
@@ -9087,7 +9087,8 @@ h1, h2, h3, h4, h5,
       .services.services-1 .media-body h3 {
         color: #fff; }
   .services.color-1:after {
-    background: #1089ff; }
+		background: #ffffff;
+    border: 1px solid #d7d7d7; }
   .services.color-2:after {
     background: #048998; }
   .services.color-3:after {

@@ -3,10 +3,10 @@
 		<div class="col-lg-12" style="margin:70px 0px 10px 0px;">
 			<div class="row" style="box-shadow: 0px 10px 23px -8px rgba(0, 0, 0, 0.11); padding: 20px;">
 				<div class="col-lg-12">
-					<p class="labelHead" style="font-size: 30px !important; font-weight: bold; margin-bottom: 0px;">มัคคุเทศก์</p>
+					<p class="labelHead" style="font-size: 30px !important; font-weight: bold; margin-bottom: 0px;">ข้อมูลการจองของคุณ</p>
 				</div>
 				<div class="col-lg-12">
-					<div id="ContentGulideAll"></div>
+					<div id="ContentCustomerBooking"></div>
 				</div>
 			</div>
 		</div>
@@ -19,18 +19,18 @@
 <script>
 
 	//ข้อมูลของไกด์ทั้งหมด
-	LoadtableGuideAll(1)
-	function LoadtableGuideAll(numberpage){
+	LoadtableCustomerBooking(1)
+	function LoadtableCustomerBooking(numberpage){
 		$.ajax({
 			type	: "POST",
-			url		: "LoadtableGuideAll",
+			url		: "LoadtableCustomerBooking",
 			data 	: {
 						'numberpage' 		: numberpage
 					  },
 			cache	: false,
 			timeout	: 0,
 			success	: function (Result) {
-				$('#ContentGulideAll').html(Result);
+				$('#ContentCustomerBooking').html(Result);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				alert(jqXHR, textStatus, errorThrown);

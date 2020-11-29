@@ -26,6 +26,7 @@ class models_CheckBookingPayment extends CI_Model {
 							   LEFT JOIN province 	ON booking.province_id = province.province_id 
 							   LEFT JOIN guide 		ON booking.guide_id = guide.guide_id 
 							   LEFT JOIN customer 	ON booking.cus_id = customer.cus_id 
+							   ORDER BY booking.booking_id DESC
 							   LIMIT $row_count OFFSET $offset";
 			$QueryItem 		= $this->db->query($SQL);
 			if($QueryItem->num_rows() > 0){
@@ -95,7 +96,7 @@ class models_CheckBookingPayment extends CI_Model {
 		}
 	}
 
-	//อัพเดทข้อมูล
+	//อัพเดทข้อมูล booking ว่าผ่าน
 	public function UpdateData_Booking($PackData,$Where){
 		$this->db->set('status_payment',$PackData['status_payment']);
 		$this->db->set('refpayment_id',$PackData['refpayment_id']);
@@ -103,7 +104,7 @@ class models_CheckBookingPayment extends CI_Model {
 		$this->db->update('booking');
 	}
 	
-	//อัพเดทข้อมูล
+	//อัพเดทข้อมูล payment ว่าจ่ายเงินแล้ว
 	public function UpdateData_Payment($PackData,$Where){
 		$this->db->set('payment_rcv', $PackData['payment_rcv']);
 		$this->db->set('status_approve', $PackData['status_approve']);

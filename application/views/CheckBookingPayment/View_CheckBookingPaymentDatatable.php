@@ -6,8 +6,7 @@
 				<th scope="col">จังหวัด</th>
 				<th scope="col">ชื่อลูกค้า (เบอร์)</th>
 				<th scope="col">ชื่อมัคคุเทศก์ (เบอร์)</th>
-				<th scope="col">วันที่เริ่มเที่ยว</th>
-				<th scope="col">ราคา</th>
+				<th scope="col">วันที่จอง - ถึงวันที่</th>
 				<th scope="col">สถานะการชำระเงิน</th>
 				<th class="text-center">ตรวจสอบ</th>
 			</tr>
@@ -22,8 +21,9 @@
 						<td><?=$Value['province_name']?></td>
 						<td><?=($Value['cus_firstname'] == '') ? '-' : $Value['cus_firstname']?> (<?=($Value['cus_phone'] == '') ? '-' : $Value['cus_phone']?>)</td>
 						<td><?=($Value['guide_firstname'] == '') ? '-' : $Value['guide_firstname']?> (<?=($Value['guide_phone'] == '') ? '-' : $Value['guide_phone']?>)</td>
-						<td><?=date('d/m/Y',strtotime($Value['travel_date']));?></td>
-						<td><?=number_format($Value['amount'],2)?></td>
+						<?php $StartDate = $Value['travel_date']; ?>
+						<?php $QtyDate = $Value['qty_date'] - 1; ?>
+						<td><?= date('d/m/Y',strtotime($StartDate))?> - <?=date("d/m/Y", strtotime($StartDate . "+$QtyDate days" ));?></td>
 						<?php 
 							if($Value['status_payment'] == 0){
 								if($Value['payment_id'] == '' || $Value['payment_id'] == null){
@@ -33,12 +33,12 @@
 								}else{
 									$IconClassStatus 	= 'IconStatus_wait';
 									$TextClassStatus 	= 'TextStatus_wait';
-									$TextStatus 		= 'ชำระแล้วรออนุมัติ';
+									$TextStatus 		= 'ชำระแล้วรอตรวจสอบ';
 								}
 							}else{
 								$IconClassStatus 	= 'IconStatus_open';
 								$TextClassStatus 	= 'TextStatus_open';
-								$TextStatus 		= 'ชำระเงินแล้ว';
+								$TextStatus 		= 'ตรวจสอบแล้ว';
 							}
 						?>
 						<td><div class="<?=$IconClassStatus?>"></div><span class="<?=$TextClassStatus?>"><?=$TextStatus?></span></td>

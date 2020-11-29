@@ -541,3 +541,23 @@
 	font-family: THSarabunNew;
 	font-size:  20px !important;
 }
+
+.BookingWait{
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 0px auto;
+    background-repeat: round;
+    background-position: initial;
+    background-size: auto;
+}
+
+.BookingSuccess{
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 0px auto;
+    background-repeat: round;
+    background-position: initial;
+    background-size: auto;
+}
