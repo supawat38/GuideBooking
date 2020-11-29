@@ -3,8 +3,10 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
 class models_CustomerDetailBooking extends CI_Model {
 
+	//โหลดข้อมูล บุ๊คกิ้งของตัวเอง
 	public function LoadDataBooking($parameter){
 		try{
+			$tUserID 	= $this->session->userdata("session_refid");
 			$page 		= $parameter['page'];
 			$row_count 	= $parameter['row'];
 			$offset 	= ($page - 1) * $row_count ;
@@ -26,6 +28,7 @@ class models_CustomerDetailBooking extends CI_Model {
 							   LEFT JOIN province 	ON booking.province_id = province.province_id 
 							   LEFT JOIN guide 		ON booking.guide_id = guide.guide_id 
 							   LEFT JOIN customer 	ON booking.cus_id = customer.cus_id 
+							   WHERE booking.cus_id = '$tUserID' 
 							   ORDER BY booking.booking_id DESC
 							   LIMIT $row_count OFFSET $offset";
 			$QueryItem 		= $this->db->query($SQL);
@@ -52,6 +55,23 @@ class models_CustomerDetailBooking extends CI_Model {
 				);
 			}
 			return $Result;
+		}catch(Exception $Error){
+			echo $Error;
+		}
+	}
+
+	//โหลดข้อมูลไกด์เอาไว้สำหรับรีวิว
+	public function LoadInformationGuideForReview($GuideID){
+		$SQL 			= "SELECT guide.* FROM guide ";
+		$SQL 			.= " WHERE guide.guide_id = '$GuideID' ";
+		$QueryItem 		= $this->db->query($SQL);
+		return $QueryItem->result_array();
+	}
+
+	//insert ลงตาราง review
+	public function InsertGuideForReview($Result){
+		try{
+			$this->db->insert('review', $Result);
 		}catch(Exception $Error){
 			echo $Error;
 		}

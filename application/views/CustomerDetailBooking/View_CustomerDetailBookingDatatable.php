@@ -34,7 +34,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-6">
+						<div class="col-lg-6" style="margin-top: 5px;">
 							<div class="row">
 								<div class="col-lg-12">
 									<p class="labelHead" style="margin: 0px 0px 5px 0px;">รหัสการจอง : <?=$Value['booking_id']?> จังหวัด<?=$Value['province_name']?></p>
@@ -56,8 +56,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3">
-							<a class="labelHead" href="Booking_DeteilGuide/<?=$Value['guide_id']; ?>" target="_blank" style="display: block; margin: 0px auto; text-align: right; color: #f98b2d;" >รีวิวมัคคุเทศก์</a>
+						<div class="col-lg-3" style="margin-top: 5px;">
+							<a href="#" class="nav-link labelHead" data-toggle="modal" data-target="#ModalReviewGuide" style="display: block; margin: 0px auto; text-align: right; color: #f98b2d;" onclick="LoadInformationReviewGuide('<?=$Value['guide_id']?>');">รีวิวมัคคุเทศก์</a>
 						</div>
 					</div>
 				</div>
@@ -70,10 +70,10 @@
 	<div class="col-md-12 text-center" style="margin-top:50px;">
 		<nav>
 			<div class="block-27">
-				<ul class="xCNPagenation">
+				<ul class="xCNPagenationCustomerGuide">
 					<!--ปุ่มย้อนกลับ-->
 					<?php if($result['CurrentPage'] == 1){ $DisabledLeft = 'CenterDisabledBTN'; }else{ $DisabledLeft = '-';} ?>
-					<li class='<?=$DisabledLeft?>'><a onclick="ClickPage_guideAll('previous')">&lt;</a></li>
+					<li class='<?=$DisabledLeft?>'><a onclick="ClickPage_CustomerBooking('previous')">&lt;</a></li>
 
 					<!--ปุ่มจำนวนหน้า-->
 					<?php for($i=max($result['CurrentPage']-2, 1); $i<=max(0, min($result['EndPage'],$result['CurrentPage']+2)); $i++){?>
@@ -84,31 +84,49 @@
 								$Active 		= '';
 							}
 						?>
-						<li class="<?=$Active;?>" onclick="ClickPage_guideAll('<?=$i?>')"><span><?=$i?></span></li>
+						<li class="<?=$Active;?>" onclick="ClickPage_CustomerBooking('<?=$i?>')"><span><?=$i?></span></li>
 					<?php } ?>
 
 					<!--ปุ่มไปต่อ-->
 					<?php if($result['CurrentPage'] >= $result['EndPage']){ $DisabledRight = 'CenterDisabledBTN'; }else{ $DisabledRight = '-'; } ?>
-					<li class='<?=$DisabledRight?>'><a onclick="ClickPage_guideAll('next')">&gt;</a></li>
+					<li class='<?=$DisabledRight?>'><a onclick="ClickPage_CustomerBooking('next')">&gt;</a></li>
 				</ul>
 			</div>
 		</nav>
 	</div>
 <?php } ?>
 
+
+<!-- popup รีวิวมัคคุเทศก์ -->
+<div class="modal fade" id="ModalReviewGuide" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" style="background: #ec6941; padding: 10px 20px;">
+				<label class="FontLogin"> รีวิวมัคคุเทศก์</label>
+			</div>
+			<div class="modal-body">
+				<div class="contentReviewGuide"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary FontLoginClick ConfirmReviewGuide">แสดงความคิดเห็น</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script>	
 
 	//กด next page 
-	function ClickPage_guideAll(Page){
+	function ClickPage_CustomerBooking(Page){
 		var PageCurrent = '';
 		switch (Page) {
 			case 'next': //กดปุ่ม Next
-				PageOld 		= $('.xCNPagenation .active').text(); 
+				PageOld 		= $('.xCNPagenationCustomerGuide .active').text(); 
 				PageNew 		= parseInt(PageOld, 10) + 1; 
 				PageCurrent 	= PageNew
 			break;
 			case 'previous': //กดปุ่ม Previous
-				PageOld 		= $('.xCNPagenation .active').text(); 
+				PageOld 		= $('.xCNPagenationCustomerGuide .active').text(); 
 				PageNew 		= parseInt(PageOld, 10) - 1; 
 				PageCurrent 	= PageNew
 			break;
@@ -116,7 +134,26 @@
 				PageCurrent = Page
 		}
 
-		LoadtableGuideAll(PageCurrent);
+		LoadtableCustomerBooking(PageCurrent);
+	}
+
+	//กด review ไกด์
+	function LoadInformationReviewGuide(GuideID){
+		$.ajax({
+			type	: "POST",
+			url		: "LoadInformationGuideForReview",
+			data 	: {
+						'GuideID' 		: GuideID
+					  },
+			cache	: false,
+			timeout	: 0,
+			success	: function (Result) {
+				$('.contentReviewGuide').html(Result);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				alert(jqXHR, textStatus, errorThrown);
+			}
+		});
 	}
 
 </script>

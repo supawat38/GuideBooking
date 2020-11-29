@@ -23,7 +23,7 @@ class GuideAll extends CI_Controller {
 		$numberpage = $this->input->post('numberpage');
 		$Condition = array(
 			'page'  => $numberpage,
-			'row'	=> 20
+			'row'	=> 10
 		);
 
 		$result = $this->models_GuideAll->LoadDataGuideAll($Condition);

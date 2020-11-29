@@ -100,6 +100,8 @@ $route['EventInsOrEdit_BookingAndPayment'] 		= 'CheckBookingPayment/CheckBooking
 //หน้าจอ - ข้อมูลการจองของคุณ
 $route['CustomerDetailBooking']					= 'CustomerDetailBooking/CustomerDetailBooking/index';
 $route['LoadtableCustomerBooking']				= 'CustomerDetailBooking/CustomerDetailBooking/LoadtableCustomerBooking';
+$route['LoadInformationGuideForReview']			= 'CustomerDetailBooking/CustomerDetailBooking/LoadInformationGuideForReview';
+$route['ReviewGuide']							= 'CustomerDetailBooking/CustomerDetailBooking/ReviewGuide';
 
 
 
