@@ -1,5 +1,5 @@
 <section class="ftco-section ftco-no-pb ftco-no-pt" style="background: #FFF;">
-	<div class="container">
+	<div class="container ContentCustomerBookingAll">
 		<div class="col-lg-12" style="margin:70px 0px 10px 0px;">
 			<div class="row" style="box-shadow: 0px 10px 23px -8px rgba(0, 0, 0, 0.11); padding: 20px;">
 				<div class="col-lg-12">
@@ -13,12 +13,12 @@
 	</div>
 </section>
 
-<!--โหลดไฟล์ script หน้า customer-->
+<!--โหลดไฟล์ script-->
 <?php include __DIR__ . '/../footer.php';?>
 
 <script>
 
-	//ข้อมูลของไกด์ทั้งหมด
+	//ข้อมูลการจองทั้งหมดของคุณ
 	LoadtableCustomerBooking(1)
 	function LoadtableCustomerBooking(numberpage){
 		$.ajax({

@@ -220,7 +220,5 @@ class models_ResearchGuide extends CI_Model {
 			$this->db->query($SQL);
 		}
 	}
-	
-
 
 }

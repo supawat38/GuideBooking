@@ -70,6 +70,8 @@
 			var objectData = $('#UploadSlip').prop('files')[0];
 			var objectFile = new FormData();
 			objectFile.append('file',objectData);
+			objectFile.append('bookingID','<?=$booking_id?>');
+			objectFile.append('unit',ext);
 			
 			$.ajax({
 				type 		: "POST",

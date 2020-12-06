@@ -45,6 +45,35 @@
 	</div>
 </section>
 
+<!-- popup เข้าสู่ระบบตอนกด Booking -->
+<div class="modal fade" id="ModalLoginBeforeBooking" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" style="background: #ec6941; padding: 10px 20px;">
+				<label class="FontLogin"> เข้าสู่ระบบ</label>
+			</div>
+			<div class="modal-body">
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<label> ชื่อเข้าใช้งาน</label>
+						<input type="text" maxlength="50" class="form-control formlogininput" autocomplete="off" id="LoginIDBeforeBooking" name="LoginIDBeforeBooking" placeholder="ชื่อเข้าใช้งาน">
+					</div>
+					<div class="form-group col-md-12">
+						<label> รหัสผ่าน</label>
+						<input type="password" maxlength="50" class="form-control formlogininput" autocomplete="off"  id="LoginPasswordBeforeBooking" name="LoginPasswordBeforeBooking" placeholder="รหัสผ่าน">
+					</div>
+					<div class="form-group col-md-12 showerror" style="display:none; margin-bottom: 0px;">
+						<label class="FontError"> ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง</label>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary FontLoginBeforeBookingClick">เข้าใช้งาน</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <!--โหลดไฟล์ footer พวก script-->
 <?php include __DIR__ . '/../footer.php';?>
 

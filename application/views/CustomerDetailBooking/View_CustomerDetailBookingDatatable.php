@@ -11,7 +11,8 @@
 					$BookingDateStart 	= date('d/m/Y',strtotime($StartDate));
 					$BookingDateEnd 	= date("d/m/Y", strtotime($StartDate . "+$QtyDate days" ));
 					$CurrentDate		= date('d/m/Y');
-					if($CurrentDate > $BookingDateEnd){
+
+					if(strtotime($CurrentDate) > strtotime($BookingDateEnd)){
 						$TextStatus 		= 'ทริปของคุณสิ้นสุดเเล้ว'."<br>".'ขอบคุณที่ใช้บริการ';
 						$StyleStatus    	= "color: #3f3f3f; text-align: center; font-weight: bold;";
 						$PathShowImage 		= 'application/assets/images/icon/successBooking.png';
@@ -44,15 +45,18 @@
 									<?php 
 										if($Value['status_payment'] == 0){
 											if($Value['payment_id'] == '' || $Value['payment_id'] == null){
-												$TextStatusPayment 		= 'ยังไม่ได้ชำระเงิน';
+												$TextStatusPayment 		= 'ยังไม่ได้ชำระเงิน (กดที่นี้เพื่อชำระเงิน)';
+												$RoutePaymentNow		= "ClickPayNow('".$Value['booking_id']."','".$Value['grandtotal']."')";
+												echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">สถานะการชำระเงิน : <b style="color:red; cursor:pointer;" onclick='.$RoutePaymentNow.'>'.$TextStatusPayment.'</b></p>';
 											}else{
 												$TextStatusPayment 		= 'ชำระแล้วรออนุมัติ';
+												echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">สถานะการชำระเงิน : <b style="">'.$TextStatusPayment.'</b></p>';
 											}
 										}else{
 											$TextStatusPayment 		= 'ชำระเงินแล้ว';
+											echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">สถานะการชำระเงิน : <b style="">'.$TextStatusPayment.'</b></p>';
 										}
 									?>
-									<p class="labelHead" style="margin: 0px 0px 5px 0px;">สถานะการชำระเงิน : <b><?=$TextStatusPayment?></b></p>
 								</div>
 							</div>
 						</div>
@@ -149,6 +153,26 @@
 			timeout	: 0,
 			success	: function (Result) {
 				$('.contentReviewGuide').html(Result);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				alert(jqXHR, textStatus, errorThrown);
+			}
+		});
+	}
+
+	//กดจ่ายเงินที่นี้
+	function ClickPayNow(booking_id,grandtotal){
+		$.ajax({
+			type	: "POST",
+			url		: "Booking_ConfirmLater",
+			data 	: {
+						'booking_id' 		: booking_id,
+						'grandtotal'		: grandtotal
+					  },
+			cache	: false,
+			timeout	: 0,
+			success	: function (Result) {
+				$('.ContentCustomerBookingAll').html(Result);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				alert(jqXHR, textStatus, errorThrown);

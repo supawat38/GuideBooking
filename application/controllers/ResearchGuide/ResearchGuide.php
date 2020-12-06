@@ -183,8 +183,10 @@ class ResearchGuide extends CI_Controller {
 			if ($_FILES["file"]["error"] > 0){
 				echo 406; //ไฟล์มีปัญหา
 			}else{
-				move_uploaded_file($_FILES["file"]["tmp_name"],"./application/assets/images/slip/" . $_FILES["file"]["name"]);
-				echo $_FILES["file"]["name"];
+				$BookingID 	= $this->input->post('bookingID');
+				$Unit 		= $this->input->post('unit');
+				move_uploaded_file($_FILES["file"]["tmp_name"],"./application/assets/images/slip/".$BookingID.".".$Unit);
+				echo $BookingID.".".$Unit;
 			}
 		}else{
 			echo 405; //ไฟล์มีความผิดพลาด
@@ -241,5 +243,14 @@ class ResearchGuide extends CI_Controller {
 		$this->models_ResearchGuide->InsertPayment($PackDataIns);
 	}
 	
+	//โหลดหน้าจอจ่ายเงิน
+	public function BookingConfirmLater(){
+		//โหลดหน้าจอชำระเงิน
+		$DataToView = array(
+			'booking_id'	=> $this->input->post('booking_id'),
+			'grandtotal'	=> $this->input->post('grandtotal')
+		);
+		$this->load->view('ResearchGuide/View_BookingPaymentLater',$DataToView);
+	}
 	
 }
