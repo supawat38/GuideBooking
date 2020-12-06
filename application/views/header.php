@@ -23,7 +23,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="main">Freind<span>Travel</span></a>	
+			<a class="navbar-brand" href="main">Friend<span>Travel</span></a>	
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 					<?php if($this->session->userdata('session_username') == null){ //ไม่มีการเข้าสู่ระบบ ?>

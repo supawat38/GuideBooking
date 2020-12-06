@@ -105,8 +105,8 @@
 								<div class="tab-pane fade" id="GuideCalendar" role="tabpanel" aria-labelledby="GuideCalendar-tab"><?php $this->load->view("/Calendar/View_Calendar.php"); ?></div>
 							<?php }else{ //เจ้าของระบบ ?>
 								<div class="tab-pane fade show active" id="OwnerManageAdmin" role="tabpanel" aria-labelledby="OwnerManageAdmin-tab"><?php $this->load->view("/ManageAdmin/View_Admin.php"); ?></div>
-								<div class="tab-pane fade" id="OwnerReport1" role="tabpanel" aria-labelledby="OwnerReport1-tab">รายงานมัคคุเทศก์ยอดนิยม</div>
-								<div class="tab-pane fade" id="OwnerReport2" role="tabpanel" aria-labelledby="OwnerReport2-tab">รายงานรายได้</div>
+								<div class="tab-pane fade" id="OwnerReport1" role="tabpanel" aria-labelledby="OwnerReport1-tab"><?php $this->load->view("/ReportGuide/View_ReportGuide.php"); ?></div>
+								<div class="tab-pane fade" id="OwnerReport2" role="tabpanel" aria-labelledby="OwnerReport2-tab"><?php $this->load->view("/ReportIncome/View_ReportIncome.php"); ?></div>
 							<?php } ?>
 						</div>
 					</div>

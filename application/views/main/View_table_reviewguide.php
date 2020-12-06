@@ -20,7 +20,7 @@
 										$ArrayStar = ['fa-star-o','fa-star-o','fa-star-o','fa-star-o','fa-star-o'];
 
 										//วนลูป array ถ้าได้ 3 คะแนน array ตัวที่ 1 - 3 ก็ให้เปลี่ยนชื่อใหม่
-										for($i=0; $i<(int)$Value['POINT']; $i++){
+										for($i=0; $i<(int)$Value['review_point']; $i++){
 											$ArrayStar[$i] = 'fa-star';
 										} 
 									?>
@@ -64,7 +64,7 @@
 				<ul class="xCNPagenationReviewGuide">
 					<!--ปุ่มย้อนกลับ-->
 					<?php if($result['CurrentPage'] == 1){ $DisabledLeft = 'CenterDisabledBTN'; }else{ $DisabledLeft = '-';} ?>
-					<li class='<?=$DisabledLeft?>'><a onclick="ClickPage_package('previous')" style="color: #FFF;">&lt;</a></li>
+					<li class='<?=$DisabledLeft?>'><a onclick="ClickPage_reviewGuide('previous')" style="color: #FFF; cursor:pointer;">&lt;</a></li>
 
 					<!--ปุ่มจำนวนหน้า-->
 					<?php for($i=max($result['CurrentPage']-2, 1); $i<=max(0, min($result['EndPage'],$result['CurrentPage']+2)); $i++){?>
@@ -75,12 +75,12 @@
 								$Active 		= '';
 							}
 						?>
-						<li class="<?=$Active;?>" onclick="ClickPage_package('<?=$i?>')"><span style="color: #FFF;"><?=$i?></span></li>
+						<li class="<?=$Active;?>" onclick="ClickPage_reviewGuide('<?=$i?>')"><span style="color: #FFF; cursor:pointer;"><?=$i?></span></li>
 					<?php } ?>
 
 					<!--ปุ่มไปต่อ-->
 					<?php if($result['CurrentPage'] >= $result['EndPage']){ $DisabledRight = 'CenterDisabledBTN'; }else{ $DisabledRight = '-'; } ?>
-					<li class='<?=$DisabledRight?>'><a onclick="ClickPage_package('next')" style="color: #FFF;">&gt;</a></li>
+					<li class='<?=$DisabledRight?>'><a onclick="ClickPage_reviewGuide('next')" style="color: #FFF; cursor:pointer;">&gt;</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -90,7 +90,7 @@
 <script>
 
 	//กด next page 
-	function ClickPage_package(Page){
+	function ClickPage_reviewGuide(Page){
 		var PageCurrent = '';
 		switch (Page) {
 			case 'Fisrt': //กดหน้าแรก

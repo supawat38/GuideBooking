@@ -1,14 +1,14 @@
-<div class="col-lg-12" style="overflow-x:auto; max-width: 950px;">
+<div class="col-lg-12" style="overflow-x:auto; max-width: 900px;">
 	<table class="table table-hover" style="margin-top: 20px;">
 		<thead>
 			<tr>
-				<th scope="col">ลำดับ</th>
+				<th scope="col" style="width:8%;">ลำดับ</th>
 				<th scope="col">จังหวัด</th>
 				<th scope="col">ชื่อลูกค้า (เบอร์)</th>
 				<th scope="col">ชื่อมัคคุเทศก์ (เบอร์)</th>
 				<th scope="col">วันที่จอง - ถึงวันที่</th>
 				<th scope="col">สถานะการชำระเงิน</th>
-				<th class="text-center">ตรวจสอบ</th>
+				<th class="text-center" style="width:8%;">ตรวจสอบ</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -19,11 +19,11 @@
 					<tr>
 						<th><?=$Key + 1?></th>
 						<td><?=$Value['province_name']?></td>
-						<td><?=($Value['cus_firstname'] == '') ? '-' : $Value['cus_firstname']?> (<?=($Value['cus_phone'] == '') ? '-' : $Value['cus_phone']?>)</td>
-						<td><?=($Value['guide_firstname'] == '') ? '-' : $Value['guide_firstname']?> (<?=($Value['guide_phone'] == '') ? '-' : $Value['guide_phone']?>)</td>
+						<td style="white-space: nowrap;"><?=($Value['cus_firstname'] == '') ? '-' : $Value['cus_firstname']?> (<?=($Value['cus_phone'] == '') ? '-' : $Value['cus_phone']?>)</td>
+						<td style="white-space: nowrap;"><?=($Value['guide_firstname'] == '') ? '-' : $Value['guide_firstname']?> (<?=($Value['guide_phone'] == '') ? '-' : $Value['guide_phone']?>)</td>
 						<?php $StartDate = $Value['travel_date']; ?>
 						<?php $QtyDate = $Value['qty_date'] - 1; ?>
-						<td><?= date('d/m/Y',strtotime($StartDate))?> - <?=date("d/m/Y", strtotime($StartDate . "+$QtyDate days" ));?></td>
+						<td style="white-space: nowrap;"><?= date('d/m/Y',strtotime($StartDate))?> - <?=date("d/m/Y", strtotime($StartDate . "+$QtyDate days" ));?></td>
 						<?php 
 							if($Value['status_payment'] == 0){
 								if($Value['payment_id'] == '' || $Value['payment_id'] == null){
@@ -41,8 +41,8 @@
 								$TextStatus 		= 'ตรวจสอบแล้ว';
 							}
 						?>
-						<td><div class="<?=$IconClassStatus?>"></div><span class="<?=$TextClassStatus?>"><?=$TextStatus?></span></td>
-						<td><img class="img-responsive ImageEdit" src="<?=base_url().'application/assets/images/icon/find.png';?>" 
+						<td style="white-space: nowrap;"><div class="<?=$IconClassStatus?>"></div><span class="<?=$TextClassStatus?>"><?=$TextStatus?></span></td>
+						<td style="white-space: nowrap;"><img class="img-responsive ImageEdit" src="<?=base_url().'application/assets/images/icon/find.png';?>" 
 									onClick="Page_BookingAndPayment('pageedit','<?=$Value['booking_id']?>');"></td>
 					</tr>
 				<?php } ?>

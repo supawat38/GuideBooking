@@ -61,7 +61,7 @@
 				<ul class="xCNPagenation">
 					<!--ปุ่มย้อนกลับ-->
 					<?php if($result['CurrentPage'] == 1){ $DisabledLeft = 'CenterDisabledBTN'; }else{ $DisabledLeft = '-';} ?>
-					<li class='<?=$DisabledLeft?>'><a onclick="ClickPage_package('previous')">&lt;</a></li>
+					<li class='<?=$DisabledLeft?>'><a onclick="ClickPage_package('previous')" style="cursor:pointer;">&lt;</a></li>
 
 					<!--ปุ่มจำนวนหน้า-->
 					<?php for($i=max($result['CurrentPage']-2, 1); $i<=max(0, min($result['EndPage'],$result['CurrentPage']+2)); $i++){?>
@@ -72,12 +72,12 @@
 								$Active 		= '';
 							}
 						?>
-						<li class="<?=$Active;?>" onclick="ClickPage_package('<?=$i?>')"><span><?=$i?></span></li>
+						<li class="<?=$Active;?>" onclick="ClickPage_package('<?=$i?>')" style="cursor:pointer;"><span><?=$i?></span></li>
 					<?php } ?>
 
 					<!--ปุ่มไปต่อ-->
 					<?php if($result['CurrentPage'] >= $result['EndPage']){ $DisabledRight = 'CenterDisabledBTN'; }else{ $DisabledRight = '-'; } ?>
-					<li class='<?=$DisabledRight?>'><a onclick="ClickPage_package('next')">&gt;</a></li>
+					<li class='<?=$DisabledRight?>'><a onclick="ClickPage_package('next')" style="cursor:pointer;">&gt;</a></li>
 				</ul>
 			</div>
 		</nav>

@@ -16,7 +16,6 @@ $route['main'] 									= 'main';
 $route['Loadtable_package_mainpage']			= 'main/LoadtablePackage';
 $route['Loadtable_reviewguide']					= 'main/LoadtableReviewGuide';
 
-
 //หน้าจอ - ค้นหามัคคุเทศก์ + จอง
 $route['ResearchGuide'] 						= 'ResearchGuide/ResearchGuide/index';
 $route['LoadtableGuide'] 						= 'ResearchGuide/ResearchGuide/LoadtableGuide';
@@ -105,5 +104,8 @@ $route['LoadtableCustomerBooking']				= 'CustomerDetailBooking/CustomerDetailBoo
 $route['LoadInformationGuideForReview']			= 'CustomerDetailBooking/CustomerDetailBooking/LoadInformationGuideForReview';
 $route['ReviewGuide']							= 'CustomerDetailBooking/CustomerDetailBooking/ReviewGuide';
 
+//หน้าจอ - รายงานมัคคุเทศก์ยอดนิยม
+$route['Loadtable_reportGuide']					= 'ReportGuide/ReportGuide/Loadtable';
 
-
+//หน้าจอ - รายงานรายได้
+$route['Loadtable_reportIncome']				= 'ReportIncome/ReportIncome/Loadtable'; 

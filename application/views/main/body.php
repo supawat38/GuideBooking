@@ -92,44 +92,45 @@
 		<div class="row d-flex">
 			<div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate d-flex align-items-center">
 				<div class="w-100">
-					<h2 class="mb-4 textMain_Show">ส่วนของตารางการจอง</h2>
+					<h2 class="mb-4 textMain_Show">Friend Travel</h2>
+					<p class="labelHead">เว็บจองมัคคุเทศก์ ที่มีมัคคุเทศก์ให้เลือกมากมายหลายสไตล์ ล้วนมีประสบการณ์ และระบบการจองง่าย เพียง 3 Step เข้าถึงระบบการชำระเงิน พร้อมมีผู้ดูแลระบบคอยดูแลท่านตลอด 24 ชั่วโมง หากติดปัญหาติดต่อ 02-944-4xxx(คุณกี้)</p>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="row">
 					<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-						<div class="services services-1 color-1 d-block img" style="background-image: url(images/services-1.jpg);">
-							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-paragliding"></span></div>
+						<div class="services services-1 color-4 d-block img" style="background-image: url(application/assets/images/services-1.jpg);">
+							<div class="icon d-flex align-items-center justify-content-center"><div class="BookingWait" style="background-image: url(application/assets/images/icon/IMG_Customer.png);"></div></div>
 							<div class="media-body">
-								<h3 class="heading mb-3">Wait</h3>
-								<p></p>
+								<h3 class="heading mb-3 labelHead" style="color: #FFF; font-weight: bold;">มัคคุเทศก์</h3>
+								<p class="labelHead" style="color: #FFF; font-weight: bold;">มีมัคคุเทศก์ในระบบให้เลือกหลากหลายคน ล้วนมากประสบการณ์</p>
 							</div>
 						</div>      
 					</div>
 					<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-						<div class="services services-1 color-2 d-block img" style="background-image: url(images/services-2.jpg);">
-							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
+						<div class="services services-1 color-2 d-block img" style="background-image: url(application/assets/images/services-2.jpg);">
+							<div class="icon d-flex align-items-center justify-content-center"><div class="BookingWait" style="background-image: url(application/assets/images/icon/IMG_Comment.png);"></div></div>
 							<div class="media-body">
-								<h3 class="heading mb-3">Wait</h3>
-								<p></p>
+								<h3 class="heading mb-3 labelHead" style="color: #FFF; font-weight: bold;">แสดงความคิดเห็น</h3>
+								<p class="labelHead" style="color: #FFF; font-weight: bold;">จะดูคะแนน หรือ รีวิวมัคคุเทศก์ตามความพึงพอใจในแบบของคุณ โดยไม่เปิดเผยตัวตน</p>
 							</div>
 						</div>    
 					</div>
 					<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-						<div class="services services-1 color-3 d-block img" style="background-image: url(images/services-3.jpg);">
-							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-tour-guide"></span></div>
+						<div class="services services-1 color-3 d-block img" style="background-image: url(application/assets/images/services-3.jpg);">
+							<div class="icon d-flex align-items-center justify-content-center"><div class="BookingWait" style="background-image: url(application/assets/images/icon/IMG_Booking.png);"></div></div>
 							<div class="media-body">
-								<h3 class="heading mb-3">Wait</h3>
-								<p></p>
+								<h3 class="heading mb-3 labelHead" style="color: #FFF; font-weight: bold;">การจอง</h3>
+								<p class="labelHead" style="color: #FFF; font-weight: bold;">ระบบจองใช้งานง่าย เพียง 3 Step จะจัดสรรหามัคคุเทศก์ที่ไลฟ์สไตล์เหมือนนที่คุณต้องการ</p>
 							</div>
 						</div>      
 					</div>
 					<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-						<div class="services services-1 color-4 d-block img" style="background-image: url(images/services-4.jpg);">
-							<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-map"></span></div>
+						<div class="services services-1 color-4 d-block img" style="background-image: url(application/assets/images/services-4.jpg);">
+							<div class="icon d-flex align-items-center justify-content-center"><div class="BookingWait" style="background-image: url(application/assets/images/icon/IMG_Pay.png);"></div></div>
 							<div class="media-body">
-								<h3 class="heading mb-3">Wait</h3>
-								<p></p>
+								<h3 class="heading mb-3 labelHead" style="color: #FFF; font-weight: bold;">การชำระเงิน</h3>
+								<p class="labelHead" style="color: #FFF; font-weight: bold;">มีพนักงานคอยตรวจสอบการชำระเงินของคุณ พร้อมทั้งเตรียมแก้ไขปัญหาตลอด 24 ชั่วโมง</p>
 							</div>
 						</div>      
 					</div>
