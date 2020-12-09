@@ -1,23 +1,4 @@
-<style>
-.form-control{
-    color:#333333!important;
-    font-size:15px!important;
-}
-.mybtn{
-    color:#333333!important;
-    font-size:15px!important;
-}
-</style>
-<div class="row">
-    <div class="col-lg-6 col-6">
-        <label class="labelHead">ตารางงาน</label>
-    </div>
-    <div class="col-lg-6 col-6">
-        <button class="xButtonInsert pull-right" onclick="AddGuideCalendar('pageinsert')">+</button>
-    </div>
-</div>
-
-<div class="row">
+<!-- <div class="row">
     <div class="col-sm-2 col-md-2 col-lg-2 col-2">
 		<select class="form-control jSelectedsingle" id="calendarYearSearch">
 			<option value="">--ทุกปี--</option>
@@ -54,9 +35,10 @@
     <div class="col-sm-2 col-md-2 col-lg-2 col-2">
 		<button class="btn btn-primary waves-effect waves-light mybtn BTNConfirmRegis" style="width:100px;height:40px;font-size: 20px !important; font-family: 'THSarabunNew';" onclick="LoadGuideCalendar()">ค้นหา</button>
     </div>
-</div>
+</div> -->
 
-<table class="table table-hover" style="margin-top: 20px;">
+<div class="col-lg-12">
+	<table class="table table-hover" style="margin-top: 20px;">
 		<thead>
 			<tr>
 				<th scope="col" width="10%">ลำดับ</th>
@@ -67,41 +49,30 @@
 			</tr>
 		</thead>
 		<tbody>
-        <?php 
-              //helper('DateConvert');
-              //ตรวจสอบว่าพบข้อมูลหรือไม่
-              if($Result["Code"] == 1){
-                
-                $line_no = 0; //เก็บหมายเลขแถว
-                
-                //วนลูปแสดงข้อมูลตารางงาน
-                foreach($Result['Items'] AS $Key => $Value){ 
-                
-                $calenYear  =  $Value['CalenYear']; //Calendar Year
-                $calenMonth =  $Value['CalenMonth']; //Calendar Month
-
-                $line_no++; //เพิ่มค่าเลขแถวที่ละ 1
-        ?>
-				<tr>
-                    <th><?=$line_no?></th>
-                    <td><?=$calenYear?></td>
-                    <td><?php echo ConvertThaiMonth($calenMonth);?></td>
-                    <td><img class="img-responsive ImageEdit" src="<?=base_url()?>/application/assets/images/icon/edit.png" onclick="EditGuideCalendar('<?=$calenYear?>','<?=$calenMonth?>')"></td>
-                    <td><img class="img-responsive ImageDelete" src="<?=base_url()?>/application/assets/images/icon/delete.png" onclick="DeleteGuideCalendar('<?=$calenYear?>','<?=$calenMonth?>')"></td>
-                </tr>
-        <?php  
-
-                } //END FOR
-
-              }//END IF
-
-              //ถ้าไม่พบข้อมูลให้แสดงไม่พบข้อมูล
-              else{
+			<?php 
+				//ตรวจสอบว่าพบข้อมูลหรือไม่
+				if($Result["Code"] == 1){
+					$line_no = 0; //เก็บหมายเลขแถว
+					foreach($Result['Items'] AS $Key => $Value){ //วนลูปแสดงข้อมูลตารางงาน
+						$calenYear  =  $Value['CalenYear']; //Calendar Year
+						$calenMonth =  $Value['CalenMonth']; //Calendar Month
+						$line_no++; //เพิ่มค่าเลขแถวที่ละ 1
+					?>
+					<tr>
+						<th><?=$line_no?></th>
+						<td><?=$calenYear?></td>
+						<td><?=ConvertThaiMonth($calenMonth);?></td>
+						<td><img class="img-responsive ImageEdit" src="<?=base_url()?>/application/assets/images/icon/edit.png" onclick="EditGuideCalendar('<?=$calenYear?>','<?=$calenMonth?>')"></td>
+						<td><img class="img-responsive ImageDelete" src="<?=base_url()?>/application/assets/images/icon/delete.png" onclick="DeleteGuideCalendar('<?=$calenYear?>','<?=$calenMonth?>')"></td>
+					</tr>
+					<?php }
+				}else{
                   echo "<tr><td colspan='5' style='text-align:center'>--ไม่พบข้อมูล--</td></tr>";
-              }
-        ?>
-			</tbody>
+              	}
+        	?>
+		</tbody>
 	</table>
+</div>
 
 <script>
 	$(".jSelectedsingle").select2();

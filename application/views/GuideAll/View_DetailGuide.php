@@ -5,9 +5,6 @@
 		<title>Freind Travel</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?=base_url('application/assets/css/animate.css')?>">
 		<link rel="stylesheet" href="<?=base_url('application/assets/css/owl.carousel.min.css')?>">
 		<link rel="stylesheet" href="<?=base_url('application/assets/css/owl.theme.default.min.css')?>">
@@ -21,12 +18,12 @@
 		<link rel="stylesheet" href="<?=base_url('application/assets/css/fullcalendar.min.css')?>">
 	</head>
 
-	<body>
+	<body style='background: linear-gradient(rgba(134,134,134,.5), rgba(134,134,134,.5)), url("<?=base_url('application/assets/images/bg_2.jpg')?>"); background-repeat: round; background-size: cover;'>
 		<div class="container">
-			<section class="ftco-section ftco-no-pb ftco-no-pt" style="background: #FFF;">
+			<section class="ftco-section ftco-no-pb ftco-no-pt" >
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-12" style="margin:50px 0px 20px 0px;">
+						<div class="col-lg-12" style="margin:50px 0px 20px 0px; background: #FFF; border-radius: 20px;">
 							<div class="row" style="box-shadow: 0px 10px 23px -8px rgba(0, 0, 0, 0.11); padding: 20px;">
 								
 								<!--ข้อมูลรายละเอียด-->
@@ -36,6 +33,8 @@
 										<div class="col-lg-12">
 											<p class="labelHead" style="font-size: 30px !important; font-weight: bold; margin-bottom: 0px;">รายละเอียดมัคคุเทศก์</p>
 										</div>
+
+										<div class="col-lg-12"><hr></div>
 
 										<!--รูปภาพ-->
 										<div class="col-lg-4" style="margin-top:10px;">

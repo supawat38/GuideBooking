@@ -1,15 +1,40 @@
-<div id="GuideCalendarContent"></div>
+<div class="row">
+	<div class="col-lg-12" style="margin:10px 0px;">
+		<div class="row">
+			<div class="col-lg-12 col-12 ButtonControlPageCalender" style="display:block;">
+				<div class="row">
+					<div class="col-lg-6 col-6">
+						<label class="labelHead" >ตารางงาน</label>
+					</div>
+					<div class="col-lg-6 col-6">
+						<button class="xButtonInsert pull-right" onClick="AddGuideCalendar('pageinsert')">+</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 col-12 ButtonControlPageAddCalender" style="display:none;">
+				<div class="row">
+					<div class="col-lg-6 col-6">
+						<label class="labelHead textActiveMenuBar" onClick="LoadGuideCalendar()">ตารางงาน</label> <label class="labelHead label_CalenderHead"></label>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12">
+				<div id="GuideCalendarContent" class="row"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <script>
-	//โหลดหน้าจอตารางงานมัคคุเทศก์
-	$('document').ready(function(){
-		LoadGuideCalendar();	 
-	});
-
-    // ดึงตารางงานของมัคคุเทศก์
+	
+    //โหลดหน้าตาราง
+	LoadGuideCalendar();
 	function LoadGuideCalendar(){
-		
-		var calendarYearSearch = $("#calendarYearSearch").children("option:selected").val();
+
+		$('.ButtonControlPageCalender').show();
+		$('.ButtonControlPageAddCalender').hide();
+		var calendarYearSearch 	= $("#calendarYearSearch").children("option:selected").val();
 		var calendarMonthSearch = $("#calendarMonthSearch").children("option:selected").val();
 
 		$.ajax({
@@ -34,18 +59,26 @@
 	}
     
 	// สร้างตารางเวลาของ Guide แต่ละคน
-	function AddGuideCalendar(){
+	function AddGuideCalendar(typepage){
 		
-		var AddYear = $("#AddEditYear").children("option:selected").val();
-		var AddMonth = $("#AddEditMonth").children("option:selected").val();
+		$('.ButtonControlPageCalender').hide();
+		$('.ButtonControlPageAddCalender').show();
 
+		if(typepage == 'pageinsert'){
+			$('.label_CalenderHead').text(' / เพิ่มข้อมูล');
+		}else{
+			$('.label_CalenderHead').text(' / แก้ไขข้อมูล');
+		}
+
+		var AddYear 	= $("#AddEditYear").children("option:selected").val();
+		var AddMonth 	= $("#AddEditMonth").children("option:selected").val();
 		$.ajax({
 			type	: "POST",
 			url		: "AddCalendar",
 			data    :{
-						"ActionMode" : 1,
-						"AddYear":AddYear,
-						"AddMonth":AddMonth
+						"ActionMode" 	: 1,
+						"AddYear"		: AddYear,
+						"AddMonth"		: AddMonth
 					 },
 			cache	: false,
 			timeout	: 0,
@@ -55,7 +88,6 @@
 					$('#AddEditYear option[value='+AddYear+']').attr('selected','selected');
 				    $('#AddEditMonth option[value='+AddMonth+']').attr('selected','selected');
 				 }, 300);
-				
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				alert(jqXHR, textStatus, errorThrown);
@@ -66,41 +98,59 @@
 	// ตรวจสอบการสร้าง calendar
 	function CheckAddGuideCalendar(){
 
-		//alert('check add calendar');
-		
-		var AddYear = $("#AddEditYear").children("option:selected").val();
-		var AddMonth = $("#AddEditMonth").children("option:selected").val();
+		var AddYear 	= $("#AddEditYear").children("option:selected").val();
+		var AddMonth 	= $("#AddEditMonth").children("option:selected").val();
 
 		if(AddYear == ''){
-           alert('กรุณาเลือกปีที่ต้องการสร้างตารางงาน');
+		   Swal.fire({
+				title: 'กรุณาตรวจสอบความถูกต้อง',
+				text: "กรุณาเลือกปีที่ต้องการสร้างตารางงาน",
+				icon: "error",
+				showCancelButton: false,
+				confirmButtonColor: '#ff6868',
+				confirmButtonText: 'ตกลง',
+			}).then(function (result) {});
 		}else if(AddMonth == ''){
-		   alert('กรุณาเลือกเดือนที่ต้องการสร้างตารางงาน');
+		   Swal.fire({
+				title: 'กรุณาตรวจสอบความถูกต้อง',
+				text: "กรุณาเลือกเดือนที่ต้องการสร้างตารางงาน",
+				icon: "error",
+				showCancelButton: false,
+				confirmButtonColor: '#ff6868',
+				confirmButtonText: 'ตกลง',
+			}).then(function (result) {});
 		}else{
-				$.ajax({
-					type	: "POST",
-					url		: "CheckAddCalendar",
-					data    :{"AddYear":AddYear,"AddMonth":AddMonth},
-					cache	: false,
-					timeout	: 0,
-					success	: function (Result) {
-						if(Result > 0){
-							alert('ตารางเวลานี้มีอยู่แล้วในระบบ ไม่สามารถสร้างซ้ำได้ กรุณาเลือกรายใหม่');
+			$.ajax({
+				type	: "POST",
+				url		: "CheckAddCalendar",
+				data    :{"AddYear":AddYear,"AddMonth":AddMonth},
+				cache	: false,
+				timeout	: 0,
+				success	: function (Result) {
+					if(Result > 0){
+						Swal.fire({
+							title: 'ตารางเวลานี้มีอยู่แล้วในระบบ',
+							text: "ไม่สามารถสร้างซ้ำได้ กรุณาเลือกรายการใหม่",
+							icon: "error",
+							showCancelButton: false,
+							confirmButtonColor: '#ff6868',
+							confirmButtonText: 'ตกลง',
+						}).then(function (result) {
 							$('#AddEditYear option[value=""]').attr('selected','selected');
 							$('#AddEditMonth option[value=""]').attr('selected','selected');
 							setTimeout(function(){
 								AddGuideCalendar()
 							}, 300);
-
-						}else{
-							AddGuideCalendar();
-						}
-					},
-					error: function (jqXHR, textStatus, errorThrown) {
-						alert(jqXHR, textStatus, errorThrown);
+						});
+					}else{
+						AddGuideCalendar();
 					}
-			    });
+				},
+				error: function (jqXHR, textStatus, errorThrown) {
+					alert(jqXHR, textStatus, errorThrown);
+				}
+			});
 		}
-		
 	}
 
 	// บันทึกเวลาของ Guide แต่ละคน
@@ -129,8 +179,6 @@
 			cache	: false,
 			timeout	: 0,
 			success	: function (Result) {
-				console.log(Result);
-
 				if(ActionMode == '1'){ 
 					var TitleSwal = 'สร้างตารางงานสำเร็จ';
 				}else if(ActionMode == '2'){ 
@@ -156,21 +204,23 @@
 
 	// แก้ไขตารางเวลาของ Guide แต่ละคน
 	function EditGuideCalendar(calenYear,calenMonth){
+			
+		$('.ButtonControlPageCalender').hide();
+		$('.ButtonControlPageAddCalender').show();
+		$('.label_CalenderHead').text(' / แก้ไขข้อมูล');
 
 		$.ajax({
 			type	: "POST",
 			url		: "EditCalendar",
 			data    :{
-						"ActionMode" : 2,
-						"EditcalenYear" : calenYear , 
-						"EditcalenMonth" : calenMonth
+						"ActionMode" 		: 2,
+						"EditcalenYear" 	: calenYear , 
+						"EditcalenMonth" 	: calenMonth
 					  },
 			cache	: false,
 			timeout	: 0,
 			success	: function (Result) {
-				
 				$('#GuideCalendarContent').html(Result);
-
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				alert(jqXHR, textStatus, errorThrown);
@@ -180,7 +230,14 @@
 
 	// ลบตารางเวลาของ Guide 
 	function DeleteGuideCalendar(calenYear,calenMonth){
-		if(confirm('คุณต้องการลบตารางงานที่เลือกใช่หรือไม่ ?')){
+		Swal.fire({
+			title: "ลบข้อมูล ? ",
+			text: "กดยืนยันเพื่อลบข้อมูล",
+			showCancelButton: false,
+			confirmButtonColor: '#ff6868',
+			confirmButtonText: 'ยืนยัน',
+		}).then(function (result) {
+			if (result.isConfirmed) {
 				$.ajax({
 					type	: "POST",
 					url		: "DeleteCalendar",
@@ -193,13 +250,13 @@
 					success	: function (Result) {
 						alert('ลบข้อมูลตารางงานสำเร็จ');
 						LoadGuideCalendar();
-
 					},
 					error: function (jqXHR, textStatus, errorThrown) {
 						alert(jqXHR, textStatus, errorThrown);
 					}
 				});
-		}
+			} 
+		});
 	}
 
 </script>

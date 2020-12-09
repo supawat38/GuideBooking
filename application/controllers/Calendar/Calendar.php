@@ -44,10 +44,10 @@ class Calendar extends CI_Controller {
 	public function AddCalendar(){
 
 		$ActionMode = $this->input->post('ActionMode');
-		$AddYear = $this->input->post('AddYear');
-		$AddMonth = $this->input->post('AddMonth');
+		$AddYear 	= $this->input->post('AddYear');
+		$AddMonth 	= $this->input->post('AddMonth');
 
-		$this->load->view('Calendar/View_AddEditCalendar',array("ActionMode"=>$ActionMode,
+		$this->load->view('Calendar/View_CalendarForms',array("ActionMode"=>$ActionMode,
 																"AddYear"   => $AddYear,
 															    "AddMonth"  => $AddMonth));
 	}
@@ -123,7 +123,7 @@ class Calendar extends CI_Controller {
  
 			$Result = $this->models_GuideCalendar->_GetCalendarByMonth($Filter); //ดึงตารางเวลาที่ต้องการแก้ไข
 
-			$this->load->view('Calendar/View_AddEditCalendar',array("ActionMode"=> $ActionMode,
+			$this->load->view('Calendar/View_CalendarForms',array("ActionMode"=> $ActionMode,
 																	"AddYear"   => $EditcalenYear,
 																	"AddMonth"  => $EditcalenMonth,
 																    "Result"    => $Result));
