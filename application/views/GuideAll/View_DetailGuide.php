@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="<?=base_url('application/assets/css/fullcalendar.min.css')?>">
 	</head>
 
-	<body style='background: linear-gradient(rgba(134,134,134,.5), rgba(134,134,134,.5)), url("<?=base_url('application/assets/images/bg_2.jpg')?>"); background-repeat: round; background-size: cover;'>
+	<body style='background: linear-gradient(rgba(134,134,134,.5), rgba(134,134,134,.5)), url("<?=base_url('application/assets/images/bg_2_guide.jpg')?>"); background-repeat: round; background-size: cover;'>
 		<div class="container">
 			<section class="ftco-section ftco-no-pb ftco-no-pt" >
 				<div class="container">
