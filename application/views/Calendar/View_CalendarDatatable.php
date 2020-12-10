@@ -67,7 +67,7 @@
 					</tr>
 					<?php }
 				}else{
-                  echo "<tr><td colspan='5' style='text-align:center'>--ไม่พบข้อมูล--</td></tr>";
+                  echo "<tr><td colspan='5' style='text-align:center'> - ไม่พบข้อมูล - </td></tr>";
               	}
         	?>
 		</tbody>

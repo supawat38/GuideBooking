@@ -18,7 +18,7 @@
 
 					//รูปภาพ
 					if($Value['guide_image'] == '' || $Value['guide_image'] == null){
-						$PathShowImage 		= 'application/assets/images/guide/'.'/NoImage.jpg';
+						$PathShowImage 		= 'application/assets/images/guide/'.'NoImage.png';
 					}else{
 						$PathShowImage 		= 'application/assets/images/guide/'.$Value['guide_image'];
 					} 

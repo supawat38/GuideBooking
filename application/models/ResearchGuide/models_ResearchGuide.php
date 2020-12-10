@@ -39,7 +39,26 @@ class models_ResearchGuide extends CI_Model {
 
 		//เงื่อนไขการค้นหา
 		if($type == 'All'){ //ถ้ากรองตามทั้งหมด
-			$SQLConcat = ' ';
+			$tUserID 	= $this->session->userdata("session_refid");
+			//ถ้ายังไม่เคย login 
+			if($tUserID == '' || $tUserID == null){
+				$SQLConcat = ' ';
+			}else{
+				//สิ่งที่ลูกค้าสนใจเป็นพิเศษ
+				$SQL 				= "SELECT cus_qustions FROM customer WHERE cus_id = '$tUserID' ";
+				$QueryInteresting 	= $this->db->query($SQL);
+				$Interesting		= $QueryInteresting->result_array()[0]['cus_qustions'];
+				$arrayInteresting   = explode(",",$Interesting);
+				$SQLConcatLike = "";
+				for($j=0; $j<count($arrayInteresting); $j++){
+					$SQLConcatLike .= "guide.guide_qustions LIKE " . "'" . $arrayInteresting[$j] . '%' . "'" . ' OR '; 
+
+					if($j == count($arrayInteresting) - 1){
+						$SQLConcatLike = substr($SQLConcatLike,0,-3);
+					}
+				}
+				$SQLConcat = " ORDER BY ($SQLConcatLike) DESC ";
+			}
 		}else if($type == 'Review'){ //ถ้ากรองตามคะแนนรีวิว มากไปน้อย
 			$SQLConcat = ' ORDER BY review.point DESC ';
 		}else if($type == 'Price'){ //ถ้ากรองตามราคา น้อยไปมาก
