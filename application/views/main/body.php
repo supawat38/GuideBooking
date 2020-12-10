@@ -282,26 +282,5 @@
 			}
 		});
 	}
-
-	// //โหลดหน้าตารางส่วนของ มัคคุเทศก์ยอดนิยม
-	// LoadTable_GuidePopular(1);
-	// function LoadTable_GuidePopular(numberpage){
-	// 	$.ajax({
-	// 		type	: "POST",
-	// 		url		: "Loadtable_guidePopular",
-	// 		data 	: {
-	// 					'numberpage' 		: numberpage
-	// 				  },
-	// 		cache	: false,
-	// 		timeout	: 0,
-	// 		success	: function (Result) {
-	// 			$('.ContentGuidePopular').html(Result);
-	// 		},
-	// 		error: function (jqXHR, textStatus, errorThrown) {
-	// 			alert(jqXHR, textStatus, errorThrown);
-	// 		}
-	// 	});
-	// }
-
 </script>
 
