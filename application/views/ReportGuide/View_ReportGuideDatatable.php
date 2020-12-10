@@ -15,7 +15,7 @@
 				<?php $GuideID = ''; ?>
 				<?php $Number = 1; ?>
 				<?php foreach($result['Items'] AS $Key => $Value){ ?>
-					<?php if($Value['guide_id'] == $GuideID){ ?>
+					<?php if($Value['guideCode'] == $GuideID){ ?>
 						<tr>
 							<th></th>
 							<td></td>
@@ -29,13 +29,15 @@
 							<td></td>
 							<td class="text-right" style="font-weight:bold;"><?=($Value['COUNTCOMMENT'] == '') ? '0' : $Value['COUNTCOMMENT']?> คะแนน</td>
 						</tr>
-						<tr>
-							<th></th>
-							<td></td>
-							<td><?=$Value['review_text']?></td>
-							<td class="text-right"><?=$Value['review_point']?></td>
-						</tr>	
-						<?php $GuideID = $Value['guide_id']; ?>
+						<?php if($Value['review_point'] != '' || $Value['review_point'] != null){ ?>
+							<tr>
+								<th></th>
+								<td></td>
+								<td><?=$Value['review_text']?></td>
+								<td class="text-right"><?=$Value['review_point']?></td>
+							</tr>	
+						<?php } ?>
+						<?php $GuideID = $Value['guideCode']; ?>
 						<?php $Number++; ?>
 					<?php } ?>
 				<?php } ?>

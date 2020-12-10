@@ -61,7 +61,14 @@
 							</div>
 						</div>
 						<div class="col-lg-3" style="margin-top: 5px;">
-							<a href="#" class="nav-link labelHead" data-toggle="modal" data-target="#ModalReviewGuide" style="display: block; margin: 0px auto; text-align: right; color: #f98b2d;" onclick="LoadInformationReviewGuide('<?=$Value['guide_id']?>');">รีวิวมัคคุเทศก์</a>
+							<?php 
+								if($Value['status_payment'] == 0){
+									//ยังไม่ได้ชำระเงิน รีวิวไม่ได้
+								}else{
+									//ชำระเงินเเล้ว รีวิวได้
+									echo '<a href="#" class="nav-link labelHead" data-toggle="modal" data-target="#ModalReviewGuide" style="display: block; margin: 0px auto; text-align: right; color: #f98b2d;" onclick="LoadInformationReviewGuide('.$Value['guide_id'].');">รีวิวมัคคุเทศก์</a>';
+								}
+							?>
 						</div>
 					</div>
 				</div>

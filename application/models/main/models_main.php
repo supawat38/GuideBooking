@@ -91,5 +91,35 @@ class models_main extends CI_Model {
 			echo $Error;
 		}
 	}
+
+	//โหลดข้อมูลไกด์นิยม
+	public function LoadDataguidePoppular(){
+		try{	
+			$SQL 			= "SELECT 	
+								DISTINCT 
+								guide.guide_id AS guideCode , 
+								guide.* , 
+								COUNTPOINT.COUNTCOMMENT 
+							FROM guide 
+							LEFT JOIN ( SELECT guide_id , SUM(review.review_point) AS COUNTCOMMENT FROM review GROUP BY guide_id ) AS COUNTPOINT ON COUNTPOINT.guide_id = guide.guide_id 
+							WHERE COUNTCOMMENT <> '0' ORDER BY COUNTCOMMENT DESC";
+			$QueryItem 		= $this->db->query($SQL);
+			if($QueryItem->num_rows() > 0){
+				$Result = array(
+					'Items'  		=> $QueryItem->result_array(),
+					'Code'   		=> '1',
+					'Desc'   		=> 'success'
+				);
+			}else{
+				$Result = array(
+					'Code' 			=> '800',
+					'Desc' 			=> 'data not found'
+				);
+			}
+			return $Result;
+		}catch(Exception $Error){
+			echo $Error;
+		}
+	}
 	
 }

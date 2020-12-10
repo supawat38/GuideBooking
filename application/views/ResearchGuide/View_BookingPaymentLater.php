@@ -80,7 +80,7 @@
 					data 		: objectFile,
 					datatype	: "JSON",
 					success: function (Result){
-						console.log(Result);
+						// console.log(Result);
 						var fileName = Result.split("\\").pop();
 						$('#UploadSlip').siblings(".custom-file-label").addClass("selected").html(fileName);
 						$('#UploadSlipName').val(fileName);

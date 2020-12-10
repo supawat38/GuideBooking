@@ -86,8 +86,8 @@
 	</div>
 </section>
 
-<!--ส่วนของตารางการจอง-->
-<section class="ftco-section services-section">
+<!--ส่วนของจุดเด่นเว็บเรา-->
+<section class="ftco-section services-section" style="padding:3em 0 0em 0 !important;">
 	<div class="container">
 		<div class="row d-flex">
 			<div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate d-flex align-items-center">
@@ -140,28 +140,95 @@
 	</div>
 </section>
 
-<!--มัคคุเทศก์ยอดนิยม-->
-<section class="ftco-section testimony-section bg-bottom" style="background-image: url(images/bg_1.jpg);">
-	<div class="overlay"></div>
+<!--แพ็กเกจ-->
+<section class="ftco-section" style="padding:3em 0 7em 0 !important;">
+	<div class="container">
+		<div><hr></div>
+		<div class="row justify-content-center pb-4">
+			<div class="col-md-12 heading-section text-center ftco-animate" style="margin-top: 50px;">
+				<h2 class="mb-4 textMain_Show">แพ็กเกจแนะนำ</h2>
+			</div>
+		</div>
+		<div class="ContentPackage"></div>
+	</div>
+</section>
+
+<!--ความคิดเห็นจากลูกค้า-->
+<section class="ftco-section testimony-section bg-bottom" style="background-image: url(application/assets/images/bg_1.jpg);">
+	<div class="overlays" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, #207ce5 0%, #13d42a 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207ce5', endColorstr='#13d42a', GradientType=1 ); opacity: .6;"></div>
 	<div class="container">
 		<div class="row justify-content-center pb-4">
 			<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-				<h2 class="mb-4 textMain_Show">มัคคุเทศก์ยอดนิยม</h2>
+				<h2 class="mb-4 textMain_Show">ความคิดเห็นจากลูกค้า</h2>
 			</div>
 		</div>
 		<div class="ContentReviewGuide"></div> 
 	</div>
 </section>
 
-<!--แพ็กเกจ-->
-<section class="ftco-section" style="margin-top: 50px;">
+<!--มัคคุเทศก์ยอดนิยม-->
+<section class="ftco-section img ftco-select-destination">
 	<div class="container">
 		<div class="row justify-content-center pb-4">
 			<div class="col-md-12 heading-section text-center ftco-animate">
-				<h2 class="mb-4 textMain_Show">แพ็กเกจแนะนำ</h2>
+				<h2 class="mb-4 textMain_Show">มัคคุเทศก์ยอดนิยม</h2>
 			</div>
 		</div>
-		<div class="ContentPackage"></div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<?php 
+					if(empty($guidepoppular['Items'])){
+						$ClassCSS 			= "carousel-destination owl-carousel ftco-animate";
+						$ClassSubCss    	= "";
+					}else{
+						if(count($guidepoppular['Items']) >= 4){
+							$ClassCSS 		= "carousel-destination owl-carousel ftco-animate";
+							$ClassSubCss    = "";
+						}else{
+							$ClassCSS 		= "row";
+							$ClassSubCss 	= "col-lg-4 col-md-4";
+						}
+					}
+				?>
+				<div class="<?=$ClassCSS?>">
+					<?php if(empty($guidepoppular['Items'])){ ?>
+						<div class="img" style="
+							background-image: url(application/assets/images/comingsoon.png); width: 100%;
+							height: 220px;
+							background-position: top;
+							background-size: contain;
+							background-repeat: repeat-x;"></div>
+					<?php }else{ ?>
+						<?php foreach($guidepoppular['Items'] AS $Key => $Value){ ?>
+							<div class="item <?=$ClassSubCss?>">
+								<div class="project-destination">
+									<?php 
+										$PathImage = $Value['guide_image'];
+										if($PathImage == '' || $PathImage == null){
+											$PathShowImage 		= base_url('/application/assets/images/guide/') . 'NoImage.png';
+										}else{
+											$PathShowImage 		= base_url('/application/assets/images/guide/') . $PathImage;
+										}
+										$Image = "background-image: url($PathShowImage);"; 
+									?>
+									<a href="#" class="img" style="<?=$Image?>">
+										<div class="text">
+											<h3 class="labelHead">คุณ<?= $Value['firstname']?> <?= $Value['lastname']?></h3>
+											<span class="labelHead"><?=$Value['COUNTCOMMENT']?> คะแนน</span>
+										</div>
+									</a>
+								</div>
+							</div>
+						<?php } ?>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
 
@@ -215,6 +282,26 @@
 			}
 		});
 	}
+
+	// //โหลดหน้าตารางส่วนของ มัคคุเทศก์ยอดนิยม
+	// LoadTable_GuidePopular(1);
+	// function LoadTable_GuidePopular(numberpage){
+	// 	$.ajax({
+	// 		type	: "POST",
+	// 		url		: "Loadtable_guidePopular",
+	// 		data 	: {
+	// 					'numberpage' 		: numberpage
+	// 				  },
+	// 		cache	: false,
+	// 		timeout	: 0,
+	// 		success	: function (Result) {
+	// 			$('.ContentGuidePopular').html(Result);
+	// 		},
+	// 		error: function (jqXHR, textStatus, errorThrown) {
+	// 			alert(jqXHR, textStatus, errorThrown);
+	// 		}
+	// 	});
+	// }
 
 </script>
 

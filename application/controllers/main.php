@@ -22,7 +22,8 @@ class main extends CI_Controller {
 		//เตรียมข้อมูลส่งไปที่หน้า view
 		$aPackData = array(
 			'pageName' 		=> 'main',
-			'dataprovince' 	=> $arrayProvince
+			'dataprovince' 	=> $arrayProvince,
+			'guidepoppular'	=> $this->models_main->LoadDataguidePoppular()
 		);
 
 		$this->load->view('header',$aPackData);
