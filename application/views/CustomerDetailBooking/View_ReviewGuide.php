@@ -81,7 +81,7 @@
 	});
 	
 	
-	//แสดงความคิดเห็น
+	//กดแสดงความคิดเห็น
 	$('.ConfirmReviewGuide').one('click', function(event) {
 		$('.ConfirmReviewGuide').off('click');
 		$('#ModalReviewGuide').modal('hide');

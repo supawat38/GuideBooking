@@ -103,7 +103,7 @@ class ResearchGuide extends CI_Controller {
 		}else{
 			$LastCode 		= $LastCode['Items'][0]['booking_id'];
 			$Explode		= explode("BOOKING",$LastCode);
-			$Number		= $Explode[1] + 1;
+			$Number			= $Explode[1] + 1;
 			$CountNumber	= count($Number);
 			if($CountNumber == 1){
 				$Format 		= '0000';
@@ -231,8 +231,8 @@ class ResearchGuide extends CI_Controller {
 			'payment_type'		=> 2, 
 			'payment_slip'		=> $pathSlip, 
 			'payment_frombank'	=> $bankFrom, 
-			'payment_tobank'	=> 'ไทยพาณิชย์', 
-			'payment_account'	=> '206-244992-5', 
+			'payment_tobank'	=> 'กรุงไทย', 
+			'payment_account'	=> '717-047-8005', 
 			'amount'			=> $grandtotal, 
 			'payment_rcv'		=> '', 
 			'status_approve'	=> 0,  

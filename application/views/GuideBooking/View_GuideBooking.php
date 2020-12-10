@@ -50,7 +50,7 @@
 		});
 	}
 
-	//เพิ่มข้อมูลผู้ดูแลระบบ
+	//ดูรายละเอียดการจอง
 	function Page_guidebooking(typepage,id){
 		$('.ButtonControlPageListguidebooking').hide();
 		$('.ButtonControlPageAddguidebooking').show();

@@ -101,7 +101,7 @@ $route['Loadtable_BookingAndPayment'] 			= 'CheckBookingPayment/CheckBookingPaym
 $route['PageInsOrEdit_BookingAndPayment'] 		= 'CheckBookingPayment/CheckBookingPayment/PageInsoredit';
 $route['EventInsOrEdit_BookingAndPayment'] 		= 'CheckBookingPayment/CheckBookingPayment/EventInsoredit';
 
-//หน้าจอ - ข้อมูลการจองของคุณ
+//หน้าจอ - ข้อมูลการจองของคุณ(มุมมองของลูกค้า)
 $route['CustomerDetailBooking']					= 'CustomerDetailBooking/CustomerDetailBooking/index';
 $route['LoadtableCustomerBooking']				= 'CustomerDetailBooking/CustomerDetailBooking/LoadtableCustomerBooking';
 $route['LoadInformationGuideForReview']			= 'CustomerDetailBooking/CustomerDetailBooking/LoadInformationGuideForReview';

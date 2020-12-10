@@ -159,6 +159,7 @@
 								$('#ModalLoginBeforeBooking').modal('hide');
 
 								setTimeout(function(){ 
+									//login แล้ว
 									LoadViewBooking(parameter);
 								}, 1000);
 							}else{
@@ -172,6 +173,7 @@
 				});
 			});
 		}else{
+			//login แล้ว
 			LoadViewBooking(parameter);
 		}
 	}
