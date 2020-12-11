@@ -37,9 +37,11 @@ class CustomerDetailBooking extends CI_Controller {
 	//โหลดข้อมูลไกด์ ให้เอาไปสำหรับรีวิว
 	public function LoadInformationGuideForReview(){
 		$GuideID 	= $this->input->post('GuideID');
+		$BookingID 	= $this->input->post('BookingID');
 		$result 	= $this->models_CustomerDetailBooking->LoadInformationGuideForReview($GuideID);
 		$PackData = array(
-			'result'			=> $result
+			'result'			=> $result,
+			'BookingID'			=> $BookingID
 		);
 		$this->load->view('CustomerDetailBooking/View_ReviewGuide',$PackData);
 	}
@@ -49,8 +51,10 @@ class CustomerDetailBooking extends CI_Controller {
 		$GuideID 			= $this->input->post('GuideID');
 		$reviewGuideText 	= $this->input->post('reviewGuideText');
 		$reviewpoint 		= $this->input->post('reviewpoint');
+		$BookingID			= $this->input->post('BookingID');
 		$Insert 			= array( 
-			'guide_id'		=> $GuideID, 
+			'guide_id'		=> $GuideID,
+			'booking_id'	=> $BookingID,
 			'cus_id'		=> $this->session->userdata("session_refid"), 
 			'review_date'	=> date('Y-m-d'), 
 			'review_point'	=> $reviewpoint, 

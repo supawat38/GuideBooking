@@ -90,6 +90,7 @@
 			url		: "ReviewGuide",
 			data 	: {
 						'GuideID'			: '<?=$ID?>',
+						'BookingID'			: '<?=$BookingID?>',
 						'reviewGuideText'	: $('#reviewGuideText').val(),
 						'reviewpoint' 		: $('#reviewpoint').val()
 					  },
@@ -104,7 +105,7 @@
 					confirmButtonColor: '#bfe6a9',
 					confirmButtonText: 'ตกลง',
 				}).then(function (result) {
-					
+					$('.Review' + '<?=$BookingID?>').hide();
 				});
 			},
 			error: function (jqXHR, textStatus, errorThrown) {

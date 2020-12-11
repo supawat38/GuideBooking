@@ -104,7 +104,7 @@ class ResearchGuide extends CI_Controller {
 			$LastCode 		= $LastCode['Items'][0]['booking_id'];
 			$Explode		= explode("BOOKING",$LastCode);
 			$Number			= $Explode[1] + 1;
-			$CountNumber	= count($Number);
+			$CountNumber	= strlen($Number);
 			if($CountNumber == 1){
 				$Format 		= '0000';
 			}else if($CountNumber == 2){
@@ -208,7 +208,7 @@ class ResearchGuide extends CI_Controller {
 			$LastCode 		= $LastCode['Items'][0]['payment_id'];
 			$Explode		= explode("PAY",$LastCode);
 			$Number			= $Explode[1] + 1;
-			$CountNumber	= count($Number);
+			$CountNumber	= strlen($Number);
 			if($CountNumber == 1){
 				$Format 		= '0000';
 			}else if($CountNumber == 2){

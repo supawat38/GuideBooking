@@ -45,7 +45,7 @@
 								<span class="fa <?=$ArrayStar[3]?>"></span>
 								<span class="fa <?=$ArrayStar[4]?>"></span>
 							</p>
-							<label class="labelHead">คุณ<?=$Value['firstname']?> <?=($Value['lastname'] == '') ? '' : $Value['lastname']; ?> <?=($Value['gender'] == '1') ? '(ผู้ชาย)' : '(ผู้หญิง)'; ?> เบอร์ติดต่อ : <?=$Value['guide_phone']?> </label>
+							<label class="labelHead">คุณ<?=$Value['firstname']?> <?=($Value['lastname'] == '') ? '' : $Value['lastname']; ?> <?=($Value['gender'] == '1') ? '(ผู้ชาย)' : '(ผู้หญิง)'; ?></label>
 							<p class="labelHead" style="margin: 0px 0px 5px 0px;">เกี่ยวกับ : <?=($Value['intro_profile'] == '') ? '-' : $Value['intro_profile']; ?> </p>
 							<p class="labelHead" style="margin: 0px 0px 5px 0px;">เงื่อนไข : <?=($Value['note'] == '') ? '-' : $Value['note']; ?> </p>
 

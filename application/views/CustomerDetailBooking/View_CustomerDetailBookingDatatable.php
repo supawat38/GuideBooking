@@ -12,7 +12,7 @@
 					$BookingDateEnd 	= date("d/m/Y", strtotime($StartDate . "+$QtyDate days" ));
 					$CurrentDate		= date('d/m/Y');
 
-					if(strtotime($CurrentDate) > strtotime($BookingDateEnd)){
+					if($CurrentDate > $BookingDateEnd){
 						$TextStatus 		= 'ทริปของคุณสิ้นสุดเเล้ว'."<br>".'ขอบคุณที่ใช้บริการ';
 						$StyleStatus    	= "color: #3f3f3f; text-align: center; font-weight: bold;";
 						$PathShowImage 		= 'application/assets/images/icon/successBooking.png';
@@ -25,7 +25,17 @@
 				<div class="col-md-12 testimony-wrap py-12" style="padding: 15px; margin-bottom: 20px;">
 					<div class="row">
 						<div class="col-lg-3">
-							<div class="services services-1 color-1  d-block img" style="background-image: url('application/assets/images/bg_3.jpg'); margin: 10px; padding: 10px 30px 5px 30px;">
+
+							<?php 
+								//รูปภาพ
+								if($Value['guide_image'] == '' || $Value['guide_image'] == null){
+									$PathShowImageGuide 		= 'application/assets/images/guide/NoImage.png';
+								}else{
+									$PathShowImageGuide 		= 'application/assets/images/guide/'.$Value['guide_image'];
+								} 
+							?>
+							
+							<div class="services services-1 color-1  d-block img" style="background-image: url(<?=$PathShowImageGuide?>); margin: 10px; padding: 10px 30px 5px 30px;">
 								<div class="icon d-flex align-items-center justify-content-center">
 									<div class='BookingWait' style="background-image: url(<?=$PathShowImage?>);"></div>
 								</div>
@@ -41,7 +51,6 @@
 									<p class="labelHead" style="margin: 0px 0px 5px 0px;">รหัสการจอง : <?=$Value['booking_id']?> จังหวัด<?=$Value['province_name']?></p>
 									<p class="labelHead" style="margin: 0px 0px 5px 0px;">ราคาสำหรับการจองครั้งนี้ : <?=number_format($Value['grandtotal'],2)?></p>
 									<p class="labelHead" style="margin: 0px 0px 5px 0px;">มัคคุเทศก์ชื่อ : <?=$Value['guide_firstname']?> <?=$Value['guide_lastname']?></p>
-									<p class="labelHead" style="margin: 0px 0px 5px 0px;">เบอร์ติดต่อ : <?=$Value['guide_phone']?> </p>
 									<?php 
 										if($Value['status_payment'] == 0){
 											if($Value['payment_id'] == '' || $Value['payment_id'] == null){
@@ -54,6 +63,9 @@
 											}
 										}else{
 											$TextStatusPayment 		= 'ชำระเงินแล้ว';
+											$TextEmail  = ($Value['guide_email'] == '' ) ? "-" : $Value['guide_email'];
+											echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">เบอร์ติดต่อ : '.$Value['guide_phone'].'</p>';
+											echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">อีเมลล์ : '. $TextEmail .'</p>';
 											echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">สถานะการชำระเงิน : <b style="">'.$TextStatusPayment.'</b></p>';
 										}
 									?>
@@ -66,7 +78,14 @@
 									//ยังไม่ได้ชำระเงิน รีวิวไม่ได้
 								}else{
 									//ชำระเงินเเล้ว รีวิวได้
-									echo '<a href="#" class="nav-link labelHead" data-toggle="modal" data-target="#ModalReviewGuide" style="display: block; margin: 0px auto; text-align: right; color: #f98b2d;" onclick="LoadInformationReviewGuide('.$Value['guide_id'].');">รีวิวมัคคุเทศก์</a>';
+									if($Value['review_id'] == '' || $Value['review_id'] == null){
+										$ParameterGuide 	= $Value['guide_id'];
+										$ParameterBooking 	= "'".$Value['booking_id']."'";
+										$ParameterBookingID = 'Review'.$Value['booking_id'];
+										echo '<a href="#" class="nav-link labelHead '.$ParameterBookingID.' " data-toggle="modal" data-target="#ModalReviewGuide" style="display: block; margin: 0px auto; text-align: right; color: #f98b2d;" onclick="LoadInformationReviewGuide('.$ParameterGuide.','.$ParameterBooking.');">รีวิวมัคคุเทศก์</a>';
+									}else{
+										// echo '<p class="labelHead" style="display: block; margin: 0px auto; text-align: right; color: #000;">ขอบคุณสำหรับความคิดเห็น</p>';
+									}
 								}
 							?>
 						</div>
@@ -149,12 +168,13 @@
 	}
 
 	//กด review ไกด์
-	function LoadInformationReviewGuide(GuideID){
+	function LoadInformationReviewGuide(GuideID,BookingID){
 		$.ajax({
 			type	: "POST",
 			url		: "LoadInformationGuideForReview",
 			data 	: {
-						'GuideID' 		: GuideID
+						'GuideID' 		: GuideID,
+						'BookingID'		: BookingID
 					  },
 			cache	: false,
 			timeout	: 0,

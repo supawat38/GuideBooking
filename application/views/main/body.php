@@ -147,38 +147,12 @@
 	</div>
 </section>
 
-<!--แพ็กเกจ-->
-<section class="ftco-section" style="padding:3em 0 7em 0 !important;">
+<!--มัคคุเทศก์ยอดนิยม-->
+<section class="ftco-section img ftco-select-destination" style="padding:3em 0 7em 0 !important;">
 	<div class="container">
 		<div><hr></div>
 		<div class="row justify-content-center pb-4">
 			<div class="col-md-12 heading-section text-center ftco-animate" style="margin-top: 50px;">
-				<h2 class="mb-4 textMain_Show">แพ็กเกจแนะนำ</h2>
-			</div>
-		</div>
-		<div class="ContentPackage"></div>
-	</div>
-</section>
-
-<!--ความคิดเห็นจากลูกค้า-->
-<section class="ftco-section testimony-section bg-bottom" style="background-image: url(application/assets/images/bg_1.jpg);">
-	<div class="overlays" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, #207ce5 0%, #13d42a 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207ce5', endColorstr='#13d42a', GradientType=1 ); opacity: .6;"></div>
-	<div class="container">
-		<div class="row justify-content-center pb-4">
-			<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-				<h2 class="mb-4 textMain_Show">ความคิดเห็นจากลูกค้า</h2>
-			</div>
-		</div>
-		<div class="ContentReviewGuide"></div> 
-	</div>
-</section>
-
-<!--มัคคุเทศก์ยอดนิยม-->
-<section class="ftco-section img ftco-select-destination">
-	<div class="container">
-		<div class="row justify-content-center pb-4">
-			<div class="col-md-12 heading-section text-center ftco-animate">
 				<h2 class="mb-4 textMain_Show">มัคคุเทศก์ยอดนิยม</h2>
 			</div>
 		</div>
@@ -238,6 +212,34 @@
 		</div>
 	</div>
 </section>
+
+<!--แพ็กเกจ-->
+<section class="ftco-section" style="padding:3em 0 7em 0 !important;">
+	<div class="container">
+		<div><hr></div>
+		<div class="row justify-content-center pb-4">
+			<div class="col-md-12 heading-section text-center ftco-animate" style="margin-top: 50px;">
+				<h2 class="mb-4 textMain_Show">แพ็กเกจแนะนำ</h2>
+			</div>
+		</div>
+		<div class="ContentPackage"></div>
+	</div>
+</section>
+
+<!--ความคิดเห็นจากลูกค้า-->
+<section class="ftco-section testimony-section bg-bottom" style="background-image: url(application/assets/images/bg_1.jpg);">
+	<div class="overlays" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, #207ce5 0%, #13d42a 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207ce5', endColorstr='#13d42a', GradientType=1 ); opacity: .6;"></div>
+	<div class="container">
+		<div class="row justify-content-center pb-4">
+			<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+				<h2 class="mb-4 textMain_Show">ความคิดเห็นจากลูกค้า</h2>
+			</div>
+		</div>
+		<div class="ContentReviewGuide"></div> 
+	</div>
+</section>
+
 
 <!--โหลดไฟล์ script หน้า body-->
 <?php include __DIR__ . '/../footer.php';?>
