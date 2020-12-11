@@ -22,15 +22,20 @@ class models_CustomerDetailBooking extends CI_Model {
 								guide.firstname AS guide_firstname ,
 								guide.lastname AS guide_lastname ,
 								guide.guide_phone AS guide_phone ,
-								payment.payment_id
+								guide.guide_image AS guide_image ,
+								guide.guide_email AS guide_email ,
+								payment.payment_id ,
+								review.review_id 
 							   FROM booking 
 							   LEFT JOIN payment 	ON booking.booking_id 	= payment.refbooking_id
 							   LEFT JOIN province 	ON booking.province_id = province.province_id 
 							   LEFT JOIN guide 		ON booking.guide_id = guide.guide_id 
 							   LEFT JOIN customer 	ON booking.cus_id = customer.cus_id 
+							   LEFT JOIN review 	ON booking.booking_id = review.booking_id 
 							   WHERE booking.cus_id = '$tUserID' 
 							   ORDER BY booking.booking_id DESC
 							   LIMIT $row_count OFFSET $offset";
+
 			$QueryItem 		= $this->db->query($SQL);
 			if($QueryItem->num_rows() > 0){
 

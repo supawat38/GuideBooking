@@ -19,7 +19,7 @@
 				<div class="col-md-4">
 					<div class="project-wrap">
 						<div class="img" style="background-image: url(<?=$PathShowImage?>);">
-							<span class="price labelHead">คุณ<?=$Value['firstname']?> <?= ($Value['guide_phone'] == '') ? '' : '('.$Value['guide_phone'].')'?></span>
+							<span class="price labelHead">คุณ<?=$Value['firstname']?> <?=$Value['lastname']?></span>
 						</div>
 						<div class="text p-4">
 							<?php 
