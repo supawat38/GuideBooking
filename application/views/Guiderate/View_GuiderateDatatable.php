@@ -36,7 +36,7 @@
 						<td><img class="img-responsive ImageEdit" src="<?=base_url().'application/assets/images/icon/edit.png';?>" 
 									onClick="Page_rate('pageedit','<?=$Value['rate_id']?>');"></td>
 						<td><img class="img-responsive ImageDelete" src="<?=base_url().'application/assets/images/icon/delete.png';?>" 
-									onClick="Delete_rate('<?=$Value['rate_id']?>');"></td>
+									onClick="Delete_rate('<?=$Value['rate_id']?>','<?=$Value['amount']?>','<?=$Value['guide_id']?>');"></td>
 					</tr>
 				<?php } ?>
 			<?php } ?>
@@ -117,7 +117,7 @@
 	}
 
 	//ลบข้อมูล
-	function Delete_rate(ID){
+	function Delete_rate(ID,Amount,GuideID){
 		Swal.fire({
 			title: "ลบข้อมูล ? ",
 			text: "กดยืนยันเพื่อลบข้อมูล",
@@ -129,9 +129,22 @@
 				$.ajax({
 					type 			: "POST",
 					url 			: "EventDelete_rate",
-					data 			: { 'ID' : ID },
-					success			: function (Result){
-						LoadTable_rate(1);
+					data 			: { 'ID' : ID , 'Amount' : Amount , 'GuideID' : GuideID },
+					success			: function (Result){						
+						//มีการใช้งานอยู่ลบไม่ได้
+						if(Result == 'rate_use'){
+							//ไม่ผ่าน
+							Swal.fire({
+								title: 'กรุณาตรวจสอบความถูกต้อง',
+								text: "ราคานี้มีการจองแล้วไม่สามารถลบได้",
+								icon: "error",
+								showCancelButton: false,
+								confirmButtonColor: '#ff6868',
+								confirmButtonText: 'ตกลง',
+							}).then(function (result) {});
+						}else{
+							LoadTable_rate(1);
+						}
 					},
 					error: function (data){
 						console.log(data);

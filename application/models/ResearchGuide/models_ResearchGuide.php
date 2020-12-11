@@ -28,7 +28,7 @@ class models_ResearchGuide extends CI_Model {
 		//จำนวนข้อมูล
 		$SQL 			= "SELECT COUNT(*) AS NumAll FROM area ";
 		$SQL 			.= "LEFT JOIN guide ON area.guide_id = guide.guide_id ";
-		$SQL 			.= "LEFT JOIN rate ON area.guide_id = rate.guide_id ";
+		$SQL 			.= "LEFT JOIN rate ON area.guide_id = rate.guide_id AND rate.status_delete = 0 ";
 		$SQL 			.= "INNER JOIN 
 							( SELECT guide_id , SUM(guide_status) AS guide_status FROM calender WHERE guide_date BETWEEN '$datestartbooking' AND '$datestopbooking' GROUP BY guide_id  ) CALENDARS
 							ON guide.guide_id = CALENDARS.guide_id ";
@@ -69,7 +69,7 @@ class models_ResearchGuide extends CI_Model {
 
 		$SQL 			= "SELECT area.* , guide.* , rate.* , review.POINT FROM area ";
 		$SQL 			.= "LEFT JOIN guide ON area.guide_id = guide.guide_id ";
-		$SQL 			.= "LEFT JOIN rate ON area.guide_id = rate.guide_id ";
+		$SQL 			.= "LEFT JOIN rate ON area.guide_id = rate.guide_id AND rate.status_delete = 0 ";
 		$SQL 			.= " LEFT JOIN  
 							( SELECT guide_id , SUM(review_point) /  COUNT(review_id) AS POINT FROM review )
 							review ON review.guide_id = guide.guide_id ";

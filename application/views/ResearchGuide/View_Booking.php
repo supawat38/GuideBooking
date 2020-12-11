@@ -75,7 +75,6 @@
 					<label class="labelHead" >เพศ : <?=($Guide[0]['gender'] == '1' ) ? 'ชาย' : 'หญิง'; ?></label><br>
 					<label class="labelHead" >หมายเลขมัคคุเทศก์ : <?=($Guide[0]['guide_credit'] == '') ? 'ไม่ได้ระบุ' : $Guide[0]['guide_credit'] ?></label><br>
 					<label class="labelHead" >เกี่ยวกับมัคคุเทศก์ : <?=($Guide[0]['intro_profile'] == '') ? 'ไม่ได้ระบุ' : $Guide[0]['intro_profile'] ?></label><br>
-					<label class="labelHead" >เบอร์โทรศัพท์ : <?=$Guide[0]['guide_phone'] ?></label><br>
 					<label class="labelHead" >ที่อยู่ : <?=($Guide[0]['address'] == '') ? 'ไม่ได้ระบุ' : $Guide[0]['address'] ?></label>
 				</div>
 				<div class="col-lg-2">

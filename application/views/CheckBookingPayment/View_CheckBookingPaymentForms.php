@@ -34,11 +34,13 @@
 		$payment_frombank	= $Result['Items'][0]['payment_frombank'];
 		$payment_tobank		= $Result['Items'][0]['payment_tobank'];
 		$payment_account	= $Result['Items'][0]['payment_account'];
-		$amount				= $Result['Items'][0]['amount'];
 		$payment_rcv		= $Result['Items'][0]['payment_rcv']; 
 		$status_approve		= $Result['Items'][0]['status_approve'];
 		$approved_by		= $Result['Items'][0]['approved_by']; 
 		$approved_date		= date('d/m/Y',strtotime($Result['Items'][0]['approved_date'])); 
+		
+		//จำนวนคน
+		$person				= $Result['Items'][0]['person'];  
 
 		//ปุ่ม
 		$TextButton 		= 'ยืนยันการชำระเงิน';
@@ -74,7 +76,9 @@
 						<label>วันที่ทำรายการ <?=$DateBooking?> </label><br>
 						<label>จังหวัด<?=$ProviceName?> ราคา <?=number_format($Grand,2)?> บาท</label><br>
 						<label>วันที่เดินทาง <?=$TravelDate?> จำนวน <?=$CountDate?> วัน</label><br>
-						<label>ลูกค้าคุณ<?=$cus_firstname?> (<?=$cus_phone?>) - จองมัคคุเทศก์ชื่อคุณ<?=$guide_firstname?> (<?=$guide_phone?>)</label>
+						<label>จำนวนคน <?=($person == '') ? '[มีการเปลี่ยนแปลงราคาเดิม กรุณาตรวจสอบความถูกต้อง]' : $person . ' คน' ?></label><br>
+						<label>ชื่อลูกค้า : <?=$cus_firstname?> (<?=$cus_phone?>)</label>
+						<label>ชื่อมัคคุเทศก์คุณ : <?=$guide_firstname?> (<?=$guide_phone?>)</label>
 					</div>
 
 					<div class="form-group col-md-12">

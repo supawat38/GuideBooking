@@ -50,6 +50,7 @@ class Guiderate extends CI_Controller {
 		//เตรียมข้อมูลลงตาราง rate
 		$Updaterate = array(
 			'rate_id'		=> $this->input->post('hiddenrateID'),
+			'ratepriceold'	=> $this->input->post('ratepriceold'),
 			'guide_id' 		=> $this->session->userdata("session_refid"),
 			'amount'		=> $this->input->post('rateprice'),
 			'note' 			=> $this->input->post('ratedetail'),
@@ -57,7 +58,14 @@ class Guiderate extends CI_Controller {
 			'status_delete'	=> 0,
 		);
 		if($Typepage == 'pageedit'){ //แก้ไขข้อมูล
-			$this->models_Guiderate->Update_rate($Updaterate,'rate');
+
+			//ต้องเช็คก่อนว่าราคาใหม่ที่กำลังจะเเก้ไขมีการจองเเล้วหรือยัง ถ้ามีเเล้วเเก้ไขไม่ได้
+			$CheckUseRate = $this->models_Guiderate->CheckUse_rate($Updaterate);
+			if($CheckUseRate['Code'] == 1){
+				echo 'rate_use';
+			}else{
+				$this->models_Guiderate->Update_rate($Updaterate,'rate');
+			}
 		}else{ //เพิ่มข้อมูล
 			$this->models_Guiderate->Insert_rate($Updaterate,'rate');
 		}
@@ -65,8 +73,23 @@ class Guiderate extends CI_Controller {
 
 	//ลบข้อมูล
 	public function EventDeleterate(){
-		$ID = $this->input->post('ID');
-		$this->models_Guiderate->Delete_rate($ID);
+		$ID 		= $this->input->post('ID');
+		$Amount 	= $this->input->post('Amount'); 
+		$GuideID 	= $this->input->post('GuideID');   
+
+		//ข้อมูลสำหรับเอาไปเช็คว่ามีการใช้อยู่ไหม
+		$PackData = array(
+			'guide_id' 		=> $GuideID,
+			'ratepriceold'	=> $Amount
+		);
+
+		//ต้องเช็คก่อนว่าราคาใหม่ที่กำลังจะเเก้ไขมีการจองเเล้วหรือยัง ถ้ามีเเล้วเเก้ไขไม่ได้
+		$CheckUseRate = $this->models_Guiderate->CheckUse_rate($PackData);
+		if($CheckUseRate['Code'] == 1){
+			echo 'rate_use';
+		}else{
+			$this->models_Guiderate->Delete_rate($ID);
+		}
 	}
 	
 }

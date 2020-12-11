@@ -3,11 +3,13 @@
 		$ID					= "";
 		$amount				= "";
 		$detail				= "";
+		$person 			= "";
 		$TextButton 		= 'เพิ่มข้อมูล';
 	}else if($typepage == 'pageedit'){
 		$ID					= $Result['Items'][0]['rate_id'];
 		$amount				= $Result['Items'][0]['amount'];
 		$detail				= $Result['Items'][0]['note'];
+		$person 			= $Result['Items'][0]['person'];
 		$TextButton 		= 'แก้ไขข้อมูล';
 	}
 ?>
@@ -26,21 +28,22 @@
 					<div class="form-group col-md-12">
 						<label><span style="color:red;">*</span> เรทราคา ต่อวัน</label>
 						<input type="text" maxlength="6" class="form-control xCNInputNumericWithoutDecimal" id="rateprice" name="rateprice" placeholder="เรทราคา" value='<?=$amount?>'>
+						<input type="hidden" id="ratepriceold" name="ratepriceold" value='<?=$amount?>'>
 					</div>
 					<div class="form-group col-md-12">
 						<label>จำนวนคน</label>	
 						<select class="jSelectedsingle form-control" name="personrate">
-							<option value="1"> 1 คน </option>
-							<option value="2"> 2 คน </option>
-							<option value="3"> 3 คน </option>
-							<option value="4"> 4 คน </option>
-							<option value="5"> 5 คน </option>
-							<option value="6"> 6 คน </option>
-							<option value="7"> 7 คน </option>
-							<option value="8"> 8 คน </option>
-							<option value="9"> 9 คน </option>
-							<option value="10"> 10 คน </option>
-							<option value="10++"> มากกว่า 10 คน </option>
+							<option value="1" <?=($person == '1') ? 'selected' : '' ?> > 1 คน </option>
+							<option value="2" <?=($person == '2') ? 'selected' : '' ?>> 2 คน </option>
+							<option value="3" <?=($person == '3') ? 'selected' : '' ?>> 3 คน </option>
+							<option value="4" <?=($person == '4') ? 'selected' : '' ?>> 4 คน </option>
+							<option value="5" <?=($person == '5') ? 'selected' : '' ?>> 5 คน </option>
+							<option value="6" <?=($person == '6') ? 'selected' : '' ?>> 6 คน </option>
+							<option value="7" <?=($person == '7') ? 'selected' : '' ?>> 7 คน </option>
+							<option value="8" <?=($person == '8') ? 'selected' : '' ?>> 8 คน </option>
+							<option value="9" <?=($person == '9') ? 'selected' : '' ?>> 9 คน </option>
+							<option value="10" <?=($person == '10') ? 'selected' : '' ?>> 10 คน </option>
+							<option value="10++" <?=($person == '10++') ? 'selected' : '' ?>> มากกว่า 10 คน </option>
 						</select>
 					</div>
 					<div class="form-group col-md-12">
@@ -88,18 +91,30 @@
 					var TitleSwal = 'แก้ไขข้อมูลสำเร็จ';
 				}
 
-				//ผ่าน
-				Swal.fire({
-					title: TitleSwal,
-					text: "",
-					icon: "success",
-					showCancelButton: false,
-					confirmButtonColor: '#bfe6a9',
-					confirmButtonText: 'ตกลง',
-				}).then(function (result) {
-					Back_rate();
-				});
-				
+				//มีการใช้งานอยู๋เเก้ไขไม่ได้
+				if(Result == 'rate_use'){
+					//ไม่ผ่าน
+					Swal.fire({
+						title: 'กรุณาตรวจสอบความถูกต้อง',
+						text: "ราคานี้มีการจองแล้วไม่สามารถปรับเเก้ไขราคาได้",
+						icon: "error",
+						showCancelButton: false,
+						confirmButtonColor: '#ff6868',
+						confirmButtonText: 'ตกลง',
+					}).then(function (result) {});
+				}else{
+					//ผ่าน
+					Swal.fire({
+						title: TitleSwal,
+						text: "",
+						icon: "success",
+						showCancelButton: false,
+						confirmButtonColor: '#bfe6a9',
+						confirmButtonText: 'ตกลง',
+					}).then(function (result) {
+						Back_rate();
+					});
+				}
 			},
 			error: function (data){
 				console.log(data);

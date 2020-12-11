@@ -54,7 +54,6 @@
 										<div class="col-lg-8">
 											<label class="labelHead" >คุณ<?=$DetailGuide[0]['firstname']; ?> <?=$DetailGuide[0]['lastname']; ?> </label>
 											<label class="labelHead" >เพศ<?=($DetailGuide[0]['gender'] == '1' ) ? 'ชาย' : 'หญิง'; ?></label><br>
-											<label class="labelHead" >เบอร์โทรศัพท์ : <?=$DetailGuide[0]['guide_phone'] ?></label><br>
 											<label class="labelHead" >วันเกิด : <?=date('d/m/Y',strtotime($DetailGuide[0]['guide_bd']))?></label><br>
 											<label class="labelHead" >อีเมลล์ : <?=($DetailGuide[0]['guide_email'] == '' ) ? 'ไม่ได้ระบุ' : $DetailGuide[0]['guide_email']?></label><br>
 											<label class="labelHead" >จังหวัด : <?=$DetailGuide[0]['province_name'] ?></label><br> 

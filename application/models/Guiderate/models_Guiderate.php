@@ -108,4 +108,25 @@ class models_Guiderate extends CI_Model {
 		$this->db->where('rate_id',$id);
 		$this->db->update('rate');
 	}
+
+	//เช็คว่าราคานี้มีการจองหรือยัง ถ้ามีการจองเเล้วเเก้ไขไม่ได้
+	public function CheckUse_rate($Result){
+		$guide_id		= $Result['guide_id'];
+		$amount			= $Result['ratepriceold'];
+		$SQL 			= "SELECT * FROM booking WHERE booking.guide_id = '$guide_id' AND booking.grandtotal = '$amount' ";
+		$QueryItem 		= $this->db->query($SQL);
+		if($QueryItem->num_rows() > 0){
+			$Result = array(
+				'Code'   		=> '1',
+				'Desc'   		=> 'found'
+			);
+		}else{
+			$Result = array(
+				'Code' 			=> '800',
+				'Desc' 			=> 'data not found'
+			);
+		}
+		return $Result;
+	}
+
 }

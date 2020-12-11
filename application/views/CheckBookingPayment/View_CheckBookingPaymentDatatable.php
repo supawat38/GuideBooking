@@ -7,8 +7,8 @@
 				<th scope="col">ชื่อลูกค้า (เบอร์)</th>
 				<th scope="col">ชื่อมัคคุเทศก์ (เบอร์)</th>
 				<th scope="col">วันที่จอง - ถึงวันที่</th>
-				<th scope="col">สถานะการชำระเงิน</th>
-				<th class="text-center" style="width:8%;">ตรวจสอบ</th>
+				<th scope="col" style="white-space: nowrap;">สถานะการชำระเงิน</th>
+				<th class="text-center" style="white-space: nowrap;">ตรวจสอบ</th>
 			</tr>
 		</thead>
 		<tbody>
