@@ -39,20 +39,19 @@
 				<div class="row mb-5">
 					<div class="col-md pt-5">
 						<div class="ftco-footer-widget pt-md-5 mb-4">
-							<h2 class="ftco-heading-2 FontHeadFooter">ติดตามเราได้ทาง</h2>
-							<ul class="ftco-footer-social list-unstyled float-md-left float-lft">
-								<li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
-								<li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
-							</ul>
+							<h2 class="ftco-heading-2 FontHeadFooter">ติดต่อข้อมูลเพิ่มเติมได้ที่</h2>
+							<?php $PathShowImage = base_url('/application/assets/images/') . 'LineQA.jpg'; ?>
+							<img class="img-responsive" src="<?=$PathShowImage?>" style="width:200px;">
 						</div>
+						<span class="text FontDetailFooter">Line: @838hrsou</span>
 					</div>
 					<div class="col-md pt-5 border-left">
 						<div class="ftco-footer-widget pt-md-5 mb-4">
-							<h2 class="ftco-heading-2 FontHeadFooter">ติดต่อเรา</h2>
+							<h2 class="ftco-heading-2 FontHeadFooter">ติดต่อสายด่วน</h2>
 							<div class="block-23 mb-3">
 								<ul>
 									<li><span class="icon fa fa-phone"></span><span class="text FontDetailFooter">+2 392 3929 210</span></li>
-									<li><span class="icon fa fa-paper-plane"></span><span class="text FontDetailFooter">info@yourdomain.com</span></li>
+									<li><span class="icon fa fa-paper-plane"></span><span class="text FontDetailFooter">Line: @838hrsou</span></li>
 								</ul>
 							</div>
 						</div>

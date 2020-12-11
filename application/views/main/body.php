@@ -42,10 +42,17 @@
 														<div class="select-wrap">
 															<div class="icon"><span class="fa fa-chevron-down"></span></div>
 															<select class="jSelectedsingle form-control" name="personbookig">
-																<option value="1-5"> 1 - 5 คน </option>
-																<option value="5-10"> 5 - 10 คน </option>
-																<option value="10-15"> 10 - 15 คน </option>
-																<option value="15++"> มากกว่า 15 คน </option>
+																<option value="1"> 1 คน </option>
+																<option value="2"> 2 คน </option>
+																<option value="3"> 3 คน </option>
+																<option value="4"> 4 คน </option>
+																<option value="5"> 5 คน </option>
+																<option value="6"> 6 คน </option>
+																<option value="7"> 7 คน </option>
+																<option value="8"> 8 คน </option>
+																<option value="9"> 9 คน </option>
+																<option value="10"> 10 คน </option>
+																<option value="10++"> มากกว่า 10 คน </option>
 															</select>
 														</div>
 													</div>
@@ -93,7 +100,7 @@
 			<div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate d-flex align-items-center">
 				<div class="w-100">
 					<h2 class="mb-4 textMain_Show">Friend Travel</h2>
-					<p class="labelHead">เว็บจองมัคคุเทศก์ ที่มีมัคคุเทศก์ให้เลือกมากมายหลายสไตล์ ล้วนมีประสบการณ์ และระบบการจองง่าย เพียง 3 Step เข้าถึงระบบการชำระเงิน พร้อมมีผู้ดูแลระบบคอยดูแลท่านตลอด 24 ชั่วโมง หากติดปัญหาติดต่อ 02-944-4xxx(คุณกี้)</p>
+					<p class="labelHead">เว็บจองมัคคุเทศก์ ที่มีมัคคุเทศก์ให้เลือกมากมายหลายสไตล์ ล้วนมีประสบการณ์ และระบบการจองง่าย เพียง 3 Step เข้าถึงระบบการชำระเงิน พร้อมมีผู้ดูแลระบบคอยดูแลท่านตลอด 24 ชั่วโมง หากติดปัญหาติดต่อ Line: @838hrsou (คุณกี้)</p>
 				</div>
 			</div>
 			<div class="col-md-6">

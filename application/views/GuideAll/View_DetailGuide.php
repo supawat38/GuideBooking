@@ -194,6 +194,7 @@
 													<tr>
 														<th scope="col" style="width:10%;">ลำดับ</th>
 														<th scope="col">ข้อความ</th>
+														<th scope="col" style="width:20%;">คะแนน</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -204,6 +205,7 @@
 															<tr>
 																<th><?=$Key + 1?></th>
 																<td><?=($Value['review_text'] == '') ? '-' : $Value['review_text']?></td>
+																<td><?=($Value['review_point'] == '') ? '0' : $Value['review_point']?> คะแนน</td>
 															</tr>
 														<?php } ?>
 													<?php } ?>

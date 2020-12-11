@@ -30,10 +30,17 @@
 					<div class="form-group col-md-12">
 						<label>จำนวนคน</label>	
 						<select class="jSelectedsingle form-control" name="personrate">
-							<option value="1-5"> 1 - 5 คน </option>
-							<option value="5-10"> 5 - 10 คน </option>
-							<option value="10-15"> 10 - 15 คน </option>
-							<option value="15++"> มากกว่า 15 คน </option>
+							<option value="1"> 1 คน </option>
+							<option value="2"> 2 คน </option>
+							<option value="3"> 3 คน </option>
+							<option value="4"> 4 คน </option>
+							<option value="5"> 5 คน </option>
+							<option value="6"> 6 คน </option>
+							<option value="7"> 7 คน </option>
+							<option value="8"> 8 คน </option>
+							<option value="9"> 9 คน </option>
+							<option value="10"> 10 คน </option>
+							<option value="10++"> มากกว่า 10 คน </option>
 						</select>
 					</div>
 					<div class="form-group col-md-12">

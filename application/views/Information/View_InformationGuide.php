@@ -35,6 +35,8 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 }
 ?>
 
+
+
 <form id="formRegis" class="form-signin" method="post" action="javascript:void(0)">
 
 	<!-- กดปุ่มมัคคุเทศก์ เก็บ type ไว้ 1:ผู้ดูแลระบบ , 2:ลงทะเบียนผู้ใช้ทั่วไป , 3:ลงทะเบียนมัคคุเทศก์ -->
@@ -45,8 +47,14 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 			<div class="row">
 				
 				<!--ปุ่มกด-->
-				<div class="col-lg-12 p-12">
+				<div class="col-lg-6 p-6">
 					<label class="labelHead" >แก้ไขข้อมูลส่วนตัว มัคคุเทศก์</label>
+				</div>
+
+				<div class="col-lg-6 col-6">
+					<a class="labelHead" href="Booking_DeteilGuide/<?=$ID?>" target="_blank">
+						<label class="labelHead textActiveMenuBar" style="text-align: right; display: block;">ดูคะแนน และรีวิว</label>
+					</a>
 				</div>
 
 				<!--เส้นขีดเส้นใต้-->

@@ -9250,7 +9250,7 @@ textarea.form-control {
   .ftco-footer .ftco-footer-widget h2 {
     font-weight: normal;
     color: #000000;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
     font-size: 18px;
     font-weight: 600; }
   .ftco-footer .ftco-footer-widget ul li a {
