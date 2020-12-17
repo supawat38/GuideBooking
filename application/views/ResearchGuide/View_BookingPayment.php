@@ -142,7 +142,7 @@
 	function LaterBooking(){
 		Swal.fire({
 			title: "การจองสำเร็จ",
-			text: "กรุณาชำระเงินภายใน 3 วัน หากไม่ชำระเงิน การจองของคุณจะถูกยกเลิกจากระบบ",
+			html: "กรุณาชำระเงินภายใน 1 วัน หากไม่ชำระเงิน<br />การจองของคุณจะถูกยกเลิกจากระบบ",
 			icon: "success",
 			showCancelButton: false,
 			confirmButtonColor: '#bfe6a9',

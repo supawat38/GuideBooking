@@ -71,7 +71,7 @@
 						<label style="font-weight: bold;">รายละเอียดการจอง</label><br>
 						<div><hr style="margin: 0px 0px 10px 0px"></div>
 						<label>วันที่ทำรายการ <?=$DateBooking?> </label><br>
-						<label>จังหวัด<?=$ProviceName?> ราคา <?=number_format($Grand,2)?> บาท</label><br>
+						<label>จังหวัด<?=$ProviceName?> ราคา <?=number_format($Grand,2)?> บาท ( <?=number_format($Amount,2)?> บาท / วัน )</label><br>
 						<label>วันที่เดินทาง <?=$TravelDate?> จำนวน <?=$CountDate?> วัน</label><br>
 						<label>จำนวนคน <?=($person == '') ? '[มีการเปลี่ยนแปลงราคาเดิม กรุณาตรวจสอบความถูกต้อง]' : $person . ' คน' ?></label><br>
 						<label>ชื่อลูกค้า : <?=$cus_firstname?> (<?=$cus_phone?>)</label>

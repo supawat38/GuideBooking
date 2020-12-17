@@ -8,11 +8,11 @@
 					$StartDate 			= $Value['travel_date'];
 					$QtyDate 			= $Value['qty_date'] - 1;
 
-					$BookingDateStart 	= date('d/m/Y',strtotime($StartDate));
-					$BookingDateEnd 	= date("d/m/Y", strtotime($StartDate . "+$QtyDate days" ));
-					$CurrentDate		= date('d/m/Y');
+					$BookingDateStart 	= date('d-m-Y',strtotime($StartDate));
+					$BookingDateEnd 	= date("d-m-Y", strtotime($StartDate . "+$QtyDate days" ));
+					$CurrentDate		= date('d-m-Y');
 
-					if($CurrentDate > $BookingDateEnd){
+					if(strtotime($CurrentDate) > strtotime($BookingDateEnd)){
 						$TextStatus 		= 'ทริปของคุณสิ้นสุดเเล้ว'."<br>".'ขอบคุณที่ใช้บริการ';
 						$StyleStatus    	= "color: #3f3f3f; text-align: center; font-weight: bold;";
 						$PathShowImage 		= 'application/assets/images/icon/successBooking.png';
@@ -40,7 +40,7 @@
 									<div class='BookingWait' style="background-image: url(<?=$PathShowImage?>);"></div>
 								</div>
 								<div class="media-body" style="margin-left: -10px; margin-right: -10px;">
-									<p class="labelHead" style="<?=$StyleStatus?>"><?=$BookingDateStart ?>  - <?=$BookingDateEnd?></p>
+									<p class="labelHead" style="<?=$StyleStatus?>"><?=date('d/m/Y',strtotime($BookingDateStart)) ?>  - <?=date('d/m/Y',strtotime($BookingDateEnd))?></p>
 									<p class="labelHead" style="<?=$StyleStatus?>"><?=$TextStatus?></p>
 								</div>
 							</div>
@@ -54,9 +54,21 @@
 									<?php 
 										if($Value['status_payment'] == 0){
 											if($Value['payment_id'] == '' || $Value['payment_id'] == null){
-												$TextStatusPayment 		= 'ยังไม่ได้ชำระเงิน (กดที่นี้เพื่อชำระเงิน)';
-												$RoutePaymentNow		= "ClickPayNow('".$Value['booking_id']."','".$Value['grandtotal']."')";
-												echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">สถานะการชำระเงิน : <b style="color:red; cursor:pointer;" onclick='.$RoutePaymentNow.'>'.$TextStatusPayment.'</b></p>';
+
+												$BookingDateStart 	= date('d-m-Y',strtotime($StartDate));
+												$BookingDateEnd 	= date("d-m-Y", strtotime($StartDate . "+$QtyDate days" ));
+												$CurrentDate		= date('d-m-Y');
+
+												if(strtotime($CurrentDate) > strtotime($BookingDateEnd)){
+													//ทริปจบเเล้ว เเต่ยังไม่ได้ชำระเงินก็ไม่ต้องให้ชำระ
+													$TextStatusPayment 		= 'หมดเวลาการชำระเงิน';
+													echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">สถานะการชำระเงิน : <b>'.$TextStatusPayment.'</b></p>';	
+												}else{
+													//ทริปยังอยู่ในวันที่ สามารถชำระเงิน
+													$TextStatusPayment 		= 'ยังไม่ได้ชำระเงิน (กดที่นี้เพื่อชำระเงิน)';
+													$RoutePaymentNow		= "ClickPayNow('".$Value['booking_id']."','".$Value['grandtotal']."')";
+													echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">สถานะการชำระเงิน : <b style="color:red; cursor:pointer;" onclick='.$RoutePaymentNow.'>'.$TextStatusPayment.'</b></p>';	
+												}
 											}else{
 												$TextStatusPayment 		= 'ชำระแล้วรออนุมัติ';
 												echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">สถานะการชำระเงิน : <b style="">'.$TextStatusPayment.'</b></p>';
@@ -83,8 +95,6 @@
 										$ParameterBooking 	= "'".$Value['booking_id']."'";
 										$ParameterBookingID = 'Review'.$Value['booking_id'];
 										echo '<a href="#" class="nav-link labelHead '.$ParameterBookingID.' " data-toggle="modal" data-target="#ModalReviewGuide" style="display: block; margin: 0px auto; text-align: right; color: #f98b2d;" onclick="LoadInformationReviewGuide('.$ParameterGuide.','.$ParameterBooking.');">รีวิวมัคคุเทศก์</a>';
-									}else{
-										// echo '<p class="labelHead" style="display: block; margin: 0px auto; text-align: right; color: #000;">ขอบคุณสำหรับความคิดเห็น</p>';
 									}
 								}
 							?>

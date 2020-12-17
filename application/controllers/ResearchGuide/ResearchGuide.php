@@ -108,11 +108,11 @@ class ResearchGuide extends CI_Controller {
 			if($CountNumber == 1){
 				$Format 		= '0000';
 			}else if($CountNumber == 2){
-				$Format 		= '000';
+				$Format 		= '0000';
 			}else if($CountNumber == 3){
-				$Format 		= '00';
+				$Format 		= '000';
 			}else{
-				$Format 		= '0';
+				$Format 		= '00';
 			}
 
 			$BookingCode = 'BOOKING'.str_pad($Number,strlen($Format)+1,$Format,STR_PAD_LEFT);
@@ -125,7 +125,7 @@ class ResearchGuide extends CI_Controller {
 		if($DateDiff->format("%a") == 0){
 			$DateDiff = 1;
 		}else{
-			$DateDiff = $DateDiff->format("%a");
+			$DateDiff = $DateDiff->format("%a") + 1;
 		}
 
 		//ข้อมูลลูกค้า
@@ -158,9 +158,9 @@ class ResearchGuide extends CI_Controller {
 			'qty_date' 			=> $DateDiff, 
 			'cus_email' 		=> $CustomerEmail, 
 			'cus_phone' 		=> $CustomerTelphone, 
-			'amount' 			=> '0', 
+			'amount' 			=> $Price, 
 			'pro_amount' 		=> '0', 
-			'grandtotal' 		=> $Price, 
+			'grandtotal' 		=> $Price * $DateDiff, 
 			'status_booking' 	=> '1', //0:เอกสารไม่สมบูรณ์ 1:สมบูรณ์
 			'status_payment' 	=> '0', //0:ยังไม่ได้ชำระ 1:ชำระแล้ว
 			'refpayment_id' 	=> '',  
@@ -212,11 +212,11 @@ class ResearchGuide extends CI_Controller {
 			if($CountNumber == 1){
 				$Format 		= '0000';
 			}else if($CountNumber == 2){
-				$Format 		= '000';
+				$Format 		= '0000';
 			}else if($CountNumber == 3){
-				$Format 		= '00';
+				$Format 		= '000';
 			}else{
-				$Format 		= '0';
+				$Format 		= '00';
 			}
 
 			$PayMentCode = 'PAY'.str_pad($Number,strlen($Format)+1,$Format,STR_PAD_LEFT);

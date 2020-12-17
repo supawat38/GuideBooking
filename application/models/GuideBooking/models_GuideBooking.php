@@ -61,14 +61,15 @@ class models_GuideBooking extends CI_Model {
 						guide.firstname AS guide_firstname ,
 						guide.guide_phone AS guide_phone ,
 						admin.firstname AS admin_firstname ,
-						rate.person
+						rate.person ,
+						rate.amount
 					FROM booking
 					LEFT JOIN payment 	ON booking.booking_id 	= payment.refbooking_id
 					LEFT JOIN province 	ON booking.province_id 	= province.province_id
 					LEFT JOIN guide 	ON booking.guide_id 	= guide.guide_id 
 					LEFT JOIN customer 	ON booking.cus_id 		= customer.cus_id 
 					LEFT JOIN admin 	ON payment.approved_by 	= admin.admin_id 
-					LEFT JOIN rate		ON booking.guide_id     = rate.guide_id AND booking.grandtotal = rate.amount
+					LEFT JOIN rate		ON booking.guide_id     = rate.guide_id AND booking.amount = rate.amount
 					WHERE booking.booking_id ='$ID' ";
 
 			$QueryItem 		= $this->db->query($SQL);

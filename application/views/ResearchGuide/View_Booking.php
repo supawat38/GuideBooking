@@ -13,7 +13,24 @@
 					<label class="labelHead" >วันที่ <?=$datestartbooking ?> ถึง <?=$datestopbooking ?></label><br>
 					<label class="labelHead" >ราคา : </label>
 					<label class="labelHead" style="font-weight: bold; color: #ec6941; font-size: 25px !important;"><?=number_format($DetailRate[0]['amount'],2) ?> </label>
-					<label class="labelHead"> บาท </label><br>
+
+					<?php 
+					//หาว่าวันที่ห่างกันกี่วัน
+					$DateBookingStart = date_create(str_replace('/', '-', $datestartbooking));
+					$DateBookingStop  = date_create(str_replace('/', '-', $datestopbooking));
+					$DateDiff		  =	date_diff($DateBookingStart,$DateBookingStop);
+					if($DateDiff->format("%a") == 0){
+						$DateDiff = 1;
+					}else{
+						$DateDiff = $DateDiff->format("%a") + 1;
+					} 
+					//ราคารวมคูณจำนวนวัน
+					$PriceTotal = number_format($DateDiff * number_format($DetailRate[0]['amount'],2),2);
+					?>
+					
+					<label class="labelHead"> บาท / วัน ( รวม </label>
+					<label class="labelHead" style="font-weight: bold; color: #ec6941; font-size: 25px !important;"><?=$PriceTotal?></label>
+					<label class="labelHead"> บาท )</label><br>
 					<label class="labelHead" >เงื่อนไข : <?=($DetailRate[0]['note'] == '') ? '-' : $DetailRate[0]['note'] ?></label>
 				</div>
 				<div class="col-lg-2" style="border-left: 1px solid #dee2e6;">
@@ -22,7 +39,7 @@
 							<button type="button" class="align-self-stretch btn btn-primary BTNSelectBooking" style="width: 100%; margin-bottom:10px;" onclick='ConfirmBooking();';>ยืนยันการจอง</button>
 						</div>
 						<div class="col-lg-12">
-							<button type="button" class="align-self-stretch btn btn-primary BTNSelectBooking" style="width: 100%; margin-bottom:10px;" onclick='CancelBooking();';>ยกเลิกการจอง</button>
+							<button type="button" class="align-self-stretch btn btn-primary BTNSelectBooking" style="width: 100%; margin-bottom:10px;" onclick='BackBooking();';>ย้อนกลับ</button>
 						</div>
 					</div>
 				</div>
@@ -91,7 +108,7 @@
 	$('.TextFontTitleSlide').text('ตรวจสอบข้อมูลการจอง');
 
 	//ยกเลิก Booking
-	function CancelBooking(){
+	function BackBooking(){
 		window.location.href = "main";
 	}
 

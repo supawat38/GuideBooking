@@ -61,7 +61,7 @@
 							?> 
 						</div>
 						<div class="col-lg-2" style="border-left: 1px solid #dee2e6;">
-							<p class="labelHead" style="font-weight: bold; color: #ec6941; font-size: 25px !important; text-align: left;">THB : <?=number_format($Value['amount'],2)?></p>
+							<p class="labelHead" style="font-weight: bold; color: #ec6941; font-size: 25px !important; text-align: left;">THB : <?=number_format($Value['amount'],2)?> / วัน</p>
 							<button type="button" class="align-self-stretch btn btn-primary BTNSelectBooking" style="width: 100%;" onclick='BookingGuide(<?=$PackData?>)';>เลือก</button>
 						</div>
 					</div>

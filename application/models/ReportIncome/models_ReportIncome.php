@@ -12,7 +12,7 @@ class models_ReportIncome extends CI_Model {
 			$SQL 			= "SELECT COUNT(*) AS NumAll FROM payment ";
 			$QueryCount 	= $this->db->query($SQL);
 
-			$SQL 			= "SELECT payment.* , booking.booking_id , guide.*  FROM payment 
+			$SQL 			= "SELECT payment.* , booking.booking_id , booking.grandtotal , guide.*  FROM payment 
 								LEFT JOIN booking ON payment.refbooking_id = booking.booking_id 
 								LEFT JOIN guide ON booking.guide_id = guide.guide_id 
 								ORDER BY guide.guide_id DESC";
