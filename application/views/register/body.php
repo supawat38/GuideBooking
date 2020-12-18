@@ -82,7 +82,6 @@
 												<option value="อันดามัน">อันดามัน</option>
 												<option value="ปืนเขา">ปืนเขา</option>
 												<option value="น้ำตก">น้ำตก</option>
-												<option value="ธรรมชาติ">ธรรมชาติ</option>
 												<option value="ประวัติศาสตร์">ประวัติศาสตร์</option>
 												<option value="ศิลปะวิทยาการ">ศิลปะวิทยาการ</option>
 												<option value="เชิงนิเวศ">เชิงนิเวศ</option>
@@ -207,7 +206,6 @@
 												<option value="อันดามัน">อันดามัน</option>
 												<option value="ปืนเขา">ปืนเขา</option>
 												<option value="น้ำตก">น้ำตก</option>
-												<option value="ธรรมชาติ">ธรรมชาติ</option>
 												<option value="ประวัติศาสตร์">ประวัติศาสตร์</option>
 												<option value="ศิลปะวิทยาการ">ศิลปะวิทยาการ</option>
 												<option value="เชิงนิเวศ">เชิงนิเวศ</option>
