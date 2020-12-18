@@ -252,5 +252,17 @@ class ResearchGuide extends CI_Controller {
 		);
 		$this->load->view('ResearchGuide/View_BookingPaymentLater',$DataToView);
 	}
+
+	//ยกเลิกการจอง
+	public function BookingCancel(){
+		$booking_id  = $this->input->post('booking_id');
+
+		//เตรียมข้อมูล update
+		$PackDataUpdate = array(
+			'booking_id'		=> $booking_id, 
+			'status_booking'	=> 0
+		);
+		$this->models_ResearchGuide->CancelBooking($PackDataUpdate);
+	}
 	
 }

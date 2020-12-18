@@ -25,7 +25,7 @@
 <form id="formpackage" class="form-signin" method="post" action="javascript:void(0)">
 	<div class="col-lg-12" id="divRegispackage" style="margin-top:20px;">
 		<div class="row">
-			<div class="col-lg-4 col-md-4">
+			<div class="col-lg-4 col-md-12">
 				<?php 
 					if($package_image == '' || $package_image == null){
 						$PathShowImage 		= base_url('/application/assets/images/package/') . '/NoImage.jpg';

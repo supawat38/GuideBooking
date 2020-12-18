@@ -25,14 +25,22 @@
 						<?php $QtyDate = $Value['qty_date'] - 1; ?>
 						<td><?= date('d/m/Y',strtotime($StartDate))?> - <?=date("d/m/Y", strtotime($StartDate . "+$QtyDate days" ));?></td>
 						<?php 
-							if($Value['status_payment'] == 1){
-								$IconClassStatus 	= 'IconStatus_open';
-								$TextClassStatus 	= 'TextStatus_open';
-								$TextStatus 		= 'ชำระเงินแล้ว';
-							}else{
+
+							if($Value['status_booking'] == 0){
+								//เอกสารยกเลิก
 								$IconClassStatus 	= 'IconStatus_close';
 								$TextClassStatus 	= 'TextStatus_close';
-								$TextStatus 		= 'ยังไม่ชำระเงิน';
+								$TextStatus 		= 'ยกเลิก';
+							}else{
+								if($Value['status_payment'] == 1){
+									$IconClassStatus 	= 'IconStatus_open';
+									$TextClassStatus 	= 'TextStatus_open';
+									$TextStatus 		= 'ชำระเงินแล้ว';
+								}else{
+									$IconClassStatus 	= 'IconStatus_close';
+									$TextClassStatus 	= 'TextStatus_close';
+									$TextStatus 		= 'ยังไม่ชำระเงิน';
+								}
 							}
 						?>
 						<td><div class="<?=$IconClassStatus?>"></div><span class="<?=$TextClassStatus?>"><?=$TextStatus?></span></td>

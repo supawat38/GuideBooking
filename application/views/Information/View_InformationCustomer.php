@@ -47,7 +47,7 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 						<!--ฟอร์มลงทะเบียนผู้ใช้งาน-->
 						<div class="col-lg-12" id="divRegisCustomer" style="margin-top:20px;">
 							<div class="row">
-								<div class="col-lg-4 col-md-4">
+								<div class="col-lg-4 col-md-12">
 									<?php 
 										if($PathImage == '' || $PathImage == null){
 											$PathShowImage 		= base_url('/application/assets/images/customer/') . '/NoImage.png';

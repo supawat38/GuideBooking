@@ -229,15 +229,42 @@ class models_ResearchGuide extends CI_Model {
 			$this->db->where('guide_id',$Parameter['guide_id']);
 			$this->db->update('calender');
 		}else{
+			$qty_date			= $qty_date - 1;
 			$DataBookingStart 	= $Parameter['guide_date'];
 			$DataBookingEnd 	= date("Y-m-d", strtotime($DataBookingStart . "+$qty_date days" ));
 			$Status				= $Parameter['guide_status'];
 			$Note				= $Parameter['note'];
+			$GuideID			= $Parameter['guide_id'];
 			$SQL 	= "UPDATE calender
 						SET note = '$Note' , guide_status = '$Status'
-						WHERE guide_date BETWEEN '$DataBookingStart' AND '$DataBookingEnd'; ";
+						WHERE 
+						guide_id = '$GuideID' AND
+						guide_date BETWEEN '$DataBookingStart' AND '$DataBookingEnd'  ";
 			$this->db->query($SQL);
 		}
 	}
+
+	//ยกเลิกบุ๊คกิ้ง
+	public function CancelBooking($Parameter){
+		$this->db->set('status_booking', $Parameter['status_booking']);
+		$this->db->where('booking_id',$Parameter['booking_id']);
+		$this->db->update('booking');
+
+		$BookingID  = $Parameter['booking_id'];
+		$SQL 		= "SELECT * FROM booking WHERE booking_id = '$BookingID' ";
+		$Query 		= $this->db->query($SQL);
+		$Result		= $Query->result_array();
+
+		$GuideID	= $Result[0]['guide_id'];
+		$Qty_date   = $Result[0]['qty_date'] - 1;
+		$StartDate  = $Result[0]['travel_date'];
+		$EndDate	= date("Y-m-d", strtotime($StartDate . "+$Qty_date days" ));
+		$SQL 	= "UPDATE calender
+					SET note = 'ว่าง' , guide_status = '0'
+					WHERE guide_id = '$GuideID' AND
+					guide_date BETWEEN '$StartDate' AND '$EndDate'; ";
+		$this->db->query($SQL);
+	}
+
 
 }

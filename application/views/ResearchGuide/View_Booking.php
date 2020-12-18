@@ -25,12 +25,13 @@
 						$DateDiff = $DateDiff->format("%a") + 1;
 					} 
 					//ราคารวมคูณจำนวนวัน
-					$PriceTotal = number_format($DateDiff * number_format($DetailRate[0]['amount'],2),2);
+					$PriceTotal = number_format($DateDiff * $DetailRate[0]['amount'],2);
 					?>
 					
-					<label class="labelHead"> บาท / วัน ( รวม </label>
+					<label class="labelHead"> บาท / วัน </label><br>
+					<label class="labelHead"> รวมทั้งสิ้น : </label>
 					<label class="labelHead" style="font-weight: bold; color: #ec6941; font-size: 25px !important;"><?=$PriceTotal?></label>
-					<label class="labelHead"> บาท )</label><br>
+					<label class="labelHead"> บาท </label><br>
 					<label class="labelHead" >เงื่อนไข : <?=($DetailRate[0]['note'] == '') ? '-' : $DetailRate[0]['note'] ?></label>
 				</div>
 				<div class="col-lg-2" style="border-left: 1px solid #dee2e6;">

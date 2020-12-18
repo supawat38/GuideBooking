@@ -59,15 +59,22 @@
 												$BookingDateEnd 	= date("d-m-Y", strtotime($StartDate . "+$QtyDate days" ));
 												$CurrentDate		= date('d-m-Y');
 
-												if(strtotime($CurrentDate) > strtotime($BookingDateEnd)){
-													//ทริปจบเเล้ว เเต่ยังไม่ได้ชำระเงินก็ไม่ต้องให้ชำระ
-													$TextStatusPayment 		= 'หมดเวลาการชำระเงิน';
+												//ถ้า status_booking == 0 ถือเป็นว่าเอกสารยกเลิก
+												if($Value['status_booking'] == 0){
+													//ยกเลิกเอกสาร
+													$TextStatusPayment 		= 'การจองของคุณได้รับการยกเลิก';
 													echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">สถานะการชำระเงิน : <b>'.$TextStatusPayment.'</b></p>';	
 												}else{
-													//ทริปยังอยู่ในวันที่ สามารถชำระเงิน
-													$TextStatusPayment 		= 'ยังไม่ได้ชำระเงิน (กดที่นี้เพื่อชำระเงิน)';
-													$RoutePaymentNow		= "ClickPayNow('".$Value['booking_id']."','".$Value['grandtotal']."')";
-													echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">สถานะการชำระเงิน : <b style="color:red; cursor:pointer;" onclick='.$RoutePaymentNow.'>'.$TextStatusPayment.'</b></p>';	
+													if(strtotime($CurrentDate) > strtotime($BookingDateEnd)){
+														//ทริปจบเเล้ว เเต่ยังไม่ได้ชำระเงินก็ไม่ต้องให้ชำระ
+														$TextStatusPayment 		= 'หมดเวลาการชำระเงิน';
+														echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">สถานะการชำระเงิน : <b>'.$TextStatusPayment.'</b></p>';	
+													}else{
+														//ทริปยังอยู่ในวันที่ สามารถชำระเงิน
+														$TextStatusPayment 		= 'ยังไม่ได้ชำระเงิน (กดที่นี้เพื่อชำระเงิน)';
+														$RoutePaymentNow		= "ClickPayNow('".$Value['booking_id']."','".$Value['grandtotal']."')";
+														echo '<p class="labelHead" style="margin: 0px 0px 5px 0px;">สถานะการชำระเงิน : <b style="color:red; cursor:pointer;" onclick='.$RoutePaymentNow.'>'.$TextStatusPayment.'</b></p>';	
+													}
 												}
 											}else{
 												$TextStatusPayment 		= 'ชำระแล้วรออนุมัติ';
@@ -87,7 +94,22 @@
 						<div class="col-lg-3" style="margin-top: 5px;">
 							<?php 
 								if($Value['status_payment'] == 0){
-									//ยังไม่ได้ชำระเงิน รีวิวไม่ได้
+									//ยังไม่ได้ชำระเงิน รีวิวไม่ได้ แต่ยกเลิกการจองได้
+									
+									//จะกดยกเลิกการจองได้ วันที่ต้องไม่เกินวันที่ปัจจุบัน ถึงสามารถยกเลิกได้
+									if(strtotime($CurrentDate) > strtotime($BookingDateEnd)){
+									
+									}else{
+										//ถ้ายกเลิกเเล้วก็ไม่ต้องให้มันทำอะไร
+										if($Value['status_booking'] == 0){
+											//ซ่อนข้อความไป
+										}else{
+											//ถ้ายังไม่ยกเลิกสามารถยกเลิกได้
+											$ParameterGuide 	= $Value['guide_id'];
+											$ParameterBooking 	= "'".$Value['booking_id']."'";
+											// echo '<a href="#" class="nav-link labelHead" style="display: block; margin: 0px auto; text-align: right; color: #f98b2d;" onclick="CancelBooking('.$ParameterBooking.');">ยกเลิกการจอง</a>';
+										}
+									}
 								}else{
 									//ชำระเงินเเล้ว รีวิวได้
 									if($Value['review_id'] == '' || $Value['review_id'] == null){
@@ -213,6 +235,39 @@
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				alert(jqXHR, textStatus, errorThrown);
+			}
+		});
+	}
+
+	//ยกเลิกการจอง
+	function CancelBooking(booking_id){
+		Swal.fire({
+			title: "ยกเลิกการจอง",
+			html: "หมายเลขการจอง : " + booking_id + " <br> ของคุณจะถูกยกเลิก <br> กดยืนยันเพื่อดำเนินการต่อ",
+			type: 'warning',
+			showCancelButton: false,
+			confirmButtonColor: '#ff6868',
+			cancelButtonColor: '#ff6868',
+			confirmButtonText: 'ยืนยัน',
+		}).then(function(result){
+			if(result.value){
+				$.ajax({
+					type	: "POST",
+					url		: "Booking_Cancel",
+					data 	: {
+								'booking_id' 		: booking_id
+							},
+					cache	: false,
+					timeout	: 0,
+					success	: function (Result) {
+						LoadtableCustomerBooking(1);
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						alert(jqXHR, textStatus, errorThrown);
+					}
+				});
+			}else if(result.dismiss == 'cancel'){
+				console.log('กดปิด');
 			}
 		});
 	}

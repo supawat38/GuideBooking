@@ -37,7 +37,7 @@
 	<div class="col-lg-12" id="divPercentGuide" >
 		<div class="row">
 
-			<div class="col-lg-4 col-md-4">
+			<div class="col-lg-4 col-md-12">
 				<?php 
 					if($PathImage == '' || $PathImage == null){
 						$PathShowImage 		= base_url('/application/assets/images/guide/') . '/NoImage.png';

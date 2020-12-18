@@ -25,20 +25,28 @@
 						<?php $QtyDate = $Value['qty_date'] - 1; ?>
 						<td style="white-space: nowrap;"><?= date('d/m/Y',strtotime($StartDate))?> - <?=date("d/m/Y", strtotime($StartDate . "+$QtyDate days" ));?></td>
 						<?php 
-							if($Value['status_payment'] == 0){
-								if($Value['payment_id'] == '' || $Value['payment_id'] == null){
-									$IconClassStatus 	= 'IconStatus_close';
-									$TextClassStatus 	= 'TextStatus_close';
-									$TextStatus 		= 'ยังไม่ได้ชำระเงิน';
-								}else{
-									$IconClassStatus 	= 'IconStatus_wait';
-									$TextClassStatus 	= 'TextStatus_wait';
-									$TextStatus 		= 'ชำระแล้วรอตรวจสอบ';
-								}
+
+							if($Value['status_booking'] == 0){
+								//เอกสารยกเลิก
+								$IconClassStatus 	= 'IconStatus_close';
+								$TextClassStatus 	= 'TextStatus_close';
+								$TextStatus 		= 'ยกเลิก';
 							}else{
-								$IconClassStatus 	= 'IconStatus_open';
-								$TextClassStatus 	= 'TextStatus_open';
-								$TextStatus 		= 'ตรวจสอบแล้ว';
+								if($Value['status_payment'] == 0){
+									if($Value['payment_id'] == '' || $Value['payment_id'] == null){
+										$IconClassStatus 	= 'IconStatus_close';
+										$TextClassStatus 	= 'TextStatus_close';
+										$TextStatus 		= 'ยังไม่ได้ชำระเงิน';
+									}else{
+										$IconClassStatus 	= 'IconStatus_wait';
+										$TextClassStatus 	= 'TextStatus_wait';
+										$TextStatus 		= 'ชำระแล้วรอตรวจสอบ';
+									}
+								}else{
+									$IconClassStatus 	= 'IconStatus_open';
+									$TextClassStatus 	= 'TextStatus_open';
+									$TextStatus 		= 'ตรวจสอบแล้ว';
+								}
 							}
 						?>
 						<td style="white-space: nowrap;"><div class="<?=$IconClassStatus?>"></div><span class="<?=$TextClassStatus?>"><?=$TextStatus?></span></td>

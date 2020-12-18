@@ -45,7 +45,7 @@ if($this->session->userdata('session_username') != null){ //ข้อมูล�
 				<!--ฟอร์มลงทะเบียนผู้ดูแลระบบ จะเห็นก็ต่อเมื่อมีการเข้าสู่ระบบเท่านั้น-->
 				<div class="col-lg-12" id="divRegisAdmin" style="margin-top:20px;">
 					<div class="row">
-						<div class="col-lg-4 col-md-4">
+						<div class="col-lg-4 col-md-12">
 							<?php 
 								if($PathImage == '' || $PathImage == null){
 									$PathShowImage 		= base_url('/application/assets/images/admin/') . '/NoImage.png';

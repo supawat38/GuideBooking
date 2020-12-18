@@ -63,7 +63,7 @@ if($this->session->userdata('session_username') != null){ //มีคนเข�
 				<!--ฟอร์มลงทะเบียนมัคคุเทศก์-->
 				<div class="col-lg-12" id="divRegisGuide" style="margin-top:0px;">
 					<div class="row">
-						<div class="col-lg-4 col-md-4">
+						<div class="col-lg-4 col-md-12">
 							<?php 
 								if($PathImage == '' || $PathImage == null){
 									$PathShowImage 		= base_url('/application/assets/images/guide/') . '/NoImage.png';

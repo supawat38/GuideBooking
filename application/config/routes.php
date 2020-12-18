@@ -24,6 +24,7 @@ $route['Booking_DeteilGuide/(:any)'] 			= 'ResearchGuide/ResearchGuide/BookingDe
 $route['Booking_Confirm'] 						= 'ResearchGuide/ResearchGuide/BookingConfirm';
 $route['Booking_UploadSlip']					= 'ResearchGuide/ResearchGuide/UploadSlip';
 $route['Booking_ConfirmPayment']				= 'ResearchGuide/ResearchGuide/ConfirmPayment';
+$route['Booking_Cancel']						= 'ResearchGuide/ResearchGuide/BookingCancel';
 
 //หน้าจอ - ชำระเงินภายหลัง
 $route['Booking_ConfirmLater'] 					= 'ResearchGuide/ResearchGuide/BookingConfirmLater';
