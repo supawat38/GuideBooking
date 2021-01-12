@@ -21,10 +21,12 @@
 						<td><?=($Value['firstname'] == '') ? '-' : $Value['firstname']?></td>
 						<td><?=($Value['cus_phone'] == '') ? '-' : $Value['cus_phone']?></td>
 						<td><?=($Value['province_name'] == '') ? '-' : $Value['province_name']?></td>
-						<?php $StartDate = $Value['travel_date']; ?>
-						<?php $QtyDate = $Value['qty_date'] - 1; ?>
+						<?php $StartDate 	= $Value['travel_date']; ?>
+						<?php $QtyDate 		= $Value['qty_date'] - 1; ?>
 						<td><?= date('d/m/Y',strtotime($StartDate))?> - <?=date("d/m/Y", strtotime($StartDate . "+$QtyDate days" ));?></td>
 						<?php 
+							$CurrentDate		= date('d-m-Y');
+							$BookingDateEnd 	= date("d-m-Y", strtotime($StartDate . "+$QtyDate days" ));
 
 							if($Value['status_booking'] == 0){
 								//เอกสารยกเลิก
@@ -37,9 +39,15 @@
 									$TextClassStatus 	= 'TextStatus_open';
 									$TextStatus 		= 'ชำระเงินแล้ว';
 								}else{
-									$IconClassStatus 	= 'IconStatus_close';
-									$TextClassStatus 	= 'TextStatus_close';
-									$TextStatus 		= 'ยังไม่ชำระเงิน';
+									if(strtotime($CurrentDate) > strtotime($BookingDateEnd)){
+										$IconClassStatus 	= 'IconStatus_close';
+										$TextClassStatus 	= 'TextStatus_close';
+										$TextStatus 		= 'ยกเลิก';
+									}else{
+										$IconClassStatus 	= 'IconStatus_close';
+										$TextClassStatus 	= 'TextStatus_close';
+										$TextStatus 		= 'ยังไม่ชำระเงิน';
+									}
 								}
 							}
 						?>

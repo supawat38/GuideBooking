@@ -107,7 +107,7 @@
 											//ถ้ายังไม่ยกเลิกสามารถยกเลิกได้
 											$ParameterGuide 	= $Value['guide_id'];
 											$ParameterBooking 	= "'".$Value['booking_id']."'";
-											// echo '<a href="#" class="nav-link labelHead" style="display: block; margin: 0px auto; text-align: right; color: #f98b2d;" onclick="CancelBooking('.$ParameterBooking.');">ยกเลิกการจอง</a>';
+											echo '<a href="#" class="nav-link labelHead" style="display: block; margin: 0px auto; text-align: right; color: #f98b2d;" onclick="CancelBooking('.$ParameterBooking.');">ยกเลิกการจอง</a>';
 										}
 									}
 								}else{

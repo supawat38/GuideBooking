@@ -21,10 +21,12 @@
 						<td><?=$Value['province_name']?></td>
 						<td style="white-space: nowrap;"><?=($Value['cus_firstname'] == '') ? '-' : $Value['cus_firstname']?> (<?=($Value['cus_phone'] == '') ? '-' : $Value['cus_phone']?>)</td>
 						<td style="white-space: nowrap;"><?=($Value['guide_firstname'] == '') ? '-' : $Value['guide_firstname']?> (<?=($Value['guide_phone'] == '') ? '-' : $Value['guide_phone']?>)</td>
-						<?php $StartDate = $Value['travel_date']; ?>
-						<?php $QtyDate = $Value['qty_date'] - 1; ?>
+						<?php $StartDate 	= $Value['travel_date']; ?>
+						<?php $QtyDate 		= $Value['qty_date'] - 1; ?>
 						<td style="white-space: nowrap;"><?= date('d/m/Y',strtotime($StartDate))?> - <?=date("d/m/Y", strtotime($StartDate . "+$QtyDate days" ));?></td>
 						<?php 
+							$CurrentDate		= date('d-m-Y');
+							$BookingDateEnd 	= date("d-m-Y", strtotime($StartDate . "+$QtyDate days" ));
 
 							if($Value['status_booking'] == 0){
 								//เอกสารยกเลิก
@@ -34,9 +36,15 @@
 							}else{
 								if($Value['status_payment'] == 0){
 									if($Value['payment_id'] == '' || $Value['payment_id'] == null){
-										$IconClassStatus 	= 'IconStatus_close';
-										$TextClassStatus 	= 'TextStatus_close';
-										$TextStatus 		= 'ยังไม่ได้ชำระเงิน';
+										if(strtotime($CurrentDate) > strtotime($BookingDateEnd)){
+											$IconClassStatus 	= 'IconStatus_close';
+											$TextClassStatus 	= 'TextStatus_close';
+											$TextStatus 		= 'ยกเลิก';
+										}else{
+											$IconClassStatus 	= 'IconStatus_close';
+											$TextClassStatus 	= 'TextStatus_close';
+											$TextStatus 		= 'ยังไม่ได้ชำระเงิน';
+										}
 									}else{
 										$IconClassStatus 	= 'IconStatus_wait';
 										$TextClassStatus 	= 'TextStatus_wait';
