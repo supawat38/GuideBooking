@@ -1,20 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['default_controller'] 					= 'main';
+$route['default_controller'] 					= 'Main';
 $route['404_override'] 							= '';
 $route['translate_uri_dashes'] 					= FALSE;
 
 //อัพโหลดรูปภาพ
-$route['ImageUpload'] 							= 'main/Uploadimage';
+$route['ImageUpload'] 							= 'Main/Uploadimage';
 
 //สมัครสมาชิก
-$route['InsertAndEditRegister'] 				= 'register/register/RegisterSystems';
+$route['InsertAndEditRegister'] 				= 'Register/Register/RegisterSystems';
 
 //หน้าจอ - ข้อมูลหลัก
-$route['main'] 									= 'main';
-$route['Loadtable_package_mainpage']			= 'main/LoadtablePackage';
-$route['Loadtable_reviewguide']					= 'main/LoadtableReviewGuide';
+$route['main'] 									= 'Main';
+$route['Loadtable_package_mainpage']			= 'Main/LoadtablePackage';
+$route['Loadtable_reviewguide']					= 'Main/LoadtableReviewGuide';
 
 //หน้าจอ - ค้นหามัคคุเทศก์ + จอง
 $route['ResearchGuide'] 						= 'ResearchGuide/ResearchGuide/index';
@@ -34,13 +34,13 @@ $route['GuideAll']								= 'GuideAll/GuideAll/index';
 $route['LoadtableGuideAll'] 					= 'GuideAll/GuideAll/LoadtableGuide';
 
 //หน้าจอ - สมัครสมาชิก
-$route['register'] 								= 'register/register/index';
+$route['Register'] 								= 'Register/Register/index';
 
 //หน้าจอ - เข้าสู่ระบบ
-$route['login'] 								= 'login/checklogin';
+$route['Login'] 								= 'Login/Checklogin';
 
 //หน้าจอ - ออกจากระบบ
-$route['logout'] 								= 'login/logout';
+$route['Logout'] 								= 'Login/Logout';
 
 //หน้าจอ - จัดการข้อมูล
 $route['Backend'] 								= 'Backend/Backend/index';

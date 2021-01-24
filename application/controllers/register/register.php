@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class register extends CI_Controller {
+class Register extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
 		//เรียกใช้งานส่วน query
-		$this->load->model('register/models_register');
+		$this->load->model('Register/models_register');
 	}
 
 	//โหลดหน้าจอแรก

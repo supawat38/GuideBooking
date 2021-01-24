@@ -1,12 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class main extends CI_Controller {
+class Main extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->load->helper('File');
 		$this->load->model('main/models_main');
-		$this->load->model('register/models_register');
+		$this->load->model('Register/models_register');
 	}
 
 	public function index(){

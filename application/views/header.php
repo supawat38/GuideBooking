@@ -43,7 +43,7 @@
 						<?php }else{ //ผู้ดูแลระบบ + มัคคุเทศก์ + เจ้าของ ?>
 							<li class="nav-item  <?=($pageName == 'Backend') ? 'active' : '' ?>" ><a href="Backend" class="nav-link FontMenu">จัดการข้อมูล</a></li>
 						<?php } ?>
-						<li class="nav-item <?=($pageName == 'logout') ? 'active' : '' ?>"><a href="logout" class="nav-link FontMenu">ออกจากระบบ</a></li>
+						<li class="nav-item <?=($pageName == 'logout') ? 'active' : '' ?>"><a href="Logout" class="nav-link FontMenu">ออกจากระบบ</a></li>
 					<?php } ?>
 				</ul>
 			</div>

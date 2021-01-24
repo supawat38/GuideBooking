@@ -44,11 +44,11 @@ class models_Information extends CI_Model {
 			$tUserType 	= $this->session->userdata("session_reftype");	
 			$tUserID 	= $this->session->userdata("session_refid");
 			if($tUserType == 1){ //ผู้ดูแลระบบ เช็คข้อมูลยกเว้นตัวมันเอง
-				$SQL = "SELECT * FROM Login WHERE username = '$UserName' AND ( login_type != 1 OR reflogin_id != '$tUserID' )";
+				$SQL = "SELECT * FROM login WHERE username = '$UserName' AND ( login_type != 1 OR reflogin_id != '$tUserID' )";
 			}else if($tUserType == 2){ //ลูกค้า เช็คข้อมูลยกเว้นตัวมันเอง
-				$SQL = "SELECT * FROM Login WHERE username = '$UserName' AND ( login_type != 2 OR reflogin_id != '$tUserID' )";
+				$SQL = "SELECT * FROM login WHERE username = '$UserName' AND ( login_type != 2 OR reflogin_id != '$tUserID' )";
 			}else if($tUserType == 3){ //มัคคุเทศก์ เช็คข้อมูลยกเว้นตัวมันเอง
-				$SQL = "SELECT * FROM Login WHERE username = '$UserName' AND ( login_type != 3 OR reflogin_id != '$tUserID' )";
+				$SQL = "SELECT * FROM login WHERE username = '$UserName' AND ( login_type != 3 OR reflogin_id != '$tUserID' )";
 			}
 			$Query 		= $this->db->query($SQL);
 			if($Query->num_rows() > 0){

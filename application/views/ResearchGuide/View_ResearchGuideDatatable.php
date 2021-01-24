@@ -147,7 +147,7 @@
 
 				$.ajax({
 					type 			: "POST",
-					url 			: "login",
+					url 			: "Login",
 					data 			: { 'username' : $('#LoginIDBeforeBooking').val() , 'password' : $('#LoginPasswordBeforeBooking').val() },
 					success			: function(Result){
 						if(Result == 'notfound'){

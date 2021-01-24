@@ -114,7 +114,7 @@
 
 				$.ajax({
 					type 			: "POST",
-					url 			: "login",
+					url 			: "Login",
 					data 			: { 'username' : $('#LoginID').val() , 'password' : $('#LoginPassword').val() },
 					success			: function(Result){
 						if(Result == 'notfound'){

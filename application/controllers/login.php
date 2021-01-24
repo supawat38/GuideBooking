@@ -1,16 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class login extends CI_Controller {
+class Login extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
 		//เรียกใช้งานส่วน query
-		$this->load->model('login/models_login');
+		$this->load->model('Login/models_login');
 	}
 
 	//ตรวจสอบข้อมูลเข้าสู่ระบบ
-	public function checklogin(){
+	public function Checklogin(){
 		$CheckLogin = array(
 			'username' 		=> $this->input->post('username'),
 			'password'		=> md5($this->input->post('password'))

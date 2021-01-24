@@ -1,7 +1,7 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
-class models_login extends CI_Model {
+class Models_login extends CI_Model {
 	
 	//เช็คข้อมูล login ว่ามีในระบบไหม
 	public function ChecLogin($Result){
@@ -9,16 +9,16 @@ class models_login extends CI_Model {
 			$UserName 	= $Result['username'];
 			$Pass 		= $Result['password'];
 			$SQL 		= "SELECT 
-								Login.* , 
+								login.* , 
 								admin.firstname AS Adminfirstname , 
 								guide.firstname AS Guidefirstname , 
 								customer.firstname AS Customerfirstname 
-							FROM Login 
-							LEFT JOIN admin ON Login.login_type = 1 AND Login.reflogin_id = admin.admin_id AND admin.admin_status = 1 AND admin.status_delete = 0
-							LEFT JOIN guide ON Login.login_type = 3 AND Login.reflogin_id = guide.guide_id AND guide.guide_status = 1
-							LEFT JOIN customer ON Login.login_type = 2 AND Login.reflogin_id = customer.cus_id AND customer.cus_status = 1";
-			$SQL 		.= " WHERE Login.username = '$UserName' ";
-			$SQL 		.= " AND Login.password = '$Pass' ";
+							FROM login login
+							LEFT JOIN admin ON login.login_type = 1 AND login.reflogin_id = admin.admin_id AND admin.admin_status = 1 AND admin.status_delete = 0
+							LEFT JOIN guide ON login.login_type = 3 AND login.reflogin_id = guide.guide_id AND guide.guide_status = 1
+							LEFT JOIN customer ON login.login_type = 2 AND login.reflogin_id = customer.cus_id AND customer.cus_status = 1";
+			$SQL 		.= " WHERE login.username = '$UserName' ";
+			$SQL 		.= " AND login.password = '$Pass' ";
 			$Query 		= $this->db->query($SQL);
 
 			if($Query->num_rows() > 0){

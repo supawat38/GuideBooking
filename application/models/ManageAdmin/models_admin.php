@@ -52,9 +52,9 @@ class models_admin extends CI_Model {
 
 			//ถ้าเป็นการลงทะเบียนใหม่เช็ค username ห้ามซ้ำ
 			if($Typepage == 'pageinsert'){
-				$SQL 		= "SELECT * FROM Login WHERE username = '$UserName' ";
+				$SQL 		= "SELECT * FROM login WHERE username = '$UserName' ";
 			}else if($Typepage == 'pageedit'){ //ถ้าเป็นการแก้ไขข้อมูลเช็ค username ห้ามซ้ำ ยกเว้นของตัวเองไม่ต้องเช็ค
-				$SQL 		= "SELECT * FROM Login WHERE username = '$UserName' AND login_type NOT IN ('1') AND reflogin_id NOT IN ('$UserID') ";
+				$SQL 		= "SELECT * FROM login WHERE username = '$UserName' AND login_type NOT IN ('1') AND reflogin_id NOT IN ('$UserID') ";
 			}
 
 			$Query 		= $this->db->query($SQL);

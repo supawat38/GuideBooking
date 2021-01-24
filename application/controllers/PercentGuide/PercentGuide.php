@@ -7,7 +7,7 @@ class PercentGuide extends CI_Controller {
 		parent::__construct();
 		//เรียกใช้งานส่วน query
 		$this->load->model('PercentGuide/models_PercentGuide');
-		$this->load->model('register/models_register');
+		$this->load->model('Register/models_register');
 	}
 
 	//โหลดหน้าจอตาราง

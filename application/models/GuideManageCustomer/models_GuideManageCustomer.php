@@ -85,7 +85,7 @@ class models_GuideManageCustomer extends CI_Model {
 			$ID 		= $Result['ID'];
 			
 			//ลูกค้า เช็คข้อมูลยกเว้นตัวมันเอง
-			$SQL = "SELECT * FROM Login WHERE username = '$UserName' AND reflogin_id != '$ID' ";
+			$SQL = "SELECT * FROM login WHERE username = '$UserName' AND reflogin_id != '$ID' ";
 			$Query 		= $this->db->query($SQL);
 			if($Query->num_rows() > 0){
 				$aResult = array(

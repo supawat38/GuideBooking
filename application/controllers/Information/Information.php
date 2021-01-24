@@ -7,7 +7,7 @@ class Information extends CI_Controller {
 		parent::__construct();
 		//เรียกใช้งานส่วน query
 		$this->load->model('Information/models_Information');
-		$this->load->model('register/models_register');
+		$this->load->model('Register/models_register');
 	}
 
 	//โหลดหน้าจอแรก

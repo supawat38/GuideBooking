@@ -1,7 +1,7 @@
 <?php
 defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 
-class models_register extends CI_Model {
+class Models_register extends CI_Model {
 	
 	//เพิ่มข้อมูล
 	public function InsertCustomerOrGuideOrAdmin($Result,$TableName){
@@ -85,7 +85,7 @@ class models_register extends CI_Model {
 	public function CheckUserLogin($Result){
 		try{	
 			$UserName 	= $Result['username'];
-			$SQL 		= "SELECT * FROM Login WHERE username = '$UserName' ";
+			$SQL 		= "SELECT * FROM login WHERE username = '$UserName' ";
 			$Query 		= $this->db->query($SQL);
 			if($Query->num_rows() > 0){
 				$aResult = array(

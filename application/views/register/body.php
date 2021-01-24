@@ -72,25 +72,25 @@
 										<div class="form-group col-md-12">
 											<label>สิ่งที่คุณสนใจ (สามารถเลือกได้มากกว่า 1 ข้อ)</label>	
 											<select class="jSelectedmultiple form-control" name="regisCustomerQuestion[]" multiple="multiple">
-												<option value="ภูเขา">ภูเขา</option>
+											<option value="ภูเขา">ภูเขา</option>
 												<option value="ทะเล">ทะเล</option>
 												<option value="แม่น้ำ">แม่น้ำ</option>
 												<option value="วัด">วัด</option>
-												<option value="ช็อปปิ้ง">ช็อปปิ้ง</option>
-												<option value="ห้างสรรพสินค้า">ห้างสรรพสินค้า</option>
+												<option value="อุทยาน">อุทยาน</option>
 												<option value="ทะเลหมอก">ทะเลหมอก</option>
-												<option value="อันดามัน">อันดามัน</option>
 												<option value="ปืนเขา">ปืนเขา</option>
 												<option value="น้ำตก">น้ำตก</option>
+												<option value="เขื่อน">เขื่อน</option>
+												<option value="ดอย">ดอย</option>
 												<option value="ประวัติศาสตร์">ประวัติศาสตร์</option>
-												<option value="ศิลปะวิทยาการ">ศิลปะวิทยาการ</option>
-												<option value="เชิงนิเวศ">เชิงนิเวศ</option>
-												<option value="ธรรมชาติ">ธรรมชาติ</option>
+												<option value="ศิลปะ">ศิลปะ</option>
 												<option value="วัฒนธรรม">วัฒนธรรม</option>
-												<option value="น้ำพุร้อน">น้ำพุร้อน</option>
-												<option value="ถ้ำ">ถ้ำ</option>
-												<option value="เกาะ">เกาะ</option>
-												<option value="แก่ง">แก่ง</option>
+												<option value="ทุ่งดอกไม้">ทุ่งดอกไม้</option>
+												<option value="ดำน้ำ">ดำน้ำ</option>
+												<option value="ไร่">ไร่</option>
+												<option value="ชุมชน">ชุมชน</option>
+												<option value="คาเฟ่">คาเฟ่</option>
+												<option value="ของกิน">ของกิน</option>
 												<option value="สวนสัตว์">สวนสัตว์</option>
 											</select>
 										</div>
@@ -200,21 +200,21 @@
 												<option value="ทะเล">ทะเล</option>
 												<option value="แม่น้ำ">แม่น้ำ</option>
 												<option value="วัด">วัด</option>
-												<option value="ช็อปปิ้ง">ช็อปปิ้ง</option>
-												<option value="ห้างสรรพสินค้า">ห้างสรรพสินค้า</option>
+												<option value="อุทยาน">อุทยาน</option>
 												<option value="ทะเลหมอก">ทะเลหมอก</option>
-												<option value="อันดามัน">อันดามัน</option>
 												<option value="ปืนเขา">ปืนเขา</option>
 												<option value="น้ำตก">น้ำตก</option>
+												<option value="เขื่อน">เขื่อน</option>
+												<option value="ดอย">ดอย</option>
 												<option value="ประวัติศาสตร์">ประวัติศาสตร์</option>
-												<option value="ศิลปะวิทยาการ">ศิลปะวิทยาการ</option>
-												<option value="เชิงนิเวศ">เชิงนิเวศ</option>
-												<option value="ธรรมชาติ">ธรรมชาติ</option>
+												<option value="ศิลปะ">ศิลปะ</option>
 												<option value="วัฒนธรรม">วัฒนธรรม</option>
-												<option value="น้ำพุร้อน">น้ำพุร้อน</option>
-												<option value="ถ้ำ">ถ้ำ</option>
-												<option value="เกาะ">เกาะ</option>
-												<option value="แก่ง">แก่ง</option>
+												<option value="ทุ่งดอกไม้">ทุ่งดอกไม้</option>
+												<option value="ดำน้ำ">ดำน้ำ</option>
+												<option value="ไร่">ไร่</option>
+												<option value="ชุมชน">ชุมชน</option>
+												<option value="คาเฟ่">คาเฟ่</option>
+												<option value="ของกิน">ของกิน</option>
 												<option value="สวนสัตว์">สวนสัตว์</option>
 											</select>
 										</div>
