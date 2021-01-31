@@ -103,7 +103,7 @@
 										//ถ้ายกเลิกเเล้วก็ไม่ต้องให้มันทำอะไร
 										if($Value['status_booking'] == 0){
 											//ซ่อนข้อความไป
-										}else{
+										}else if($Value['status_booking'] == 1 && $Value['payment_id'] == ''){
 											//ถ้ายังไม่ยกเลิกสามารถยกเลิกได้
 											$ParameterGuide 	= $Value['guide_id'];
 											$ParameterBooking 	= "'".$Value['booking_id']."'";
